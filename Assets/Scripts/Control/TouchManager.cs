@@ -179,8 +179,6 @@ public class TouchManager : Singleton<TouchManager>
 	/// </summary>
 	protected virtual void OnSwipe(Vector2 position, Vector2 swipeVector, float speedRatio)
 	{
-		Debug.Log("Swipe>> " + swipeVector + " @" + speedRatio);
-
 		var e = Swipe;
 		if (e != null)
 			e(position, swipeVector, speedRatio);
