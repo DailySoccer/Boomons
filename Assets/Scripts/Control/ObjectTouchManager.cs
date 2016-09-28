@@ -103,10 +103,8 @@ public class ObjectTouchManager : TouchManager
 		if (o != null)
 		{
 			IObjectTouchListener listener = o.GetComponent<IObjectTouchListener>();
-			if (listener != null && _selfListeners.Contains(listener)) {
+			if (listener != null && _selfListeners.Contains(listener)) 
 				listener.OnTapStart(o, position);
-				return;
-			}
 		}
 	
 		for(int i = _broadcastListeners.Count - 1; i >= 0; --i)
@@ -123,10 +121,7 @@ public class ObjectTouchManager : TouchManager
 		{
 			IObjectTouchListener listener = o.GetComponent<IObjectTouchListener>();
 			if (listener != null && _selfListeners.Contains(listener))
-			{
 				listener.OnTapStay(o, position);
-				return;
-			}
 		}
 
 		for (int i = _broadcastListeners.Count - 1; i >= 0; --i)
@@ -143,10 +138,7 @@ public class ObjectTouchManager : TouchManager
 		{
 			IObjectTouchListener listener = o.GetComponent<IObjectTouchListener>();
 			if (listener != null && _selfListeners.Contains(listener))
-			{
 				listener.OnTapStop(o, position);
-				return;
-			}
 		}
 
 		for (int i = _broadcastListeners.Count - 1; i >= 0; --i)
@@ -163,10 +155,7 @@ public class ObjectTouchManager : TouchManager
 		{
 			IObjectTouchListener listener = o.GetComponent<IObjectTouchListener>();
 			if (listener != null && _selfListeners.Contains(listener))
-			{
 				listener.OnDoubleTap(o, position);
-				return;
-			}
 		}
 
 		for (int i = _broadcastListeners.Count - 1; i >= 0; --i)
@@ -184,10 +173,7 @@ public class ObjectTouchManager : TouchManager
 		{
 			IObjectTouchListener listener = o.GetComponent<IObjectTouchListener>();
 			if (listener != null && _selfListeners.Contains(listener))
-			{
 				listener.OnSwipe(o, swipeVector, speedRatio);
-				return;
-			}
 		}
 
 		for (int i = _broadcastListeners.Count - 1; i >= 0; --i)

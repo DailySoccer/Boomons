@@ -1,4 +1,5 @@
 ﻿using System;
+
 using UnityEngine;
 
 public class ScrollFollower : MonoBehaviour
@@ -25,15 +26,18 @@ public class ScrollFollower : MonoBehaviour
 
 	}
 
-	// Use this for initialization
 	private void Start()
 	{
+		_target = GameObject.FindGameObjectWithTag(_targetTag).transform;
 		_lastPos = _target.position;
 	}
 
 
 	private void LateUpdate()
 	{
+		if(!_target.gameObject.activeInHierarchy)
+			_target = GameObject.FindGameObjectWithTag(_targetTag).transform;
+		
 		Vector3 targetPos = _target.position;
 		Vector3 deltaPos = targetPos - _lastPos;
 
@@ -46,14 +50,13 @@ public class ScrollFollower : MonoBehaviour
 		cameraPos -= Math.Abs( direction ) * (1f - _stoppedDistanceRatio) *_distance.z * _forward;
 		cameraPos += direction * _distance.x * _right;
 
-		transform.position = Vector3.Lerp(transform.position, cameraPos, _speed * Time.deltaTime);
+		Vector3 fwdDeltaPos = Vector3.Project(cameraPos - transform.position, _forward);
+		transform.position = Vector3.Lerp(transform.position, cameraPos - fwdDeltaPos, _lateralSpeed * Time.deltaTime);;
+		transform.position = Vector3.Lerp(transform.position, cameraPos, _depthSpeed * Time.deltaTime);
 
+		transform.forward = (_target.position - transform.position).normalized;
 
-		// TODO establecer referencias del scroll 
-		// transform.LookAt(boomonPos);
-
-
-		_lastPos = _target.position;
+		_lastPos = targetPos;
 	}
 
 
@@ -76,24 +79,18 @@ public class ScrollFollower : MonoBehaviour
 
 		//=================================================================
 
-	private enum ScrollDirection
-	{
-		Stopped = 0,
-		Left = -1,
-		Right = 1	
-	}
+
 
 	[SerializeField] private Transform _target;
-	[SerializeField, Range(1f, 20f)] private float _speed;
-	[SerializeField, Range(1f, 20f)] private float _rotationSpeed;
+	[SerializeField] private string _targetTag = "Player";
 	[SerializeField] private Vector3 _distance;
 	[SerializeField, Range(0f, 1f)] private float _stoppedDistanceRatio;
+	[SerializeField, Range(1f, 20f)] private float _depthSpeed;
+	[SerializeField, Range(1f, 20f)] private float _lateralSpeed;
+
 
 	private Vector3 _lastPos;
 	private Vector3 _forward;
 	private Vector3 _right;
 	private Vector3 _up;
-	
-
-	
 }

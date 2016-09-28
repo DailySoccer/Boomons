@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator), typeof(CharacterController))]
@@ -108,10 +109,7 @@ public class BoomonController : Touchable
 	/// </summary>
 	private void Update()
 	{
-		if (CurrentState == State.Throwing)
-			transform.position = _ragdoll.Position;
-		else
-			_controller.SimpleMove(_speedRatio * _moveSpeedMax * transform.forward);
+		_controller.SimpleMove(_speedRatio * _moveSpeedMax * transform.forward);
 	}
 
 
@@ -157,7 +155,6 @@ public class BoomonController : Touchable
 		/*/
 		float moveValue = 2f * (touchPos - screenPos).x / Screen.width;
 		/**/
-
 	
 		transform.forward = moveValue*_moveDirection;
 		_speedRatio = Math.Abs(moveValue);
@@ -191,6 +188,8 @@ public class BoomonController : Touchable
 		OnMoveEnd();
 	}
 
+	
+
 	//----------------------------------------------------------------------
 
 	private void OnMoveStart()
@@ -222,11 +221,12 @@ public class BoomonController : Touchable
 
 	#endregion
 
-	
+
 
 	//=======================================================================
 
 	#region Private Fields
+
 
 
 	[SerializeField] private Vector3 _moveDirection;
@@ -242,12 +242,14 @@ public class BoomonController : Touchable
 	private Animator _animator;
 	private CharacterController _controller;
 	private Ragdoll _ragdoll;
+	
 
 	private State _currentState = State.Moving;
 	private Vector3 _startPos;
 	private float _speedRatio;
 	private Vector3 _screenDirection;
 	private int _wallLayer;
+	
 
 	#endregion
 }
