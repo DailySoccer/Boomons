@@ -41,10 +41,10 @@ public class ScrollFollower : MonoBehaviour
 		cameraPos += _distance.y * _up;
 		cameraPos -= _stoppedDistanceRatio*_distance.z*_forward;
 
-		_direction = (ScrollDirection) Math.Sign(Vector3.Dot(deltaPos, _right));
+		int direction = Math.Sign(Vector3.Dot(deltaPos, _right));
 
-		cameraPos -= Math.Abs( (int)_direction ) * (1f - _stoppedDistanceRatio) *_distance.z * _forward;
-		cameraPos += (int) _direction * _distance.x * _right;
+		cameraPos -= Math.Abs( direction ) * (1f - _stoppedDistanceRatio) *_distance.z * _forward;
+		cameraPos += direction * _distance.x * _right;
 
 		transform.position = Vector3.Lerp(transform.position, cameraPos, _speed * Time.deltaTime);
 
@@ -88,16 +88,12 @@ public class ScrollFollower : MonoBehaviour
 	[SerializeField, Range(1f, 20f)] private float _rotationSpeed;
 	[SerializeField] private Vector3 _distance;
 	[SerializeField, Range(0f, 1f)] private float _stoppedDistanceRatio;
-	[SerializeField, Range(0f, 10f)] private float _wallDistanceMin;
-	[SerializeField, Range(0f, 100f)] private float _wallDistanceMax;
 
 	private Vector3 _lastPos;
 	private Vector3 _forward;
 	private Vector3 _right;
 	private Vector3 _up;
 	
-	private bool _isCrashingWall;
-	
-	private ScrollDirection _direction;
+
 	
 }
