@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(Animator), typeof(CharacterController))]
 public class BoomonController : Touchable
@@ -64,9 +65,16 @@ public class BoomonController : Touchable
 	{
 		base.Awake();
 
+		Debug.Assert(_moveDirection != Vector3.zero, "BoomonController::Awake>> Move direction not defined!!");
+
+		_wallLayer = LayerMask.NameToLayer(_wallLayerName);
+		
+		_moveDirection.Normalize();
+		_screenDirection = Vector3.Cross(transform.up, _moveDirection).normalized;
+		transform.up = Vector3.Cross(_moveDirection, _screenDirection);
+
 		_startPos = transform.position;
-	
-		_camera = Camera.main;
+
 		_animator = GetComponent<Animator>();
 		_controller = GetComponent<CharacterController>();
 
@@ -81,7 +89,7 @@ public class BoomonController : Touchable
 		_ragdoll.GroundEnter -= OnRagdollGroundEnter;
 		_ragdoll = null;
 
-		_camera = null;
+		
 		_animator = null;
 		_controller = null;
 
@@ -100,9 +108,18 @@ public class BoomonController : Touchable
 	/// </summary>
 	private void Update()
 	{
-		_controller.SimpleMove(_speedRatio * _moveSpeedMax * transform.forward);
+		if (CurrentState == State.Throwing)
+			transform.position = _ragdoll.Position;
+		else
+			_controller.SimpleMove(_speedRatio * _moveSpeedMax * transform.forward);
 	}
 
+
+	private void OnControllerColliderHit(ControllerColliderHit hit)
+	{
+		if (hit.gameObject.layer == _wallLayer)
+			CurrentState = State.Idle;
+	}
 
 	#endregion
 
@@ -134,14 +151,16 @@ public class BoomonController : Touchable
 			return;
 
 		Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+		
 		//*
-		float moveValue = Mathf.Sign((touchPos - screenPos).x);
+		float moveValue = Mathf.Sign(Vector3.Dot(Vector3.right, touchPos - screenPos));
 		/*/
 		float moveValue = 2f * (touchPos - screenPos).x / Screen.width;
 		/**/
 
-		transform.forward = _camera.transform.right * Mathf.Sign(moveValue);
-		_speedRatio = Mathf.Abs(moveValue);
+	
+		transform.forward = moveValue*_moveDirection;
+		_speedRatio = Math.Abs(moveValue);
 	}
 
 	public override void OnDoubleTap(GameObject go, Vector2 position)
@@ -188,8 +207,8 @@ public class BoomonController : Touchable
 		_speedRatio = 0f;
 		_animator.SetTrigger(_idleTriggerName);
 
-		transform.forward = - _camera.transform.forward;
-		transform.position -= Vector3.Project(transform.position - _startPos, transform.forward);
+		transform.forward =  _screenDirection;
+		transform.position -= Vector3.Project(transform.position - _startPos, _screenDirection);
 	}
 
 
@@ -209,8 +228,8 @@ public class BoomonController : Touchable
 
 	#region Private Fields
 
-	
 
+	[SerializeField] private Vector3 _moveDirection;
 	[SerializeField, Range(0.5f, 50f)] private float _moveSpeedMax = 5f;
 	
 	[SerializeField] private string _idleTriggerName = "Idle";
@@ -218,8 +237,8 @@ public class BoomonController : Touchable
 	[SerializeField] private string _ticklesTriggerName = "Tickles";
 
 	[SerializeField] private string _ragdollPath = "Prefabs/Ragdoll.prefab";
+	[SerializeField] private string _wallLayerName = "Wall";
 
-	private Camera _camera;
 	private Animator _animator;
 	private CharacterController _controller;
 	private Ragdoll _ragdoll;
@@ -227,7 +246,8 @@ public class BoomonController : Touchable
 	private State _currentState = State.Moving;
 	private Vector3 _startPos;
 	private float _speedRatio;
-	
+	private Vector3 _screenDirection;
+	private int _wallLayer;
 
 	#endregion
 }

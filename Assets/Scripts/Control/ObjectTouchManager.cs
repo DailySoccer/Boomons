@@ -51,7 +51,7 @@ public class ObjectTouchManager : TouchManager
 	{
 		_selfListeners.Clear();
 		_broadcastListeners.Clear();
-		_tapStartObject = null;
+
 		base.OnDestroy();
 	}
 
@@ -64,22 +64,20 @@ public class ObjectTouchManager : TouchManager
 	protected override void OnTapStart(Vector2 position)
 	{
 		base.OnTapStart(position);
-
-		_tapStartObject = FindObjectAtPosition(position);
-		OnObjectTapStart(_tapStartObject, position);
+		OnObjectTapStart(FindObjectAtPosition(position), position);
 	}
 
 	protected override void OnTapStop(Vector2 position)
 	{
 		base.OnTapStop(position);
-		OnObjectTapStop(_tapStartObject, position);
+		OnObjectTapStop(FindObjectAtPosition(position), position);
 	}
 
 	
 	protected override void OnTapStay(Vector2 position)
 	{
 		base.OnTapStay(position);
-		OnObjectTapStay(_tapStartObject, position);
+		OnObjectTapStay(FindObjectAtPosition(position), position);
 	}
 
 	protected override void OnDoubleTap(Vector2 position)
@@ -228,7 +226,7 @@ public class ObjectTouchManager : TouchManager
 	private readonly List<IObjectTouchListener> _broadcastListeners = new List<IObjectTouchListener>();
 	
 	private int _touchLayerMask;
-	private GameObject _tapStartObject;
+	
 
 	#endregion
 
