@@ -54,7 +54,7 @@ public class ScrollFollower : MonoBehaviour
 		transform.position = Vector3.Lerp(transform.position, cameraPos - fwdDeltaPos, _lateralSpeed * Time.deltaTime);;
 		transform.position = Vector3.Lerp(transform.position, cameraPos, _depthSpeed * Time.deltaTime);
 
-		transform.forward = (_target.position - transform.position).normalized;
+		transform.forward = (_target.position + .5f * _distance.y * _up - transform.position).normalized;
 
 		_lastPos = targetPos;
 	}
