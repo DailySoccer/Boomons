@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class Ragdoll : RigidThrower
+public class Ragdoll : MonoBehaviour, IObjectTouchListener
 {
 
 	#region Public Fields
@@ -33,7 +33,29 @@ public class Ragdoll : RigidThrower
 
 		gameObject.SetActive(true);
 	}
-	
+
+
+	public void OnTapStart(GameObject go, Vector2 position)
+	{
+	}
+
+	public void OnTapStop(GameObject go, Vector2 position)
+	{
+	}
+
+	public void OnTapStay(GameObject go, Vector2 position)
+	{
+	}
+
+	public void OnDoubleTap(GameObject go, Vector2 position)
+	{
+	}
+
+	public void OnSwipe(GameObject go, Vector2 swipeVector, float speedRatio)
+	{
+		_pelvis.OnSwipe(go, swipeVector, speedRatio);
+	}
+
 	#endregion
 
 
@@ -42,40 +64,26 @@ public class Ragdoll : RigidThrower
 
 	#region Mono
 
-	protected override void Awake()
+	protected void Awake()
 	{
-		base.Awake();
-
 		GroundLayer = LayerMask.NameToLayer(_groundLayerName);
 
 		_nodes = GetComponentsInChildren<Transform>(true);
 		if (_pelvis == null)
 			_pelvis = GetComponentInChildren<RagdollPelvis>();
 
-		Rigid = _pelvis.GetComponent<Rigidbody>();
 		_pelvis.Ragdoll = this;
-
-		enabled = false;
+		
 		gameObject.SetActive(false);
 	}
 
-	protected override void OnDestroy()
+	protected void OnDestroy()
 	{
 		_pelvis = null;
 		_nodes = null;
-
-		base.OnDestroy();
 	}
 
-	protected override void OnEnable()
-	{
-		base.OnEnable();
-	}
-
-	protected override void OnDisable()
-	{
-		base.OnDisable();
-	}
+	
 
 	#endregion
 
@@ -116,4 +124,6 @@ public class Ragdoll : RigidThrower
 	private Transform[] _nodes;
 
 	#endregion
+
+
 }

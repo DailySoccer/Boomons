@@ -167,7 +167,9 @@ public class BoomonController : Touchable
 
 	public override void OnSwipe(GameObject go, Vector2 swipeVector, float speedRatio)
 	{
-		if(go != gameObject || CurrentState == State.Throwing || swipeVector.y < 0f)
+		if(		go != gameObject 
+			|| CurrentState == State.Throwing 
+			|| Mathf.Atan(swipeVector.y / Mathf.Abs(swipeVector.x)) < _throwDegreesMin * Mathf.Deg2Rad)
 			return;
 
 		CurrentState = State.Throwing;
@@ -231,7 +233,8 @@ public class BoomonController : Touchable
 
 	[SerializeField] private Vector3 _moveDirection;
 	[SerializeField, Range(0.5f, 50f)] private float _moveSpeedMax = 5f;
-	
+	[SerializeField, Range(0f, 90f)]   private float _throwDegreesMin;
+
 	[SerializeField] private string _idleTriggerName = "Idle";
 	[SerializeField] private string _runTriggerName = "Run";
 	[SerializeField] private string _ticklesTriggerName = "Tickles";

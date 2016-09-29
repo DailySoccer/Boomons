@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-
+[RequireComponent(typeof(Rigidbody))]
 public class RigidThrower : Touchable
 {
 	#region Public Methods
@@ -78,7 +78,6 @@ public class RigidThrower : Touchable
 	protected Rigidbody Rigid
 	{
 		get { return _rigid; }
-		set { _rigid = value; }
 	}
 	
 	private Camera _camera;

@@ -2,10 +2,9 @@
 using UnityEngine;
 
 
-
+[RequireComponent(typeof(Collider))]
 public abstract class Touchable : MonoBehaviour, IObjectTouchListener
 {
-	
 
 	#region Public Methods
 	public virtual void OnTapStart(GameObject go, Vector2 touchPos)
@@ -56,9 +55,7 @@ public abstract class Touchable : MonoBehaviour, IObjectTouchListener
 	}
 
 	#endregion
-
-
-
+	
 	//===================================================
 
 

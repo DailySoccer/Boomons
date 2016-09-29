@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class RagdollPelvis : MonoBehaviour
+public class RagdollPelvis : RigidThrower
 {
 	#region Public Fields
 	
@@ -31,19 +31,15 @@ public class RagdollPelvis : MonoBehaviour
 
 	#region Mono
 
-	private void Awake()
+	protected override void OnDestroy()
 	{
-		_rigid = GetComponent<Rigidbody>();
-	}
-
-	private void OnDestroy()
-	{
-		_rigid = null;
 		Ragdoll = null;
+		base.OnDestroy();
 	}
 
-	private void OnEnable()
+	protected override void OnEnable()
 	{
+		base.OnEnable();
 		IsGrounded = false;
 		_groundTimer = _groundTimeout;
 	}
@@ -51,7 +47,7 @@ public class RagdollPelvis : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		IsGrounded =  _rigid.velocity.sqrMagnitude < Ragdoll.StopVelocityMaxSqr 
+		IsGrounded =  Rigid.velocity.sqrMagnitude < Ragdoll.StopVelocityMaxSqr 
 			&& (_groundTimer -= Time.fixedDeltaTime) < 0f;
 			
 	}
@@ -59,7 +55,7 @@ public class RagdollPelvis : MonoBehaviour
 	private void OnCollisionStay(Collision collisionInfo)
 	{
 		if (collisionInfo.gameObject.layer == Ragdoll.GroundLayer
-			&& _rigid.velocity.sqrMagnitude < Ragdoll.StopVelocityMaxSqr)
+			&& Rigid.velocity.sqrMagnitude < Ragdoll.StopVelocityMaxSqr)
 			Ragdoll.OnGroundEnter(collisionInfo.contacts[0].point);
 	}
 
@@ -68,9 +64,6 @@ public class RagdollPelvis : MonoBehaviour
 	//========================================================================
 
 	#region Events
-
-	
-
 	#endregion
 
 	//========================================================================
@@ -80,7 +73,6 @@ public class RagdollPelvis : MonoBehaviour
 	[SerializeField, Range(0.1f, 5f)] private float _groundTimeout = 1f;
 	private float _groundTimer;
 	private bool _isGrounded;
-	private Rigidbody _rigid;
 
 	#endregion
 
