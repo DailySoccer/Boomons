@@ -24,19 +24,7 @@ public class BoomonController : Touchable
 		Jumping = 3,
 	};
 
-	private struct StateActions
-	{
-		public readonly Action OnStart;
-		public readonly Action OnEnd;
-		public readonly Action Update;
 
-		public StateActions(Action onStart, Action onEnd, Action update)
-		{
-			OnStart = onStart;
-			OnEnd = onEnd;
-			Update = update;
-		}
-	}
 
 	public State CurrentState
 	{
@@ -49,8 +37,8 @@ public class BoomonController : Touchable
 			State lastState = _currentState;
 			_currentState = value;
 
-			_stateActions[lastState].OnEnd();
-			_stateActions[value].OnStart();
+			_stateActions[lastState].OnEnd(value);
+			_stateActions[value].OnStart(lastState);
 		}
 	}
 
@@ -62,7 +50,7 @@ public class BoomonController : Touchable
 
 	#region Public Methods
 
-	private void Jump(Vector2 swipeVector, float speedRatio)
+	public void Jump(Vector2 swipeVector, float speedRatio)
 	{
 		if (CurrentState == State.Jumping || CurrentState == State.Throwing)
 			return;
@@ -71,12 +59,13 @@ public class BoomonController : Touchable
 		if (!(jumpDegress > _jumpDegreesMin * Mathf.Deg2Rad))
 			return;
 
+		_jumpSense = jumpDegress > _frontJumpDegreesMin ? 
+			Sense.None : (Sense) Mathf.Sign(swipeVector.x);
+
 		_jumpStartVelocity = CalculateJumpSpeed(swipeVector, speedRatio);
 		CurrentState = State.Jumping;
 	}
-
 	
-
 	public void Throw(Vector2 swipeVector, float speedRatio)
 	{
 		if(CurrentState == State.Jumping || CurrentState == State.Throwing)
@@ -138,8 +127,7 @@ public class BoomonController : Touchable
 	{
 		_ragdoll.GroundEnter -= OnRagdollGroundEnter;
 		_ragdoll = null;
-
-		
+		_bipedRoot = null;
 		_animator = null;
 		_controller = null;
 
@@ -204,12 +192,13 @@ public class BoomonController : Touchable
 		/**/
 	
 		transform.forward = moveValue*_moveDirection;
-		_speedRatio = Math.Abs(moveValue);
+		_moveRatio = Math.Abs(moveValue);
 	}
 
 	public override void OnDoubleTap(GameObject go, Vector2 position)
 	{
-		_animator.SetTrigger(_ticklesTriggerName);
+		if(go == gameObject)
+			_animator.SetTrigger(_ticklesTriggerName);
 	}
 
 	public override void OnSwipe(GameObject go, Vector2 swipeVector, float speedRatio)
@@ -224,16 +213,19 @@ public class BoomonController : Touchable
 	//----------------------------------------------------------------------------------
 
 
-	private void OnIdleStart()
+	private void OnIdleStart(State lastState)
 	{
-		_speedRatio = 0f;
+		_moveRatio = 0f;
 		transform.forward = _screenDirection;
 		transform.position -= Vector3.Project(transform.position - _idlePos, _screenDirection);
-
-		_animator.SetTrigger(_idleTriggerName);
+		
+		if(lastState == State.Throwing)
+			_animator.SetTrigger(_standUpTriggerName);
+		else
+			_animator.SetTrigger(_idleTriggerName);
 	}
 
-	private void OnIdleEnd()
+	private void OnIdleEnd(State nextState)
 	{
 		_idlePos = transform.position;
 	}
@@ -245,64 +237,60 @@ public class BoomonController : Touchable
 
 	//----------------------------------------------------------------------
 
-	private void OnMoveStart()
+	private void OnMoveStart(State lastState)
 	{
 		Debug.Log("BoomonController::OnMoveStart");
 		
 		_animator.SetTrigger(_runTriggerName);
 	}
 
-	private void OnMoveEnd()
+	private void OnMoveEnd(State nextState)
 	{
 		Debug.Log("BoomonController::OnMoveEnd");
 	}
 
 	private void MoveUpdate()
 	{
-		_controller.SimpleMove(_speedRatio*_moveSpeedMax*transform.forward);
+		_controller.SimpleMove(_moveRatio*_moveSpeedMax*transform.forward);
 	}
 
 	//---------------------------------------------------------------------------------
 
-	private void OnThrowStart()
+	private void OnThrowStart(State lastState)
 	{
 		Debug.Log("BoomonController::OnThrowStart");
 		gameObject.SetActive(false);
 	}
-	private void OnThrowEnd()
+
+	private void OnThrowEnd(State nextState)
 	{
 		Debug.Log("BoomonController::OnThrowEnd");
 		gameObject.SetActive(true);
+		_animator.SetTrigger(_standUpTriggerName);
 	}
 
 	private void ThrowUpdate()
 	{
-
 	}
 
 	//----------------------------------------------------
 
-	private void OnJumpStart()
+	private void OnJumpStart(State lastState)
 	{
 		Debug.Log("BoomonController::OnJumpStart");
 
-		float jumpDir = Vector3.Dot(_jumpStartVelocity, _moveDirection);
-		if (Math.Abs(jumpDir) < _controller.radius * 4f) {
-			jumpDir = 0f;
+		if(_jumpSense == Sense.None)
 			transform.forward = _screenDirection;
-		}
-		else {
-			jumpDir = Mathf.Sign(jumpDir);
-			transform.forward = jumpDir * _moveDirection;
-		}
+		else
+			transform.forward = (int) _jumpSense * _moveDirection;
 
-		_animator.SetInteger("Direction", (int) jumpDir);
+		_animator.SetInteger("Direction", (int) _jumpSense);
 		_animator.SetTrigger(_jumpTriggerName);
 
 		_isParaboling = false;
 	}
 
-	private void OnJumpEnd()
+	private void OnJumpEnd(State nextState)
 	{
 		Debug.Log("BoomonController::OnJumpEnd");
 		CurrentState = State.Idle;
@@ -377,20 +365,24 @@ public class BoomonController : Touchable
 	//=======================================================================
 
 	#region Private Fields
-
-
 	[SerializeField] private Transform _bipedRoot;
 
 	[SerializeField] private Vector3 _moveDirection;
+	private Vector3 _screenDirection;
+	private Vector3 _jumpDirection;
+	private Vector3 _bipedOffsetPos;
+
 	[SerializeField, Range(0.5f, 50f)] private float _moveSpeedMax = 5f;
 	[SerializeField, Range(0f, 50f)]   private float _jumpSpeedMax = 10f;
 	[SerializeField, Range(0f, 90f)]   private float _jumpDegreesMin;
+	[SerializeField, Range(0f, 90f)] private float _frontJumpDegreesMin = 80f;
 	[SerializeField, Range(0f, 90f)]   private float _throwDegreesMin;
 
 	[SerializeField] private string _idleTriggerName = "Idle";
 	[SerializeField] private string _runTriggerName = "Run";
 	[SerializeField] private string _jumpTriggerName = "Jump";
 	[SerializeField] private string _landTriggerName = "Land";
+	[SerializeField] private string _standUpTriggerName = "StandUp";
 	[SerializeField] private string _ticklesTriggerName = "Tickles";
 
 	[SerializeField] private string _ragdollPath = "Prefabs/Ragdoll.prefab";
@@ -399,20 +391,42 @@ public class BoomonController : Touchable
 	private Animator _animator;
 	private CharacterController _controller;
 	private Ragdoll _ragdoll;
-	
+
 	private State _currentState = State.Moving;
+	private float _moveRatio;
+
 	private Vector3 _idlePos;
-	private float _speedRatio;
-	private Vector3 _screenDirection;
-	private int _wallLayer;
-
-	private Dictionary<State, StateActions> _stateActions;
-
 	private Vector3 _jumpVelocity;
 	private Vector3 _jumpStartVelocity;
-	private Vector3 _bipedOffsetPos;
+	
+	private int _wallLayer;
 	private bool _isParaboling;
-	private Vector3 _jumpDirection;
+
+	private Sense _jumpSense;
+
+	private enum Sense
+	{
+		Left = -1,
+		None = 0,
+		Right = 1
+	}
+
+	private struct StateActions
+	{
+		public readonly Action<State> OnStart;
+		public readonly Action<State> OnEnd;
+		public readonly Action Update;
+
+		public StateActions(Action<State> onStart, Action<State> onEnd, Action update)
+		{
+			OnStart = onStart;
+			OnEnd = onEnd;
+			Update = update;
+		}
+	}
+
+	private Dictionary<State, StateActions> _stateActions;
+	
 
 	#endregion
 }

@@ -167,8 +167,6 @@ public class TouchManager : Singleton<TouchManager>
 	/// </summary>
 	private void OnNoInputStay()
 	{
-		_beginInput = null;
-		_endInput = null;
 	}
 
 
