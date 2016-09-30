@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Animator), typeof(AudioSource))]
 public class ItemActivator : Touchable
 {
 
@@ -11,6 +11,7 @@ public class ItemActivator : Touchable
 		Debug.Log("ItemActivator::Activate");
 		
 		_animator.SetTrigger(_playTriggerName);
+		_audio.Play();
 	}
 
 	#endregion
@@ -23,10 +24,12 @@ public class ItemActivator : Touchable
 	{
 		base.Awake();
 		_animator = GetComponent<Animator>();
+		_audio = GetComponent<AudioSource>();
 	}
 
 	protected override void OnDestroy()
 	{
+		_audio = null;
 		_animator = null;
 		base.OnDestroy();
 	}
@@ -50,7 +53,9 @@ public class ItemActivator : Touchable
 	#region Private Fields
 
 	[SerializeField] private Animator _animator;
+	[SerializeField] private AudioSource _audio;
 	[SerializeField] private string _playTriggerName = "Play";
+	
 
 	#endregion
 }
