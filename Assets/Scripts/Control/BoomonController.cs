@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
@@ -66,9 +67,13 @@ public class BoomonController : Touchable
 		if (CurrentState == State.Jumping || CurrentState == State.Throwing)
 			return;
 
+
+		_jumpVelocity = CalculateJumpSpeed(swipeVector, speedRatio);
 		CurrentState = State.Jumping;
 		// TODO Callbacks de animaciones -> parábola
 	}
+
+	
 
 	public void Throw(Vector2 swipeVector, float speedRatio)
 	{
@@ -109,12 +114,17 @@ public class BoomonController : Touchable
 		
 		_moveDirection.Normalize();
 		_screenDirection = Vector3.Cross(transform.up, _moveDirection).normalized;
-		transform.up = Vector3.Cross(_moveDirection, _screenDirection);
-
-		_startPos = transform.position;
+		_jumpDirection =  Vector3.Cross(_moveDirection, _screenDirection);
+		transform.up = _jumpDirection;
 
 		_animator = GetComponent<Animator>();
 		_controller = GetComponent<CharacterController>();
+
+		if (_bipedRoot == null)
+			GetComponentsInChildren<Transform>()
+				.First(t => t.name.Contains("Bip"));
+
+		_bipedLocalPos = _bipedRoot.localPosition;
 
 		var ragdollPrefab = Resources.Load<GameObject>(_ragdollPath);
 		_ragdoll = Instantiate(ragdollPrefab).GetComponent<Ragdoll>();
@@ -216,14 +226,14 @@ public class BoomonController : Touchable
 	{
 		_speedRatio = 0f;
 		transform.forward = _screenDirection;
-		transform.position -= Vector3.Project(transform.position - _startPos, _screenDirection);
+		transform.position -= Vector3.Project(transform.position - _idlePos, _screenDirection);
 
 		_animator.SetTrigger(_idleTriggerName);
 	}
 
 	private void OnIdleEnd()
 	{
-		
+		_idlePos = transform.position;
 	}
 	
 	private void IdleUpdate()
@@ -273,7 +283,10 @@ public class BoomonController : Touchable
 	private void OnJumpStart()
 	{
 		Debug.Log("BoomonController::OnJumpStart");
+
+		_hasJumpTakenOff = false;
 		_animator.SetTrigger(_jumpTriggerName);
+
 	}
 	private void OnJumpEnd()
 	{
@@ -281,17 +294,27 @@ public class BoomonController : Touchable
 	}
 	private void JumpUpdate()
 	{
-		
+		float t = Time.deltaTime;
+		transform.position += _jumpVelocity*t + Physics.gravity*t*t;
+		_jumpVelocity += Physics.gravity * t;
+
+		if(_jumpVelocity.sqrMagnitude > _jumpStartVelocity.sqrMagnitude)
+			OnJumpLand();
 	}
 
-	private void OnJumpAnimationStart()
+	private void OnJumpTakeOff()
 	{
-		Debug.Log("BoomonController::OnJumpAnimationStart");
+		Debug.Log("BoomonController::OnJumpTakeOff");
+		_isAloft = true;
+
+		transform.position += _bipedRoot.position - (_idlePos + _bipedLocalPos);
 	}
 
-	private void OnJumpAnimationEnd()
+	private void OnJumpLand()
 	{
-		Debug.Log("BoomonController::OnJumpAnimationEnd");
+		Debug.Log("BoomonController::OnJumpLand");
+		_isAloft = false;
+		_animator.SetTrigger(_landTriggerName);
 	}
 
 	//---------------------------------------------------------
@@ -305,37 +328,61 @@ public class BoomonController : Touchable
 	#endregion
 
 
+	//============================================================
+
+	#region Private Methods
+
+	private Vector3 CalculateJumpSpeed(Vector2 swipeVector, float speedRatio)
+	{
+		Vector3 dir = swipeVector.x * _moveDirection
+					+ swipeVector.y * _jumpDirection;
+		
+		return speedRatio * _jumpSpeedMax * dir.normalized;
+	}
+
+	#endregion
 
 	//=======================================================================
 
 	#region Private Fields
 
-
+	[SerializeField] private Transform _bipedRoot;
 
 	[SerializeField] private Vector3 _moveDirection;
 	[SerializeField, Range(0.5f, 50f)] private float _moveSpeedMax = 5f;
+	[SerializeField, Range(0f, 50f)]   private float _jumpSpeedMax = 10f;
+	[SerializeField, Range(0f, 90f)]   private float _jumpDegreesMin;
 	[SerializeField, Range(0f, 90f)]   private float _throwDegreesMin;
 
 	[SerializeField] private string _idleTriggerName = "Idle";
 	[SerializeField] private string _runTriggerName = "Run";
 	[SerializeField] private string _jumpTriggerName = "Jump";
+	[SerializeField] private string _landTriggerName = "Land";
 	[SerializeField] private string _ticklesTriggerName = "Tickles";
 
 	[SerializeField] private string _ragdollPath = "Prefabs/Ragdoll.prefab";
 	[SerializeField] private string _wallLayerName = "Wall";
+
+	
 
 	private Animator _animator;
 	private CharacterController _controller;
 	private Ragdoll _ragdoll;
 	
 	private State _currentState = State.Moving;
-	private Vector3 _startPos;
+	private Vector3 _idlePos;
 	private float _speedRatio;
 	private Vector3 _screenDirection;
 	private int _wallLayer;
 
 	private Dictionary<State, StateActions> _stateActions;
-	
+	private bool _isAloft;
+
+	private Vector3 _jumpVelocity;
+	private Vector3 _jumpStartVelocity;
+	private Vector3 _bipedLocalPos;
+	private bool _hasJumpTakenOff;
+	private Vector3 _jumpDirection;
 
 	#endregion
 }
