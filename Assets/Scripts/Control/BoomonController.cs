@@ -152,7 +152,7 @@ public class BoomonController : Touchable
 
 	private void OnControllerColliderHit(ControllerColliderHit hit)
 	{
-		if (hit.gameObject.layer == _wallLayer)
+		if(CurrentState == State.Moving && hit.gameObject.layer == _wallLayer)
 			CurrentState = State.Idle;
 	}
 
@@ -284,6 +284,15 @@ public class BoomonController : Touchable
 		
 	}
 
+	private void OnJumpAnimationStart()
+	{
+		Debug.Log("BoomonController::OnJumpAnimationStart");
+	}
+
+	private void OnJumpAnimationEnd()
+	{
+		Debug.Log("BoomonController::OnJumpAnimationEnd");
+	}
 
 	//---------------------------------------------------------
 

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: bd135fc29b44df64d877d4d147cff535
-timeCreated: 1475162934
+guid: e2ac84b33871abd4195b87551e1cce1a
+timeCreated: 1475220705
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
@@ -128,7 +128,7 @@ ModelImporter:
     4300008: BooMusicEyebrowDer
     4300010: BooMusicEyes
     4300012: BooMusicMouth_Sonrisa
-    7400000: BooMusic_Salto_Inicio
+    7400000: BooMusic_Idle01
     9500000: //RootNode
     13700000: BooMusicBody
   materials:
@@ -153,17 +153,17 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: BooMusic_Salto_Inicio
-      takeName: BooMusic_Salto_Inicio
+      name: BooMusic_Idle01
+      takeName: BooMusic_Idle01
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 28
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -175,14 +175,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.9996379
-        functionName: OnJumpAnimationStart
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask:
       - path: 
         weight: 1
