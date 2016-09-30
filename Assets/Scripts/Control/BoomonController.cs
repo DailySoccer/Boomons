@@ -67,10 +67,12 @@ public class BoomonController : Touchable
 		if (CurrentState == State.Jumping || CurrentState == State.Throwing)
 			return;
 
+		float jumpDegress = Mathf.Atan(swipeVector.y / Mathf.Abs(swipeVector.x)) * Mathf.Rad2Deg;
+		if (!(jumpDegress > _jumpDegreesMin * Mathf.Deg2Rad))
+			return;
 
-		_jumpVelocity = CalculateJumpSpeed(swipeVector, speedRatio);
+		_jumpStartVelocity = CalculateJumpSpeed(swipeVector, speedRatio);
 		CurrentState = State.Jumping;
-		// TODO Callbacks de animaciones -> parábola
 	}
 
 	
@@ -121,10 +123,10 @@ public class BoomonController : Touchable
 		_controller = GetComponent<CharacterController>();
 
 		if (_bipedRoot == null)
-			GetComponentsInChildren<Transform>()
+			_bipedRoot = GetComponentsInChildren<Transform>()
 				.First(t => t.name.Contains("Bip"));
 
-		_bipedLocalPos = _bipedRoot.localPosition;
+		_bipedOffsetPos = _bipedRoot.position - transform.position;
 
 		var ragdollPrefab = Resources.Load<GameObject>(_ragdollPath);
 		_ragdoll = Instantiate(ragdollPrefab).GetComponent<Ragdoll>();
@@ -284,38 +286,64 @@ public class BoomonController : Touchable
 	{
 		Debug.Log("BoomonController::OnJumpStart");
 
-		_hasJumpTakenOff = false;
+		float jumpDir = Vector3.Dot(_jumpStartVelocity, _moveDirection);
+		if (Math.Abs(jumpDir) < _controller.radius * 4f) {
+			jumpDir = 0f;
+			transform.forward = _screenDirection;
+		}
+		else {
+			jumpDir = Mathf.Sign(jumpDir);
+			transform.forward = jumpDir * _moveDirection;
+		}
+
+		_animator.SetInteger("Direction", (int) jumpDir);
 		_animator.SetTrigger(_jumpTriggerName);
 
+		_isParaboling = false;
 	}
+
 	private void OnJumpEnd()
 	{
 		Debug.Log("BoomonController::OnJumpEnd");
+		CurrentState = State.Idle;
 	}
+
+	private void OnJumpTakeOff()
+	{
+		Debug.Log("BoomonController::OnJumpTakeOff");
+		_isParaboling = true;
+
+		transform.position += _bipedRoot.position - (_idlePos + _bipedOffsetPos);
+		_jumpVelocity = _jumpStartVelocity;
+	}
+
+	private void OnJumpLand()
+	{
+		Debug.Log("BoomonController::OnJumpLand");
+
+		_isParaboling = false;
+
+		transform.position -= Vector3.Project(transform.position - _idlePos, _jumpDirection);
+		transform.forward = _screenDirection;
+
+		_animator.SetTrigger(_landTriggerName);
+	}
+
+
 	private void JumpUpdate()
 	{
+		if (!_isParaboling)
+			return;
+
 		float t = Time.deltaTime;
-		transform.position += _jumpVelocity*t + Physics.gravity*t*t;
+		transform.position += _jumpVelocity*t + .5f * Physics.gravity*t*t;
 		_jumpVelocity += Physics.gravity * t;
 
 		if(_jumpVelocity.sqrMagnitude > _jumpStartVelocity.sqrMagnitude)
 			OnJumpLand();
 	}
 
-	private void OnJumpTakeOff()
-	{
-		Debug.Log("BoomonController::OnJumpTakeOff");
-		_isAloft = true;
-
-		transform.position += _bipedRoot.position - (_idlePos + _bipedLocalPos);
-	}
-
-	private void OnJumpLand()
-	{
-		Debug.Log("BoomonController::OnJumpLand");
-		_isAloft = false;
-		_animator.SetTrigger(_landTriggerName);
-	}
+	
 
 	//---------------------------------------------------------
 
@@ -337,7 +365,11 @@ public class BoomonController : Touchable
 		Vector3 dir = swipeVector.x * _moveDirection
 					+ swipeVector.y * _jumpDirection;
 		
+/*
 		return speedRatio * _jumpSpeedMax * dir.normalized;
+/*/
+		return _jumpSpeedMax * dir.normalized;
+/**/
 	}
 
 	#endregion
@@ -345,6 +377,7 @@ public class BoomonController : Touchable
 	//=======================================================================
 
 	#region Private Fields
+
 
 	[SerializeField] private Transform _bipedRoot;
 
@@ -362,9 +395,7 @@ public class BoomonController : Touchable
 
 	[SerializeField] private string _ragdollPath = "Prefabs/Ragdoll.prefab";
 	[SerializeField] private string _wallLayerName = "Wall";
-
 	
-
 	private Animator _animator;
 	private CharacterController _controller;
 	private Ragdoll _ragdoll;
@@ -376,12 +407,11 @@ public class BoomonController : Touchable
 	private int _wallLayer;
 
 	private Dictionary<State, StateActions> _stateActions;
-	private bool _isAloft;
 
 	private Vector3 _jumpVelocity;
 	private Vector3 _jumpStartVelocity;
-	private Vector3 _bipedLocalPos;
-	private bool _hasJumpTakenOff;
+	private Vector3 _bipedOffsetPos;
+	private bool _isParaboling;
 	private Vector3 _jumpDirection;
 
 	#endregion

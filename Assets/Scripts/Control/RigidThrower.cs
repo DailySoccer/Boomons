@@ -32,15 +32,14 @@ public class RigidThrower : Touchable
 	{
 		base.Awake();
 
-		_camera = Camera.main;
 		if (_rigid == null)
 			_rigid = GetComponentInChildren<Rigidbody>();
-		
+
 	}
 
 	protected override void OnDestroy()
 	{
-		_camera = null;
+
 		_rigid = null;
 		base.OnDestroy();
 	}
@@ -59,14 +58,15 @@ public class RigidThrower : Touchable
 	/// <returns></returns>
 	private Vector3 CalcThrowVelocity(Vector2 swipeVector, float swipeSpeedRatio)
 	{
-		Vector3 dir = swipeVector.x * _camera.transform.right 
-			        + swipeVector.y * _camera.transform.up;
+		Camera camera = Camera.main;
+		Vector3 dir = swipeVector.x * camera.transform.right
+					+ swipeVector.y * camera.transform.up;
 
-/*
-		return swipeSpeedRatio * _throwSpeedMax * dir.normalized;
-/*/
+		/*
+				return swipeSpeedRatio * _throwSpeedMax * dir.normalized;
+		/*/
 		return _throwSpeedMax * dir.normalized;
-/**/
+		/**/
 	}
 	#endregion
 
@@ -79,12 +79,14 @@ public class RigidThrower : Touchable
 	{
 		get { return _rigid; }
 	}
-	
-	private Camera _camera;
 
-	[SerializeField] private Rigidbody _rigid;
-	[SerializeField, Range(0.5f, 50f)] private float _throwSpeedMax = 30f;
-	
+
+
+	[SerializeField]
+	private Rigidbody _rigid;
+	[SerializeField, Range(0.5f, 50f)]
+	private float _throwSpeedMax = 30f;
+
 
 
 	#endregion
