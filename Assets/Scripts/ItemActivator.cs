@@ -52,8 +52,8 @@ public class ItemActivator : Touchable
 
 	#region Private Fields
 
-	[SerializeField] private Animator _animator;
-	[SerializeField] private AudioSource _audio;
+	private Animator _animator;
+	private AudioSource _audio;
 	[SerializeField] private string _playTriggerName = "Play";
 	
 
