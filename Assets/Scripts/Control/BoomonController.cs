@@ -152,7 +152,10 @@ public class BoomonController : Touchable
 
 	private void OnControllerColliderHit(ControllerColliderHit hit)
 	{
-		if(CurrentState == State.Moving && hit.gameObject.layer == _wallLayer)
+		if (CurrentState == State.Jumping)
+			_jumpVelocity = _bounciness * Vector3.Reflect(_jumpVelocity, hit.normal);
+
+		else if (CurrentState == State.Moving && hit.gameObject.layer == _wallLayer)
 			CurrentState = State.Idle;
 	}
 
@@ -324,7 +327,8 @@ public class BoomonController : Touchable
 			return;
 
 		float t = Time.deltaTime;
-		transform.position += _jumpVelocity*t + .5f * Physics.gravity*t*t;
+
+		_controller.Move(_jumpVelocity * t + .5f * Physics.gravity * t * t);
 		_jumpVelocity += Physics.gravity * t;
 
 		if(_jumpVelocity.sqrMagnitude > _jumpStartVelocity.sqrMagnitude)
@@ -372,6 +376,7 @@ public class BoomonController : Touchable
 	private Vector3 _jumpDirection;
 	private Vector3 _bipedOffsetPos;
 
+	[SerializeField, Range(0f, 1f)]		private float _bounciness = 0.8f;
 	[SerializeField, Range(0.5f, 50f)] private float _moveSpeedMax = 5f;
 	[SerializeField, Range(0f, 50f)]   private float _jumpSpeedMax = 10f;
 	[SerializeField, Range(0f, 90f)]   private float _jumpDegreesMin;
