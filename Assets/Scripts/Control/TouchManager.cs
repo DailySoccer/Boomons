@@ -153,9 +153,9 @@ public class TouchManager : Singleton<TouchManager>
 		if (!_beginInput.HasValue)
 			return;
 
-		float deltaPos = (input - _beginInput).Value.Position.sqrMagnitude;
+		float deltaSqr = (input - _beginInput).Value.Position.sqrMagnitude;
 
-		if (deltaPos * Screen.dpi * Screen.dpi < _tapInchesDeltaSqrMax)
+		if (deltaSqr * Screen.dpi * Screen.dpi < _tapInchesDeltaSqrMax)
 			_beginInput = input; // Refresco de fecha del input para que el cálculo de velocidad del swipe sea correcto
 		else
 			CheckSwipe(_beginInput.Value, input);
@@ -179,6 +179,9 @@ public class TouchManager : Singleton<TouchManager>
 	/// </summary>
 	protected virtual void OnSwipe(Vector2 position, Vector2 swipeVector, float speedRatio)
 	{
+		_beginInput = null;
+		_endInput = null;
+
 		var e = Swipe;
 		if (e != null)
 			e(position, swipeVector, speedRatio);
