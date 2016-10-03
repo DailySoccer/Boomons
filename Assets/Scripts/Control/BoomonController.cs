@@ -180,11 +180,11 @@ public class BoomonController : Touchable
 	{
 		if (CurrentState == State.Jumping)
 		{
-			float colliderSlope = 90f - Mathf.Abs(Vector3.Angle(hit.normal, _jumpDirection));
-			if (colliderSlope > _controller.slopeLimit) {
+			float colliderSlope = Mathf.Abs(Vector3.Angle(hit.normal, _jumpDirection));
+			if (colliderSlope < _controller.slopeLimit) {
 				OnJumpLand();
 
-			} else {
+			} else if(Vector3.Dot(hit.normal, _jumpVelocity) < 0f) {
 				_jumpVelocity = _bounciness*Vector3.Reflect(_jumpVelocity, hit.normal);
 				_jumpVelocity = Vector3.ProjectOnPlane(_jumpVelocity, _screenDirection);
 				MoveSense = (Sense) (- (int) MoveSense);
@@ -337,7 +337,7 @@ public class BoomonController : Touchable
 		Debug.Log("BoomonController::OnJumpTakeOff");
 		_isParaboling = true;
 
-		transform.position += _bipedRoot.position - (_idlePos + _bipedOffsetPos);
+		_controller.Move(_bipedRoot.position - (_idlePos + _bipedOffsetPos));
 		_jumpVelocity = _jumpStartVelocity;
 	}
 
