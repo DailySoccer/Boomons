@@ -57,7 +57,11 @@ public class TouchManager : Singleton<TouchManager>
 	//==============================================================================
 
 	#region MonoBehaviour methods
-		
+
+	protected override void Awake()
+	{
+		_dpiSqr = Screen.dpi*Screen.dpi;
+	}
 	/// <summary>
 	/// 
 	/// </summary>
@@ -151,13 +155,8 @@ public class TouchManager : Singleton<TouchManager>
 		if (!_beginInput.HasValue)
 			return;
 
-		float deltaSqr = (input - _beginInput).Value.Position.sqrMagnitude;
-
-		if (deltaSqr * Screen.dpi * Screen.dpi < _tapInchesDeltaSqrMax)
+		if (CheckSwipe(_beginInput.Value, input) == SwipeResultType.SpeedFail)
 			_beginInput = input; // Refresco de fecha del input para que el cálculo de velocidad del swipe sea correcto
-		else
-			CheckSwipe(_beginInput.Value, input);
-
 	}
 
 	/// <summary>
@@ -175,9 +174,6 @@ public class TouchManager : Singleton<TouchManager>
 	/// </summary>
 	protected virtual void OnSwipe(Vector2 position, Vector2 swipeVector, float speedRatio)
 	{
-		_beginInput = null;
-		_endInput = null;
-
 		var e = Swipe;
 		if (e != null)
 			e(position, swipeVector, speedRatio);
@@ -284,18 +280,15 @@ public class TouchManager : Singleton<TouchManager>
 	/// </summary>
 	/// <param name="begin"></param>
 	/// <param name="end"></param>
-	private bool CheckSwipe(InputData begin, InputData end)
+	private SwipeResultType CheckSwipe(InputData begin, InputData end)
 	{
 		InputData swipe = end - begin;
 
-		float swipeSpeedRatio;
-		if (IsSwipe(swipe, out swipeSpeedRatio)) {
-			OnSwipe(begin.Position, swipe.Position, swipeSpeedRatio);
-			return true;
+		SwipeResult result;
+		if (IsSwipe(swipe, out result) ) 
+			OnSwipe(begin.Position, swipe.Position, result.SpeedRatio);
 
-		} else {
-			return false;
-		}
+		return result.Type;
 	}
 
 	/// <summary>
@@ -332,8 +325,8 @@ public class TouchManager : Singleton<TouchManager>
 	/// <returns></returns>
 	private bool IsSwipe(InputData data)
 	{
-		float speedRatio;
-		return IsSwipe(data, out speedRatio);
+		SwipeResult result;
+		return IsSwipe(data, out result);
 	}
 
 	/// <summary>
@@ -341,13 +334,28 @@ public class TouchManager : Singleton<TouchManager>
 	/// </summary>
 	/// <param name="data"></param>
 	/// <returns></returns>
-	private bool IsSwipe(InputData data, out float speedRatio)
+	private bool IsSwipe(InputData data, out SwipeResult result)
 	{
-		float inchesPerSec = data.Position.magnitude / (Screen.dpi * data.Seconds);
-		speedRatio = Mathf.Clamp01( inchesPerSec  / _swipeInchesPerSecMax);
+		result = new SwipeResult();
 
-		return inchesPerSec > _swipeInchesPerSecMin && data.Position.sqrMagnitude 
-			> _swipeInchesSqrMin * Screen.dpi * Screen.dpi;
+		bool isSwipe = data.Position.sqrMagnitude > _swipeInchesSqrMin*_dpiSqr;
+		if (!isSwipe)
+		{
+			result.Type = SwipeResultType.DistanceFail;
+			return false;
+		}
+
+		float inchesPerSecSqr = data.Position.sqrMagnitude/(_dpiSqr*data.Seconds*data.Seconds);
+		isSwipe &= inchesPerSecSqr > _swipeInchesPerSecMin*_swipeInchesPerSecMin;
+		if (!isSwipe)
+		{
+			result.Type = SwipeResultType.SpeedFail;
+			return false;
+		}
+
+		result.SpeedRatio = Mathf.Clamp01(Mathf.Sqrt(inchesPerSecSqr)/_swipeInchesPerSecMax);
+		result.Type = SwipeResultType.Success;
+		return true;
 	}
 
 	#endregion
@@ -356,7 +364,19 @@ public class TouchManager : Singleton<TouchManager>
 
 	#region Private members
 
-	[SerializeField, Range(0.01f, 1f)]  private float _tapInchesDeltaSqrMax = 0.5f;
+	private enum SwipeResultType
+	{
+		Success = 0,
+		DistanceFail = 1,
+		SpeedFail = 2,
+	}
+
+	private struct SwipeResult
+	{
+		public SwipeResultType Type;
+		public float SpeedRatio;
+	}
+
 	[SerializeField, Range(0.01f, 1f)]	private float _doubleTapSecsMax = 0.5f;
 	[SerializeField, Range(0f, .5f)]	private float _swipeInchesSqrMin = .1f;
 	[SerializeField, Range(0.1f, 100f)]	private float _swipeInchesPerSecMax = 40f;
@@ -364,6 +384,8 @@ public class TouchManager : Singleton<TouchManager>
 
 	private InputData? _beginInput;
 	private InputData? _endInput;
+
+	private float _dpiSqr;
 
 	#endregion
 }
