@@ -214,14 +214,14 @@ public class BoomonController : Touchable
 
 		Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
 		
-		//*
-		float moveValue = Mathf.Sign(Vector3.Dot(Vector3.right, touchPos - screenPos));
-		/*/
+//*
+		float moveValue = Vector3.Dot(Vector3.right, touchPos - screenPos);
+/*/
 		float moveValue = 2f * (touchPos - screenPos).x / Screen.width;
-		/**/
-	
-		MoveSense = (Sense) moveValue;
-		_moveRatio = Math.Abs(moveValue);
+/**/
+		if (MoveSense == Sense.None 
+			|| Mathf.Abs(moveValue) > _senseReversalInchesMin*Screen.dpi) 
+			MoveSense = (Sense) Mathf.Sign(moveValue);
 	}
 
 	public override void OnDoubleTap(GameObject go, Vector2 position)
@@ -244,7 +244,6 @@ public class BoomonController : Touchable
 
 	private void OnIdleStart(State lastState)
 	{
-		_moveRatio = 0f;
 		MoveSense = Sense.None;
 		transform.position -= Vector3.Project(transform.position - _idlePos, _screenDirection);
 		
@@ -284,7 +283,7 @@ public class BoomonController : Touchable
 
 	private void MoveUpdate()
 	{
-		_controller.SimpleMove(_moveRatio*_moveSpeedMax*transform.forward);
+		_controller.SimpleMove(_moveSpeedMax*transform.forward);
 	}
 
 	private void OnMoveCollision(ControllerColliderHit hit)
@@ -433,11 +432,12 @@ public class BoomonController : Touchable
 	private Vector3 _bipedOffsetPos;
 
 	[SerializeField, Range(0f, 1f)]		private float _bounciness = 0.8f;
-	[SerializeField, Range(0.5f, 50f)] private float _moveSpeedMax = 5f;
-	[SerializeField, Range(0f, 50f)]   private float _jumpSpeedMax = 10f;
-	[SerializeField, Range(0f, 90f)]   private float _jumpDegreesMin;
-	[SerializeField, Range(0f, 90f)] private float _frontJumpDegreesMin = 80f;
-	[SerializeField, Range(0f, 90f)]   private float _throwDegreesMin;
+	[SerializeField, Range(0.5f, 50f)]	private float _moveSpeedMax = 5f;
+	[SerializeField, Range(0f, 50f)]	private float _jumpSpeedMax = 10f;
+	[SerializeField, Range(0f, 90f)]	private float _jumpDegreesMin;
+	[SerializeField, Range(0f, 90f)]	private float _frontJumpDegreesMin = 80f;
+	[SerializeField, Range(0f, 90f)]	private float _throwDegreesMin;
+	[SerializeField, Range(0f, 10f)]	private float _senseReversalInchesMin = 1;
 
 	[SerializeField] private string _idleTriggerName = "Idle";
 	[SerializeField] private string _runTriggerName = "Run";
@@ -454,9 +454,8 @@ public class BoomonController : Touchable
 	private CharacterController _controller;
 	private Ragdoll _ragdoll;
 
-	private State _currentState = State.Moving;
-	private float _moveRatio;
-
+	
+	
 	private Vector3 _idlePos;
 	private Vector3 _jumpVelocity;
 	private Vector3 _jumpStartVelocity;
@@ -465,10 +464,8 @@ public class BoomonController : Touchable
 	private int _groundLayer;
 	private bool _isParaboling;
 
-
-	
 	private Sense _moveSense;
-
+	private State _currentState = State.Moving;
 
 	private struct StateActions
 	{
