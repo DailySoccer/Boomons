@@ -226,7 +226,7 @@ public class BoomonController : Touchable
 
 	public override void OnDoubleTap(GameObject go, Vector2 position)
 	{
-		if(go == gameObject)
+		if(CurrentState == State.Idle && go == gameObject)
 			_animator.SetTrigger(_ticklesTriggerName);
 	}
 
