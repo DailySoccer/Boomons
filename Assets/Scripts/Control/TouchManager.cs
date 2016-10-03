@@ -379,8 +379,8 @@ public class TouchManager : Singleton<TouchManager>
 
 	[SerializeField, Range(0.01f, 1f)]	private float _doubleTapSecsMax = 0.5f;
 	[SerializeField, Range(0f, .5f)]	private float _swipeInchesSqrMin = .1f;
-	[SerializeField, Range(0.1f, 100f)]	private float _swipeInchesPerSecMax = 40f;
 	[SerializeField, Range(0f, 50f)]    private float _swipeInchesPerSecMin = 10f;
+	[SerializeField, Range(0.1f, 100f)] private float _swipeInchesPerSecMax = 40f;
 
 	private InputData? _beginInput;
 	private InputData? _endInput;
