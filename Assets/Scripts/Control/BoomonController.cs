@@ -79,7 +79,7 @@ public class BoomonController : Touchable
 			return;
 
 		float jumpDegress = Mathf.Atan(swipeVector.y / Mathf.Abs(swipeVector.x)) * Mathf.Rad2Deg;
-		if (!(jumpDegress > _jumpDegreesMin * Mathf.Deg2Rad))
+		if (!(jumpDegress > _jumpDegreesMin))
 			return;
 
 		MoveSense = jumpDegress > _frontJumpDegreesMin ? 

@@ -1792,9 +1792,9 @@ MonoBehaviour:
   _bounciness: 0.5
   _moveSpeedMax: 5
   _jumpSpeedMax: 10
-  _jumpDegreesMin: 0
+  _jumpDegreesMin: 30
   _frontJumpDegreesMin: 80
-  _throwDegreesMin: 10
+  _throwDegreesMin: 30
   _idleTriggerName: Idle
   _runTriggerName: Run
   _jumpTriggerName: Jump
@@ -1803,6 +1803,7 @@ MonoBehaviour:
   _ticklesTriggerName: Tickles
   _ragdollPath: Prefabs/Ragdoll
   _wallLayerName: Wall
+  _groundLayerName: Ground
 --- !u!114 &114000012982930562
 MonoBehaviour:
   m_ObjectHideFlags: 1

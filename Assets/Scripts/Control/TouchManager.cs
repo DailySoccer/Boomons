@@ -112,10 +112,8 @@ public class TouchManager : Singleton<TouchManager>
 	/// <param name="input"></param>
 	private void OnInputStart(InputData input)
 	{
-		if (_beginInput.HasValue
-		    && _endInput.HasValue
-		    && CheckDoubleTap(_beginInput.Value, input))
-			return;
+		if (_beginInput.HasValue && _endInput.HasValue)
+			CheckDoubleTap(_beginInput.Value, input);
 
 		_beginInput = input;
 		_endInput = null;
