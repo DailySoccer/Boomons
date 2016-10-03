@@ -120,10 +120,10 @@ public class BoomonController : Touchable
 		
 		_stateActions = new Dictionary<State, StateActions>
 		{
-			{ State.Idle,       new StateActions(OnIdleStart, OnIdleEnd, IdleUpdate)},
-			{ State.Moving,     new StateActions(OnMoveStart, OnMoveEnd, MoveUpdate)},
-			{ State.Throwing,   new StateActions(OnThrowStart, OnThrowEnd, ThrowUpdate)},
-			{ State.Jumping,    new StateActions(OnJumpStart, OnJumpEnd, JumpUpdate)},
+			{ State.Idle,       new StateActions(OnIdleStart, OnIdleEnd, IdleUpdate,	OnIdleCollision)},
+			{ State.Moving,     new StateActions(OnMoveStart, OnMoveEnd, MoveUpdate,	OnMoveCollision)},
+			{ State.Throwing,   new StateActions(OnThrowStart, OnThrowEnd, ThrowUpdate, OnThrowCollision)},
+			{ State.Jumping,    new StateActions(OnJumpStart, OnJumpEnd, JumpUpdate,	OnJumpCollision)},
 		};
 
 		_wallLayer = LayerMask.NameToLayer(_wallLayerName);
@@ -147,7 +147,8 @@ public class BoomonController : Touchable
 		_ragdoll.GroundEnter += OnRagdollGroundEnter;
 	}
 
-	
+
+
 	protected override void OnDestroy()
 	{
 		_ragdoll.GroundEnter -= OnRagdollGroundEnter;
@@ -178,24 +179,10 @@ public class BoomonController : Touchable
 
 	private void OnControllerColliderHit(ControllerColliderHit hit)
 	{
-		if (CurrentState == State.Jumping)
-		{
-			float colliderSlope = Mathf.Abs(Vector3.Angle(hit.normal, _jumpDirection));
-			if (colliderSlope < _controller.slopeLimit) {
-				OnJumpLand();
-
-			} else if(Vector3.Dot(hit.normal, _jumpVelocity) < 0f) {
-				_jumpVelocity = _bounciness*Vector3.Reflect(_jumpVelocity, hit.normal);
-				_jumpVelocity = Vector3.ProjectOnPlane(_jumpVelocity, _screenDirection);
-				MoveSense = (Sense) (- (int) MoveSense);
-			}
-
-		}
-		else if (CurrentState == State.Moving && hit.gameObject.layer == _wallLayer)
-		{
-			CurrentState = State.Idle;
-		}
+		_stateActions[CurrentState].OnCollisionEnter(hit);
 	}
+
+	
 
 	#endregion
 
@@ -275,6 +262,10 @@ public class BoomonController : Touchable
 	{
 		_controller.SimpleMove(Vector3.zero);
 	}
+	private void OnIdleCollision(ControllerColliderHit hit)
+	{
+		
+	}
 
 	//----------------------------------------------------------------------
 
@@ -295,6 +286,12 @@ public class BoomonController : Touchable
 		_controller.SimpleMove(_moveRatio*_moveSpeedMax*transform.forward);
 	}
 
+	private void OnMoveCollision(ControllerColliderHit hit)
+	{
+		if (hit.gameObject.layer == _wallLayer)
+			CurrentState = State.Idle;
+	}
+
 	//---------------------------------------------------------------------------------
 
 	private void OnThrowStart(State lastState)
@@ -311,6 +308,10 @@ public class BoomonController : Touchable
 	}
 
 	private void ThrowUpdate()
+	{
+	}
+
+	private void OnThrowCollision(ControllerColliderHit hit)
 	{
 	}
 
@@ -363,7 +364,21 @@ public class BoomonController : Touchable
 		_jumpVelocity += Physics.gravity * t;
 	}
 
-	
+	private void OnJumpCollision(ControllerColliderHit hit)
+	{
+		float colliderSlope = Mathf.Abs(Vector3.Angle(hit.normal, _jumpDirection));
+		if (colliderSlope < _controller.slopeLimit)
+		{
+			OnJumpLand();
+		}
+		else if (Vector3.Dot(hit.normal, _jumpVelocity) < 0f)
+		{
+			_jumpVelocity = _bounciness * Vector3.Reflect(_jumpVelocity, hit.normal);
+			_jumpVelocity = Vector3.ProjectOnPlane(_jumpVelocity, _screenDirection);
+			MoveSense = (Sense)(-(int)MoveSense);
+		}
+	}
+
 
 	//---------------------------------------------------------
 
@@ -446,13 +461,21 @@ public class BoomonController : Touchable
 		public readonly Action<State> OnStart;
 		public readonly Action<State> OnEnd;
 		public readonly Action Update;
-
-		public StateActions(Action<State> onStart, Action<State> onEnd, Action update)
+		public readonly Action<ControllerColliderHit> OnCollisionEnter;
+		
+		public StateActions(
+			Action<State> onStart, 
+			Action<State> onEnd, 
+			Action update,
+			Action<ControllerColliderHit> onCollisionEnter)
 		{
 			OnStart = onStart;
 			OnEnd = onEnd;
 			Update = update;
+			OnCollisionEnter = onCollisionEnter;
 		}
+
+		
 	}
 
 	private Dictionary<State, StateActions> _stateActions;
