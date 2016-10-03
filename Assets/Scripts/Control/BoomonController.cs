@@ -153,10 +153,20 @@ public class BoomonController : Touchable
 	private void OnControllerColliderHit(ControllerColliderHit hit)
 	{
 		if (CurrentState == State.Jumping)
-			_jumpVelocity = _bounciness * Vector3.Reflect(_jumpVelocity, hit.normal);
+		{
+			if (Vector3.Angle(_jumpDirection, hit.normal) > _controller.slopeLimit) {
+				OnJumpLand();
 
+			} else {
+				_jumpVelocity = _bounciness*Vector3.Reflect(_jumpVelocity, hit.normal);
+				_jumpVelocity = Vector3.ProjectOnPlane(_jumpVelocity, _screenDirection);
+			}
+
+		}
 		else if (CurrentState == State.Moving && hit.gameObject.layer == _wallLayer)
+		{
 			CurrentState = State.Idle;
+		}
 	}
 
 	#endregion
@@ -313,10 +323,8 @@ public class BoomonController : Touchable
 		Debug.Log("BoomonController::OnJumpLand");
 
 		_isParaboling = false;
-
-		transform.position -= Vector3.Project(transform.position - _idlePos, _jumpDirection);
+		
 		transform.forward = _screenDirection;
-
 		_animator.SetTrigger(_landTriggerName);
 	}
 
@@ -330,9 +338,6 @@ public class BoomonController : Touchable
 
 		_controller.Move(_jumpVelocity * t + .5f * Physics.gravity * t * t);
 		_jumpVelocity += Physics.gravity * t;
-
-		if(_jumpVelocity.sqrMagnitude > _jumpStartVelocity.sqrMagnitude)
-			OnJumpLand();
 	}
 
 	
@@ -369,6 +374,7 @@ public class BoomonController : Touchable
 	//=======================================================================
 
 	#region Private Fields
+	
 	[SerializeField] private Transform _bipedRoot;
 
 	[SerializeField] private Vector3 _moveDirection;
