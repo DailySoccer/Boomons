@@ -127,7 +127,8 @@ public class BoomonController : Touchable
 		};
 
 		_wallLayer = LayerMask.NameToLayer(_wallLayerName);
-		
+		_groundLayer = LayerMask.NameToLayer(_groundLayerName);
+
 		_moveDirection.Normalize();
 		_screenDirection = Vector3.Cross(transform.up, _moveDirection).normalized;
 		_jumpDirection =  Vector3.Cross(_moveDirection, _screenDirection);
@@ -325,8 +326,6 @@ public class BoomonController : Touchable
 		_isParaboling = false;
 	}
 
-
-
 	private void OnJumpEnd(State nextState)
 	{
 		Debug.Log("BoomonController::OnJumpEnd");
@@ -366,18 +365,23 @@ public class BoomonController : Touchable
 
 	private void OnJumpCollision(ControllerColliderHit hit)
 	{
+		if (hit.gameObject.layer == _groundLayer) {
+			OnJumpLand();
+			return;
+
+		} else if (hit.gameObject.layer == _wallLayer) {
+			ReflectJump(hit.normal);
+			return;
+		}
+
 		float colliderSlope = Mathf.Abs(Vector3.Angle(hit.normal, _jumpDirection));
 		if (colliderSlope < _controller.slopeLimit)
-		{
 			OnJumpLand();
-		}
 		else if (Vector3.Dot(hit.normal, _jumpVelocity) < 0f)
-		{
-			_jumpVelocity = _bounciness * Vector3.Reflect(_jumpVelocity, hit.normal);
-			_jumpVelocity = Vector3.ProjectOnPlane(_jumpVelocity, _screenDirection);
-			MoveSense = (Sense)(-(int)MoveSense);
-		}
+			ReflectJump(hit.normal);
 	}
+
+
 
 
 	//---------------------------------------------------------
@@ -407,12 +411,20 @@ public class BoomonController : Touchable
 /**/
 	}
 
+
+	private void ReflectJump(Vector3 normal)
+	{
+		_jumpVelocity = _bounciness * Vector3.Reflect(_jumpVelocity, normal);
+		_jumpVelocity = Vector3.ProjectOnPlane(_jumpVelocity, _screenDirection);
+		MoveSense = (Sense)(-(int)MoveSense);
+	}
+
 	#endregion
 
 	//=======================================================================
 
 	#region Private Fields
-	
+
 	[SerializeField] private Transform _bipedRoot;
 
 	[SerializeField] private Vector3 _moveDirection;
@@ -436,7 +448,8 @@ public class BoomonController : Touchable
 
 	[SerializeField] private string _ragdollPath = "Prefabs/Ragdoll.prefab";
 	[SerializeField] private string _wallLayerName = "Wall";
-	
+	[SerializeField] private string _groundLayerName = "Ground";
+
 	private Animator _animator;
 	private CharacterController _controller;
 	private Ragdoll _ragdoll;
@@ -449,6 +462,7 @@ public class BoomonController : Touchable
 	private Vector3 _jumpStartVelocity;
 	
 	private int _wallLayer;
+	private int _groundLayer;
 	private bool _isParaboling;
 
 
