@@ -9,13 +9,7 @@ public class BoomonController : Touchable
 {
 	#region Public Fields
 
-	public Vector3 Position {
-		get {
-			return CurrentState == State.Throwing ? 
-				_ragdoll.Position : transform.position;
-		} 
-	}
-
+	
 	public enum State 
 	{
 		Idle = 0,
@@ -24,8 +18,23 @@ public class BoomonController : Touchable
 		Jumping = 3,
 	};
 
+	public enum Sense
+	{
+		Left = -1,
+		None = 0,
+		Right = 1
+	}
 
 
+	public Vector3 Position
+	{
+		get
+		{
+			return CurrentState == State.Throwing ?
+				_ragdoll.Position : transform.position;
+		}
+	}
+	
 	public State CurrentState
 	{
 		get { return _currentState; }
@@ -42,6 +51,20 @@ public class BoomonController : Touchable
 		}
 	}
 
+	public Sense MoveSense
+	{
+		get { return _moveSense; }
+		private set
+		{
+			if (value == Sense.None)
+				transform.forward = _screenDirection;
+			else
+				transform.forward = (int)value * _moveDirection;
+
+			_animator.SetInteger("Direction", (int)value);
+			_moveSense = value;
+		}
+	}
 
 	#endregion
 
@@ -59,13 +82,15 @@ public class BoomonController : Touchable
 		if (!(jumpDegress > _jumpDegreesMin * Mathf.Deg2Rad))
 			return;
 
-		_jumpSense = jumpDegress > _frontJumpDegreesMin ? 
+		MoveSense = jumpDegress > _frontJumpDegreesMin ? 
 			Sense.None : (Sense) Mathf.Sign(swipeVector.x);
 
 		_jumpStartVelocity = CalculateJumpSpeed(swipeVector, speedRatio);
 		CurrentState = State.Jumping;
 	}
+
 	
+
 	public void Throw(Vector2 swipeVector, float speedRatio)
 	{
 		if(CurrentState == State.Jumping || CurrentState == State.Throwing)
@@ -138,6 +163,7 @@ public class BoomonController : Touchable
 
 	private void Start()
 	{
+		MoveSense = Sense.None;
 		CurrentState = State.Idle;
 	}
 
@@ -154,12 +180,14 @@ public class BoomonController : Touchable
 	{
 		if (CurrentState == State.Jumping)
 		{
-			if (Vector3.Angle(_jumpDirection, hit.normal) > _controller.slopeLimit) {
+			float colliderSlope = 90f - Mathf.Abs(Vector3.Angle(hit.normal, _jumpDirection));
+			if (colliderSlope > _controller.slopeLimit) {
 				OnJumpLand();
 
 			} else {
 				_jumpVelocity = _bounciness*Vector3.Reflect(_jumpVelocity, hit.normal);
 				_jumpVelocity = Vector3.ProjectOnPlane(_jumpVelocity, _screenDirection);
+				MoveSense = (Sense) (- (int) MoveSense);
 			}
 
 		}
@@ -204,7 +232,7 @@ public class BoomonController : Touchable
 		float moveValue = 2f * (touchPos - screenPos).x / Screen.width;
 		/**/
 	
-		transform.forward = moveValue*_moveDirection;
+		MoveSense = (Sense) moveValue;
 		_moveRatio = Math.Abs(moveValue);
 	}
 
@@ -229,7 +257,7 @@ public class BoomonController : Touchable
 	private void OnIdleStart(State lastState)
 	{
 		_moveRatio = 0f;
-		transform.forward = _screenDirection;
+		MoveSense = Sense.None;
 		transform.position -= Vector3.Project(transform.position - _idlePos, _screenDirection);
 		
 		if(lastState == State.Throwing)
@@ -291,17 +319,12 @@ public class BoomonController : Touchable
 	private void OnJumpStart(State lastState)
 	{
 		Debug.Log("BoomonController::OnJumpStart");
-
-		if(_jumpSense == Sense.None)
-			transform.forward = _screenDirection;
-		else
-			transform.forward = (int) _jumpSense * _moveDirection;
-
-		_animator.SetInteger("Direction", (int) _jumpSense);
+		
 		_animator.SetTrigger(_jumpTriggerName);
-
 		_isParaboling = false;
 	}
+
+
 
 	private void OnJumpEnd(State nextState)
 	{
@@ -324,7 +347,7 @@ public class BoomonController : Touchable
 
 		_isParaboling = false;
 		
-		transform.forward = _screenDirection;
+		MoveSense = Sense.None;
 		_animator.SetTrigger(_landTriggerName);
 	}
 
@@ -413,14 +436,10 @@ public class BoomonController : Touchable
 	private int _wallLayer;
 	private bool _isParaboling;
 
-	private Sense _jumpSense;
 
-	private enum Sense
-	{
-		Left = -1,
-		None = 0,
-		Right = 1
-	}
+	
+	private Sense _moveSense;
+
 
 	private struct StateActions
 	{
