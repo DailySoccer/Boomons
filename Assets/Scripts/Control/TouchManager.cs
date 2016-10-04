@@ -137,8 +137,13 @@ public class TouchManager : Singleton<TouchManager>
 		if (!_beginInput.HasValue)
 			return;
 
-		_endInput = input;
-		CheckSwipe(_beginInput.Value, _endInput.Value);
+		if (_hasJustDoubleTapped) {
+			_hasJustDoubleTapped = false;
+
+		} else {
+			_endInput = input;
+			CheckSwipe(_beginInput.Value, _endInput.Value);
+		}
 	}
 
 
@@ -174,6 +179,8 @@ public class TouchManager : Singleton<TouchManager>
 	/// </summary>
 	protected virtual void OnSwipe(Vector2 position, Vector2 swipeVector, float speedRatio)
 	{
+		Debug.Log("OnSwipe>> " + swipeVector);
+
 		var e = Swipe;
 		if (e != null)
 			e(position, swipeVector, speedRatio);
@@ -184,6 +191,8 @@ public class TouchManager : Singleton<TouchManager>
 	/// </summary>
 	protected virtual void OnDoubleTap(Vector2 position)
 	{
+		_hasJustDoubleTapped = true;
+
 		_beginInput = null;
 		_endInput = null;
 
@@ -200,6 +209,8 @@ public class TouchManager : Singleton<TouchManager>
 	/// <param name="position"></param>
 	protected virtual void OnTapStart(Vector2 position)
 	{
+		Debug.Log("TapStart>> " + position);
+
 		var e = TapStart;
 		if (e != null)
 			e(position);
@@ -211,6 +222,8 @@ public class TouchManager : Singleton<TouchManager>
 	/// <param name="position"></param>
 	protected virtual void OnTapStop(Vector2 position)
 	{
+		Debug.Log("TapStop>> " + position);
+
 		var e = TapStop;
 		if (e != null)
 			e(position);
@@ -386,6 +399,7 @@ public class TouchManager : Singleton<TouchManager>
 	private InputData? _endInput;
 
 	private float _dpiSqr;
+	private bool _hasJustDoubleTapped;
 
 	#endregion
 }

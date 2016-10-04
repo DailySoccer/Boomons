@@ -11,11 +11,12 @@ public class BoomonController : Touchable
 	
 	public enum State 
 	{
+		CodeDriven = -1,
 		Idle = 0,
 		Moving = 1,
 		Throwing = 2,
 		Jumping = 3,
-		CodeDriven = 4,
+		Tickling = 4,
 	};
 
 	public enum Sense
@@ -44,9 +45,9 @@ public class BoomonController : Touchable
 				return;
 
 			State lastState = _currentState;
-			_currentState = value;
-
+			
 			_stateActions[lastState].OnEnd(value);
+			_currentState = value;
 			_stateActions[value].OnStart(lastState);
 		}
 	}
@@ -132,13 +133,14 @@ public class BoomonController : Touchable
 		_goToCallbacks = new List<Action>();
 		_stateActions = new Dictionary<State, StateActions>
 		{
-			{ State.Idle,       new StateActions(OnIdleStart, OnIdleEnd, IdleUpdate,	OnIdleCollision)},
-			{ State.Moving,     new StateActions(OnMoveStart, OnMoveEnd, MoveUpdate,	OnMoveCollision)},
-			{ State.Throwing,   new StateActions(OnThrowStart, OnThrowEnd, ThrowUpdate, OnThrowCollision)},
-			{ State.Jumping,    new StateActions(OnJumpStart, OnJumpEnd, JumpUpdate,	OnJumpCollision)},
-			{ State.CodeDriven, new StateActions(OnCodeDriveStart, OnCodeDriveEnd, CodeDriveUpdate, OnCodeDriveCollision)},
+			{ State.CodeDriven, new StateActions(OnCodeDriveStart, OnCodeDriveEnd, CodeDriveUpdate)},
+			{ State.Idle,       new StateActions(OnIdleStart, OnIdleEnd, IdleUpdate)},
+			{ State.Moving,     new StateActions(OnMoveStart, OnMoveEnd, MoveUpdate, OnMoveCollision)},
+			{ State.Throwing,   new StateActions(OnThrowStart, OnThrowEnd)},
+			{ State.Jumping,    new StateActions(OnJumpStart, OnJumpEnd, JumpUpdate, OnJumpCollision)},
+			{ State.Tickling,   new StateActions(OnTickleStart, OnTickleEnd)},
 		};
-
+		
 		_wallLayer = LayerMask.NameToLayer(_wallLayerName);
 		_groundLayer = LayerMask.NameToLayer(_groundLayerName);
 
@@ -188,13 +190,17 @@ public class BoomonController : Touchable
 	/// </summary>
 	private void Update()
 	{
-		_stateActions[CurrentState].Update();
+		Action update = _stateActions[CurrentState].Update;
+		if (update != null)
+			update();
 	}
 
 
 	private void OnControllerColliderHit(ControllerColliderHit hit)
 	{
-		_stateActions[CurrentState].OnCollisionEnter(hit);
+		Action<ControllerColliderHit> collisionEnter = _stateActions[CurrentState].OnCollisionEnter;
+		if (collisionEnter != null)
+			collisionEnter(hit);
 	}
 
 	
@@ -240,8 +246,8 @@ public class BoomonController : Touchable
 
 	public override void OnDoubleTap(GameObject go, Vector2 position)
 	{
-		if(CurrentState == State.Idle && go == gameObject)
-			_animator.SetTrigger(_ticklesTriggerName);
+		if (CurrentState == State.Idle && go == gameObject)
+			CurrentState = State.Tickling;
 	}
 
 	public override void OnSwipe(GameObject go, Vector2 swipeVector, float speedRatio)
@@ -263,19 +269,40 @@ public class BoomonController : Touchable
 	//----------------------------------------------------------------------------------
 
 
+	private void OnIdleReady()
+	{
+		IsTouchEnabled = true;
+	}
+
 	private void OnIdleStart(State lastState)
 	{
+		Debug.Log("BoomonController::OnIdleStart>> Last=" + lastState);
+
 		MoveSense = Sense.None;
 		transform.position -= Vector3.Project(transform.position - _idlePos, _screenDirection);
-		
-		if(lastState == State.Throwing)
-			_animator.SetTrigger(_standUpTriggerName);
-		else
-			_animator.SetTrigger(_idleTriggerName);
+
+		switch (lastState)
+		{
+			case State.Throwing:
+				PlayAnimation(_standUpTriggerName);
+				break;
+			case State.Jumping:
+				PlayAnimation(_landTriggerName);
+				break;
+			case State.Tickling:
+				PlayAnimation(_ticklesTriggerName);
+				break;
+			default:
+				PlayAnimation(_idleTriggerName);
+				break;
+		}
 	}
+
+	
 
 	private void OnIdleEnd(State nextState)
 	{
+		Debug.Log("BoomonController::OnIdleEnd>> Next=" + nextState);
 		_idlePos = transform.position;
 	}
 	
@@ -283,18 +310,13 @@ public class BoomonController : Touchable
 	{
 		_controller.SimpleMove(Vector3.zero);
 	}
-	private void OnIdleCollision(ControllerColliderHit hit)
-	{
-		
-	}
-
+	
 	//----------------------------------------------------------------------
 
 	private void OnMoveStart(State lastState)
 	{
 		Debug.Log("BoomonController::OnMoveStart");
-		
-		_animator.SetTrigger(_runTriggerName);
+		PlayAnimation(_runTriggerName);
 	}
 
 	private void OnMoveEnd(State nextState)
@@ -325,36 +347,20 @@ public class BoomonController : Touchable
 	{
 		Debug.Log("BoomonController::OnThrowEnd");
 		gameObject.SetActive(true);
-		_animator.SetTrigger(_standUpTriggerName);
-
 		_idlePos = transform.position;
-
-		if (_goTo.HasValue)
-			CurrentState = State.CodeDriven;
 	}
 
-	private void ThrowUpdate()
-	{
-	}
-
-	private void OnThrowCollision(ControllerColliderHit hit)
-	{
-	}
 
 	//----------------------------------------------------
 
 	private void OnJumpStart(State lastState)
 	{
 		Debug.Log("BoomonController::OnJumpStart");
-		
-		_animator.SetTrigger(_jumpTriggerName);
-		_isParaboling = false;
-	}
 
-	private void OnJumpEnd(State nextState)
-	{
-		Debug.Log("BoomonController::OnJumpEnd");
-		CurrentState = State.Idle;
+		IsTouchEnabled = false;
+
+		PlayAnimation(_jumpTriggerName);
+		_isParaboling = false;
 	}
 
 	private void OnJumpTakeOff()
@@ -366,14 +372,10 @@ public class BoomonController : Touchable
 		_jumpVelocity = _jumpStartVelocity;
 	}
 
-	private void OnJumpLand()
+	private void OnJumpEnd(State nextState)
 	{
-		Debug.Log("BoomonController::OnJumpLand");
-
+		Debug.Log("BoomonController::OnJumpEnd");
 		_isParaboling = false;
-		
-		MoveSense = Sense.None;
-		_animator.SetTrigger(_landTriggerName);
 	}
 
 
@@ -390,8 +392,10 @@ public class BoomonController : Touchable
 
 	private void OnJumpCollision(ControllerColliderHit hit)
 	{
+		Debug.Log("BoomonController::OnJumpCollision>> " + hit.gameObject.name);
+
 		if (hit.gameObject.layer == _groundLayer) {
-			OnJumpLand();
+			CurrentState = State.Idle;
 			return;
 
 		} else if (hit.gameObject.layer == _wallLayer) {
@@ -401,10 +405,25 @@ public class BoomonController : Touchable
 
 		float colliderSlope = Mathf.Abs(Vector3.Angle(hit.normal, _jumpDirection));
 		if (colliderSlope < _controller.slopeLimit)
-			OnJumpLand();
+			CurrentState = State.Idle;
 		else if (Vector3.Dot(hit.normal, _jumpVelocity) < 0f)
 			ReflectJump(hit.normal);
 	}
+
+	//------------------------------------------------------------------
+
+
+	private void OnTickleStart(State obj)
+	{
+		Debug.Log("BoomonController::OnTickleStart");
+		CurrentState = State.Idle;
+	}
+
+	private void OnTickleEnd(State obj)
+	{
+		Debug.Log("BoomonController::OnTickleEnd");
+	}
+
 
 
 	//------------------------------------------------------
@@ -416,8 +435,7 @@ public class BoomonController : Touchable
 
 		IsTouchEnabled = false;
 
-		if (_goTo.HasValue)
-		{
+		if (_goTo.HasValue) {
 			float moveSense = Vector3.Dot(_goTo.Value - transform.position, _moveDirection);
 			MoveSense = (Sense) Mathf.Sign(moveSense);
 		}
@@ -450,10 +468,6 @@ public class BoomonController : Touchable
 			_controller.SimpleMove(_moveSpeedMax*(_goTo.Value - transform.position).normalized);
 	}
 
-	private void OnCodeDriveCollision(ControllerColliderHit obj)
-	{
-		//CurrentState = State.Idle;
-	}
 
 
 
@@ -484,6 +498,12 @@ public class BoomonController : Touchable
 		MoveSense = (Sense)(-(int)MoveSense);
 	}
 
+
+	private void PlayAnimation(string trigger)
+	{
+		Debug.Log("BoomonController::PlayAnimation>> " + trigger);
+		_animator.SetTrigger(trigger);
+	}
 	#endregion
 
 	//=======================================================================
@@ -544,8 +564,8 @@ public class BoomonController : Touchable
 		public StateActions(
 			Action<State> onStart, 
 			Action<State> onEnd, 
-			Action update,
-			Action<ControllerColliderHit> onCollisionEnter)
+			Action update = null,
+			Action<ControllerColliderHit> onCollisionEnter = null)
 		{
 			OnStart = onStart;
 			OnEnd = onEnd;
