@@ -490,7 +490,7 @@ public class BoomonController : Touchable
 
 	#region Private Fields
 
-	private const float GoToDistanceMinSqr = .1f;
+	private const float GoToDistanceMinSqr = .5f;
 
 	[SerializeField] private Transform _bipedRoot;
 	[SerializeField] private Vector3 _moveDirection;
