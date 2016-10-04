@@ -46,12 +46,13 @@ public abstract class Touchable : MonoBehaviour, IObjectTouchListener
 
 	protected virtual void OnEnable()
 	{
-		_touchManager.AddListener(this, _mustReceiveOnlyItsTouches);
+		IsTouchEnabled = true;  
 	}
 
 	protected virtual void OnDisable()
 	{
-		_touchManager.RemoveListener(this);
+		IsTouchEnabled = false;
+		
 	}
 
 	#endregion
@@ -61,11 +62,29 @@ public abstract class Touchable : MonoBehaviour, IObjectTouchListener
 
 	#region Private Fields
 
+	protected bool IsTouchEnabled
+	{
+		get { return _isInputEnabled; }
+		set
+		{
+			if (value == _isInputEnabled)
+				return;
+			_isInputEnabled = value;
+
+			if(value)
+				_touchManager.AddListener(this, _mustReceiveOnlyItsTouches);
+			else
+				_touchManager.RemoveListener(this);
+		}
+	}
+
+
 	[SerializeField] private string _touchLayerName = "Touchable";
 	[SerializeField] private bool _mustReceiveOnlyItsTouches = true;
 
 	private ObjectTouchManager _touchManager;
-	
+	private bool _isInputEnabled;
+
 	#endregion
 
 }

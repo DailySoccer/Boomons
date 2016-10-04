@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator), typeof(CharacterController))]
@@ -16,6 +15,7 @@ public class BoomonController : Touchable
 		Moving = 1,
 		Throwing = 2,
 		Jumping = 3,
+		CodeDriven = 4,
 	};
 
 	public enum Sense
@@ -25,7 +25,7 @@ public class BoomonController : Touchable
 		Right = 1
 	}
 
-
+	
 	public Vector3 Position
 	{
 		get
@@ -105,6 +105,17 @@ public class BoomonController : Touchable
 		_ragdoll.OnSwipe(null, swipeVector, speedRatio);
 	}
 
+
+	public void GoTo(Vector3 position, Action callback = null)
+	{
+		_goTo = position;
+		if(callback != null)
+			_goToCallbacks.Add(callback);
+
+		if(CurrentState != State.Throwing)
+			CurrentState = State.CodeDriven;
+	}
+
 	#endregion
 
 	//==============================================================
@@ -117,13 +128,15 @@ public class BoomonController : Touchable
 		base.Awake();
 
 		Debug.Assert(_moveDirection != Vector3.zero, "BoomonController::Awake>> Move direction not defined!!");
-		
+
+		_goToCallbacks = new List<Action>();
 		_stateActions = new Dictionary<State, StateActions>
 		{
 			{ State.Idle,       new StateActions(OnIdleStart, OnIdleEnd, IdleUpdate,	OnIdleCollision)},
 			{ State.Moving,     new StateActions(OnMoveStart, OnMoveEnd, MoveUpdate,	OnMoveCollision)},
 			{ State.Throwing,   new StateActions(OnThrowStart, OnThrowEnd, ThrowUpdate, OnThrowCollision)},
 			{ State.Jumping,    new StateActions(OnJumpStart, OnJumpEnd, JumpUpdate,	OnJumpCollision)},
+			{ State.CodeDriven, new StateActions(OnCodeDriveStart, OnCodeDriveEnd, CodeDriveUpdate, OnCodeDriveCollision)},
 		};
 
 		_wallLayer = LayerMask.NameToLayer(_wallLayerName);
@@ -152,6 +165,7 @@ public class BoomonController : Touchable
 
 	protected override void OnDestroy()
 	{
+		_goToCallbacks = null;
 		_ragdoll.GroundEnter -= OnRagdollGroundEnter;
 		_ragdoll = null;
 		_bipedRoot = null;
@@ -238,6 +252,13 @@ public class BoomonController : Touchable
 			Throw(swipeVector, speedRatio);
 	}
 
+	//---------------------------------------------------------
+
+	private void OnRagdollGroundEnter(Vector3 groundPos)
+	{
+		transform.position = groundPos;
+		CurrentState = State.Idle;
+	}
 
 	//----------------------------------------------------------------------------------
 
@@ -305,6 +326,11 @@ public class BoomonController : Touchable
 		Debug.Log("BoomonController::OnThrowEnd");
 		gameObject.SetActive(true);
 		_animator.SetTrigger(_standUpTriggerName);
+
+		_idlePos = transform.position;
+
+		if (_goTo.HasValue)
+			CurrentState = State.CodeDriven;
 	}
 
 	private void ThrowUpdate()
@@ -381,15 +407,55 @@ public class BoomonController : Touchable
 	}
 
 
+	//------------------------------------------------------
 
 
-	//---------------------------------------------------------
-
-	private void OnRagdollGroundEnter(Vector3 groundPos)
+	private void OnCodeDriveStart(State obj)
 	{
-		transform.position = groundPos;
-		CurrentState = State.Idle;
+		Debug.Log("BoomonController::OnCodeDriveStart");
+
+		IsTouchEnabled = false;
+
+		if (_goTo.HasValue)
+		{
+			float moveSense = Vector3.Dot(_goTo.Value - transform.position, _moveDirection);
+			MoveSense = (Sense) Mathf.Sign(moveSense);
+		}
 	}
+
+	private void OnCodeDriveEnd(State obj)
+	{
+		Debug.Log("BoomonController::OnCodeDriveEnd");
+
+		foreach (Action c in _goToCallbacks)
+			c();
+
+		_goToCallbacks.Clear();
+		_goTo = null;
+		_idlePos = transform.position;
+
+		IsTouchEnabled = true;
+	}
+	
+	private void CodeDriveUpdate()
+	{
+		if (!_goTo.HasValue)
+			return;
+
+		Vector3 move = _goTo.Value - transform.position;
+
+		if( move.sqrMagnitude < GoToDistanceMinSqr)
+			CurrentState = State.Idle;
+		else
+			_controller.SimpleMove(_moveSpeedMax*(_goTo.Value - transform.position).normalized);
+	}
+
+	private void OnCodeDriveCollision(ControllerColliderHit obj)
+	{
+		//CurrentState = State.Idle;
+	}
+
+
 
 	#endregion
 
@@ -424,8 +490,9 @@ public class BoomonController : Touchable
 
 	#region Private Fields
 
-	[SerializeField] private Transform _bipedRoot;
+	private const float GoToDistanceMinSqr = .1f;
 
+	[SerializeField] private Transform _bipedRoot;
 	[SerializeField] private Vector3 _moveDirection;
 	private Vector3 _screenDirection;
 	private Vector3 _jumpDirection;
@@ -453,12 +520,12 @@ public class BoomonController : Touchable
 	private Animator _animator;
 	private CharacterController _controller;
 	private Ragdoll _ragdoll;
-
 	
 	
 	private Vector3 _idlePos;
 	private Vector3 _jumpVelocity;
 	private Vector3 _jumpStartVelocity;
+	private Vector3? _goTo;
 	
 	private int _wallLayer;
 	private int _groundLayer;
@@ -490,7 +557,10 @@ public class BoomonController : Touchable
 	}
 
 	private Dictionary<State, StateActions> _stateActions;
-	
+	private List<Action> _goToCallbacks;
+
 
 	#endregion
+
+
 }

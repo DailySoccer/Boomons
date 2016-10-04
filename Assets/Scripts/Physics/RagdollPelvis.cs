@@ -16,6 +16,7 @@ public class RagdollPelvis : RigidThrower
 			if (value == _isGrounded)
 				return;
 			_isGrounded = value;
+
 			if (value)
 				Ragdoll.OnGroundEnter(transform.position);
 		}
@@ -49,7 +50,6 @@ public class RagdollPelvis : RigidThrower
 	{
 		IsGrounded =  Rigid.velocity.sqrMagnitude < Ragdoll.StopVelocityMaxSqr 
 			&& (_groundTimer -= Time.fixedDeltaTime) < 0f;
-			
 	}
 
 	private void OnCollisionStay(Collision collisionInfo)
@@ -64,6 +64,7 @@ public class RagdollPelvis : RigidThrower
 	//========================================================================
 
 	#region Events
+
 	#endregion
 
 	//========================================================================
