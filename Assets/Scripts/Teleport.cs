@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 
 [RequireComponent(typeof(Collider))]
@@ -6,22 +7,6 @@ public class Teleport : MonoBehaviour
 {
 	#region Public Fields
 
-	public bool IsExpulsing
-	{
-		get { return _isExpulsing;  }
-		private set
-		{
-			_isExpulsing = value;
-			enabled = value;
-			IsOpen = !value;
-		}
-	}
-
-	public bool IsOpen
-	{
-		get { return _collider.enabled; }
-		set { _collider.enabled = value; }
-	}
 	#endregion
 
 	//=========================================================================
@@ -30,6 +15,8 @@ public class Teleport : MonoBehaviour
 
 	private void Awake()
 	{
+		_inputs = new HashSet<GameObject>();
+
 		_collider = GetComponent<Collider>();
 		_animator = GetComponent<Animator>();
 		_collider.isTrigger = true;
@@ -44,51 +31,33 @@ public class Teleport : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		_expulsedRigid = null;
+		_inputs = null;
 		_animator = null;
 		_collider = null;
 		_exit = null;
 		_exitPoint = null;
 	}
-
-	//private void OnEnable()
-	//{
-		
-	//}
-
-	private void OnDisable()
-	{
-		_expulsedRigid = null;
-	}
-
-	private void Start()
-	{
-		IsExpulsing = false;
-	}
-
-	private void OnTriggerEnter(Collider input)
-	{
-		if(_animator != null)
-			_animator.SetTrigger("Teleport");
-
-		_exit.Receive(input.gameObject);
-	}
-
-	private void FixedUpdate()
-	{
-		IsExpulsing = _expulsedRigid.velocity.sqrMagnitude > StopVelocityMaxSqr;
-	}
 	
+
+	private void OnTriggerEnter(Collider c)
+	{
+		GameObject o = c.gameObject;
+		if (_inputs.Contains(o))
+			return;
+
+		DoTeleport(o);
+	}
+
+	private void OnTriggerExit(Collider c)
+	{
+		_inputs.Remove(c.gameObject);
+	}
+
 	#endregion
 
 	//====================================================================================
 
 	#region Events
-
-	private void OnBoomonExited()
-	{
-		IsOpen = true;
-	}
 
 	#endregion
 
@@ -96,50 +65,54 @@ public class Teleport : MonoBehaviour
 
 	#region Private Methods
 
+	private void DoTeleport(GameObject go)
+	{
+		if (_animator != null)
+			_animator.SetTrigger("Teleport");
+
+		_exit.Receive(go);
+	}
+
 	private void Receive(GameObject input)
 	{
+		_inputs.Add(input);
+
 		input.transform.position = transform.position;
 
 		if (input.tag == _playerTag)
-			Receive(input.GetComponent<BoomonController>());
+			Expulse(input.GetComponent<BoomonController>());
 		else
-			Receive(input.GetComponentInChildren<Rigidbody>());
+			Expulse(input.GetComponentInChildren<Rigidbody>());
 	}
 
-	private void Receive(BoomonController boomon)
+	private void Expulse(BoomonController boomon)
 	{
 		if (boomon == null)
 			return;
 
-		IsOpen = false;
-		boomon.GoTo(_exitPoint.position, OnBoomonExited);
-	}
-
-	private void Receive(Rigidbody rigid)
-	{
-		if (rigid == null)
-			return;
-
-		Expulse(rigid);
+		boomon.GoTo(_exitPoint.position);
 	}
 
 	private void Expulse(Rigidbody rigid)
 	{
-		IsExpulsing = true;
+		if (rigid == null)
+			return;
 
-		_expulsedRigid = rigid;
 		Vector3 exitDir = (_exitPoint.position - transform.position).normalized;
 		rigid.AddForce(_expulsionForce * exitDir, ForceMode.VelocityChange);
 	}
 
+	
+
 	#endregion
+
+
 
 	//====================================================================================
 
 	#region Private Fields
 
 	private const string ExitPointName = "ExitPoint";
-	private const float StopVelocityMaxSqr = 1f;
 
 	[SerializeField] private Teleport _exit;
 	[SerializeField] private Transform _exitPoint;
@@ -148,8 +121,7 @@ public class Teleport : MonoBehaviour
 	
 	private Collider _collider;
 	private Animator _animator;
-	private Rigidbody _expulsedRigid;
-	private bool _isExpulsing;
+	private HashSet<GameObject> _inputs;
 
 	#endregion
 }

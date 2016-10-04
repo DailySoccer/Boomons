@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010347960508}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExitPoint
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -37,7 +37,7 @@ GameObject:
   - 33: {fileID: 33000012074273734}
   - 65: {fileID: 65000012578039336}
   - 114: {fileID: 114000010808609202}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Teleport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010879612946}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.25, y: 0.24, z: -0.39}
+  m_LocalPosition: {x: 2.046, y: 0.57, z: -0.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -104,4 +104,4 @@ MonoBehaviour:
   _exit: {fileID: 0}
   _exitPoint: {fileID: 4000010347960508}
   _playerTag: Player
-  _expulsionForce: 2
+  _expulsionForce: 5
