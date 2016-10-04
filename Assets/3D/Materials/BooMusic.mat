@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: alien
+  m_Name: BooMusic
   m_Shader: {fileID: 4800000, guid: af02b29da628e5b429861ab800b29876, type: 3}
-  m_ShaderKeywords: _EMISSION _FRESNELON_ON
+  m_ShaderKeywords: _EMISSION _FRESNELON_ON _NORMALMAP
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -18,7 +18,7 @@ Material:
     - first:
         name: _BumpMap
       second:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 0d2c069e7071cef4daef1b5b62c64138, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -42,7 +42,7 @@ Material:
     - first:
         name: _Diffuse
       second:
-        m_Texture: {fileID: 2800000, guid: f5a05563ad221684bb8e202998fb476a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4efe9d957cad4c443a5804c8d18ecac1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -54,7 +54,7 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: f5a05563ad221684bb8e202998fb476a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4efe9d957cad4c443a5804c8d18ecac1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -66,13 +66,13 @@ Material:
     - first:
         name: _Normal
       second:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 0d2c069e7071cef4daef1b5b62c64138, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _OcclusionMap
       second:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 2be6c3fec78280a4294abb3b6ed09e97, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -102,10 +102,13 @@ Material:
       second: 0
     - first:
         name: _Fresnel
-      second: 0.3
+      second: 0.2
     - first:
         name: _FresnelON
       second: 1
+    - first:
+        name: _Gloss
+      second: 0.8
     - first:
         name: _GlossMapScale
       second: 1
@@ -126,10 +129,10 @@ Material:
       second: 1
     - first:
         name: _OutlineDarkness
-      second: 0.5
+      second: 0
     - first:
         name: _OutlineWidth
-      second: 0.01
+      second: 0.005
     - first:
         name: _Parallax
       second: 0.02
@@ -153,20 +156,23 @@ Material:
       second: 0
     - first:
         name: _node_5135
-      second: 0.4
+      second: 1
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.6911765, g: 0.6911765, b: 0.6911765, a: 1}
+      second: {r: 0.7794118, g: 0.7794118, b: 0.7794118, a: 1}
     - first:
         name: _ColorOutline
-      second: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
+      second: {r: 0.30882353, g: 0.30882353, b: 0.30882353, a: 1}
+    - first:
+        name: _ColorTint
+      second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _FresnelColor
-      second: {r: 0.20753792, g: 0.4044118, b: 0.047577854, a: 1}
+      second: {r: 0.47567043, g: 0.6662942, b: 0.7794118, a: 1}
     - first:
         name: _TintColor
       second: {r: 1, g: 1, b: 1, a: 1}
