@@ -79,10 +79,10 @@ public class Teleport : MonoBehaviour
 
 		input.transform.position = transform.position;
 
+		Expulse(input.GetComponentInChildren<Rigidbody>());
+
 		if (input.tag == _playerTag)
 			Expulse(input.GetComponent<BoomonController>());
-		else
-			Expulse(input.GetComponentInChildren<Rigidbody>());
 	}
 
 	private void Expulse(BoomonController boomon)
@@ -99,7 +99,8 @@ public class Teleport : MonoBehaviour
 			return;
 
 		Vector3 exitDir = (_exitPoint.position - transform.position).normalized;
-		rigid.AddForce(_expulsionForce * exitDir, ForceMode.VelocityChange);
+		rigid.velocity = Vector3.zero;
+		rigid.AddForce(_expulsionForce * exitDir - rigid.velocity, ForceMode.VelocityChange);
 	}
 
 	
@@ -117,7 +118,7 @@ public class Teleport : MonoBehaviour
 	[SerializeField] private Teleport _exit;
 	[SerializeField] private Transform _exitPoint;
 	[SerializeField] private string _playerTag = "Player";
-	[SerializeField, Range(0f, 20f)] private float _expulsionForce = 2f;
+	[SerializeField, Range(0f, 50f)] private float _expulsionForce = 2f;
 	
 	private Collider _collider;
 	private Animator _animator;
