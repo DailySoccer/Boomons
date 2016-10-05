@@ -38,6 +38,7 @@ public class TouchManager : Singleton<TouchManager>
 
 	#region Public members
 
+	public event Action Back;
 	/// <summary>
 	/// Returns swipe vector in inches/sec
 	/// </summary>
@@ -79,6 +80,11 @@ public class TouchManager : Singleton<TouchManager>
 	/// </summary>
 	private void Update()
 	{
+		if (Input.GetKey(KeyCode.Escape)) {
+			OnBack();
+			return;
+		}
+
 		InputData input = ReadInput();
 
 		switch (input.Phase)
@@ -102,6 +108,7 @@ public class TouchManager : Singleton<TouchManager>
 	}
 
 
+
 	#endregion
 
 
@@ -109,6 +116,13 @@ public class TouchManager : Singleton<TouchManager>
 
 
 	#region Events
+
+	private void OnBack()
+	{
+		var e = Back;
+		if (e != null)
+			e();
+	}
 
 	/// <summary>
 	/// 

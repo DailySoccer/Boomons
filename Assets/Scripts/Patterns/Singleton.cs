@@ -9,15 +9,13 @@
 /// </summary>
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-	private static T _instance;
-
-	private static object _lock = new object();
+	
 
 	public static T Instance
 	{
 		get
 		{
-			if (applicationIsQuitting)
+			if (_applicationIsQuitting)
 			{
 				Debug.LogWarning("[Singleton] Instance '" + typeof (T) +
 				                 "' already destroyed on application quit." +
@@ -63,7 +61,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 		}
 	}
 
-	private static bool applicationIsQuitting = false;
+	
 
 
 	/// <summary>
@@ -71,7 +69,16 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 	/// </summary>
 	protected virtual void Awake()
 	{
-		
+		if (_instance == null)
+		{
+			_instance = this as T;
+			DontDestroyOnLoad(gameObject);
+		}
+		else
+		{
+			Destroy(this);
+		}
+
 	}
 
 	/// <summary>
@@ -85,6 +92,14 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 	/// 
 	protected virtual void OnDestroy()
 	{
-		applicationIsQuitting = true;
+		_applicationIsQuitting = true;
 	}
+
+	//====================================================
+
+	#region Private Fields
+	private static T _instance;
+	private static bool _applicationIsQuitting;
+	private static object _lock = new object();
+	#endregion
 }
