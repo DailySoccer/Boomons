@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-	
-
 	#region Public Methods
 
 	public void LoadScene(string sceneName)
@@ -20,14 +18,10 @@ public class GameManager : Singleton<GameManager>
 
 	#region Mono
 
-	private void OnEnable()
+	private void Update()
 	{
-		TouchManager.Instance.Back += OnBack;
-	}
-
-	private void OnDisable()
-	{
-		TouchManager.Instance.Back -= OnBack;
+		if (Input.GetKey(KeyCode.Escape))
+			OnEscape();
 	}
 
 	#endregion
@@ -36,7 +30,7 @@ public class GameManager : Singleton<GameManager>
 
 	#region Events
 
-	private void OnBack()
+	private void OnEscape()
 	{
 		LoadScene(_mainMenuScene);
 	}

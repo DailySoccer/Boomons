@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 /// <summary>
 /// Be aware this will not prevent a non singleton constructor
@@ -10,58 +11,55 @@
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
 	
-
 	public static T Instance
 	{
-		get
-		{
-			if (_applicationIsQuitting)
-			{
-				Debug.LogWarning("[Singleton] Instance '" + typeof (T) +
-				                 "' already destroyed on application quit." +
-				                 " Won't create again - returning null.");
-				return null;
-			}
-
-			lock (_lock)
-			{
-				if (_instance == null)
-				{
-					_instance = (T) FindObjectOfType(typeof (T));
-
-					if (FindObjectsOfType(typeof (T)).Length > 1)
-					{
-						Debug.LogError("[Singleton] Something went really wrong " +
-						               " - there should never be more than 1 singleton!" +
-						               " Reopening the scene might fix it.");
-						return _instance;
-					}
-
-					if (_instance == null)
-					{
-						GameObject singleton = new GameObject();
-						_instance = singleton.AddComponent<T>();
-						singleton.name = "(singleton) " + typeof (T).ToString();
-
-						DontDestroyOnLoad(singleton);
-
-						Debug.Log("[Singleton] An instance of " + typeof (T) +
-						          " is needed in the scene, so '" + singleton +
-						          "' was created with DontDestroyOnLoad.");
-					}
-					else
-					{
-						Debug.Log("[Singleton] Using instance already created: " +
-						          _instance.gameObject.name);
-					}
-				}
-
-				return _instance;
-			}
-		}
+		get { return GetInstance<T>(); }
 	}
 
-	
+	public static TU GetInstance<TU>() where TU : T
+	{
+		if (_isApplicationQuitting)
+		{
+			Debug.LogWarning("[Singleton] Instance '" + typeof(TU) +
+							 "' already destroyed on application quit." +
+							 " Won't create again - returning null.");
+			return null;
+		}
+
+		lock (_lock)
+		{
+			if (_instance == null)
+			{
+				TU[] instances = FindObjectsOfType<TU>();
+
+				Debug.Assert(instances.Length <= 1,
+					"[Singleton] Something went really wrong " +
+					" - there should never be more than 1 singleton!" +
+					" Reopening the scene might fix it.");
+
+				if (instances.Length > 0)
+				{
+					_instance = instances[0];
+					Debug.Log("[Singleton] Using instance already created: " +
+							  _instance.gameObject.name);
+				}
+				else
+				{
+					GameObject singleton = new GameObject();
+					_instance = singleton.AddComponent<TU>();
+					singleton.name = typeof(TU).ToString();
+
+					DontDestroyOnLoad(singleton);
+
+					Debug.Log("[Singleton] An instance of " + typeof(TU) +
+							  " is needed in the scene, so '" + singleton +
+							  "' was created with DontDestroyOnLoad.");
+				}
+			}
+
+			return (TU) _instance;
+		}
+	}
 
 
 	/// <summary>
@@ -74,9 +72,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 			_instance = this as T;
 			DontDestroyOnLoad(gameObject);
 		}
-		else
+		else if(this != _instance)
 		{
-			Destroy(this);
+			Destroy(gameObject);
 		}
 
 	}
@@ -92,14 +90,28 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 	/// 
 	protected virtual void OnDestroy()
 	{
-		_applicationIsQuitting = true;
+		if (this != _instance)
+		{
+			Debug.Log("GameManager::OnDestroy>> Duplicated singleton " + name);
+		}
+		else
+		{
+			Debug.Log("GameManager::OnDestroy>> Application quit");
+			_instance = null;
+			_isApplicationQuitting = true;
+		}
 	}
 
 	//====================================================
 
+	#region Private Methods
+	#endregion
+
+	//=======================================================
+
 	#region Private Fields
 	private static T _instance;
-	private static bool _applicationIsQuitting;
+	private static bool _isApplicationQuitting;
 	private static object _lock = new object();
 	#endregion
 }

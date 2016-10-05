@@ -7,12 +7,6 @@ using UnityEngine;
 public class ObjectTouchManager : TouchManager
 {
 	#region Public Fields
-
-	public new static ObjectTouchManager Instance
-	{
-		get { return (ObjectTouchManager) TouchManager.Instance;  }
-	}
-
 	#endregion
 
 	//===========================================================================
