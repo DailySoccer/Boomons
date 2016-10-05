@@ -32,7 +32,10 @@ public class GameManager : Singleton<GameManager>
 
 	private void OnEscape()
 	{
-		LoadScene(_mainMenuScene);
+		if(SceneManager.GetActiveScene().name == _mainMenuScene)
+			Application.Quit();
+		else
+			LoadScene(_mainMenuScene);
 	}
 
 	#endregion
