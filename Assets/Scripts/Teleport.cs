@@ -7,6 +7,18 @@ public class Teleport : MonoBehaviour
 {
 	#region Public Fields
 
+	public Vector3 ExitPoint
+	{
+		get { return _exitPoint.position;  }
+	}
+
+	public Vector3 Right {
+		get {
+			return (_isExitRightward ? 1 : -1) 
+				* (ExitPoint - transform.position).normalized;
+		}
+	}
+
 	#endregion
 
 	//=========================================================================
@@ -70,33 +82,32 @@ public class Teleport : MonoBehaviour
 		if (_animator != null)
 			_animator.SetTrigger("Teleport");
 
-		_exit.Receive(go);
+		_exit.Receive(go, go.transform.position - transform.position);
 	}
 
-	private void Receive(GameObject input)
+	private void Receive(GameObject input, Vector3 localPos)
 	{
 		_inputs.Add(input);
-
-		input.transform.position = transform.position;
-
-		Expulse(input.GetComponentInChildren<Rigidbody>());
-
+		
+		Receive(input.GetComponentInChildren<Rigidbody>(), localPos);
 		if (input.tag == _playerTag)
-			Expulse(input.GetComponent<BoomonController>());
+			Receive(input.GetComponent<BoomonController>(), localPos);
 	}
 
-	private void Expulse(BoomonController boomon)
+	private void Receive(BoomonController boomon, Vector3 localPos)
 	{
 		if (boomon == null)
 			return;
 
-		boomon.GoTo(_exitPoint.position);
+		boomon.TeleportTo(this);
 	}
 
-	private void Expulse(Rigidbody rigid)
+	private void Receive(Rigidbody rigid, Vector3 localPos)
 	{
 		if (rigid == null)
 			return;
+
+		rigid.position = transform.position + localPos;
 
 		Vector3 exitDir = (_exitPoint.position - transform.position).normalized;
 		rigid.velocity = Vector3.zero;
@@ -117,6 +128,7 @@ public class Teleport : MonoBehaviour
 
 	[SerializeField] private Teleport _exit;
 	[SerializeField] private Transform _exitPoint;
+	[SerializeField] private bool _isExitRightward;
 	[SerializeField] private string _playerTag = "Player";
 	[SerializeField, Range(0f, 50f)] private float _expulsionForce = 2f;
 	

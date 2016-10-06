@@ -723,7 +723,6 @@ GameObject:
   - 95: {fileID: 95000011125627130}
   - 143: {fileID: 143000011386243084}
   - 114: {fileID: 114000011635208476}
-  - 114: {fileID: 114000012982930562}
   m_Layer: 12
   m_Name: Boomon
   m_TagString: Player
@@ -1790,12 +1789,13 @@ MonoBehaviour:
   _bipedRoot: {fileID: 4000010906486752}
   _moveDirection: {x: 0, y: 0, z: 1}
   _bounciness: 0.5
+  _pushMass: 5
   _moveSpeedMax: 5
   _jumpSpeedMax: 10
   _jumpDegreesMin: 30
   _frontJumpDegreesMin: 80
   _throwDegreesMin: 30
-  _senseReversalInchesMin: 1
+  _senseReversalDistMin: 1
   _idleTriggerName: Idle
   _runTriggerName: Run
   _jumpTriggerName: Jump
@@ -1805,18 +1805,6 @@ MonoBehaviour:
   _ragdollPath: Prefabs/Ragdoll
   _wallLayerName: Wall
   _groundLayerName: Ground
---- !u!114 &114000012982930562
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013741079182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d6bc9d5cdc9fd946b1050d7ac27136e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pushPower: 20
 --- !u!137 &137000014006894684
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
