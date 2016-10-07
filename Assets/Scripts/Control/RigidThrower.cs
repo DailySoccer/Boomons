@@ -82,7 +82,7 @@ public class RigidThrower : Touchable
 	
 	
 
-	[SerializeField] private Rigidbody _rigid;
+	private Rigidbody _rigid;
 	[SerializeField, Range(0.5f, 50f)] private float _throwSpeedMax = 30f;
 	
 

@@ -73,7 +73,7 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener
 			_pelvis = GetComponentInChildren<RagdollPelvis>();
 
 		_pelvis.Ragdoll = this;
-		
+	
 		gameObject.SetActive(false);
 	}
 
@@ -82,8 +82,6 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener
 		_pelvis = null;
 		_nodes = null;
 	}
-
-	
 
 	#endregion
 

@@ -1017,7 +1017,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013741079182}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.45, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1787,7 +1787,7 @@ MonoBehaviour:
   _touchLayerName: Touchable
   _mustReceiveOnlyItsTouches: 0
   _bipedRoot: {fileID: 4000010906486752}
-  _moveDirection: {x: 0, y: 0, z: 1}
+  _right: {x: 0, y: 0, z: 1}
   _bounciness: 0.5
   _pushMass: 5
   _moveSpeedMax: 5
@@ -1803,8 +1803,6 @@ MonoBehaviour:
   _standUpTriggerName: StandUp
   _ticklesTriggerName: Tickles
   _ragdollPath: Prefabs/Ragdoll
-  _wallLayerName: Wall
-  _groundLayerName: Ground
 --- !u!137 &137000014006894684
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

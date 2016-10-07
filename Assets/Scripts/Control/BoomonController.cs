@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Animator), typeof(CharacterController))]
 public class BoomonController : Touchable
@@ -66,8 +65,7 @@ public class BoomonController : Touchable
 	}
 
 	#endregion
-
-
+	
 	//==============================================================
 
 	#region Public Methods
@@ -144,8 +142,7 @@ public class BoomonController : Touchable
 	#endregion
 
 	//==============================================================
-
-
+	
 	#region Mono
 
 	protected override void Awake()
@@ -227,8 +224,7 @@ public class BoomonController : Touchable
 	
 
 	#endregion
-
-
+	
 	//==============================================================
 
 	#region Events
@@ -480,8 +476,7 @@ public class BoomonController : Touchable
 
 
 	#endregion
-
-
+	
 	//============================================================
 
 	#region Private Methods
