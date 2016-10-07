@@ -45,7 +45,7 @@ public class GameManager : Singleton<GameManager>
 
 	protected void OnDisable()
 	{
-		SceneManager.sceneLoaded += OnSceneLoaded;
+		SceneManager.sceneLoaded -= OnSceneLoaded;
 	}
 
 	private void Update()
