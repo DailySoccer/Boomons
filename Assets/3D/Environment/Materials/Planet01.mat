@@ -7,8 +7,8 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Planet01
-  m_Shader: {fileID: 4800000, guid: 32076f740c465e2468f9d2e771564b59, type: 3}
-  m_ShaderKeywords: _EMISSION
+  m_Shader: {fileID: 4800000, guid: 34c3ae4ab4a5b1841ad2951f204377ee, type: 3}
+  m_ShaderKeywords: _EMISSION _FRESNELON_ON
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -96,10 +96,10 @@ Material:
       second: 0
     - first:
         name: _Fresnel
-      second: 2
+      second: 0.35
     - first:
         name: _FresnelON
-      second: 0
+      second: 1
     - first:
         name: _GlossMapScale
       second: 1
@@ -154,7 +154,7 @@ Material:
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _FresnelColor
-      second: {r: 0.060012985, g: 0.15909639, b: 0.8161765, a: 1}
+      second: {r: 0, g: 0.1281439, b: 0.97794116, a: 1}
     - first:
         name: _TintColor
-      second: {r: 1, g: 0.8897059, b: 0.8897059, a: 0.5}
+      second: {r: 0.9411765, g: 0.8373702, b: 0.8373702, a: 0.5}
