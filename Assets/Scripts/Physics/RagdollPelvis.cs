@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class RagdollPelvis : RigidThrower
+public class RagdollPelvis : RigidThrower, ITeleportable
 {
 	#region Public Fields
 	
@@ -21,11 +21,23 @@ public class RagdollPelvis : RigidThrower
 				Ragdoll.OnGroundEnter(transform.position);
 		}
 	}
+
+	public bool IsTeleporting
+	{
+		get { return Ragdoll.IsTeleporting; }
+	}
+
 	#endregion
 
 	//================================================================
 
 	#region Public Methods
+
+	public void TeleportTo(Teleport target)
+	{
+		Ragdoll.TeleportTo(target);
+	}
+
 	#endregion
 
 	//================================================================
@@ -42,20 +54,20 @@ public class RagdollPelvis : RigidThrower
 	{
 		base.OnEnable();
 		IsGrounded = false;
-		_groundTimer = _groundTimeout;
+		_groundTimer = Ragdoll.GroundParams.Timeout;
 	}
 
 
 	private void FixedUpdate()
 	{
-		IsGrounded =  Rigid.velocity.sqrMagnitude < Ragdoll.StopVelocityMaxSqr 
+		IsGrounded =  Rigid.velocity.sqrMagnitude < Ragdoll.GroundParams.StopVelocityMaxSqr 
 			&& (_groundTimer -= Time.fixedDeltaTime) < 0f;
 	}
 
 	private void OnCollisionStay(Collision collisionInfo)
 	{
-		if (collisionInfo.gameObject.layer == Ragdoll.GroundLayer
-			&& Rigid.velocity.sqrMagnitude < Ragdoll.StopVelocityMaxSqr)
+		if (collisionInfo.gameObject.layer == Ragdoll.GroundParams.Layer
+			&& Rigid.velocity.sqrMagnitude < Ragdoll.GroundParams.StopVelocityMaxSqr)
 			Ragdoll.OnGroundEnter(collisionInfo.contacts[0].point);
 	}
 
@@ -71,11 +83,12 @@ public class RagdollPelvis : RigidThrower
 
 	#region Private Fields
 	
-	[SerializeField, Range(0.1f, 5f)] private float _groundTimeout = 1f;
 	private float _groundTimer;
 	private bool _isGrounded;
 
 	#endregion
 
-
+	
 }
+
+

@@ -7,18 +7,24 @@ public class GameManager : Singleton<GameManager>
 {
 	#region Public Methods
 
-	public BoomonController Boomon
-	{
-		get { return _boomon;  }
-		private set { _boomon = value; }
-	}
+	public BoomonController Boomon { get; private set; }
 
 	public void LoadScene(string sceneName)
 	{
 		SceneManager.LoadScene(sceneName);
 	}
 
-	
+
+	public void RespawnBoomon()
+	{
+		GameObject spawnPoint = GameObject.FindGameObjectWithTag(_spawnTag);
+		Debug.Assert(spawnPoint != null, "GameManager::Spawn>> Spawn point not found");
+
+		GameObject boomonGo = (GameObject)Instantiate(_boomonPrefab,
+			spawnPoint.transform.position, spawnPoint.transform.rotation);
+		Boomon = boomonGo.GetComponent<BoomonController>();
+	}
+
 
 	#endregion
 
@@ -34,7 +40,7 @@ public class GameManager : Singleton<GameManager>
 
 	protected override void OnDestroy()
 	{
-		_boomon = null;
+		Boomon = null;
 		_boomonPrefab = null;
 	}
 
@@ -73,7 +79,7 @@ public class GameManager : Singleton<GameManager>
 		if (scene.name == _mainMenuSceneName)
 			return;
 
-		SpawnBoomon();
+		RespawnBoomon();
 	}
 
 	#endregion
@@ -83,15 +89,7 @@ public class GameManager : Singleton<GameManager>
 
 	#region Private Methods
 
-	private void SpawnBoomon()
-	{
-		GameObject spawnPoint = GameObject.FindGameObjectWithTag(_spawnTag);
-		Debug.Assert(spawnPoint != null, "GameManager::Spawn>> Spawn point not found");
 
-		GameObject boomonGo = (GameObject) Instantiate(_boomonPrefab,
-			spawnPoint.transform.position, spawnPoint.transform.rotation);
-		_boomon = boomonGo.GetComponent<BoomonController>();
-	}
 
 	#endregion
 
@@ -102,7 +100,6 @@ public class GameManager : Singleton<GameManager>
 	[SerializeField] private string _boomonPath = "Prefabs/Boomon";
 	[SerializeField] private string _spawnTag = "Spawn";
 
-	private BoomonController _boomon;
 	private GameObject _boomonPrefab;
 
 	#endregion

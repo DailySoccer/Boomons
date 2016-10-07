@@ -20,6 +20,9 @@ public class RigidThrower : Touchable
 	{
 		Debug.Log("RigidThrower::Throw>> " + name + " throwed @ " + velocity, this);
 		_rigid.AddForce(velocity, ForceMode.VelocityChange);
+
+		// TODO FRS 161007 Sería interesante aplicar la fuerza sobre el punto de contacto
+		// y añadir de ese modo un torque
 	}
 
 	#endregion

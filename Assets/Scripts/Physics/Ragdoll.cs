@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class Ragdoll : MonoBehaviour, IObjectTouchListener
+public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 {
 
 	#region Public Fields
@@ -9,17 +9,19 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener
 	public event Action<Vector3> GroundEnter;
 
 	public Vector3 Position {  get { return _pelvis.transform.position;  } }
-	public int GroundLayer { get; private set; }
-	public float StopVelocityMaxSqr { get { return _stopVelocityMaxSqr; } }
+	public GroundDetectParams GroundParams { get { return _groundParams; } }
 
+	public bool IsTeleporting { get; private set; }
 	#endregion
 
 	//========================================================================
 
 	#region Public Methods
 
-	public void Setup(Transform setupRef)
+	public virtual void Setup(Transform setupRef)
 	{
+		IsTeleporting = false;
+
 		var refNodes = setupRef.GetComponentsInChildren<Transform>(true);
 		for(int i = 0; i < refNodes.Length; ++i)
 		{
@@ -35,26 +37,32 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener
 	}
 
 
-	public void OnTapStart(GameObject go, Vector2 position)
+	public virtual void OnTapStart(GameObject go, Vector2 position)
 	{
 	}
 
-	public void OnTapStop(GameObject go, Vector2 position)
+	public virtual void OnTapStop(GameObject go, Vector2 position)
 	{
 	}
 
-	public void OnTapStay(GameObject go, Vector2 position)
+	public virtual void OnTapStay(GameObject go, Vector2 position)
 	{
 	}
 
-	public void OnDoubleTap(GameObject go, Vector2 position)
+	public virtual void OnDoubleTap(GameObject go, Vector2 position)
 	{
 	}
 
-	public void OnSwipe(GameObject go, Vector2 swipeVector, float speedRatio)
+	public virtual void OnSwipe(GameObject go, Vector2 swipeVector, float speedRatio)
 	{
 		_pelvis.OnSwipe(go, swipeVector, speedRatio);
 	}
+
+	public virtual void TeleportTo(Teleport target)
+	{
+		IsTeleporting = true;
+	}
+
 
 	#endregion
 
@@ -66,8 +74,6 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener
 
 	protected void Awake()
 	{
-		GroundLayer = LayerMask.NameToLayer(_groundLayerName);
-
 		_nodes = GetComponentsInChildren<Transform>(true);
 		if (_pelvis == null)
 			_pelvis = GetComponentInChildren<RagdollPelvis>();
@@ -96,8 +102,6 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener
 		var e = GroundEnter;
 		if (e != null)
 			e(groundPos);
-
-		gameObject.SetActive(false);
 	}
 
 	#endregion
@@ -113,15 +117,29 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener
 
 	#region Private Fields
 
-	[SerializeField] private RagdollPelvis _pelvis;
-	[SerializeField, Range(0.01f, 5f)]
-	private float _stopVelocityMaxSqr = 0.1f;
-	[SerializeField]
-	private string _groundLayerName = "Ground";
+	
+	[SerializeField] private GroundDetectParams _groundParams;
+	[Serializable]
+	public struct GroundDetectParams
+	{
+		[SerializeField, Range(0.01f, 5f)] public float  StopVelocityMaxSqr;
+		[SerializeField, Range(0.1f, 5f)]  public float  Timeout;
+		[SerializeField]				   public string LayerName;
 
+		private int _layer;
+		public int Layer {
+			get {
+				return _layer > 0 ?  _layer :
+					(_layer = LayerMask.NameToLayer(LayerName));
+			}
+		}
+	}
+
+
+	private RagdollPelvis _pelvis;
 	private Transform[] _nodes;
 
 	#endregion
 
-
+	
 }

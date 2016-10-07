@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -27,7 +28,7 @@ public class Teleport : MonoBehaviour
 
 	private void Awake()
 	{
-		_inputs = new HashSet<GameObject>();
+		_rigids		= new HashSet<Rigidbody>();
 
 		_collider = GetComponent<Collider>();
 		_animator = GetComponent<Animator>();
@@ -43,7 +44,8 @@ public class Teleport : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		_inputs = null;
+		_rigids = null;
+
 		_animator = null;
 		_collider = null;
 		_exit = null;
@@ -53,16 +55,16 @@ public class Teleport : MonoBehaviour
 
 	private void OnTriggerEnter(Collider c)
 	{
-		GameObject o = c.gameObject;
-		if (_inputs.Contains(o))
+		if(_rigids.Contains(c.attachedRigidbody)
+		|| c.GetComponent<ITeleportable>().IsTeleporting)
 			return;
 
-		DoTeleport(o);
+		DoTeleport(c.gameObject);
 	}
 
 	private void OnTriggerExit(Collider c)
 	{
-		_inputs.Remove(c.gameObject);
+		_rigids.Remove(c.attachedRigidbody);
 	}
 
 	#endregion
@@ -87,31 +89,33 @@ public class Teleport : MonoBehaviour
 
 	private void Receive(GameObject input, Vector3 localPos)
 	{
-		_inputs.Add(input);
-		
-		Receive(input.GetComponentInChildren<Rigidbody>(), localPos);
-		if (input.tag == _playerTag)
-			Receive(input.GetComponent<BoomonController>(), localPos);
+		if(!Receive(input.GetComponent<ITeleportable>()))
+			Receive(input.GetComponentInChildren<Rigidbody>(), localPos);
 	}
 
-	private void Receive(BoomonController boomon, Vector3 localPos)
+	private bool Receive(ITeleportable teleportable)
 	{
-		if (boomon == null)
-			return;
+		if (teleportable == null)
+			return false;
 
-		boomon.TeleportTo(this);
+	
+		teleportable.TeleportTo(this);
+		return true;
 	}
 
-	private void Receive(Rigidbody rigid, Vector3 localPos)
+	private bool Receive(Rigidbody rigid, Vector3 localPos)
 	{
 		if (rigid == null)
-			return;
+			return false;
+
+		_rigids.Add(rigid);
 
 		rigid.position = transform.position + localPos;
 
 		Vector3 exitDir = (_exitPoint.position - transform.position).normalized;
 		rigid.velocity = Vector3.zero;
 		rigid.AddForce(_expulsionForce * exitDir - rigid.velocity, ForceMode.VelocityChange);
+		return true;
 	}
 
 	
@@ -129,12 +133,11 @@ public class Teleport : MonoBehaviour
 	[SerializeField] private Teleport _exit;
 	[SerializeField] private Transform _exitPoint;
 	[SerializeField] private bool _isExitRightward;
-	[SerializeField] private string _playerTag = "Player";
 	[SerializeField, Range(0f, 50f)] private float _expulsionForce = 2f;
 	
 	private Collider _collider;
 	private Animator _animator;
-	private HashSet<GameObject> _inputs;
+	private HashSet<Rigidbody> _rigids;
 
 	#endregion
 }

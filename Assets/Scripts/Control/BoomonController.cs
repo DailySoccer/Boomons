@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator), typeof(CharacterController))]
-public class BoomonController : Touchable
+public class BoomonController : Touchable, ITeleportable
 {
 	#region Public Fields
 
@@ -64,6 +64,7 @@ public class BoomonController : Touchable
 		}
 	}
 
+	public bool IsTeleporting { get; private set; }
 	#endregion
 	
 	//==============================================================
@@ -117,6 +118,7 @@ public class BoomonController : Touchable
 
 	public void TeleportTo(Teleport target)
 	{
+		IsTeleporting = true;
 		CurrentState = State.CodeDriven;
 
 		transform.position = target.transform.position;
@@ -177,7 +179,7 @@ public class BoomonController : Touchable
 		_bipedOffsetPos = _bipedRoot.position - transform.position;
 
 		var ragdollPrefab = Resources.Load<GameObject>(_ragdollPath);
-		_ragdoll = Instantiate(ragdollPrefab).GetComponent<Ragdoll>();
+		_ragdoll = Instantiate(ragdollPrefab).GetComponent<BoomonRagdoll>();
 		_ragdoll.GroundEnter += OnRagdollGroundEnter;
 	}
 
@@ -354,11 +356,13 @@ public class BoomonController : Touchable
 	{
 		Debug.Log("BoomonController::OnThrowStart");
 		gameObject.SetActive(false);
+		_ragdoll.gameObject.SetActive(true);
 	}
 
 	private void OnThrowEnd(State nextState)
 	{
 		Debug.Log("BoomonController::OnThrowEnd");
+		_ragdoll.gameObject.SetActive(false);
 		gameObject.SetActive(true);
 	}
 
@@ -462,8 +466,7 @@ public class BoomonController : Touchable
 			c();
 
 		_goToCallbacks.Clear();
-
-		
+		IsTeleporting = false;
 	}
 	
 	private void CodeDriveUpdate()
@@ -556,7 +559,7 @@ public class BoomonController : Touchable
 
 	private Animator _animator;
 	private CharacterController _controller;
-	private Ragdoll _ragdoll;
+	private BoomonRagdoll _ragdoll;
 	
 	private Vector3 _velocity;
 	private Vector3 _jumpStartVelocity;

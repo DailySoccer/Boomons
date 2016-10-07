@@ -723,7 +723,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011526640104}
-  - 114: {fileID: 114000011292301476}
+  - 114: {fileID: 114000012897515086}
   m_Layer: 12
   m_Name: Ragdoll
   m_TagString: Untagged
@@ -1858,7 +1858,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114000011292301476
+--- !u!114 &114000012897515086
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1866,12 +1866,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000013659685010}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 548351b8e3f47be43889259e8fe70408, type: 3}
+  m_Script: {fileID: 11500000, guid: 10d0095330edeb54183817390fbfdd37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pelvis: {fileID: 114000013301105830}
-  _stopVelocityMaxSqr: 0.1
-  _groundLayerName: Ground
+  _groundParams:
+    StopVelocityMaxSqr: 0.1
+    Timeout: 1
+    LayerName: Ground
 --- !u!114 &114000013301105830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1885,9 +1886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _touchLayerName: Touchable
   _mustReceiveOnlyItsTouches: 1
-  _rigid: {fileID: 0}
   _throwSpeedMax: 20
-  _groundTimeout: 1
 --- !u!136 &136000010275195612
 CapsuleCollider:
   m_ObjectHideFlags: 1
