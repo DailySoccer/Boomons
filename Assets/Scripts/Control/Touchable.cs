@@ -23,7 +23,7 @@ public abstract class Touchable : MonoBehaviour, IObjectTouchListener
 	{
 	}
 
-	public virtual void OnSwipe(GameObject go, Vector2 swipeVector, float speedRatio)
+	public virtual void OnSwipe(GameObject go, Vector2 position, Vector2 direction, float speedRatio)
 	{
 	}
 	#endregion

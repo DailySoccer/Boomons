@@ -5,9 +5,21 @@ public class RigidThrower : Touchable
 {
 	#region Public Methods
 
-	public override void OnSwipe(GameObject go, Vector2 swipeVector, float speedRatio)
+	public override void OnSwipe(GameObject go, Vector2 position, Vector2 direction, float speedRatio)
 	{
-		Throw(CalcThrowVelocity(swipeVector, speedRatio));
+		if (go != gameObject)
+		{
+			if (go != null)
+				return;
+			
+			Vector2 myScreenPos = Camera.main.WorldToScreenPoint(_rigid.position);
+			if ((myScreenPos - position).sqrMagnitude > _inchesSqrMax)
+				return;
+		}
+
+		Vector3 touchPosition = _rigid.position;
+		//Camera.main.ScreenToWorldPoint(position);
+		Throw(touchPosition, CalcThrowVelocity(direction, speedRatio));
 	}
 
 
@@ -16,13 +28,10 @@ public class RigidThrower : Touchable
 	/// </summary>
 	/// <param name="velocity"></param>
 	/// <param name="setupRef"></param>
-	public void Throw(Vector3 velocity)
+	public void Throw(Vector3 applyPosition, Vector3 velocity)
 	{
 		Debug.Log("RigidThrower::Throw>> " + name + " throwed @ " + velocity, this);
-		_rigid.AddForce(velocity, ForceMode.VelocityChange);
-
-		// TODO FRS 161007 Sería interesante aplicar la fuerza sobre el punto de contacto
-		// y añadir de ese modo un torque
+		_rigid.AddForceAtPosition(velocity, applyPosition, ForceMode.VelocityChange);
 	}
 
 	#endregion
@@ -37,7 +46,8 @@ public class RigidThrower : Touchable
 
 		if (_rigid == null)
 			_rigid = GetComponentInChildren<Rigidbody>();
-		
+
+		_inchesSqrMax = Mathf.Pow(_touchDistanceInchesMax*Screen.dpi, 2f);
 	}
 
 	protected override void OnDestroy()
@@ -87,8 +97,8 @@ public class RigidThrower : Touchable
 
 	private Rigidbody _rigid;
 	[SerializeField, Range(0.5f, 50f)] private float _throwSpeedMax = 30f;
-	
-
+	[SerializeField, Range(0f, 100f)] private float _touchDistanceInchesMax = 1f;
+	private float _inchesSqrMax;
 
 	#endregion
 

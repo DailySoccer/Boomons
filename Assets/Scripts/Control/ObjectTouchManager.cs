@@ -83,7 +83,7 @@ public class ObjectTouchManager : TouchManager
 	protected override void OnSwipe(Vector2 position, Vector2 swipeVector, float speedRatio)
 	{
 		base.OnSwipe(position, swipeVector, speedRatio);
-		OnObjectSwipe(FindObjectAtPosition(position), swipeVector, speedRatio);
+		OnObjectSwipe(FindObjectAtPosition(position), position, swipeVector, speedRatio);
 	}
 
 	//----------------------------------------------------------
@@ -161,17 +161,20 @@ public class ObjectTouchManager : TouchManager
 	/// 
 	/// </summary>
 	/// <param name="o"></param>
-	private void OnObjectSwipe(GameObject o, Vector2 swipeVector, float speedRatio)
+	/// <param name="position"></param>
+	/// <param name="direction"></param>
+	/// <param name="speedRatio"></param>
+	private void OnObjectSwipe(GameObject o, Vector2 position, Vector2 direction, float speedRatio)
 	{
 		if (o != null)
 		{
 			IObjectTouchListener listener = o.GetComponent<IObjectTouchListener>();
 			if (listener != null && _selfListeners.Contains(listener))
-				listener.OnSwipe(o, swipeVector, speedRatio);
+				listener.OnSwipe(o, position, direction, speedRatio);
 		}
 
 		for (int i = _broadcastListeners.Count - 1; i >= 0; --i)
-			_broadcastListeners[i].OnSwipe(o, swipeVector, speedRatio);
+			_broadcastListeners[i].OnSwipe(o, position, direction, speedRatio);
 	}
 
 	#endregion

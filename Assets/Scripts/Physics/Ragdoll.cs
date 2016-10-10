@@ -53,9 +53,9 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 	{
 	}
 
-	public virtual void OnSwipe(GameObject go, Vector2 swipeVector, float speedRatio)
+	public virtual void OnSwipe(GameObject go, Vector2 position, Vector2 direction, float speedRatio)
 	{
-		_pelvis.OnSwipe(go, swipeVector, speedRatio);
+		_pelvis.OnSwipe(go, position, direction, speedRatio);
 	}
 
 	public virtual void TeleportTo(Teleport target)

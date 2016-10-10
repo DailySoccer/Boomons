@@ -104,7 +104,7 @@ public class BoomonController : Touchable, ITeleportable
 		CurrentState = State.Jumping;
 	}
 
-	public void Throw(Vector2 swipeVector, float speedRatio)
+	public void Throw(Vector2 swipePos, Vector2 swipeVector, float speedRatio)
 	{
 		if(CurrentState == State.Throwing || CurrentState == State.Jumping)
 			return;
@@ -115,7 +115,7 @@ public class BoomonController : Touchable, ITeleportable
 
 		CurrentState = State.Throwing;
 		_ragdoll.Setup(transform);
-		_ragdoll.OnSwipe(null, swipeVector, speedRatio);
+		_ragdoll.OnSwipe(null, swipePos, swipeVector, speedRatio);
 	}
 
 	public void TeleportTo(Teleport target)
@@ -258,14 +258,19 @@ public class BoomonController : Touchable, ITeleportable
 			CurrentState = State.Tickling;
 	}
 
-	public override void OnSwipe(GameObject go, Vector2 swipeVector, float speedRatio)
+	public override void OnSwipe(GameObject go, Vector2 position, Vector2 direction, float speedRatio)
 	{
-		// UNDONE FRS 161006
-		//if(go == null)
-		//	Jump(swipeVector, speedRatio);
-		//else 
+		//if (go != gameObject)
+		//{
+		//	if (go != null)
+		//		return;
+
+		//	Vector2 myScreenPos = Camera.main.WorldToScreenPoint(transform.position);
+		//	if ((myScreenPos - position).sqrMagnitude > _inchesSqrMax)
+		//		return;
+		//}
 		if (go == gameObject)
-			Throw(swipeVector, speedRatio);
+			Throw(position, direction, speedRatio);
 	}
 
 	//---------------------------------------------------------
@@ -547,6 +552,7 @@ public class BoomonController : Touchable, ITeleportable
 	[SerializeField] private Vector3 _right;
 	private Vector3 _bipedOffsetPos;
 
+	
 	[SerializeField, Range(0f, 1f)]		private float _bounciness = 0.8f;
 	[SerializeField, Range(0f, 20f)]	private float _pushMass = 5f;
    	[SerializeField, Range(0.5f, 50f)]	private float _moveSpeedMax = 5f;

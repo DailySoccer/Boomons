@@ -55,10 +55,11 @@ public class Teleport : MonoBehaviour
 
 	private void OnTriggerEnter(Collider c)
 	{
-		Debug.Assert(_rigids != null, "Teleport::OnTriggerEnter>> Rigid Set not defined!");
+		if ( _rigids.Contains(c.attachedRigidbody) )
+			return;
 
-		if(_rigids.Contains(c.attachedRigidbody)
-		|| c.GetComponent<ITeleportable>().IsTeleporting)
+		var teleportable = c.GetComponent<ITeleportable>();
+		if(teleportable != null && teleportable.IsTeleporting)
 			return;
 
 		DoTeleport(c.gameObject);
