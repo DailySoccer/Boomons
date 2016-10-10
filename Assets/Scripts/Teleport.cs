@@ -55,6 +55,8 @@ public class Teleport : MonoBehaviour
 
 	private void OnTriggerEnter(Collider c)
 	{
+		Debug.Assert(_rigids != null, "Teleport::OnTriggerEnter>> Rigid Set not defined!");
+
 		if(_rigids.Contains(c.attachedRigidbody)
 		|| c.GetComponent<ITeleportable>().IsTeleporting)
 			return;
@@ -81,6 +83,8 @@ public class Teleport : MonoBehaviour
 
 	private void DoTeleport(GameObject go)
 	{
+		Debug.Log("Teleport::DoTeleport>> " + go.name, this);
+
 		if (_animator != null)
 			_animator.SetTrigger("Teleport");
 
@@ -89,7 +93,7 @@ public class Teleport : MonoBehaviour
 
 	private void Receive(GameObject input, Vector3 localPos)
 	{
-		if(!Receive(input.GetComponent<ITeleportable>()))
+		if (!Receive(input.GetComponent<ITeleportable>()))
 			Receive(input.GetComponentInChildren<Rigidbody>(), localPos);
 	}
 
@@ -98,7 +102,8 @@ public class Teleport : MonoBehaviour
 		if (teleportable == null)
 			return false;
 
-	
+		Debug.Log("Teleport::Receive>> Teleportable", this);
+
 		teleportable.TeleportTo(this);
 		return true;
 	}
@@ -107,6 +112,8 @@ public class Teleport : MonoBehaviour
 	{
 		if (rigid == null)
 			return false;
+
+		Debug.Log("Teleport::Receive>> Rigid=" + rigid.name, this);
 
 		_rigids.Add(rigid);
 
@@ -118,6 +125,7 @@ public class Teleport : MonoBehaviour
 		return true;
 	}
 
+	
 	
 
 	#endregion

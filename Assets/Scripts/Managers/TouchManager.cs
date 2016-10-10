@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using UnityEngine;
-
+using Debug = UnityEngine.Debug;
 
 
 /// <summary>
@@ -36,7 +37,7 @@ public class TouchManager : Singleton<TouchManager>
 		}
 	}
 
-	#region Public members
+#region Public members
 
 
 	/// <summary>
@@ -53,11 +54,11 @@ public class TouchManager : Singleton<TouchManager>
 	public event Action<Vector2> TapStop;
 	public event Action<Vector2> TapStay;
 
-	#endregion
+#endregion
 
 	//==============================================================================
 
-	#region MonoBehaviour methods
+#region MonoBehaviour methods
 
 	protected override void Awake()
 	{
@@ -107,13 +108,13 @@ public class TouchManager : Singleton<TouchManager>
 
 
 
-	#endregion
+#endregion
 
 
 	//======================================================================
 
 
-	#region Events
+#region Events
 
 
 	/// <summary>
@@ -185,7 +186,7 @@ public class TouchManager : Singleton<TouchManager>
 	/// </summary>
 	protected virtual void OnSwipe(Vector2 position, Vector2 swipeVector, float speedRatio)
 	{
-		Debug.Log("OnSwipe>> " + swipeVector);
+		Log("OnSwipe", swipeVector);
 
 		var e = Swipe;
 		if (e != null)
@@ -202,7 +203,7 @@ public class TouchManager : Singleton<TouchManager>
 		_beginInput = null;
 		_endInput = null;
 
-		Debug.Log("DoubleTap>> " + position);
+		Log("DoubleTap", position);
 
 		var e = DoubleTap;
 		if (e != null)
@@ -215,7 +216,7 @@ public class TouchManager : Singleton<TouchManager>
 	/// <param name="position"></param>
 	protected virtual void OnTapStart(Vector2 position)
 	{
-		Debug.Log("TapStart>> " + position);
+		Log("TapStart", position);
 
 		var e = TapStart;
 		if (e != null)
@@ -228,7 +229,7 @@ public class TouchManager : Singleton<TouchManager>
 	/// <param name="position"></param>
 	protected virtual void OnTapStop(Vector2 position)
 	{
-		Debug.Log("TapStop>> " + position);
+		Log("TapStop", position);
 
 		var e = TapStop;
 		if (e != null)
@@ -246,12 +247,21 @@ public class TouchManager : Singleton<TouchManager>
 			e(position);
 	}
 
-	#endregion
+#endregion
 
 	//======================================================================
 
-	#region Private methods
+#region Private methods
 
+	[Conditional("DEBUG_TOUCH")]
+	protected static void Log(string method, object msg = null, UnityEngine.Object context = null)
+	{
+		string log = "TouchManager::" + method;
+		if (!string.IsNullOrEmpty(msg.ToString()))
+			log += ">> " + msg;
+
+		Debug.Log("<color=green>" + log + "</color>", context);
+	}
 
 	/// <summary>
 	/// 
@@ -377,11 +387,11 @@ public class TouchManager : Singleton<TouchManager>
 		return true;
 	}
 
-	#endregion
+#endregion
 
 	//==========================================================================
 
-	#region Private members
+#region Private members
 
 	private enum SwipeResultType
 	{
@@ -407,5 +417,5 @@ public class TouchManager : Singleton<TouchManager>
 	private float _dpiSqr;
 	private bool _hasJustDoubleTapped;
 
-	#endregion
+#endregion
 }

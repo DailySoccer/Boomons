@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 [RequireComponent(typeof(Animator), typeof(CharacterController))]
 public class BoomonController : Touchable, ITeleportable
@@ -284,7 +286,7 @@ public class BoomonController : Touchable, ITeleportable
 
 	private void OnIdleStart(State lastState)
 	{
-		Debug.Log("BoomonController::OnIdleStart>> Last=" + lastState);
+		Log("OnIdleStart", "Last=" + lastState);
 
 		_velocity = Vector3.zero;
 		MoveSense = Sense.None;
@@ -306,12 +308,13 @@ public class BoomonController : Touchable, ITeleportable
 				break;
 		}
 	}
-
 	
-
 	private void OnIdleEnd(State nextState)
 	{
-		Debug.Log("BoomonController::OnIdleEnd>> Next=" + nextState);
+		Log("OnIdleEnd" , "Next=" + nextState);
+
+		IsTouchEnabled = nextState == State.Tickling
+				      || nextState == State.Moving;
 	}
 	
 	private void IdleUpdate()
@@ -323,13 +326,13 @@ public class BoomonController : Touchable, ITeleportable
 
 	private void OnMoveStart(State lastState)
 	{
-		Debug.Log("BoomonController::OnMoveStart");
+		Log("OnMoveStart");
 		PlayAnimation(_runTriggerName);
 	}
 
 	private void OnMoveEnd(State nextState)
 	{
-		Debug.Log("BoomonController::OnMoveEnd");
+		Log("OnMoveEnd");
 		_velocity = Vector3.zero;
 	}
 
@@ -340,7 +343,7 @@ public class BoomonController : Touchable, ITeleportable
 
 	private void OnMoveCollision(ControllerColliderHit hit)
 	{
-		//Debug.Log("BoomonController::OnMoveCollision>> " + hit.gameObject.name);
+		//Log("OnMoveCollision", hit.gameObject.name);
 
 		Rigidbody rigid = hit.collider.attachedRigidbody;
 
@@ -354,14 +357,14 @@ public class BoomonController : Touchable, ITeleportable
 
 	private void OnThrowStart(State lastState)
 	{
-		Debug.Log("BoomonController::OnThrowStart");
+		Log("OnThrowStart");
 		gameObject.SetActive(false);
 		_ragdoll.gameObject.SetActive(true);
 	}
 
 	private void OnThrowEnd(State nextState)
 	{
-		Debug.Log("BoomonController::OnThrowEnd");
+		Log("OnThrowEnd");
 		_ragdoll.gameObject.SetActive(false);
 		gameObject.SetActive(true);
 	}
@@ -371,17 +374,14 @@ public class BoomonController : Touchable, ITeleportable
 
 	private void OnJumpStart(State lastState)
 	{
-		Debug.Log("BoomonController::OnJumpStart");
+		Log("OnJumpStart");
 
-		IsTouchEnabled = false;
-
-		PlayAnimation(_jumpTriggerName);
 		_isParaboling = false;
 	}
 
 	private void OnJumpTakeOff()
 	{
-		Debug.Log("BoomonController::OnJumpTakeOff");
+		Log("OnJumpTakeOff");
 		_isParaboling = true;
 
 		_controller.Move(_bipedRoot.position - (_refSystem.PlanePoint + _bipedOffsetPos));
@@ -390,7 +390,7 @@ public class BoomonController : Touchable, ITeleportable
 
 	private void OnJumpEnd(State nextState)
 	{
-		Debug.Log("BoomonController::OnJumpEnd");
+		Log("OnJumpEnd");
 		_isParaboling = false;
 		_velocity = Vector3.zero;
 	}
@@ -409,7 +409,7 @@ public class BoomonController : Touchable, ITeleportable
 
 	private void OnJumpCollision(ControllerColliderHit hit)
 	{
-		Debug.Log("BoomonController::OnJumpCollision>> " + hit.gameObject.name);
+		Log("OnJumpCollision", hit.gameObject.name);
 
 		float slopeCosine = Vector3.Dot(hit.normal, _refSystem.JumpDir);
 
@@ -440,13 +440,13 @@ public class BoomonController : Touchable, ITeleportable
 
 	private void OnTickleStart(State obj)
 	{
-		Debug.Log("BoomonController::OnTickleStart");
+		Log("OnTickleStart");
 		CurrentState = State.Idle;
 	}
 
 	private void OnTickleEnd(State obj)
 	{
-		Debug.Log("BoomonController::OnTickleEnd");
+		Log("OnTickleEnd");
 	}
 
 	//-------------------------------------------------------------------
@@ -454,19 +454,19 @@ public class BoomonController : Touchable, ITeleportable
 
 	private void OnCodeDriveStart(State obj)
 	{
-		Debug.Log("BoomonController::OnCodeDriveStart");
-		IsTouchEnabled = false;
+		Log("OnCodeDriveStart");
+		PlayAnimation(_runTriggerName);
 	}
 
 	private void OnCodeDriveEnd(State obj)
 	{
-		Debug.Log("BoomonController::OnCodeDriveEnd");
+		Log("OnCodeDriveEnd");
+
+		IsTeleporting = false;
 
 		foreach (Action c in _goToCallbacks)
 			c();
-
 		_goToCallbacks.Clear();
-		IsTeleporting = false;
 	}
 	
 	private void CodeDriveUpdate()
@@ -520,18 +520,27 @@ public class BoomonController : Touchable, ITeleportable
 
 	private void PlayAnimation(string trigger)
 	{
-		Debug.Log("BoomonController::PlayAnimation>> " + trigger);
+		Log("PlayAnimation", trigger);
 		_animator.SetTrigger(trigger);
 	}
 
-	
+
+	[Conditional("DEBUG_BOOMON")]
+	protected void Log(string method, object msg = null, UnityEngine.Object context = null)
+	{
+		string log = "BoomonController::" + method;
+		if(msg != null)
+			log += ">> " + msg;
+
+		Debug.Log("<b><color=cyan>" + log + "</color></b>", context ?? this);
+	}
 	#endregion
 
 	//=======================================================================
 
 	#region Private Fields
 
-	private const float GoToDistanceMinSqr = .5f;
+	private const float GoToDistanceMinSqr = 1f;
 	
 
 	[SerializeField] private Transform _bipedRoot;
