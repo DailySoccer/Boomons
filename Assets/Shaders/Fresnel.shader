@@ -3,7 +3,7 @@
 // Shader created with Shader Forge v1.27 
 // Shader Forge (c) Neat Corporation / Joachim Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
-/*SF_DATA;ver:1.27;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,lico:0,lgpr:1,limd:1,spmd:0,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:False,enco:False,rmgx:True,rpth:0,vtps:0,hqsc:True,nrmq:0,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,rfrpo:True,rfrpn:Refraction,coma:15,ufog:False,aust:True,igpj:False,qofs:0,qpre:1,rntp:1,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:True,fnsp:False,fnfb:False;n:type:ShaderForge.SFN_Final,id:4013,x:32719,y:32712,varname:node_4013,prsc:2|diff-9074-OUT,normal-4553-RGB,emission-7363-OUT;n:type:ShaderForge.SFN_Multiply,id:9074,x:32259,y:32700,varname:node_9074,prsc:2|A-4196-RGB,B-7766-RGB;n:type:ShaderForge.SFN_Color,id:7766,x:32066,y:32793,ptovrint:False,ptlb:Tint Color,ptin:_TintColor,varname:_Color,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:1,c2:1,c3:1,c4:1;n:type:ShaderForge.SFN_Tex2d,id:4196,x:32066,y:32608,ptovrint:True,ptlb:Diffuse,ptin:_MainTex,varname:_MainTex,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Tex2d,id:4553,x:32448,y:32791,ptovrint:True,ptlb:Normal Map,ptin:_BumpMap,varname:_BumpMap,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:3,isnm:True;n:type:ShaderForge.SFN_NormalVector,id:3019,x:31114,y:33111,prsc:2,pt:False;n:type:ShaderForge.SFN_ViewVector,id:1634,x:31124,y:32947,varname:node_1634,prsc:2;n:type:ShaderForge.SFN_Dot,id:7082,x:31353,y:33045,varname:node_7082,prsc:2,dt:0|A-1634-OUT,B-3019-OUT;n:type:ShaderForge.SFN_OneMinus,id:2711,x:31574,y:33033,varname:node_2711,prsc:2|IN-7082-OUT;n:type:ShaderForge.SFN_Power,id:1478,x:31829,y:33095,varname:node_1478,prsc:2|VAL-2711-OUT,EXP-796-OUT;n:type:ShaderForge.SFN_ValueProperty,id:9800,x:31383,y:33311,ptovrint:False,ptlb:Fresnel,ptin:_Fresnel,varname:node_4926,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:0.5;n:type:ShaderForge.SFN_Multiply,id:737,x:32082,y:33054,varname:node_737,prsc:2|A-3560-RGB,B-1478-OUT;n:type:ShaderForge.SFN_Color,id:3560,x:31811,y:32897,ptovrint:False,ptlb:Fresnel Color,ptin:_FresnelColor,varname:_TintColor_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:1,c2:1,c3:1,c4:1;n:type:ShaderForge.SFN_ToggleProperty,id:5614,x:32116,y:33316,ptovrint:False,ptlb:Fresnel ON,ptin:_FresnelON,varname:node_9027,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,on:True;n:type:ShaderForge.SFN_Divide,id:796,x:31751,y:33270,varname:node_796,prsc:2|A-538-OUT,B-9800-OUT;n:type:ShaderForge.SFN_Vector1,id:538,x:31509,y:33193,varname:node_538,prsc:2,v1:1;n:type:ShaderForge.SFN_Multiply,id:7363,x:32352,y:33121,varname:node_7363,prsc:2|A-737-OUT,B-5614-OUT;proporder:7766-4196-4553-5614-9800-3560;pass:END;sub:END;*/
+/*SF_DATA;ver:1.27;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,lico:0,lgpr:1,limd:1,spmd:0,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:False,enco:False,rmgx:True,rpth:0,vtps:0,hqsc:True,nrmq:0,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,rfrpo:True,rfrpn:Refraction,coma:15,ufog:False,aust:True,igpj:False,qofs:0,qpre:1,rntp:1,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:True,fnsp:False,fnfb:False;n:type:ShaderForge.SFN_Final,id:4013,x:32719,y:32712,varname:node_4013,prsc:2|diff-4208-OUT,normal-4553-RGB,emission-7363-OUT;n:type:ShaderForge.SFN_Multiply,id:9074,x:32259,y:32700,varname:node_9074,prsc:2|A-4196-RGB,B-7766-RGB;n:type:ShaderForge.SFN_Color,id:7766,x:32066,y:32793,ptovrint:False,ptlb:Tint Color,ptin:_TintColor,varname:_Color,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:1,c2:1,c3:1,c4:1;n:type:ShaderForge.SFN_Tex2d,id:4196,x:32066,y:32608,ptovrint:True,ptlb:Diffuse,ptin:_MainTex,varname:_MainTex,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Tex2d,id:4553,x:32448,y:32791,ptovrint:True,ptlb:Normal Map,ptin:_BumpMap,varname:_BumpMap,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:3,isnm:True;n:type:ShaderForge.SFN_NormalVector,id:3019,x:31114,y:33111,prsc:2,pt:False;n:type:ShaderForge.SFN_ViewVector,id:1634,x:31124,y:32947,varname:node_1634,prsc:2;n:type:ShaderForge.SFN_Dot,id:7082,x:31353,y:33045,varname:node_7082,prsc:2,dt:0|A-1634-OUT,B-3019-OUT;n:type:ShaderForge.SFN_OneMinus,id:2711,x:31574,y:33033,varname:node_2711,prsc:2|IN-7082-OUT;n:type:ShaderForge.SFN_Power,id:1478,x:31829,y:33095,varname:node_1478,prsc:2|VAL-2711-OUT,EXP-796-OUT;n:type:ShaderForge.SFN_ValueProperty,id:9800,x:31383,y:33311,ptovrint:False,ptlb:Fresnel,ptin:_Fresnel,varname:node_4926,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:0.5;n:type:ShaderForge.SFN_Multiply,id:737,x:32082,y:33054,varname:node_737,prsc:2|A-3560-RGB,B-1478-OUT;n:type:ShaderForge.SFN_Color,id:3560,x:31811,y:32897,ptovrint:False,ptlb:Fresnel Color,ptin:_FresnelColor,varname:_TintColor_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:1,c2:1,c3:1,c4:1;n:type:ShaderForge.SFN_ToggleProperty,id:5614,x:32116,y:33316,ptovrint:False,ptlb:Fresnel ON,ptin:_FresnelON,varname:node_9027,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,on:True;n:type:ShaderForge.SFN_Divide,id:796,x:31751,y:33270,varname:node_796,prsc:2|A-538-OUT,B-9800-OUT;n:type:ShaderForge.SFN_Vector1,id:538,x:31509,y:33193,varname:node_538,prsc:2,v1:1;n:type:ShaderForge.SFN_Multiply,id:7363,x:32352,y:33121,varname:node_7363,prsc:2|A-737-OUT,B-5614-OUT;n:type:ShaderForge.SFN_Multiply,id:4208,x:32515,y:32508,varname:node_4208,prsc:2|A-6465-RGB,B-9074-OUT;n:type:ShaderForge.SFN_LightColor,id:6465,x:32177,y:32396,varname:node_6465,prsc:2;proporder:7766-4196-4553-5614-9800-3560;pass:END;sub:END;*/
 
 Shader "Shader Forge/Fresnel" {
     Properties {
@@ -137,10 +137,12 @@ Shader "Shader Forge/Fresnel" {
                 float3 indirectDiffuse = float3(0,0,0);
                 indirectDiffuse += gi.indirect.diffuse;
                 float4 _MainTex_var = tex2D(_MainTex,TRANSFORM_TEX(i.uv0, _MainTex));
-                float3 diffuseColor = (_MainTex_var.rgb*_TintColor.rgb);
+                float3 node_4208 = (_LightColor0.rgb*(_MainTex_var.rgb*_TintColor.rgb));
+                float3 diffuseColor = node_4208;
                 float3 diffuse = (directDiffuse + indirectDiffuse) * diffuseColor;
 ////// Emissive:
-                float3 emissive = ((_FresnelColor.rgb*pow((1.0 - dot(viewDirection,i.normalDir)),(1.0/_Fresnel)))*_FresnelON);
+                float3 node_7363 = ((_FresnelColor.rgb*pow((1.0 - dot(viewDirection,i.normalDir)),(1.0/_Fresnel)))*_FresnelON);
+                float3 emissive = node_7363;
 /// Final Color:
                 float3 finalColor = diffuse + emissive;
                 return fixed4(finalColor,1);
@@ -198,19 +200,23 @@ Shader "Shader Forge/Fresnel" {
                 o.uv2 = v.texcoord2;
                 o.normalDir = UnityObjectToWorldNormal(v.normal);
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
+                float3 lightColor = _LightColor0.rgb;
                 o.pos = UnityMetaVertexPosition(v.vertex, v.texcoord1.xy, v.texcoord2.xy, unity_LightmapST, unity_DynamicLightmapST );
                 return o;
             }
             float4 frag(VertexOutput i) : SV_Target {
                 float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
                 float3 normalDirection = i.normalDir;
+                float3 lightColor = _LightColor0.rgb;
                 UnityMetaInput o;
                 UNITY_INITIALIZE_OUTPUT( UnityMetaInput, o );
                 
-                o.Emission = ((_FresnelColor.rgb*pow((1.0 - dot(viewDirection,i.normalDir)),(1.0/_Fresnel)))*_FresnelON);
+                float3 node_7363 = ((_FresnelColor.rgb*pow((1.0 - dot(viewDirection,i.normalDir)),(1.0/_Fresnel)))*_FresnelON);
+                o.Emission = node_7363;
                 
                 float4 _MainTex_var = tex2D(_MainTex,TRANSFORM_TEX(i.uv0, _MainTex));
-                float3 diffColor = (_MainTex_var.rgb*_TintColor.rgb);
+                float3 node_4208 = (_LightColor0.rgb*(_MainTex_var.rgb*_TintColor.rgb));
+                float3 diffColor = node_4208;
                 o.Albedo = diffColor;
                 
                 return UnityMetaFragment( o );
