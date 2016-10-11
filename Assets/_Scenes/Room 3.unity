@@ -316,11 +316,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010347960508, guid: 09c98d72b87899541800a46a9cd90c13, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.071
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4000010347960508, guid: 09c98d72b87899541800a46a9cd90c13, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.131
+      value: 2.34
       objectReference: {fileID: 0}
     - target: {fileID: 65000012578039336, guid: 09c98d72b87899541800a46a9cd90c13,
         type: 2}
@@ -351,6 +351,10 @@ Prefab:
         type: 2}
       propertyPath: _isExitRightward
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010347960508, guid: 09c98d72b87899541800a46a9cd90c13, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 09c98d72b87899541800a46a9cd90c13, type: 2}
@@ -407,7 +411,7 @@ GameObject:
   - 33: {fileID: 802597685}
   - 23: {fileID: 802597684}
   - 65: {fileID: 802597683}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cardboard2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1013,6 +1017,83 @@ Prefab:
       propertyPath: m_CastShadows
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4000011374737180, guid: 99d06e358ce45964b98d468410347907, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011374737180, guid: 99d06e358ce45964b98d468410347907, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -8.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010782574838, guid: 99d06e358ce45964b98d468410347907, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010782574838, guid: 99d06e358ce45964b98d468410347907, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -8.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011080265006, guid: 99d06e358ce45964b98d468410347907, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011080265006, guid: 99d06e358ce45964b98d468410347907, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011080265006, guid: 99d06e358ce45964b98d468410347907, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -8.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000014055642210, guid: 99d06e358ce45964b98d468410347907, type: 2}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 65000013734156016, guid: 99d06e358ce45964b98d468410347907,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65000010384063486, guid: 99d06e358ce45964b98d468410347907,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65000013012306770, guid: 99d06e358ce45964b98d468410347907,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65000012054885996, guid: 99d06e358ce45964b98d468410347907,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65000013020825174, guid: 99d06e358ce45964b98d468410347907,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65000012054885996, guid: 99d06e358ce45964b98d468410347907,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 19.058844
+      objectReference: {fileID: 0}
+    - target: {fileID: 65000012054885996, guid: 99d06e358ce45964b98d468410347907,
+        type: 2}
+      propertyPath: m_Size.z
+      value: 20.000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 65000012054885996, guid: 99d06e358ce45964b98d468410347907,
+        type: 2}
+      propertyPath: m_Center.x
+      value: -19.99929
+      objectReference: {fileID: 0}
+    - target: {fileID: 65000012054885996, guid: 99d06e358ce45964b98d468410347907,
+        type: 2}
+      propertyPath: m_Center.y
+      value: 22.470577
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 99d06e358ce45964b98d468410347907, type: 2}
   m_IsPrefabParent: 0
@@ -1027,7 +1108,7 @@ GameObject:
   - 33: {fileID: 2120026516}
   - 23: {fileID: 2120026515}
   - 65: {fileID: 2120026514}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cardboard1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
