@@ -352,7 +352,7 @@ public class BoomonController : Touchable, ITeleportable
 
 		Rigidbody rigid = hit.collider.attachedRigidbody;
 
-		if(rigid != null)
+		if(rigid != null) 
 			Push(rigid);
 		else if (Vector3.Dot(hit.normal, _refSystem.JumpDir) < _groundSlopeCosine)
 			CurrentState = State.Idle;
@@ -519,6 +519,10 @@ public class BoomonController : Touchable, ITeleportable
 
 		rigid.AddForce( (1f - _bounciness) * _pushMass * _velocity, ForceMode.Impulse);
 		_velocity *= _bounciness;
+
+		var item = rigid.GetComponent<ItemActivator>();
+		if (item != null)
+			item.Activate();
 	}
 
 	

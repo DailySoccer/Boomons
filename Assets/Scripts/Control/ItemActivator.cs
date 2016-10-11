@@ -6,7 +6,7 @@ public class ItemActivator : Touchable
 
 	#region Public Methods
 
-	private void Activate()
+	public void Activate()
 	{
 		Debug.Log("ItemActivator::Activate");
 		
@@ -34,6 +34,12 @@ public class ItemActivator : Touchable
 		base.OnDestroy();
 	}
 
+	private void OnCollisionEnter(Collision info)
+	{
+		if (info.gameObject.tag == _playerTag)
+			Activate();
+	}
+
 	#endregion
 
 	//======================================================================
@@ -55,7 +61,7 @@ public class ItemActivator : Touchable
 	private Animator _animator;
 	private AudioSource _audio;
 	[SerializeField] private string _playTriggerName = "Play";
-	
+	[SerializeField] private string _playerTag = "Player";
 
 	#endregion
 }
