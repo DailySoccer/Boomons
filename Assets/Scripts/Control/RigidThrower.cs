@@ -75,7 +75,8 @@ public class RigidThrower : Touchable
 		Vector3 dir = swipeVector.x * camera.transform.right 
 			        + swipeVector.y * camera.transform.up;
 
-/*
+		swipeSpeedRatio = .25f + .75f*swipeSpeedRatio;
+//*
 		return swipeSpeedRatio * _throwSpeedMax * dir.normalized;
 /*/
 		return _throwSpeedMax * dir.normalized;

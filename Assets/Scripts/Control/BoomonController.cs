@@ -260,6 +260,7 @@ public class BoomonController : Touchable, ITeleportable
 
 	public override void OnSwipe(GameObject go, Vector2 position, Vector2 direction, float speedRatio)
 	{
+		Log("OnSwipe");
 		//if (go != gameObject)
 		//{
 		//	if (go != null)
