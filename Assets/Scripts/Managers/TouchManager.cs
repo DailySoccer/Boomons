@@ -260,10 +260,10 @@ public class TouchManager : Singleton<TouchManager>
 	protected static void Log(string method, object msg = null, UnityEngine.Object context = null)
 	{
 		string log = "TouchManager::" + method;
-		if (!string.IsNullOrEmpty(msg.ToString()))
+		if (msg != null && msg.ToString() != string.Empty)
 			log += ">> " + msg;
 
-		Debug.Log("<color=green>" + log + "</color>", context);
+		Debug.Log("<b><color=green>" + log + "</color></b>", context);
 	}
 
 	/// <summary>
@@ -370,18 +370,18 @@ public class TouchManager : Singleton<TouchManager>
 	{
 		result = new SwipeResult();
 
-		bool isSwipe = data.Position.sqrMagnitude > _swipeInchesSqrMin*_dpiSqr;
-		if (!isSwipe)
-		{
-			result.Type = SwipeResultType.DistanceFail;
-			return false;
-		}
-
 		float inchesPerSecSqr = data.Position.sqrMagnitude/(_dpiSqr*data.Seconds*data.Seconds);
-		isSwipe &= inchesPerSecSqr > _swipeInchesPerSecMin*_swipeInchesPerSecMin;
+		bool isSwipe = inchesPerSecSqr > _swipeInchesPerSecMin*_swipeInchesPerSecMin;
 		if (!isSwipe)
 		{
 			result.Type = SwipeResultType.SpeedFail;
+			return false;
+		}
+
+		isSwipe = data.Position.sqrMagnitude > _swipeInchesSqrMin * _dpiSqr;
+		if (!isSwipe)
+		{
+			result.Type = SwipeResultType.DistanceFail;
 			return false;
 		}
 

@@ -539,7 +539,7 @@ public class BoomonController : Touchable, ITeleportable
 	protected void Log(string method, object msg = null, UnityEngine.Object context = null)
 	{
 		string log = "BoomonController::" + method;
-		if(msg != null)
+		if (msg != null && msg.ToString() != string.Empty)
 			log += ">> " + msg;
 
 		Debug.Log("<b><color=cyan>" + log + "</color></b>", context ?? this);

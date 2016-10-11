@@ -94,6 +94,8 @@ public class ObjectTouchManager : TouchManager
 	/// <param name="o"></param>
 	private void OnObjectTapStart(GameObject o, Vector2 position)
 	{
+		Log("OnObjectTapStart");
+
 		if (o != null)
 		{
 			IObjectTouchListener listener = o.GetComponent<IObjectTouchListener>();
@@ -128,6 +130,8 @@ public class ObjectTouchManager : TouchManager
 	/// <param name="o"></param>
 	private void OnObjectTapStop(GameObject o, Vector2 position)
 	{
+		Log("OnObjectTapStop");
+
 		if (o != null)
 		{
 			IObjectTouchListener listener = o.GetComponent<IObjectTouchListener>();
@@ -145,6 +149,8 @@ public class ObjectTouchManager : TouchManager
 	/// <param name="o"></param>
 	private void OnObjectDoubleTap(GameObject o, Vector2 position)
 	{
+		Log("OnObjectDoubleTap");
+
 		if (o != null)
 		{
 			IObjectTouchListener listener = o.GetComponent<IObjectTouchListener>();
@@ -168,6 +174,8 @@ public class ObjectTouchManager : TouchManager
 	{
 		if (o != null)
 		{
+			Log("OnObjectSwipe", o.name);
+
 			IObjectTouchListener listener = o.GetComponent<IObjectTouchListener>();
 			if (listener != null && _selfListeners.Contains(listener))
 				listener.OnSwipe(o, position, direction, speedRatio);
