@@ -477,7 +477,8 @@ public class BoomonController : Touchable, ITeleportable
 	
 	private void CodeDriveUpdate()
 	{
-		if((_drivenTarget - transform.position).sqrMagnitude < GoToDistanceMinSqr)
+		bool hasReachedTarget = Vector3.Dot(_velocity, transform.position - _drivenTarget) > 0f;
+		if (hasReachedTarget)
 			CurrentState = State.Idle;
 		else
 			_controller.SimpleMove(_velocity);
