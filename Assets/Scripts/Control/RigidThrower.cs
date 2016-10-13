@@ -17,8 +17,7 @@ public class RigidThrower : Touchable
 				return;
 		}
 
-		Vector3 touchPosition = _rigid.position;
-		//Camera.main.ScreenToWorldPoint(position);
+		Vector3 touchPosition =  Camera.main.ScreenToWorldPoint(position);
 		Throw(touchPosition, CalcThrowVelocity(direction, speedRatio));
 	}
 
