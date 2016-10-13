@@ -25,7 +25,6 @@ public class GameManager : Singleton<GameManager>
 		Boomon = boomonGo.GetComponent<BoomonController>();
 	}
 
-
 	#endregion
 
 	//=======================================================
