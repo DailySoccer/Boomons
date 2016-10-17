@@ -8,7 +8,7 @@ public class ItemActivator : Touchable
 
 	public void Activate()
 	{
-		Debug.Log("ItemActivator::Activate");
+		Debug.Log("ItemActivator::Activate>> " + name, this);
 		
 		_animator.SetTrigger(_playTriggerName);
 		_audio.Play();

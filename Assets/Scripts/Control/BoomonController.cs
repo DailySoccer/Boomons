@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-[RequireComponent(typeof(Animator), typeof(CharacterController))]
+[RequireComponent(typeof(Animator), typeof(CharacterController), typeof(FacialAnimator))]
 public class BoomonController : Touchable, ITeleportable
 {
 	#region Public Fields
@@ -172,6 +172,7 @@ public class BoomonController : Touchable, ITeleportable
 
 		_animator = GetComponent<Animator>();
 		_controller = GetComponent<CharacterController>();
+		_face = GetComponent<FacialAnimator>();
 		_groundSlopeCosine = Mathf.Cos(_controller.slopeLimit * Mathf.Deg2Rad);
 
 		if (_bipedRoot == null)
@@ -191,6 +192,8 @@ public class BoomonController : Touchable, ITeleportable
 	{
 		_goToCallbacks = null;
 		_ragdoll.GroundEnter -= OnRagdollGroundEnter;
+
+		_face = null;
 		_ragdoll = null;
 		_bipedRoot = null;
 		_animator = null;
@@ -284,7 +287,10 @@ public class BoomonController : Touchable, ITeleportable
 
 	//----------------------------------------------------------------------------------
 
-
+	/// <summary>
+	/// Animation Event
+	/// Indicates that Idle animation is playing.
+	/// </summary>
 	private void OnIdleReady()
 	{
 		IsTouchEnabled = true;
@@ -315,6 +321,11 @@ public class BoomonController : Touchable, ITeleportable
 		}
 	}
 	
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="nextState"></param>
 	private void OnIdleEnd(State nextState)
 	{
 		Log("OnIdleEnd" , "Next=" + nextState);
@@ -371,6 +382,8 @@ public class BoomonController : Touchable, ITeleportable
 	private void OnThrowEnd(State nextState)
 	{
 		Log("OnThrowEnd");
+
+		_face.Reset();
 		_ragdoll.gameObject.SetActive(false);
 		gameObject.SetActive(true);
 	}
@@ -642,7 +655,8 @@ public class BoomonController : Touchable, ITeleportable
 	private Dictionary<State, StateActions> _stateActions;
 	private List<Action> _goToCallbacks;
 	private Vector3 _drivenTarget;
-	
+	private FacialAnimator _face
+		;
 
 	#endregion
 

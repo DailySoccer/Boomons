@@ -251,6 +251,7 @@ GameObject:
   - 95: {fileID: 95000010975132018}
   - 143: {fileID: 143000013758018526}
   - 114: {fileID: 114000013122551014}
+  - 114: {fileID: 114000012784944836}
   m_Layer: 12
   m_Name: ArtistBoomon
   m_TagString: Player
@@ -507,7 +508,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011968032778}
   - 137: {fileID: 137000014058507888}
-  - 114: {fileID: 114000013546857468}
   m_Layer: 12
   m_Name: BooArtistBody
   m_TagString: Untagged
@@ -1005,7 +1005,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011865319436}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.030000001, y: -0.52, z: -0.060000002}
+  m_LocalPosition: {x: 4.13, y: 0, z: -8.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1413,6 +1413,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000012784944836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011865319436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc223253d3069d44496023364a8b1805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 0}
+  _facialBoneName: DummyFacial
+  _facialMaterialIndex: 1
 --- !u!114 &114000013122551014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1443,19 +1457,6 @@ MonoBehaviour:
   _standUpTriggerName: StandUp
   _ticklesTriggerName: Tickles
   _ragdollPath: Prefabs/ArtistRagdoll
---- !u!114 &114000013546857468
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013169069188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc223253d3069d44496023364a8b1805, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _facialBoneName: DummyFacial
-  _facialMaterialIndex: 1
 --- !u!137 &137000014058507888
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
