@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -28,7 +27,7 @@ public class Teleport : MonoBehaviour
 
 	private void Awake()
 	{
-		_rigids		= new HashSet<Rigidbody>();
+		_rigids = new HashSet<Rigidbody>();
 
 		_collider = GetComponent<Collider>();
 		_animator = GetComponent<Animator>();
