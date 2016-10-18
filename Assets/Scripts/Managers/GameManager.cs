@@ -48,13 +48,16 @@ public class GameManager : Singleton<GameManager>
 
 	public void RespawnBoomon(BoomonType boomonType)
 	{
-		Transform spawnPoint = Boomon != null ? Boomon.transform :
-				GameObject.FindGameObjectWithTag(_spawnTag).transform;
+		GameObject spawnPoint = Boomon != null ? Boomon.gameObject:
+				GameObject.FindGameObjectWithTag(_spawnTag);
 
-		if(Boomon != null)
+		if (spawnPoint == null) {
+			Debug.LogWarning("GameManager::Spawn>> Spawn point not found");
+			return;
+		}
+
+		if (Boomon != null)
 			Destroy(Boomon.gameObject);
-
-		Debug.Assert(spawnPoint != null, "GameManager::Spawn>> Spawn point not found");
 
 		string boomonPath = string.Format(_boomonPathFormat, boomonType);
 		
@@ -157,7 +160,7 @@ public class GameManager : Singleton<GameManager>
 
 	[SerializeField] private string _mainMenuSceneName = "MainMenu";
 	[SerializeField] private string _spawnTag = "Respawn";
-	[SerializeField] private string _boomonPathFormat = "Characters/{0}";
+	[SerializeField] private string _boomonPathFormat = "Characters/{0}Boomon";
 	[SerializeField] private BoomonType _boomonTypeEditor;
 
 	private BoomonType _boomonType;

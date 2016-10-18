@@ -92,11 +92,11 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 	{
 		if (this != _instance)
 		{
-			Debug.Log("GameManager::OnDestroy>> Duplicated singleton " + name);
+			Debug.Log(name + "::OnDestroy>> Duplicated singleton");
 		}
 		else
 		{
-			Debug.Log("GameManager::OnDestroy>> Application quit");
+			Debug.Log(name + "::OnDestroy>> Application quit");
 			_instance = null;
 			_isApplicationQuitting = true;
 		}
