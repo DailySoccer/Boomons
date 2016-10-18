@@ -1291,7 +1291,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013700638954}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.13, y: 0, z: -5.63}
+  m_LocalPosition: {x: 4.13, y: 0, z: -6.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1507,14 +1507,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _touchLayerName: Touchable
   _mustReceiveOnlyItsTouches: 0
-  _bipedRoot: {fileID: 0}
   _right: {x: 0, y: 0, z: 1}
   _bounciness: 0.5
   _pushMass: 5
   _moveSpeedMax: 5
-  _jumpSpeedMax: 10
-  _jumpDegreesMin: 30
-  _frontJumpDegreesMin: 80
   _throwDegreesMin: 10
   _senseReversalDistMin: 1
   _idleTriggerName: Idle
