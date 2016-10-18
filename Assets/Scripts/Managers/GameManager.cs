@@ -1,5 +1,4 @@
-﻿
-
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +10,7 @@ public class GameManager : Singleton<GameManager>
 
 	public void LoadScene(string sceneName)
 	{
-		SceneManager.LoadScene(sceneName);
+		StartCoroutine(LoadSceneCoroutine(sceneName));
 	}
 
 
@@ -88,7 +87,21 @@ public class GameManager : Singleton<GameManager>
 
 	#region Private Methods
 
+	private IEnumerator LoadSceneCoroutine(string sceneName)
+	{
+		AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+		if (operation == null)
+			yield break;
 
+		LoadScreenManager.Instance.Show(sceneName);
+		
+		yield return new WaitUntil(() => {
+			LoadScreenManager.Instance.ProgressRatio = operation.progress;
+			return operation.isDone;
+		});
+
+		LoadScreenManager.Instance.IsVisible = false;
+	}
 
 	#endregion
 
@@ -96,8 +109,8 @@ public class GameManager : Singleton<GameManager>
 	#region Private Fields
 
 	[SerializeField] private string _mainMenuSceneName = "MainMenu";
-	[SerializeField] private string _boomonPath = "Prefabs/Boomon";
-	[SerializeField] private string _spawnTag = "Spawn";
+	[SerializeField] private string _boomonPath = "Prefabs/ArtistBoomon";
+	[SerializeField] private string _spawnTag = "Respawn";
 
 	private GameObject _boomonPrefab;
 
