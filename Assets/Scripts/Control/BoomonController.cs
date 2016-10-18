@@ -88,21 +88,21 @@ public class BoomonController : Touchable, ITeleportable
 		CurrentState = State.Moving;
 	}
 
-	public void Jump(Vector2 swipeVector, float speedRatio)
-	{
-		if (CurrentState == State.Jumping || CurrentState == State.Throwing)
-			return;
+	//public void Jump(Vector2 swipeVector, float speedRatio)
+	//{
+	//	if (CurrentState == State.Jumping || CurrentState == State.Throwing)
+	//		return;
 
-		float jumpDegress = Mathf.Atan(swipeVector.y / Mathf.Abs(swipeVector.x)) * Mathf.Rad2Deg;
-		if (!(jumpDegress > _jumpDegreesMin))
-			return;
+	//	float jumpDegress = Mathf.Atan(swipeVector.y / Mathf.Abs(swipeVector.x)) * Mathf.Rad2Deg;
+	//	if (!(jumpDegress > _jumpDegreesMin))
+	//		return;
 
-		MoveSense = jumpDegress > _frontJumpDegreesMin ?
-			Sense.None : (Sense)Mathf.Sign(swipeVector.x);
+	//	MoveSense = jumpDegress > _frontJumpDegreesMin ?
+	//		Sense.None : (Sense)Mathf.Sign(swipeVector.x);
 
-		_jumpStartVelocity = CalculateJumpSpeed(swipeVector, speedRatio);
-		CurrentState = State.Jumping;
-	}
+	//	_jumpStartVelocity = CalculateJumpSpeed(swipeVector, speedRatio);
+	//	CurrentState = State.Jumping;
+	//}
 
 	public void Throw(Vector2 swipePos, Vector2 swipeVector, float speedRatio)
 	{
@@ -175,11 +175,11 @@ public class BoomonController : Touchable, ITeleportable
 		_face = GetComponent<FacialAnimator>();
 		_groundSlopeCosine = Mathf.Cos(_controller.slopeLimit * Mathf.Deg2Rad);
 
-		if (_bipedRoot == null)
-			_bipedRoot = GetComponentsInChildren<Transform>()
-				.First(t => t.name.Contains("Bip"));
+		//if (_bipedRoot == null)
+		//	_bipedRoot = GetComponentsInChildren<Transform>()
+		//		.First(t => t.name.Contains("Bip"));
 
-		_bipedOffsetPos = _bipedRoot.position - transform.position;
+		//_bipedOffsetPos = _bipedRoot.position - transform.position;
 
 		var ragdollPrefab = Resources.Load<GameObject>(_ragdollPath);
 		_ragdoll = Instantiate(ragdollPrefab).GetComponent<BoomonRagdoll>();
@@ -195,7 +195,7 @@ public class BoomonController : Touchable, ITeleportable
 
 		_face = null;
 		_ragdoll = null;
-		_bipedRoot = null;
+		//_bipedRoot = null;
 		_animator = null;
 		_controller = null;
 
@@ -391,68 +391,68 @@ public class BoomonController : Touchable, ITeleportable
 
 	//----------------------------------------------------
 
-	private void OnJumpStart(State lastState)
-	{
-		Log("OnJumpStart");
+	//private void OnJumpStart(State lastState)
+	//{
+	//	Log("OnJumpStart");
 
-		_isParaboling = false;
-	}
+	//	_isParaboling = false;
+	//}
 
-	private void OnJumpTakeOff()
-	{
-		Log("OnJumpTakeOff");
-		_isParaboling = true;
+	//private void OnJumpTakeOff()
+	//{
+	//	Log("OnJumpTakeOff");
+	//	_isParaboling = true;
 
-		_controller.Move(_bipedRoot.position - (_refSystem.PlanePoint + _bipedOffsetPos));
-		_velocity = _jumpStartVelocity;
-	}
+	//	_controller.Move(_bipedRoot.position - (_refSystem.PlanePoint + _bipedOffsetPos));
+	//	_velocity = _jumpStartVelocity;
+	//}
 
-	private void OnJumpEnd(State nextState)
-	{
-		Log("OnJumpEnd");
-		_isParaboling = false;
-		_velocity = Vector3.zero;
-	}
+	//private void OnJumpEnd(State nextState)
+	//{
+	//	Log("OnJumpEnd");
+	//	_isParaboling = false;
+	//	_velocity = Vector3.zero;
+	//}
 
 
-	private void JumpUpdate()
-	{
-		if (!_isParaboling)
-			return;
+	//private void JumpUpdate()
+	//{
+	//	if (!_isParaboling)
+	//		return;
 
-		float t = Time.deltaTime;
+	//	float t = Time.deltaTime;
 
-		_controller.Move(_velocity * t + .5f * Physics.gravity * t * t);
-		_velocity += Physics.gravity * t;
-	}
+	//	_controller.Move(_velocity * t + .5f * Physics.gravity * t * t);
+	//	_velocity += Physics.gravity * t;
+	//}
 
-	private void OnJumpCollision(ControllerColliderHit hit)
-	{
-		Log("OnJumpCollision", hit.gameObject.name);
+	//private void OnJumpCollision(ControllerColliderHit hit)
+	//{
+	//	Log("OnJumpCollision", hit.gameObject.name);
 
-		float slopeCosine = Vector3.Dot(hit.normal, _refSystem.JumpDir);
+	//	float slopeCosine = Vector3.Dot(hit.normal, _refSystem.JumpDir);
 
-		if (slopeCosine > _groundSlopeCosine) {
-			CurrentState = State.Idle;
-			return;
-		}
+	//	if (slopeCosine > _groundSlopeCosine) {
+	//		CurrentState = State.Idle;
+	//		return;
+	//	}
 		
-		Rigidbody rigid = hit.collider.attachedRigidbody;
-		if (rigid != null)
-			Push(rigid);
-		else
-			Bounce(hit.normal);
+	//	Rigidbody rigid = hit.collider.attachedRigidbody;
+	//	if (rigid != null)
+	//		Push(rigid);
+	//	else
+	//		Bounce(hit.normal);
 		
 	
-		//float colliderSlope = Mathf.Abs(Vector3.Angle(hit.normal, _jumpDirection));
-		//if (colliderSlope < _controller.slopeLimit) {
-		//	CurrentState = State.Idle;
+	//	//float colliderSlope = Mathf.Abs(Vector3.Angle(hit.normal, _jumpDirection));
+	//	//if (colliderSlope < _controller.slopeLimit) {
+	//	//	CurrentState = State.Idle;
 
-		//} else if (Vector3.Dot(hit.normal, _velocity) < 0f) {
-		//	Bounce(hit.normal);
+	//	//} else if (Vector3.Dot(hit.normal, _velocity) < 0f) {
+	//	//	Bounce(hit.normal);
 			
-		//}
-	}
+	//	//}
+	//}
 
 	//------------------------------------------------------------------
 
@@ -504,17 +504,17 @@ public class BoomonController : Touchable, ITeleportable
 
 	#region Private Methods
 
-	private Vector3 CalculateJumpSpeed(Vector2 swipeVector, float speedRatio)
-	{
-		Vector3 dir = swipeVector.x * _refSystem.Right
-					+ swipeVector.y * _refSystem.JumpDir;
+//	private Vector3 CalculateJumpSpeed(Vector2 swipeVector, float speedRatio)
+//	{
+//		Vector3 dir = swipeVector.x * _refSystem.Right
+//					+ swipeVector.y * _refSystem.JumpDir;
 		
-/*
-		return speedRatio * _jumpSpeedMax * dir.normalized;
-/*/
-		return _jumpSpeedMax * dir.normalized;
-/**/
-	}
+///*
+//		return speedRatio * _jumpSpeedMax * dir.normalized;
+///*/
+//		return _jumpSpeedMax * dir.normalized;
+///**/
+//	}
 
 
 	private void Bounce(Vector3 normal)
@@ -564,10 +564,7 @@ public class BoomonController : Touchable, ITeleportable
 
 	#region Private Fields
 
-	private const float GoToDistanceMinSqr = 1f;
-	
-
-	[SerializeField] private Transform _bipedRoot;
+	//[SerializeField] private Transform _bipedRoot;
 	[SerializeField] private Vector3 _right;
 	private Vector3 _bipedOffsetPos;
 
@@ -575,9 +572,9 @@ public class BoomonController : Touchable, ITeleportable
 	[SerializeField, Range(0f, 1f)]		private float _bounciness = 0.8f;
 	[SerializeField, Range(0f, 20f)]	private float _pushMass = 5f;
    	[SerializeField, Range(0.5f, 50f)]	private float _moveSpeedMax = 5f;
-	[SerializeField, Range(0f, 50f)]	private float _jumpSpeedMax = 10f;
-	[SerializeField, Range(0f, 90f)]	private float _jumpDegreesMin;
-	[SerializeField, Range(0f, 90f)]	private float _frontJumpDegreesMin = 80f;
+	//[SerializeField, Range(0f, 50f)]	private float _jumpSpeedMax = 10f;
+	//[SerializeField, Range(0f, 90f)]	private float _jumpDegreesMin;
+	//[SerializeField, Range(0f, 90f)]	private float _frontJumpDegreesMin = 80f;
 	[SerializeField, Range(0f, 90f)]	private float _throwDegreesMin;
 	[SerializeField, Range(0f, 10f)]	private float _senseReversalDistMin = 1;
 

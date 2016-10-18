@@ -35,7 +35,7 @@ public class ScrollFollower : MonoBehaviour
 
 	private void LateUpdate()
 	{
-		if(!_target.gameObject.activeInHierarchy)
+		if(_target == null || !_target.gameObject.activeInHierarchy)
 			_target = GameObject.FindGameObjectWithTag(_targetTag).transform;
 		
 		Vector3 targetPos = _target.position;

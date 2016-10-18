@@ -2,25 +2,66 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum BoomonType
+{
+	Artist = 0,
+	Gamer = 1,
+	Maker = 2,
+	Music = 3,
+	Naturalist = 4,
+	FemaleSport = 5,
+	MaleSport = 6
+}
+
+
 public class GameManager : Singleton<GameManager>
 {
+	#region Public Fields
+
+	public BoomonType BoomonType
+	{
+		get { return _boomonType; }
+		set
+		{
+			if (value == _boomonType)
+				return;
+			_boomonType = value;
+			RespawnBoomon(value);
+		}
+	}
+	#endregion 
+
+
+	//=====================================================================
+
+
 	#region Public Methods
 
 	public BoomonController Boomon { get; private set; }
 
 	public void LoadScene(string sceneName)
 	{
+		Boomon = null;
 		StartCoroutine(LoadSceneCoroutine(sceneName));
 	}
 
 
-	public void RespawnBoomon()
+	public void RespawnBoomon(BoomonType boomonType)
 	{
-		GameObject spawnPoint = GameObject.FindGameObjectWithTag(_spawnTag);
+		Transform spawnPoint = Boomon != null ? Boomon.transform :
+				GameObject.FindGameObjectWithTag(_spawnTag).transform;
+
+		if(Boomon != null)
+			Destroy(Boomon.gameObject);
+
 		Debug.Assert(spawnPoint != null, "GameManager::Spawn>> Spawn point not found");
 
-		GameObject boomonGo = (GameObject)Instantiate(_boomonPrefab,
+		string boomonPath = string.Format(_boomonPathFormat, boomonType);
+		
+		GameObject boomonGo = (GameObject)Instantiate(
+			Resources.Load<GameObject>(boomonPath),
 			spawnPoint.transform.position, spawnPoint.transform.rotation);
+
 		Boomon = boomonGo.GetComponent<BoomonController>();
 	}
 
@@ -33,13 +74,12 @@ public class GameManager : Singleton<GameManager>
 	protected override void Awake()
 	{
 		base.Awake();
-		_boomonPrefab = Resources.Load<GameObject>(_boomonPath);
+		_boomonType = _boomonTypeEditor;
 	}
 
 	protected override void OnDestroy()
 	{
 		Boomon = null;
-		_boomonPrefab = null;
 	}
 
 	protected void OnEnable()
@@ -56,6 +96,10 @@ public class GameManager : Singleton<GameManager>
 	{
 		if (Input.GetKey(KeyCode.Escape))
 			OnEscape();
+
+#if UNITY_EDITOR
+		BoomonType = _boomonTypeEditor;
+#endif
 	}
 	
 	#endregion
@@ -77,7 +121,7 @@ public class GameManager : Singleton<GameManager>
 		if (scene.name == _mainMenuSceneName)
 			return;
 
-		RespawnBoomon();
+		RespawnBoomon(BoomonType);
 	}
 
 	#endregion
@@ -105,14 +149,18 @@ public class GameManager : Singleton<GameManager>
 
 	#endregion
 
-	//=================================================================
+
+	//========================================================================================
+
+
 	#region Private Fields
 
 	[SerializeField] private string _mainMenuSceneName = "MainMenu";
-	[SerializeField] private string _boomonPath = "Prefabs/ArtistBoomon";
 	[SerializeField] private string _spawnTag = "Respawn";
+	[SerializeField] private string _boomonPathFormat = "Characters/{0}";
+	[SerializeField] private BoomonType _boomonTypeEditor;
 
-	private GameObject _boomonPrefab;
+	private BoomonType _boomonType;
 
 	#endregion
 
