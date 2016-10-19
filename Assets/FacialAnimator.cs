@@ -6,8 +6,14 @@ public class FacialAnimator : MonoBehaviour
 
 	public Vector2 FacialCoordinates
 	{
-		get { return _facialBone.localPosition; }
-		private set { _facialBone.localPosition = value; }
+		get {
+			return  new Vector2(
+				 _facialBone.localPosition.x, 
+				-_facialBone.localPosition.y);
+		}
+		private set {
+			_facialBone.localPosition = value;
+		}
 	}
 
 
