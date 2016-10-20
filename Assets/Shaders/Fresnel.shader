@@ -137,12 +137,10 @@ Shader "Shader Forge/Fresnel" {
                 float3 indirectDiffuse = float3(0,0,0);
                 indirectDiffuse += gi.indirect.diffuse;
                 float4 _MainTex_var = tex2D(_MainTex,TRANSFORM_TEX(i.uv0, _MainTex));
-                float3 node_4208 = (_LightColor0.rgb*(_MainTex_var.rgb*_TintColor.rgb));
-                float3 diffuseColor = node_4208;
+                float3 diffuseColor = (_LightColor0.rgb*(_MainTex_var.rgb*_TintColor.rgb));
                 float3 diffuse = (directDiffuse + indirectDiffuse) * diffuseColor;
 ////// Emissive:
-                float3 node_7363 = ((_FresnelColor.rgb*pow((1.0 - dot(viewDirection,i.normalDir)),(1.0/_Fresnel)))*_FresnelON);
-                float3 emissive = node_7363;
+                float3 emissive = ((_FresnelColor.rgb*pow((1.0 - dot(viewDirection,i.normalDir)),(1.0/_Fresnel)))*_FresnelON);
 /// Final Color:
                 float3 finalColor = diffuse + emissive;
                 return fixed4(finalColor,1);
@@ -211,12 +209,10 @@ Shader "Shader Forge/Fresnel" {
                 UnityMetaInput o;
                 UNITY_INITIALIZE_OUTPUT( UnityMetaInput, o );
                 
-                float3 node_7363 = ((_FresnelColor.rgb*pow((1.0 - dot(viewDirection,i.normalDir)),(1.0/_Fresnel)))*_FresnelON);
-                o.Emission = node_7363;
+                o.Emission = ((_FresnelColor.rgb*pow((1.0 - dot(viewDirection,i.normalDir)),(1.0/_Fresnel)))*_FresnelON);
                 
                 float4 _MainTex_var = tex2D(_MainTex,TRANSFORM_TEX(i.uv0, _MainTex));
-                float3 node_4208 = (_LightColor0.rgb*(_MainTex_var.rgb*_TintColor.rgb));
-                float3 diffColor = node_4208;
+                float3 diffColor = (_LightColor0.rgb*(_MainTex_var.rgb*_TintColor.rgb));
                 o.Albedo = diffColor;
                 
                 return UnityMetaFragment( o );

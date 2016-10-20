@@ -7,8 +7,8 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Rocket
-  m_Shader: {fileID: 4800000, guid: 32076f740c465e2468f9d2e771564b59, type: 3}
-  m_ShaderKeywords: _EMISSION
+  m_Shader: {fileID: 4800000, guid: 34c3ae4ab4a5b1841ad2951f204377ee, type: 3}
+  m_ShaderKeywords: _EMISSION _FRESNELON_ON
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -83,6 +83,12 @@ Material:
         name: _DstBlend
       second: 0
     - first:
+        name: _Fresnel
+      second: 0.4
+    - first:
+        name: _FresnelON
+      second: 1
+    - first:
         name: _GlossMapScale
       second: 1
     - first:
@@ -125,3 +131,9 @@ Material:
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
+    - first:
+        name: _FresnelColor
+      second: {r: 1, g: 0.9724139, b: 0, a: 1}
+    - first:
+        name: _TintColor
+      second: {r: 1, g: 1, b: 1, a: 1}
