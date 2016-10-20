@@ -16,8 +16,6 @@ public class RotationTrack : MonoBehaviour {
 			_currentRot = Quaternion.identity;
 			_active = false;
 			TargetCamera.gameObject.SetActive(false);
-			//TODO erase the next line
-			Activate();
 		}
 	}
 	
