@@ -27,11 +27,6 @@ public class RotationTrack : MonoBehaviour {
 			Vector3 gyroRot = -Input.gyro.rotationRate;
 			gyroRot.z = -gyroRot.z;
 			TargetCamera.transform.Rotate(gyroRot);
-			//TODO change this for a UI button click
-			if (Input.GetMouseButtonDown(0))
-			{
-				this.enabled = false;
-			}
 		}
 	}
 
