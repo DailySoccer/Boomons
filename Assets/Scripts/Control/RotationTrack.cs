@@ -4,8 +4,9 @@ using System.Collections;
 public class RotationTrack : MonoBehaviour {
 
 	public Transform TargetCamera = null;
+	public MeshRenderer[] MeshesList;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		_initialized = TargetCamera != null;
 		if (!_initialized)
 		{
@@ -14,8 +15,8 @@ public class RotationTrack : MonoBehaviour {
 		else
 		{
 			_currentRot = Quaternion.identity;
-			_active = false;
-			TargetCamera.gameObject.SetActive(false);
+			_active = true;
+			this.enabled = false;
 		}
 	}
 	
@@ -26,10 +27,15 @@ public class RotationTrack : MonoBehaviour {
 			Vector3 gyroRot = -Input.gyro.rotationRate;
 			gyroRot.z = -gyroRot.z;
 			TargetCamera.transform.Rotate(gyroRot);
+			//TODO change this for a UI button click
+			if (Input.GetMouseButtonDown(0))
+			{
+				this.enabled = false;
+			}
 		}
 	}
 
-	public void Activate()
+	void OnEnable()
 	{
 		if (!_active)
 		{
@@ -37,7 +43,7 @@ public class RotationTrack : MonoBehaviour {
 		}
 	}
 
-	public void Deactivate()
+	void OnDisable()
 	{
 		if (_active)
 		{
@@ -49,6 +55,10 @@ public class RotationTrack : MonoBehaviour {
 	{
 		_active = active;
 		TargetCamera.gameObject.SetActive(_active);
+		foreach (MeshRenderer mr in MeshesList)
+		{
+			mr.enabled = !_active;
+		}
 		Input.gyro.enabled = _active;
 		Vector3 accel = Input.acceleration;
 		Vector3 upRelDir = new Vector3 (-accel.x , -accel.y, accel.z);

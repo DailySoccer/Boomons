@@ -76,9 +76,17 @@ ModelImporter:
       curves: []
       events:
       - time: 1
-        functionName: ExecuteOnClipEnd
+        functionName: ClipEnd
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: c6b53c586e716bc4bb4a0d42ab194491,
+        objectReferenceParameter: {fileID: 11500000, guid: e50fc0cc8e4cc32439ef25af785ac89b,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0
+        functionName: ClipStart
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: e50fc0cc8e4cc32439ef25af785ac89b,
           type: 3}
         floatParameter: 0
         intParameter: 0
