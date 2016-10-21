@@ -4,6 +4,19 @@ using System.Diagnostics;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
+
+// TODO Automatizar configuración (animators y lo que se pueda) a partir de esto
+public enum BoomonRole
+{
+	Artist = 0,
+	Gamer = 1,
+	Maker = 2,
+	Music = 3,
+	Naturalist = 4,
+	FemaleSport = 5,
+	MaleSport = 6
+}
+
 [RequireComponent(typeof(Animator), typeof(CharacterController), typeof(FacialAnimator))]
 public class BoomonController : Touchable, ITeleportable
 {
@@ -34,7 +47,12 @@ public class BoomonController : Touchable, ITeleportable
 				_ragdoll.Position : transform.position;
 		}
 	}
-	
+
+	public BoomonRole Role
+	{
+		get { return _role; }
+	}
+
 	public State CurrentState
 	{
 		get { return _currentState; }
@@ -148,11 +166,14 @@ public class BoomonController : Touchable, ITeleportable
 	
 	#region Mono
 
+	// TODO Extraer subinicializaicones
 	protected override void Awake()
 	{
 		base.Awake();
 
 		Debug.Assert(_right != Vector3.zero, "BoomonController::Awake>> Right move direction not defined!!");
+
+		_role =  (BoomonRole) Enum.Parse(typeof (BoomonRole), name.Split('(')[0]);
 
 		_goToCallbacks = new List<Action>();
 		_stateActions = new Dictionary<State, StateActions>
@@ -180,7 +201,8 @@ public class BoomonController : Touchable, ITeleportable
 
 		//_bipedOffsetPos = _bipedRoot.position - transform.position;
 
-		var ragdollPrefab = Resources.Load<GameObject>(_ragdollPath);
+		string ragdollPath = PathSolver.Instance.GetBoomonPath(_role, PathSolver.InstanceType.Ragdoll);
+		var ragdollPrefab = Resources.Load<GameObject>(ragdollPath);
 		_ragdoll = Instantiate(ragdollPrefab).GetComponent<BoomonRagdoll>();
 		_ragdoll.GroundEnter += OnRagdollGroundEnter;
 	}
@@ -579,18 +601,18 @@ public class BoomonController : Touchable, ITeleportable
 
 	[SerializeField] private string _idleTriggerName = "Idle";
 	[SerializeField] private string _runTriggerName = "Run";
-	[SerializeField] private string _jumpTriggerName = "Jump";
+	//[SerializeField] private string _jumpTriggerName = "Jump";
 	[SerializeField] private string _landTriggerName = "Land";
 	[SerializeField] private string _standUpTriggerName = "StandUp";
 	[SerializeField] private string _ticklesTriggerName = "Tickles";
 
-	[SerializeField] private string _ragdollPath = "Prefabs/Ragdoll.prefab";
 	
 
 	private Animator _animator;
 	private CharacterController _controller;
 	private BoomonRagdoll _ragdoll;
-	
+	private FacialAnimator _face;
+
 	private Vector3 _velocity;
 	private Vector3 _jumpStartVelocity;
 	
@@ -651,8 +673,7 @@ public class BoomonController : Touchable, ITeleportable
 	private Dictionary<State, StateActions> _stateActions;
 	private List<Action> _goToCallbacks;
 	private Vector3 _drivenTarget;
-	private FacialAnimator _face
-		;
+	private BoomonRole _role;
 
 	#endregion
 

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// Be aware this will not prevent a non singleton constructor
@@ -8,58 +7,26 @@ using UnityEngine;
 /// 
 /// As a note, this is made as MonoBehaviour because we need Coroutines.
 /// </summary>
-public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+public class Singleton<T> : MonoBehaviour 
+	where T : MonoBehaviour
 {
-	
 	public static T Instance
 	{
-		get { return GetInstance<T>(); }
-	}
-
-	public static TU GetInstance<TU>() where TU : T
-	{
-		if (_isApplicationQuitting)
+		get
 		{
-			Debug.LogWarning("[Singleton] Instance '" + typeof(TU) +
-							 "' already destroyed on application quit." +
-							 " Won't create again - returning null.");
-			return null;
-		}
-
-		lock (_lock)
-		{
-			if (_instance == null)
+			if (_isApplicationQuitting)
 			{
-				TU[] instances = FindObjectsOfType<TU>();
-
-				Debug.Assert(instances.Length <= 1,
-					"[Singleton] Something went really wrong " +
-					" - there should never be more than 1 singleton!" +
-					" Reopening the scene might fix it.");
-
-				if (instances.Length > 0)
-				{
-					_instance = instances[0];
-					Debug.Log("[Singleton] Using instance already created: " +
-							  _instance.gameObject.name);
-				}
-				else
-				{
-					GameObject singleton = new GameObject();
-					_instance = singleton.AddComponent<TU>();
-					singleton.name = typeof(TU).ToString();
-
-					DontDestroyOnLoad(singleton);
-
-					Debug.Log("[Singleton] An instance of " + typeof(TU) +
-							  " is needed in the scene, so '" + singleton +
-							  "' was created with DontDestroyOnLoad.");
-				}
+				Debug.LogWarning("Singleton::Instance>> '" + typeof(T) +
+								 "' already destroyed on application quit." +
+								 " Won't create again - returning null.");
+				return null;
 			}
 
-			return (TU) _instance;
+			return _instance ?? (_instance = FindInstance() ?? AutoInstantiate());
 		}
 	}
+
+
 
 
 	/// <summary>
@@ -70,7 +37,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 		if (_instance == null)
 		{
 			_instance = this as T;
-			DontDestroyOnLoad(gameObject);
+			DontDestroyOnLoad(this);
 		}
 		else if(this != _instance)
 		{
@@ -105,13 +72,60 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 	//====================================================
 
 	#region Private Methods
+
+	
+
+	private static T FindInstance()
+	{
+		T[] instances = FindObjectsOfType<T>();
+
+		Debug.Assert(instances.Length <= 1,
+			"[Singleton] Something went really wrong " +
+			" - there should never be more than 1 singleton!" +
+			" Reopening the scene might fix it.");
+
+		if (instances.Length > 0) {
+			Debug.Log("[Singleton] Using instance already created: " +
+						_instance.gameObject.name);
+			return instances[0];
+
+		} else {
+			return null;
+		}
+	}
+
+
+	private static T AutoInstantiate()
+	{
+		string instanceName = typeof (T).Name;
+
+		string prefabPath = string.Format(SingletonPathFormat, instanceName);
+		var prefab = Resources.Load<GameObject>(prefabPath);
+
+		T instance = prefab != null 
+			? Instantiate(prefab).GetComponent<T>()
+			: new GameObject().AddComponent<T>();
+			
+		instance.name = instanceName;
+		DontDestroyOnLoad(instance);
+
+		Debug.Log("Singleton::AutoInstantiate>> An instance of " + instanceName +
+				" is needed in the scene, so it was created with DontDestroyOnLoad.");
+
+		return instance;
+	}
+
+
+
 	#endregion
 
 	//=======================================================
 
 	#region Private Fields
+
+	private const string SingletonPathFormat = "Singletons/{0}";
+
 	private static T _instance;
 	private static bool _isApplicationQuitting;
-	private static object _lock = new object();
 	#endregion
 }

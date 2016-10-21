@@ -2,30 +2,20 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum BoomonType
-{
-	Artist = 0,
-	Gamer = 1,
-	Maker = 2,
-	Music = 3,
-	Naturalist = 4,
-	FemaleSport = 5,
-	MaleSport = 6
-}
 
 
-public class GameManager : Singleton<GameManager>
+public class GameManager : Manager
 {
 	#region Public Fields
 
-	public BoomonType BoomonType
+	public BoomonRole BoomonRole
 	{
-		get { return _boomonType; }
+		get { return _boomonRole; }
 		set
 		{
-			if (value == _boomonType)
+			if (value == _boomonRole)
 				return;
-			_boomonType = value;
+			_boomonRole = value;
 			RespawnBoomon(value);
 		}
 	}
@@ -46,7 +36,7 @@ public class GameManager : Singleton<GameManager>
 	}
 
 
-	public void RespawnBoomon(BoomonType boomonType)
+	public void RespawnBoomon(BoomonRole boomonRole)
 	{
 		GameObject spawnPoint = Boomon != null ? Boomon.gameObject:
 				GameObject.FindGameObjectWithTag(_spawnTag);
@@ -59,7 +49,8 @@ public class GameManager : Singleton<GameManager>
 		if (Boomon != null)
 			Destroy(Boomon.gameObject);
 
-		string boomonPath = string.Format(_boomonPathFormat, boomonType);
+		string boomonPath = PathSolver.Instance.GetBoomonPath(boomonRole, 
+			PathSolver.InstanceType.Controllable);
 		
 		GameObject boomonGo = (GameObject)Instantiate(
 			Resources.Load<GameObject>(boomonPath),
@@ -77,10 +68,10 @@ public class GameManager : Singleton<GameManager>
 	protected override void Awake()
 	{
 		base.Awake();
-		_boomonType = _boomonTypeEditor;
+		_boomonRole = _boomonRoleEditor;
 	}
 
-	protected override void OnDestroy()
+	protected void OnDestroy()
 	{
 		Boomon = null;
 	}
@@ -101,7 +92,7 @@ public class GameManager : Singleton<GameManager>
 			OnEscape();
 
 #if UNITY_EDITOR
-		BoomonType = _boomonTypeEditor;
+		BoomonRole = _boomonRoleEditor;
 #endif
 	}
 	
@@ -124,7 +115,7 @@ public class GameManager : Singleton<GameManager>
 		if (scene.name == _mainMenuSceneName)
 			return;
 
-		RespawnBoomon(BoomonType);
+		RespawnBoomon(BoomonRole);
 	}
 
 	#endregion
@@ -140,14 +131,14 @@ public class GameManager : Singleton<GameManager>
 		if (operation == null)
 			yield break;
 
-		LoadScreenManager.Instance.Show(sceneName);
+		LoadScreen.Instance.Show(sceneName);
 		
 		yield return new WaitUntil(() => {
-			LoadScreenManager.Instance.ProgressRatio = operation.progress;
+			LoadScreen.Instance.ProgressRatio = operation.progress;
 			return operation.isDone;
 		});
 
-		LoadScreenManager.Instance.IsVisible = false;
+		LoadScreen.Instance.IsVisible = false;
 	}
 
 	#endregion
@@ -160,10 +151,9 @@ public class GameManager : Singleton<GameManager>
 
 	[SerializeField] private string _mainMenuSceneName = "MainMenu";
 	[SerializeField] private string _spawnTag = "Respawn";
-	[SerializeField] private string _boomonPathFormat = "Characters/{0}Boomon";
-	[SerializeField] private BoomonType _boomonTypeEditor;
+	[SerializeField] private BoomonRole _boomonRoleEditor;
 
-	private BoomonType _boomonType;
+	private BoomonRole _boomonRole;
 
 	#endregion
 

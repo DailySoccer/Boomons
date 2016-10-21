@@ -4,11 +4,14 @@ using UnityEngine;
 using Debug = UnityEngine.Debug;
 
 
+
+
 /// <summary>
 /// 
 /// </summary>
-public class TouchManager : Singleton<TouchManager>
+public class TouchManager : Manager
 {
+	#region Public Fields
 	private struct InputData
 	{
 		public enum InputPhase
@@ -36,8 +39,10 @@ public class TouchManager : Singleton<TouchManager>
 			return new InputData(x.Position - y.Position, x.Seconds - y.Seconds);
 		}
 	}
+	#endregion
 
-#region Public members
+	//=====================================================================
+	#region Public members
 
 
 	/// <summary>
@@ -54,20 +59,21 @@ public class TouchManager : Singleton<TouchManager>
 	public event Action<Vector2> TapStop;
 	public event Action<Vector2> TapStay;
 
-#endregion
+	#endregion
 
 	//==============================================================================
 
-#region MonoBehaviour methods
+	#region MonoBehaviour methods
 
 	protected override void Awake()
 	{
+		base.Awake();
 		_dpiSqr = Screen.dpi*Screen.dpi;
 	}
 	/// <summary>
 	/// 
 	/// </summary>
-	protected override void OnDestroy()
+	protected virtual void OnDestroy()
 	{
 		Swipe = null;
 		DoubleTap = null;
@@ -75,8 +81,6 @@ public class TouchManager : Singleton<TouchManager>
 		TapStart	= null;
 		TapStop	= null;
 		TapStay	= null;
-
-		base.OnDestroy();
 	}
 
 	/// <summary>
