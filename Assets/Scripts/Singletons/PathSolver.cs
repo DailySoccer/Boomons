@@ -20,6 +20,11 @@ public class PathSolver : Singleton<PathSolver>
 
 	#region Public Methods
 
+	public string GetManagerPath<T>()
+	{
+		return string.Format(_managerPathFormat, typeof (T).Name);
+	}
+
 	public string GetBoomonPath(BoomonRole role, InstanceType instanceType)
 	{
 		return string.Format(_boomonPathFormat, instanceType, role);
@@ -34,6 +39,9 @@ public class PathSolver : Singleton<PathSolver>
 	#region Private Fields
 
 	[SerializeField] private string _boomonPathFormat = "Boomons/{0}/{1}";
+	[SerializeField] private string _managerPathFormat = "Managers/{0}";
 
 	#endregion
+
+
 }

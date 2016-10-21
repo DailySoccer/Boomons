@@ -102,8 +102,7 @@ public class MetaManager : Singleton<MetaManager>
 	{
 		string instanceName = typeof (T).Name;
 
-		string prefabPath = string.Format(SingletonPathFormat, instanceName);
-		var prefab = Resources.Load<GameObject>(prefabPath);
+		var prefab = Resources.Load<GameObject>(PathSolver.Instance.GetManagerPath<T>());
 
 		Debug.Log("<b>MetaManager::CreateInstance>></b> An instance of " + instanceName +
 				" is needed and being created.");
@@ -124,8 +123,6 @@ public class MetaManager : Singleton<MetaManager>
 	//=======================================================
 
 	#region Private Fields
-
-	private const string SingletonPathFormat = "Singletons/{0}";
 
 	private static readonly Type _managerType = typeof(Manager);
 	private static readonly Dictionary<Type, Manager> _managers = new Dictionary<Type, Manager>();
