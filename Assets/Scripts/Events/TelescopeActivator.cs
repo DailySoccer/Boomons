@@ -20,6 +20,7 @@ public class TelescopeActivator : MonoBehaviour {
 		if (_initialized && _readyToStart)
 		{
 			TrackerRef.enabled = true;
+			_readyToStart = false;
 		}
 	}
 

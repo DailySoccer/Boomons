@@ -5,6 +5,7 @@ public class RotationTrack : MonoBehaviour {
 
 	public Transform TargetCamera = null;
 	public MeshRenderer[] MeshesList;
+	public Camera SceneCamera;
 	// Use this for initialization
 	void Awake () {
 		_initialized = TargetCamera != null;
@@ -54,6 +55,7 @@ public class RotationTrack : MonoBehaviour {
 		{
 			mr.enabled = !_active;
 		}
+		SceneCamera.enabled = !_active;
 		Input.gyro.enabled = _active;
 		Vector3 accel = Input.acceleration;
 		Vector3 upRelDir = new Vector3 (-accel.x , -accel.y, accel.z);
