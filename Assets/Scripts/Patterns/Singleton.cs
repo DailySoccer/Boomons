@@ -14,13 +14,13 @@ public class Singleton<T> : MonoBehaviour
 	{
 		get
 		{
-			if (_isApplicationQuitting)
-			{
-				Debug.LogWarning("Singleton::Instance>> '" + typeof(T) +
-								 "' already destroyed on application quit." +
-								 " Won't create again - returning null.");
-				return null;
-			}
+			//if (_isApplicationQuitting)
+			//{
+			//	Debug.LogWarning("Singleton::Instance>> '" + typeof(T) +
+			//					 "' already destroyed on application quit." +
+			//					 " Won't create again - returning null.");
+			//	return null;
+			//}
 
 			return _instance ?? (_instance = FindInstance() ?? AutoInstantiate());
 		}
@@ -86,8 +86,8 @@ public class Singleton<T> : MonoBehaviour
 
 		if (instances.Length > 0) {
 			Debug.Log("[Singleton] Using instance already created: " +
-						_instance.gameObject.name);
-			return instances[0];
+						instances[0].gameObject.name);
+			return _instance = instances[0];
 
 		} else {
 			return null;

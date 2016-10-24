@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class BoomonMenu : MonoBehaviour {
+public class BoomonMenu : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-	
+	public void OnBoomonHover()
+	{
+		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+
+	public void OnBoomonClick()
+	{
+		
 	}
+
+	
 }

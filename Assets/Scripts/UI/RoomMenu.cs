@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class MainMenu : MonoBehaviour
+public class RoomMenu : MonoBehaviour
 {
 	
 	public void OnSceneClick(string sceneName)
