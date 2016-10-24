@@ -4,7 +4,9 @@ using System.Runtime.InteropServices;
 using System;
 
 public class QRHandler : MonoBehaviour {
-	
+
+	const string QRCode = "Boomon code";
+
 	static string dataStr;
 	public Renderer PlaneRender;
 	public ResultQR QRListener;
@@ -33,7 +35,7 @@ public class QRHandler : MonoBehaviour {
 
 	public void LaunchScan()
 	{
-		EasyCodeScanner.launchScanner(true, "Scanning...", -1, true);
+		EasyCodeScanner.launchScanner(true, "Encuadre el codigo QR en el cuadrado", -1, true);
 	}
 	
 	//void OnGUI ()
@@ -76,10 +78,10 @@ public class QRHandler : MonoBehaviour {
 	
 	//Callback when returns from the scanner
 	void onScannerMessage(string data){
-		Debug.Log("EasyCodeScannerExample - onScannerMessage data=:"+data);
+		//Debug.Log("EasyCodeScannerExample - onScannerMessage data=:"+data);
 		dataStr = data;
 
-		bool result = dataStr == "capullo";
+		bool result = dataStr == QRCode;
 
 		if (QRListener != null)
 		{
@@ -96,12 +98,12 @@ public class QRHandler : MonoBehaviour {
 	//Callback which notifies an event
 	//param : "EVENT_OPENED", "EVENT_CLOSED"
 	void onScannerEvent(string eventStr){
-		Debug.Log("EasyCodeScannerExample - onScannerEvent:"+eventStr);
+		//Debug.Log("EasyCodeScannerExample - onScannerEvent:"+eventStr);
 	}
 	
 	//Callback when decodeImage has decoded the image/texture 
 	void onDecoderMessage(string data){
-		Debug.Log("EasyCodeScannerExample - onDecoderMessage data:"+data);
+		//Debug.Log("EasyCodeScannerExample - onDecoderMessage data:"+data);
 		dataStr = data;
 	}
 	

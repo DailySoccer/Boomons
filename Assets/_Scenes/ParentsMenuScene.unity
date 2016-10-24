@@ -716,6 +716,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 345695462}
   - 114: {fileID: 345695461}
+  - 114: {fileID: 345695463}
   m_Layer: 0
   m_Name: QRCatcher
   m_TagString: Untagged
@@ -749,6 +750,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &345695463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 345695460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e24cf25b505e4f3da6fa7817ff3640d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &351928791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1151,6 +1163,28 @@ MonoBehaviour:
       - m_Target: {fileID: 345695461}
         m_MethodName: LaunchScan
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1106103231}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 463764166}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
