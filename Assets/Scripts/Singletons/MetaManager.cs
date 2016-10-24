@@ -17,17 +17,14 @@ public class MetaManager : Singleton<MetaManager>
 		Type baseType = FindBaseType(manager.GetType());
 		Manager found = FindManager(baseType);
 
-		if (found == null) {
-			_managers[baseType] = manager;
-			DontDestroyOnLoad(manager);
-			Debug.Log("<b>MetaManager::Register>></b> " + baseType.Name + " successfully registered", manager);
-
-		} else if(found != manager) {
+		if(found != null && found != manager) {
 			Destroy(manager.gameObject);
 			Debug.Log("<b>MetaManager::Register>></b> Destroying duplicated manager " + baseType.Name + ": " + manager.name);
 
 		} else {
-			Debug.Log("<b>MetaManager::Register>></b> " + baseType.Name + " was already registered", manager);
+			_managers[baseType] = manager;
+			DontDestroyOnLoad(manager);
+			Debug.Log("<b>MetaManager::Register>></b> " + baseType.Name + " successfully registered", manager);
 		}
 	}
 

@@ -385,10 +385,15 @@ public class BoomonController : Touchable, ITeleportable
 
 		Rigidbody rigid = hit.collider.attachedRigidbody;
 
-		if(rigid != null) 
+		if (rigid != null)
+		{
 			Push(rigid);
+			transform.position = _refSystem.FixInPlane(transform.position);
+		}
 		else if (Vector3.Dot(hit.normal, _refSystem.JumpDir) < _groundSlopeCosine)
+		{
 			CurrentState = State.Idle;
+		}
 	}
 
 	//---------------------------------------------------------------------------------
