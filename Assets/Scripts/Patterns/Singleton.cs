@@ -37,7 +37,8 @@ public class Singleton<T> : MonoBehaviour
 		if (_instance == null)
 		{
 			_instance = this as T;
-			DontDestroyOnLoad(this);
+			if(Application.isPlaying)
+				DontDestroyOnLoad(this);
 		}
 		else if(this != _instance)
 		{
@@ -65,7 +66,7 @@ public class Singleton<T> : MonoBehaviour
 		{
 			Debug.Log(name + "::OnDestroy>> Application quit");
 			_instance = null;
-			_isApplicationQuitting = true;
+		//	_isApplicationQuitting = true;
 		}
 	}
 
@@ -126,6 +127,6 @@ public class Singleton<T> : MonoBehaviour
 	private const string SingletonPathFormat = "Singletons/{0}";
 
 	private static T _instance;
-	private static bool _isApplicationQuitting;
+	//private static bool _isApplicationQuitting;
 	#endregion
 }

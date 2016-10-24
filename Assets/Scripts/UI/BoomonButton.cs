@@ -17,11 +17,11 @@ public class BoomonButton : MonoBehaviour
 			string prefabPath = PathSolver.Instance.GetBoomonPath(value.Value,
 				PathSolver.InstanceType.NotControllable);
 
-			if (_boomon != null)
-				Destroy(_boomon.gameObject);
+			if (_boomonAnim != null)
+				DestroyImmediate(_boomonAnim.gameObject);
 
-			_boomon = ((GameObject)Instantiate(Resources.Load(prefabPath), _anchor))
-				.GetComponent<BoomonController>();
+			_boomonAnim = ((GameObject)Instantiate(Resources.Load(prefabPath), Anchor))
+				.GetComponent<Animator>();
 
 			_boomonRole = value;
 		}
@@ -47,16 +47,12 @@ public class BoomonButton : MonoBehaviour
 
 	private void Awake()
 	{
-		if (_anchor == null) {
-			_anchor = new GameObject("Anchor").transform;
-			_anchor.parent = transform;
-		}
 	}
 
 	private void OnDestroy()
 	{
-		_anchor = null;
-		_boomon = null;
+		Anchor = null;
+		_boomonAnim = null;
 	}
 
 #if UNITY_EDITOR
@@ -68,16 +64,53 @@ public class BoomonButton : MonoBehaviour
 
 	#endregion
 
+	//============================================================
+
+	#region Callbacks
+
+	public void OnClick()
+	{
+		
+	}
+
+	public void OnHover()
+	{
+		
+	}
+
+	#endregion
+
 	//===================================================================
 
 	#region Private Fields
 
+	private const string AnchorName = "Anchor";
+
+	private Transform Anchor
+	{
+		get
+		{
+			if (_anchor == null) {
+				_anchor = transform.FindChild(AnchorName);
+				if (_anchor == null) {
+					_anchor = new GameObject(AnchorName).transform;
+					_anchor.parent = transform;
+				}
+			}
+			return _anchor;
+		}
+		set { _anchor = value; }
+	}
+
+
 	[SerializeField] private Transform _anchor;
-	private BoomonController _boomon;
+	
+	private Animator _boomonAnim;
 	private BoomonRole? _boomonRole;
 
 #if UNITY_EDITOR
 	[SerializeField] private BoomonRole _boomonRoleEditor;
 #endif
+
 	#endregion
 }

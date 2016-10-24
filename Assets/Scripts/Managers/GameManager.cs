@@ -149,7 +149,7 @@ public class GameManager : Manager
 
 	#region Private Fields
 
-	[SerializeField] private string _mainMenuSceneName = "MainMenu";
+	[SerializeField] private string _mainMenuSceneName = "RoomMenu";
 	[SerializeField] private string _spawnTag = "Respawn";
 	[SerializeField] private BoomonRole _boomonRoleEditor;
 
