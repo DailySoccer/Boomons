@@ -16,16 +16,16 @@ public class CustomSceneManager : MonoBehaviour {
 
 	public void GoToMainMenu()
 	{
-		SceneManager.LoadScene("MainMenuScene");
+		SceneManager.LoadScene("MainMenu");
 	}
 
 	public void GoToParentsMenu()
 	{
-		SceneManager.LoadScene("ParentsMenuScene");
+		SceneManager.LoadScene("ParentsMenu");
 	}
 
 	public void GoToPlay()
 	{
-		SceneManager.LoadScene("");
+		SceneManager.LoadScene("RoomMenu");
 	}
 }
