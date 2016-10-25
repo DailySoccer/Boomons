@@ -672,6 +672,7 @@ GameObject:
   - 95: {fileID: 95000013847264890}
   - 143: {fileID: 143000014291837536}
   - 114: {fileID: 114000010622758804}
+  - 114: {fileID: 114000012684477904}
   m_Layer: 12
   m_Name: Gamer
   m_TagString: Player
@@ -1867,6 +1868,99 @@ MonoBehaviour:
   _renderer: {fileID: 0}
   _facialBoneName: DummyFacial
   _facialMaterialIndex: 1
+--- !u!114 &114000012684477904
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013161679770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 0
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114000012974468510}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114000012974468510}
+        m_MethodName: OnTapStop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114000012974468510}
+        m_MethodName: OnTapStay
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114000012974468510}
+        m_MethodName: OnDoubleTap
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114000012974468510}
+        m_MethodName: OnSwipe
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Touchable+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114000012974468510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1878,8 +1972,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 898413f0aa25f0848b554da295fe40d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _touchLayerName: Touchable
-  _mustReceiveOnlyItsTouches: 0
   _right: {x: 0, y: 0, z: 1}
   _bounciness: 0.5
   _pushMass: 5
@@ -1888,11 +1980,10 @@ MonoBehaviour:
   _senseReversalDistMin: 1
   _idleTriggerName: Idle
   _runTriggerName: Run
-  _jumpTriggerName: Jump
   _landTriggerName: Land
   _standUpTriggerName: StandUp
   _ticklesTriggerName: Tickles
-  _ragdollPath: Characters/GamerRagdoll
+  _currentState: 1
 --- !u!137 &137000010841300240
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

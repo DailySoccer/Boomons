@@ -17,13 +17,14 @@ public enum BoomonRole
 	MaleSport = 6
 }
 
-[RequireComponent(typeof(Animator), typeof(CharacterController), typeof(FacialAnimator))]
-public class BoomonController : Touchable, ITeleportable
+
+
+[RequireComponent(typeof(Animator), typeof(CharacterController))]
+[RequireComponent(typeof(Touchable), typeof(FacialAnimator))]
+public class BoomonController : MonoBehaviour, ITeleportable
 {
 	#region Public Fields
-
-	
-	public enum State 
+	public enum State
 	{
 		CodeDriven = -1,
 		Idle = 0,
@@ -53,6 +54,7 @@ public class BoomonController : Touchable, ITeleportable
 		get { return _role; }
 	}
 
+	
 	public State CurrentState
 	{
 		get { return _currentState; }
@@ -167,10 +169,8 @@ public class BoomonController : Touchable, ITeleportable
 	#region Mono
 
 	// TODO Extraer subinicializaicones
-	protected override void Awake()
+	private void Awake()
 	{
-		base.Awake();
-
 		Debug.Assert(_right != Vector3.zero, "BoomonController::Awake>> Right move direction not defined!!");
 
 		_role =  (BoomonRole) Enum.Parse(typeof (BoomonRole), name.Split('(')[0]);
@@ -192,6 +192,7 @@ public class BoomonController : Touchable, ITeleportable
 
 		_animator = GetComponent<Animator>();
 		_controller = GetComponent<CharacterController>();
+		_touchable = GetComponent<Touchable>();
 		_face = GetComponent<FacialAnimator>();
 		_groundSlopeCosine = Mathf.Cos(_controller.slopeLimit * Mathf.Deg2Rad);
 
@@ -209,18 +210,17 @@ public class BoomonController : Touchable, ITeleportable
 
 
 
-	protected override void OnDestroy()
+	private void OnDestroy()
 	{
 		_goToCallbacks = null;
 		_ragdoll.GroundEnter -= OnRagdollGroundEnter;
 
+		_touchable = null;
 		_face = null;
 		_ragdoll = null;
 		//_bipedRoot = null;
 		_animator = null;
 		_controller = null;
-
-		base.OnDestroy();
 	}
 
 
@@ -249,40 +249,49 @@ public class BoomonController : Touchable, ITeleportable
 			collisionEnter(hit);
 	}
 
-	
+
 
 	#endregion
-	
+
 	//==============================================================
 
 	#region Events
 
+	private void OnRagdollGroundEnter(Vector3 groundPos)
+	{
+		transform.position = groundPos;
+		CurrentState = State.Idle;
+	}
 
-	public override void OnTapStart(GameObject go, Vector2 touchPos)
+	//----------------------------------------------------------------------------------
+	
+	#region Events.Touch
+
+	public void OnTapStart(GameObject go, Vector2 touchPos)
 	{
 		if (go == null && CurrentState == State.Idle)
 			CurrentState = State.Moving;
 	}
 
-	public override void OnTapStop(GameObject go, Vector2 position)
+	public void OnTapStop(GameObject go, Vector2 position)
 	{
-		if(CurrentState == State.Moving)
+		if (CurrentState == State.Moving)
 			CurrentState = State.Idle;
 	}
 
-	public override void OnTapStay(GameObject go, Vector2 touchPos)
+	public void OnTapStay(GameObject go, Vector2 touchPos)
 	{
 		if (go == null && CurrentState == State.Moving)
 			Move(touchPos);
 	}
 
-	public override void OnDoubleTap(GameObject go, Vector2 position)
+	public void OnDoubleTap(GameObject go, Vector2 position)
 	{
 		if (CurrentState == State.Idle && go == gameObject)
 			CurrentState = State.Tickling;
 	}
 
-	public override void OnSwipe(GameObject go, Vector2 position, Vector2 direction, float speedRatio)
+	public void OnSwipe(GameObject go, Vector2 position, Vector2 direction, float speedRatio)
 	{
 		Log("OnSwipe");
 		//if (go != gameObject)
@@ -298,15 +307,11 @@ public class BoomonController : Touchable, ITeleportable
 			Throw(position, direction, speedRatio);
 	}
 
+	#endregion
+
 	//---------------------------------------------------------
-
-	private void OnRagdollGroundEnter(Vector3 groundPos)
-	{
-		transform.position = groundPos;
-		CurrentState = State.Idle;
-	}
-
-	//----------------------------------------------------------------------------------
+	
+	#region Events.Idle
 
 	/// <summary>
 	/// Animation Event
@@ -314,7 +319,7 @@ public class BoomonController : Touchable, ITeleportable
 	/// </summary>
 	private void OnIdleReady()
 	{
-		IsTouchEnabled = true;
+		_touchable.enabled = true;
 	}
 
 	private void OnIdleStart(State lastState)
@@ -351,16 +356,20 @@ public class BoomonController : Touchable, ITeleportable
 	{
 		Log("OnIdleEnd" , "Next=" + nextState);
 
-		IsTouchEnabled = nextState == State.Tickling
-				      || nextState == State.Moving;
+		_touchable.enabled = nextState == State.Tickling
+						 || nextState == State.Moving;
 	}
 	
 	private void IdleUpdate()
 	{
 		_controller.SimpleMove(Vector3.zero);
 	}
-	
+
+	#endregion
+
 	//----------------------------------------------------------------------
+
+	#region Events.Move
 
 	private void OnMoveStart(State lastState)
 	{
@@ -396,7 +405,11 @@ public class BoomonController : Touchable, ITeleportable
 		}
 	}
 
+	#endregion
+
 	//---------------------------------------------------------------------------------
+
+	#region Events.Throw
 
 	private void OnThrowStart(State lastState)
 	{
@@ -414,8 +427,11 @@ public class BoomonController : Touchable, ITeleportable
 		gameObject.SetActive(true);
 	}
 
+	#endregion
 
 	//----------------------------------------------------
+
+	#region Events.Jump
 
 	//private void OnJumpStart(State lastState)
 	//{
@@ -462,26 +478,29 @@ public class BoomonController : Touchable, ITeleportable
 	//		CurrentState = State.Idle;
 	//		return;
 	//	}
-		
+
 	//	Rigidbody rigid = hit.collider.attachedRigidbody;
 	//	if (rigid != null)
 	//		Push(rigid);
 	//	else
 	//		Bounce(hit.normal);
-		
-	
+
+
 	//	//float colliderSlope = Mathf.Abs(Vector3.Angle(hit.normal, _jumpDirection));
 	//	//if (colliderSlope < _controller.slopeLimit) {
 	//	//	CurrentState = State.Idle;
 
 	//	//} else if (Vector3.Dot(hit.normal, _velocity) < 0f) {
 	//	//	Bounce(hit.normal);
-			
+
 	//	//}
 	//}
 
-	//------------------------------------------------------------------
+	#endregion
 
+	//------------------------------------------------------------------
+	
+	#region Events.Tickle
 
 	private void OnTickleStart(State obj)
 	{
@@ -494,8 +513,11 @@ public class BoomonController : Touchable, ITeleportable
 		Log("OnTickleEnd");
 	}
 
+	#endregion
+
 	//-------------------------------------------------------------------
 
+	#region Events.CodeDrive
 
 	private void OnCodeDriveStart(State obj)
 	{
@@ -523,24 +545,25 @@ public class BoomonController : Touchable, ITeleportable
 			_controller.SimpleMove(_velocity);
 	}
 
+	#endregion
 
 	#endregion
-	
+
 	//============================================================
 
 	#region Private Methods
 
-//	private Vector3 CalculateJumpSpeed(Vector2 swipeVector, float speedRatio)
-//	{
-//		Vector3 dir = swipeVector.x * _refSystem.Right
-//					+ swipeVector.y * _refSystem.JumpDir;
-		
-///*
-//		return speedRatio * _jumpSpeedMax * dir.normalized;
-///*/
-//		return _jumpSpeedMax * dir.normalized;
-///**/
-//	}
+	//	private Vector3 CalculateJumpSpeed(Vector2 swipeVector, float speedRatio)
+	//	{
+	//		Vector3 dir = swipeVector.x * _refSystem.Right
+	//					+ swipeVector.y * _refSystem.JumpDir;
+
+	///*
+	//		return speedRatio * _jumpSpeedMax * dir.normalized;
+	///*/
+	//		return _jumpSpeedMax * dir.normalized;
+	///**/
+	//	}
 
 
 	private void Bounce(Vector3 normal)
@@ -617,6 +640,7 @@ public class BoomonController : Touchable, ITeleportable
 	private CharacterController _controller;
 	private BoomonRagdoll _ragdoll;
 	private FacialAnimator _face;
+	private Touchable _touchable;
 
 	private Vector3 _velocity;
 	private Vector3 _jumpStartVelocity;
@@ -679,6 +703,7 @@ public class BoomonController : Touchable, ITeleportable
 	private List<Action> _goToCallbacks;
 	private Vector3 _drivenTarget;
 	private BoomonRole _role;
+	
 
 	#endregion
 

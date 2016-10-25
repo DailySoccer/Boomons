@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 [ExecuteInEditMode]
 public class BoomonButton : MonoBehaviour
@@ -104,6 +105,7 @@ public class BoomonButton : MonoBehaviour
 
 
 	[SerializeField] private Transform _anchor;
+
 	
 	private Animator _boomonAnim;
 	private BoomonRole? _boomonRole;
