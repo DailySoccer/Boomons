@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class RotationTrack : MonoBehaviour {
 
 	public Transform TargetCamera = null;
-	public MeshRenderer[] MeshesList;
+	public RectTransform TargetCanvasPanel = null;
+	public MeshRenderer[] DisableMeshesList;
+	public RectTransform DisableCanvasPanel;
 	public Camera SceneCamera;
 	// Use this for initialization
 	void Awake () {
-		_initialized = TargetCamera != null;
+		_initialized = TargetCamera != null && TargetCanvasPanel != null;
 		if (!_initialized)
 		{
 			Debug.LogError("<color=orange> Instance of type " + this.GetType() + " not initialized." + (TargetCamera == null ? " Reference to TargetCamera missing." : string.Empty));
@@ -51,9 +54,14 @@ public class RotationTrack : MonoBehaviour {
 	{
 		_active = active;
 		TargetCamera.gameObject.SetActive(_active);
-		foreach (MeshRenderer mr in MeshesList)
+		TargetCanvasPanel.gameObject.SetActive(_active);
+		foreach (MeshRenderer mr in DisableMeshesList)
 		{
 			mr.enabled = !_active;
+		}
+		if (DisableCanvasPanel != null)
+		{
+			DisableCanvasPanel.gameObject.SetActive(!_active);
 		}
 		SceneCamera.enabled = !_active;
 		Input.gyro.enabled = _active;
