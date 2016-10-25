@@ -55,7 +55,7 @@ public class Touchable : MonoBehaviour, IObjectTouchListener
 	protected virtual void Awake()
 	{
 		gameObject.layer = LayerMask.NameToLayer(_touchLayerName);
-		_touchManager = MetaManager.GetManager<ObjectTouchManager>();
+		_touchManager = MetaManager.Instance.GetManager<ObjectTouchManager>();
 	}
 
 	protected virtual void OnDestroy()

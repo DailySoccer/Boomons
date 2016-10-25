@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MetaManager : Singleton<MetaManager>
 {
-	public static T GetManager<T>()
+	public T GetManager<T>()
 		where T : Manager
 	{
 		return FindManager<T>() ?? CreateInstance<T>();
@@ -47,13 +47,13 @@ public class MetaManager : Singleton<MetaManager>
 
 	#region Private Methods
 
-	private static T FindManager<T>()
+	private T FindManager<T>()
 		where T : Manager
 	{
 		return FindManager(typeof (T)) as T;
 	}
 
-	private static Manager FindManager(Type type)
+	private Manager FindManager(Type type)
 	{
 		Type baseType = FindBaseType(type);
 
@@ -75,7 +75,7 @@ public class MetaManager : Singleton<MetaManager>
 		return type;
 	}
 
-	private static Manager FindInstance(Type type)
+	private Manager FindInstance(Type type)
 	{
 		UnityEngine.Object[] instances = FindObjectsOfType(type);
 
@@ -122,7 +122,7 @@ public class MetaManager : Singleton<MetaManager>
 	#region Private Fields
 
 	private static readonly Type _managerType = typeof(Manager);
-	private static readonly Dictionary<Type, Manager> _managers = new Dictionary<Type, Manager>();
+	private readonly Dictionary<Type, Manager> _managers = new Dictionary<Type, Manager>();
 
 	#endregion
 

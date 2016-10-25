@@ -27,18 +27,18 @@ public class GameManager : Manager
 
 	#region Public Methods
 
-	public BoomonController Boomon { get; private set; }
+	public BoomonController Player { get; private set; }
 
 	public void LoadScene(string sceneName)
 	{
-		Boomon = null;
+		Player = null;
 		StartCoroutine(LoadSceneCoroutine(sceneName));
 	}
 
 
 	public void RespawnBoomon(BoomonRole boomonRole)
 	{
-		GameObject spawnPoint = Boomon != null ? Boomon.gameObject:
+		GameObject spawnPoint = Player != null ? Player.gameObject:
 				GameObject.FindGameObjectWithTag(_spawnTag);
 
 		if (spawnPoint == null) {
@@ -46,8 +46,8 @@ public class GameManager : Manager
 			return;
 		}
 
-		if (Boomon != null)
-			Destroy(Boomon.gameObject);
+		if (Player != null)
+			Destroy(Player.gameObject);
 
 		string boomonPath = PathSolver.Instance.GetBoomonPath(boomonRole, 
 			PathSolver.InstanceType.Controllable);
@@ -56,7 +56,7 @@ public class GameManager : Manager
 			Resources.Load<GameObject>(boomonPath),
 			spawnPoint.transform.position, spawnPoint.transform.rotation);
 
-		Boomon = boomonGo.GetComponent<BoomonController>();
+		Player = boomonGo.GetComponent<BoomonController>();
 	}
 
 	#endregion
@@ -73,7 +73,7 @@ public class GameManager : Manager
 
 	protected void OnDestroy()
 	{
-		Boomon = null;
+		Player = null;
 	}
 
 	protected void OnEnable()

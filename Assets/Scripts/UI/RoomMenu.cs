@@ -5,6 +5,6 @@ public class RoomMenu : MonoBehaviour
 	
 	public void OnSceneClick(string sceneName)
 	{
-		MetaManager.GetManager<GameManager>().LoadScene(sceneName);
+		MetaManager.Instance.GetManager<GameManager>().LoadScene(sceneName);
 	}
 }

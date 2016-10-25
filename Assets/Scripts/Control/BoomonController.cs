@@ -45,7 +45,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	public Vector3 Position {
 		get {
 			return CurrentState == State.Throwing ?
-				_ragdoll.Position : transform.position;
+				Ragdoll.Position : transform.position;
 		}
 	}
 
@@ -133,8 +133,8 @@ public class BoomonController : MonoBehaviour, ITeleportable
 			return;
 
 		CurrentState = State.Throwing;
-		_ragdoll.Setup(transform);
-		_ragdoll.OnSwipe(null, swipePos, swipeVector, speedRatio);
+		Ragdoll.Setup(transform);
+		Ragdoll.OnSwipe(null, swipePos, swipeVector, speedRatio);
 	}
 
 	public void TeleportTo(Teleport target)
@@ -201,11 +201,6 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		//		.First(t => t.name.Contains("Bip"));
 
 		//_bipedOffsetPos = _bipedRoot.position - transform.position;
-
-		string ragdollPath = PathSolver.Instance.GetBoomonPath(_role, PathSolver.InstanceType.Ragdoll);
-		var ragdollPrefab = Resources.Load<GameObject>(ragdollPath);
-		_ragdoll = Instantiate(ragdollPrefab).GetComponent<BoomonRagdoll>();
-		_ragdoll.GroundEnter += OnRagdollGroundEnter;
 	}
 
 
@@ -213,7 +208,8 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	private void OnDestroy()
 	{
 		_goToCallbacks = null;
-		_ragdoll.GroundEnter -= OnRagdollGroundEnter;
+		Ragdoll.GroundEnter -= OnRagdollGroundEnter;
+		Destroy(Ragdoll.gameObject);
 
 		_touchable = null;
 		_face = null;
@@ -415,7 +411,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	{
 		Log("OnThrowStart");
 		gameObject.SetActive(false);
-		_ragdoll.gameObject.SetActive(true);
+		Ragdoll.gameObject.SetActive(true);
 	}
 
 	private void OnThrowEnd(State nextState)
@@ -423,7 +419,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		Log("OnThrowEnd");
 
 		_face.Reset();
-		_ragdoll.gameObject.SetActive(false);
+		Ragdoll.gameObject.SetActive(false);
 		gameObject.SetActive(true);
 	}
 
@@ -613,6 +609,21 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 	#region Private Fields
 
+	private Ragdoll Ragdoll
+	{
+		get
+		{
+			if (_ragdoll == null) {
+				string ragdollPath = PathSolver.Instance.GetBoomonPath(_role, PathSolver.InstanceType.Ragdoll);
+				var ragdollPrefab = Resources.Load<GameObject>(ragdollPath);
+				_ragdoll = Instantiate(ragdollPrefab).GetComponent<BoomonRagdoll>();
+				_ragdoll.GroundEnter += OnRagdollGroundEnter;
+			}
+			return _ragdoll;
+		}
+	}
+
+	
 	//[SerializeField] private Transform _bipedRoot;
 	[SerializeField] private Vector3 _right;
 	private Vector3 _bipedOffsetPos;
