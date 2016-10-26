@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,6 +18,10 @@ public class GameManager : Manager
 				return;
 			_boomonRole = value;
 			RespawnBoomon(value);
+
+#if UNITY_EDITOR
+			_boomonRoleEditor = value;
+#endif
 		}
 	}
 	#endregion 
@@ -92,6 +97,12 @@ public class GameManager : Manager
 			OnEscape();
 
 #if UNITY_EDITOR
+
+		int pressedNumber;
+		if( int.TryParse(Input.inputString, out pressedNumber)  
+		 && Enum.IsDefined(typeof(BoomonRole), pressedNumber - 1))
+			BoomonRole = (BoomonRole) (pressedNumber - 1);
+
 		BoomonRole = _boomonRoleEditor;
 #endif
 	}
@@ -119,8 +130,7 @@ public class GameManager : Manager
 	}
 
 	#endregion
-
-
+						   
 	//========================================================
 
 	#region Private Methods
@@ -142,11 +152,9 @@ public class GameManager : Manager
 	}
 
 	#endregion
-
-
+						  
 	//========================================================================================
-
-
+						  
 	#region Private Fields
 
 	[SerializeField] private string _mainMenuSceneName = "RoomMenu";
