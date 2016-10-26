@@ -122,6 +122,7 @@ Transform:
   - {fileID: 1679919127}
   - {fileID: 1214215637}
   - {fileID: 1456957342}
+  - {fileID: 2113055058}
   m_Father: {fileID: 0}
   m_RootOrder: 4
 --- !u!1001 &152998322
@@ -898,6 +899,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _touchLayerName: Touchable
   _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Touchable+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   _playTriggerName: Play
   _playerTag: Player
 --- !u!82 &1038945400
@@ -1329,6 +1355,48 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03721b6efdd0bed49a778f4912e1164c, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1431253685
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 62957805}
+    m_Modifications:
+    - target: {fileID: 4000012642564302, guid: cf30a98a22448b448bcff7d81f8ec573, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -4.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012642564302, guid: cf30a98a22448b448bcff7d81f8ec573, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012642564302, guid: cf30a98a22448b448bcff7d81f8ec573, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012642564302, guid: cf30a98a22448b448bcff7d81f8ec573, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012642564302, guid: cf30a98a22448b448bcff7d81f8ec573, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.5202683
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012642564302, guid: cf30a98a22448b448bcff7d81f8ec573, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012642564302, guid: cf30a98a22448b448bcff7d81f8ec573, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.8540029
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012642564302, guid: cf30a98a22448b448bcff7d81f8ec573, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cf30a98a22448b448bcff7d81f8ec573, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1456957341
 Prefab:
@@ -1840,6 +1908,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1943819177}
   m_Script: {fileID: 11500000, guid: f2b5cc9b63dee554ca444eedf9252ff9, type: 3}
+--- !u!4 &2113055058 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4000012642564302, guid: cf30a98a22448b448bcff7d81f8ec573,
+    type: 2}
+  m_PrefabInternal: {fileID: 1431253685}
 --- !u!1001 &2142895166
 Prefab:
   m_ObjectHideFlags: 0
