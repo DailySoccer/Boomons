@@ -207,9 +207,14 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 	private void OnDestroy()
 	{
+		if (_ragdoll != null)
+		{
+			_ragdoll.GroundEnter -= OnRagdollGroundEnter;
+			Destroy(_ragdoll.gameObject);
+			_ragdoll = null;
+		}
+
 		_goToCallbacks = null;
-		Ragdoll.GroundEnter -= OnRagdollGroundEnter;
-		Destroy(Ragdoll.gameObject);
 
 		_touchable = null;
 		_face = null;
@@ -218,9 +223,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		_animator = null;
 		_controller = null;
 	}
-
-
-
+						  
 	private void Start()
 	{
 		MoveSense = Sense.None;

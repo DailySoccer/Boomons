@@ -6,6 +6,25 @@ public class ScrollFollower : MonoBehaviour
 {
 
 	#region Public Fields
+
+	public float StopZoomRatio {
+		get { return _stopZoomRatio; }
+		set { _stopZoomRatio = Mathf.Clamp01(value);  }
+	}
+
+	public Transform Target 
+	{
+		private get
+		{
+			if(_target==null ||!_target.gameObject.activeInHierarchy) {
+				_target=GameObject.FindGameObjectWithTag(_targetTag).transform;
+				_lastPos = _target.position;
+			}
+			return _target;
+		}
+		set { _target = value; }
+	}
+
 	#endregion
 
 
@@ -26,35 +45,28 @@ public class ScrollFollower : MonoBehaviour
 
 	}
 
-	private void Start()
-	{
-		_target = GameObject.FindGameObjectWithTag(_targetTag).transform;
-		_lastPos = _target.position;
-	}
+	
 
 
 	private void LateUpdate()
 	{
-		if(_target == null || !_target.gameObject.activeInHierarchy)
-			_target = GameObject.FindGameObjectWithTag(_targetTag).transform;
-		
-		Vector3 targetPos = _target.position;
+		Vector3 targetPos = Target.position;
 		Vector3 deltaPos = targetPos - _lastPos;
 
 		Vector3 cameraPos = targetPos;
 		cameraPos += _distance.y * _up;
-		cameraPos -= _stoppedDistanceRatio*_distance.z*_forward;
+		cameraPos -= (1f - _stopZoomRatio) *_distance.z*_forward;
 
 		int direction = Math.Sign(Vector3.Dot(deltaPos, _right));
 
-		cameraPos -= Math.Abs( direction ) * (1f - _stoppedDistanceRatio) *_distance.z * _forward;
+		cameraPos -= Math.Abs( direction ) * _stopZoomRatio *_distance.z * _forward;
 		cameraPos += direction * _distance.x * _right;
 
 		Vector3 fwdDeltaPos = Vector3.Project(cameraPos - transform.position, _forward);
 		transform.position = Vector3.Lerp(transform.position, cameraPos - fwdDeltaPos, _lateralSpeed * Time.deltaTime);;
 		transform.position = Vector3.Lerp(transform.position, cameraPos, _depthSpeed * Time.deltaTime);
 
-		transform.forward = (_target.position + .5f * _distance.y * _up - transform.position).normalized;
+		transform.forward = (Target.position + .5f * _distance.y * _up - transform.position).normalized;
 
 		_lastPos = targetPos;
 	}
@@ -79,14 +91,14 @@ public class ScrollFollower : MonoBehaviour
 
 		//=================================================================
 
-
+	
 
 	[SerializeField] private Transform _target;
 	[SerializeField] private string _targetTag = "Player";
 	[SerializeField] private Vector3 _distance;
-	[SerializeField, Range(0f, 1f)] private float _stoppedDistanceRatio;
-	[SerializeField, Range(1f, 20f)] private float _depthSpeed;
-	[SerializeField, Range(1f, 20f)] private float _lateralSpeed;
+	[SerializeField, Range(0f, 1f)] private float _stopZoomRatio;
+	[SerializeField, Range(0f, 20f)] private float _depthSpeed;
+	[SerializeField, Range(0f, 20f)] private float _lateralSpeed;
 
 
 	private Vector3 _lastPos;
