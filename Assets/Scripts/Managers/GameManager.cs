@@ -96,14 +96,16 @@ public class GameManager : Manager
 		if (Input.GetKey(KeyCode.Escape))
 			OnEscape();
 
-#if UNITY_EDITOR
 
+#if UNITY_STANDALONE
 		int pressedNumber;
 		if( int.TryParse(Input.inputString, out pressedNumber)  
 		 && Enum.IsDefined(typeof(BoomonRole), pressedNumber - 1))
 			BoomonRole = (BoomonRole) (pressedNumber - 1);
+#endif
 
-		BoomonRole = _boomonRoleEditor;
+#if UNITY_EDITOR
+		BoomonRole= _boomonRoleEditor;
 #endif
 	}
 	

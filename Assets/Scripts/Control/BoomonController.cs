@@ -28,11 +28,22 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	{
 		CodeDriven = -1,
 		Idle = 0,
-		Moving = 1,
-		Throwing = 2,
-		Jumping = 3,
-		Tickling = 4,
+		Move = 1,
+		Throw = 2,
+		Jump = 3,
+		Tickles = 4,
+		Emotion = 5
 	};
+
+	public enum Emotion
+	{
+		None = 0,
+		Anger = 1,
+		Shame = 2,
+		Happiness = 3,
+		Sadness = 4,
+		Scare =	5,
+	}
 
 	public enum Sense
 	{
@@ -44,7 +55,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	
 	public Vector3 Position {
 		get {
-			return CurrentState == State.Throwing ?
+			return CurrentState == State.Throw ?
 				Ragdoll.Position : transform.position;
 		}
 	}
@@ -69,6 +80,25 @@ public class BoomonController : MonoBehaviour, ITeleportable
 			_stateActions[_currentState].OnStart(lastState);
 		}
 	}
+
+
+	public Emotion CurrentEmotion
+	{
+		get { return _currentEmotion; }
+		private set 
+		{
+			if(value == _currentEmotion)
+				return;
+			_currentEmotion=value;
+
+			CurrentState = value == Emotion.None ? 
+				State.Idle : State.Emotion;
+			
+			if(value != Emotion.None)
+				PlayAnimation(value.ToString());
+		}
+	}
+
 
 	public Sense MoveSense
 	{
@@ -104,12 +134,12 @@ public class BoomonController : MonoBehaviour, ITeleportable
 			MoveSense = (Sense)Mathf.Sign(moveValue);
 
 		_velocity = _moveSpeedMax * transform.forward;
-		CurrentState = State.Moving;
+		CurrentState = State.Move;
 	}
 
 	//public void Jump(Vector2 swipeVector, float speedRatio)
 	//{
-	//	if (CurrentState == State.Jumping || CurrentState == State.Throwing)
+	//	if (CurrentState == State.Jump || CurrentState == State.Throw)
 	//		return;
 
 	//	float jumpDegress = Mathf.Atan(swipeVector.y / Mathf.Abs(swipeVector.x)) * Mathf.Rad2Deg;
@@ -120,19 +150,19 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	//		Sense.None : (Sense)Mathf.Sign(swipeVector.x);
 
 	//	_jumpStartVelocity = CalculateJumpSpeed(swipeVector, speedRatio);
-	//	CurrentState = State.Jumping;
+	//	CurrentState = State.Jump;
 	//}
 
 	public void Throw(Vector2 swipePos, Vector2 swipeVector, float speedRatio)
 	{
-		if(CurrentState == State.Throwing || CurrentState == State.Jumping)
+		if(CurrentState == State.Throw || CurrentState == State.Jump)
 			return;
 
 		float throwDegress = Mathf.Atan(swipeVector.y / Mathf.Abs(swipeVector.x)) * Mathf.Rad2Deg;
 		if (!(throwDegress > _throwDegreesMin*Mathf.Deg2Rad))
 			return;
 
-		CurrentState = State.Throwing;
+		CurrentState = State.Throw;
 		Ragdoll.Setup(transform);
 		Ragdoll.OnSwipe(null, swipePos, swipeVector, speedRatio);
 	}
@@ -180,10 +210,11 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		{
 			{ State.CodeDriven, new StateActions(OnCodeDriveStart, OnCodeDriveEnd, CodeDriveUpdate)},
 			{ State.Idle,       new StateActions(OnIdleStart, OnIdleEnd, IdleUpdate)},
-			{ State.Moving,     new StateActions(OnMoveStart, OnMoveEnd, MoveUpdate, OnMoveCollision)},
-			{ State.Throwing,   new StateActions(OnThrowStart, OnThrowEnd)},
-			//{ State.Jumping,    new StateActions(OnJumpStart, OnJumpEnd, JumpUpdate, OnJumpCollision)},
-			{ State.Tickling,   new StateActions(OnTickleStart, OnTickleEnd)},
+			{ State.Move,     new StateActions(OnMoveStart, OnMoveEnd, MoveUpdate, OnMoveCollision)},
+			{ State.Throw,   new StateActions(OnThrowStart, OnThrowEnd)},
+			//{ State.Jump,    new StateActions(OnJumpStart, OnJumpEnd, JumpUpdate, OnJumpCollision)},
+			{ State.Tickles,   new StateActions(OnTickleStart, OnTickleEnd)},
+			{ State.Emotion, new StateActions(OnEmotionStart, OnEmotionEnd) },
 		};
 		
 
@@ -202,6 +233,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 		//_bipedOffsetPos = _bipedRoot.position - transform.position;
 	}
+
 
 
 
@@ -238,6 +270,11 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		Action update = _stateActions[CurrentState].Update;
 		if (update != null)
 			update();
+
+#if UNITY_STANDALONE
+		if (Input.GetKeyDown(KeyCode.E))
+			CurrentEmotion = (Emotion) ((int)(CurrentEmotion + 1) % Enum.GetValues(typeof(Emotion)).Length);
+#endif
 	}
 
 
@@ -268,26 +305,26 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 	public void OnTapStart(GameObject go, Vector2 touchPos)
 	{
-		if (go == null && CurrentState == State.Idle)
-			CurrentState = State.Moving;
+		if (go == null && (CurrentState == State.Idle || CurrentState == State.Emotion) ) 
+			CurrentState = State.Move;
 	}
 
 	public void OnTapStop(GameObject go, Vector2 position)
 	{
-		if (CurrentState == State.Moving)
+		if (CurrentState == State.Move)
 			CurrentState = State.Idle;
 	}
 
 	public void OnTapStay(GameObject go, Vector2 touchPos)
 	{
-		if (go == null && CurrentState == State.Moving)
+		if (go == null && CurrentState == State.Move)
 			Move(touchPos);
 	}
 
 	public void OnDoubleTap(GameObject go, Vector2 position)
 	{
-		if (CurrentState == State.Idle && go == gameObject)
-			CurrentState = State.Tickling;
+		if ((CurrentState==State.Idle||CurrentState==State.Emotion) && go == gameObject)
+			CurrentState = State.Tickles;
 	}
 
 	public void OnSwipe(GameObject go, Vector2 position, Vector2 direction, float speedRatio)
@@ -331,17 +368,17 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 		switch (lastState)
 		{
-			case State.Throwing:
+			case State.Throw:
 				PlayAnimation(_standUpTriggerName);
 				break;
-			case State.Jumping:
-				PlayAnimation(_landTriggerName);
+			case State.Tickles:
+				PlayAnimation(lastState.ToString());
 				break;
-			case State.Tickling:
-				PlayAnimation(_ticklesTriggerName);
+			case State.Jump:
+				//PlayAnimation(_landTriggerName);
 				break;
 			default:
-				PlayAnimation(_idleTriggerName);
+				PlayAnimation(State.Idle.ToString());
 				break;
 		}
 	}
@@ -355,8 +392,9 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	{
 		Log("OnIdleEnd" , "Next=" + nextState);
 
-		_touchable.enabled = nextState == State.Tickling
-						 || nextState == State.Moving;
+		_touchable.enabled = nextState == State.Tickles
+						 || nextState == State.Move
+						 || nextState == State.Emotion;
 	}
 	
 	private void IdleUpdate()
@@ -373,7 +411,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	private void OnMoveStart(State lastState)
 	{
 		Log("OnMoveStart");
-		PlayAnimation(_runTriggerName);
+		PlayAnimation(State.Move.ToString());
 	}
 
 	private void OnMoveEnd(State nextState)
@@ -521,7 +559,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	private void OnCodeDriveStart(State obj)
 	{
 		Log("OnCodeDriveStart");
-		PlayAnimation(_runTriggerName);
+		PlayAnimation(State.Move.ToString());
 	}
 
 	private void OnCodeDriveEnd(State obj)
@@ -542,6 +580,20 @@ public class BoomonController : MonoBehaviour, ITeleportable
 			CurrentState = State.Idle;
 		else
 			_controller.SimpleMove(_velocity);
+	}
+
+	#endregion
+
+	//------------------------------------------------------------------
+
+	#region Events.Emotion
+
+	private void OnEmotionStart(State obj)
+	{
+	}
+
+	private void OnEmotionEnd(State obj)
+	{
 	}
 
 	#endregion
@@ -641,12 +693,10 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	[SerializeField, Range(0f, 90f)]	private float _throwDegreesMin;
 	[SerializeField, Range(0f, 10f)]	private float _senseReversalDistMin = 1;
 
-	[SerializeField] private string _idleTriggerName = "Idle";
-	[SerializeField] private string _runTriggerName = "Run";
 	//[SerializeField] private string _jumpTriggerName = "Jump";
-	[SerializeField] private string _landTriggerName = "Land";
+	//[SerializeField] private string _landTriggerName = "Land";
 	[SerializeField] private string _standUpTriggerName = "StandUp";
-	[SerializeField] private string _ticklesTriggerName = "Tickles";
+	
 
 	
 
@@ -663,7 +713,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	private float _groundSlopeCosine;
 
 	private Sense _moveSense;
-	private State _currentState = State.Moving;
+	private State _currentState = State.Move;
 
 	private struct StateActions
 	{
@@ -717,7 +767,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	private List<Action> _goToCallbacks;
 	private Vector3 _drivenTarget;
 	private BoomonRole _role;
-	
+	private Emotion _currentEmotion;
 
 	#endregion
 

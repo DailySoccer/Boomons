@@ -276,7 +276,7 @@ public class TouchManager : Manager
 	/// <returns></returns>
 	private InputData ReadInput()
 	{
-#if UNITY_EDITOR
+#if UNITY_STANDALONE
 		InputData input;
 		input.Phase =	Input.GetMouseButtonDown(0)	? InputData.InputPhase.Start :
 						Input.GetMouseButtonUp(0)	? InputData.InputPhase.Stop  :
@@ -285,7 +285,7 @@ public class TouchManager : Manager
 		input.Position = Input.mousePosition;
 		input.Seconds = Time.time;
 #else
-		if (Input.touchCount == 0)
+		if(Input.touchCount == 0)
 			return new InputData();
 
 		InputData input;
