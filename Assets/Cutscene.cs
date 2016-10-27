@@ -17,6 +17,7 @@ public class Cutscene : MonoBehaviour
 	{
 		_game = null;
 		_animator = null;
+		_driver = null;
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -25,21 +26,23 @@ public class Cutscene : MonoBehaviour
 			return;
 
 		_animator.SetTrigger(_playTriggerName);
-		
 	}
+
+
 
 	#endregion
 
 	//==================================================
 
 	#region Private Fields
-
-	
+											
 	[SerializeField] private string _playTriggerName = "Play";
 	[SerializeField] private string _playerTag = "Player";
 
 	private GameManager _game;
 	private Animator _animator;
+	private CutsceneDriver _driver;
+
 	#endregion
 
 }
