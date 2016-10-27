@@ -47,8 +47,6 @@ public class Transition : MonoBehaviour {
 			{
 				_instance = this;
 			}
-			//TODO erase this line
-			StartAnim();
 		}
 	}
 	
