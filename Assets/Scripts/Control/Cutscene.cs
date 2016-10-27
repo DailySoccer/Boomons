@@ -3,6 +3,26 @@
 [RequireComponent(typeof(Animator))]
 public class Cutscene : MonoBehaviour
 {
+	#region Public Fields
+	public bool IsPlaying { get; private set; }
+	#endregion
+
+
+	//===================================================================
+
+	#region Public Methods
+
+	public void Play()
+	{
+		IsPlaying = true;
+		_game.Player.SetIsControllable(false);
+		_animator.SetTrigger(_playTriggerName);
+	}
+
+	#endregion
+
+	//======================================================================
+
 
 	#region Mono
 
@@ -20,6 +40,19 @@ public class Cutscene : MonoBehaviour
 		_driver = null;
 	}
 
+	private void OnEnable()
+	{
+		_animator.GetBehaviour<CutsceneEndState>().End += OnCutsceneEnd;
+	}
+
+	
+
+	private void OnDisable()
+	{
+		_animator.GetBehaviour<CutsceneEndState>().End -= OnCutsceneEnd;
+	}
+	
+
 	private void Update()
 	{
 		if(_driver.MustFollow)
@@ -31,14 +64,13 @@ public class Cutscene : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if(other.gameObject != _game.Player.gameObject)
+		if(IsPlaying || other.gameObject != _game.Player.gameObject)
 			return;
 
-		_game.Player.SetIsControllable(false);
-		_animator.SetTrigger(_playTriggerName);
+		Play();
 	}
 
-
+	
 
 	#endregion
 
@@ -58,6 +90,12 @@ public class Cutscene : MonoBehaviour
 	{
 		Debug.Log("Cutscene::OnEmotionClick>> " + index);
 		_animator.SetInteger(_resolutionIntName, index);
+	}
+
+	private void OnCutsceneEnd()
+	{
+		IsPlaying = false;
+		SceneLoader.Instance.GoToMainMenu();
 	}
 
 
