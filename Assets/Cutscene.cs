@@ -34,7 +34,7 @@ public class Cutscene : MonoBehaviour
 		if(other.gameObject != _game.Player.gameObject)
 			return;
 
-		_game.Player.IsControllable = false;
+		_game.Player.SetIsControllable(false);
 		_animator.SetTrigger(_playTriggerName);
 	}
 
@@ -42,16 +42,27 @@ public class Cutscene : MonoBehaviour
 
 	#endregion
 
+
+	//===================================================================
+
+	#region Events
+
 	public void OnEmotionClick(int index)
 	{
-		
+		Debug.Log("Cutscene::OnEmotionClick>> " + index);
+		_animator.SetInteger(_emotionIntName, index);
 	}
 
 
 	public void OnResolutionClick(int index)
 	{
-		
+		Debug.Log("Cutscene::OnEmotionClick>> " + index);
+		_animator.SetInteger(_resolutionIntName, index);
 	}
+
+
+	#endregion
+
 
 	//==================================================
 
@@ -60,10 +71,13 @@ public class Cutscene : MonoBehaviour
 	[SerializeField] private BoomonController.Emotion _emotion;
 	[SerializeField] private string _playTriggerName = "Play";
 	[SerializeField] private string _playerTag = "Player";
+	[SerializeField] private string _emotionIntName = "Emotion";
+	[SerializeField] private string _resolutionIntName = "Resolution";
 
 	private GameManager _game;
 	private Animator _animator;
 	private CutsceneDriver _driver;
+	
 
 	#endregion
 

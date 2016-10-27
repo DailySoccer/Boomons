@@ -115,10 +115,20 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		}
 	}
 
-	public bool IsControllable
+	public void SetIsControllable(bool value)
 	{
-		get { return _touchable.enabled; }
-		set { _touchable.enabled = value; }
+		// TODO FRS 161027 Gestionar el ragdoll
+		if(!value && CurrentState == State.Move)
+			CurrentState = State.Idle;
+
+		IsTouchEnabled = _isControllable = value;
+	}
+
+
+	public bool IsTouchEnabled
+	{
+		get{ return _touchable.enabled; }
+		private set { _touchable.enabled = value && _isControllable; }
 	}
 
 	public bool IsTeleporting { get; private set; }
@@ -184,8 +194,11 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		GoTo( target.ExitPoint );
 	}
 
+	
+
 	public void GoTo(Vector3 position, Action callback = null)
 	{
+		
 		_drivenTarget = position;
 		if(callback != null)
 			_goToCallbacks.Add(callback);
@@ -207,6 +220,8 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	// TODO Extraer subinicializaicones
 	private void Awake()
 	{
+		_isControllable = true;
+
 		Debug.Assert(_right != Vector3.zero, "BoomonController::Awake>> Right move direction not defined!!");
 
 		_role =  (BoomonRole) Enum.Parse(typeof (BoomonRole), name.Split('(')[0]);
@@ -371,7 +386,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	/// </summary>
 	private void OnIdleReady()
 	{
-		IsControllable = true;
+		IsTouchEnabled = true;
 	}
 
 	private void OnIdleStart(State lastState)
@@ -408,7 +423,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	{
 		Log("OnIdleEnd" , "Next=" + nextState);
 
-		IsControllable = nextState == State.Tickles
+		IsTouchEnabled = nextState == State.Tickles
 						 || nextState == State.Move
 						 || nextState == State.Emotion;
 	}
@@ -788,6 +803,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	private Emotion _currentEmotion;
 
 	[SerializeField] private BoomonIdleState _idleStateState;
+	private bool _isControllable;
 
 	#endregion
 
