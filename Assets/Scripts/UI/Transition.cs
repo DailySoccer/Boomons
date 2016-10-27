@@ -2,15 +2,13 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class Transition : MonoBehaviour {
+public class Transition : Singleton<Transition> {
 
 	public delegate void VoidNoParams();
 	public event VoidNoParams AnimEnd;
 
 	[SerializeField]
 	private RectTransform Center;
-	[SerializeField]
-	private Sprite CenterTex;
 	[SerializeField]
 	private RectTransform TopBorder;
 	[SerializeField]
@@ -28,25 +26,17 @@ public class Transition : MonoBehaviour {
 
 	[SerializeField]
 	private bool Reverse;
-
-	public static Transition Instance
-	{
-		get { return _instance; }
-	}
 	// Use this for initialization
 	void Start () {
-		_initialized = AlphaGroup != null && Center != null && CenterTex != null && TopBorder != null && BottomBorder != null && LeftBorder != null && RightBorder != null;
+		_initialized = AlphaGroup != null && Center != null && TopBorder != null && BottomBorder != null && LeftBorder != null && RightBorder != null;
 		if (_initialized)
 		{
-			_ratioTex = CenterTex.rect.width / CenterTex.rect.height;
+			Sprite centerTex = Center.GetComponent<Image>().sprite;
+			_ratioTex = centerTex.rect.width / centerTex.rect.height;
 			_screenW = Screen.width;
 			_screenH = Screen.height;
 			_bigHeight = Mathf.Max(_screenW, _screenH) * 1.5f;
 			ResetValues();
-			if (_instance == null)
-			{
-				_instance = this;
-			}
 		}
 	}
 	
@@ -68,8 +58,10 @@ public class Transition : MonoBehaviour {
 		}
 	}
 
-	public void StartAnim()
+	public void StartAnim(float animTime, bool reverse = false)
 	{
+		TimePeriod = Mathf.Max(0.01f, animTime);
+		Reverse = reverse;
 		_startTime = Time.time;
 		_workToDo = true;
 		ResetValues();
@@ -113,6 +105,4 @@ public class Transition : MonoBehaviour {
 	private float _ratioTex;
 	private float _bigHeight;
 	private float _screenW, _screenH;
-
-	private static Transition _instance;
 }
