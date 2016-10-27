@@ -48,7 +48,8 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: Event NewEvent of Animation Clip Periscope has a time  (5.000000)
+      outside the clip's valid range (0.000000..4.000000). It will never be fired
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 1
@@ -81,7 +82,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ClipStart
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: e50fc0cc8e4cc32439ef25af785ac89b,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: ClipEnd
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: e50fc0cc8e4cc32439ef25af785ac89b,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
