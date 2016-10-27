@@ -1728,6 +1728,17 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 54d555a94146ef84fa254a4c06e8c457,
         type: 3}
+    - target: {fileID: 114000011625957976, guid: fe16667a53ea62a43834d91064bce434,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 114000010440063408, guid: cd12908801981884e9256c9b250fa969,
+        type: 2}
+    - target: {fileID: 114000011625957976, guid: fe16667a53ea62a43834d91064bce434,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToMainMenu
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe16667a53ea62a43834d91064bce434, type: 2}
   m_IsPrefabParent: 0
@@ -7613,8 +7624,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1991211933}
-  - 95: {fileID: 1991211932}
   - 114: {fileID: 1991211934}
+  - 95: {fileID: 1991211932}
   - 135: {fileID: 1991211935}
   m_Layer: 0
   m_Name: Cutscene
@@ -7678,6 +7689,8 @@ MonoBehaviour:
   _emotion: 4
   _playTriggerName: Play
   _playerTag: Player
+  _emotionIntName: Emotion
+  _resolutionIntName: Resolution
 --- !u!135 &1991211935
 SphereCollider:
   m_ObjectHideFlags: 0
