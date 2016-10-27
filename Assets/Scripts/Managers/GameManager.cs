@@ -97,7 +97,7 @@ public class GameManager : Manager
 			OnEscape();
 
 
-#if UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE
 		int pressedNumber;
 		if( int.TryParse(Input.inputString, out pressedNumber)  
 		 && Enum.IsDefined(typeof(BoomonRole), pressedNumber - 1))
