@@ -85,7 +85,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	public Emotion CurrentEmotion
 	{
 		get { return _currentEmotion; }
-		private set 
+		set 
 		{
 			if(value == _currentEmotion)
 				return;
@@ -113,6 +113,12 @@ public class BoomonController : MonoBehaviour, ITeleportable
 			_animator.SetInteger("Direction", (int)value);
 			_moveSense = value;
 		}
+	}
+
+	public bool IsControllable
+	{
+		get { return _touchable.enabled; }
+		set { _touchable.enabled = value; }
 	}
 
 	public bool IsTeleporting { get; private set; }
@@ -365,7 +371,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	/// </summary>
 	private void OnIdleReady()
 	{
-		_touchable.enabled = true;
+		IsControllable = true;
 	}
 
 	private void OnIdleStart(State lastState)
@@ -402,7 +408,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	{
 		Log("OnIdleEnd" , "Next=" + nextState);
 
-		_touchable.enabled = nextState == State.Tickles
+		IsControllable = nextState == State.Tickles
 						 || nextState == State.Move
 						 || nextState == State.Emotion;
 	}
@@ -689,6 +695,8 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	}
 
 	
+
+
 	//[SerializeField] private Transform _bipedRoot;
 	[SerializeField] private Vector3 _right;
 	private Vector3 _bipedOffsetPos;

@@ -20,11 +20,21 @@ public class Cutscene : MonoBehaviour
 		_driver = null;
 	}
 
+	private void Update()
+	{
+		if(_driver.MustFollow)
+			_game.Player.GoTo(_driver.transform.position);
+	
+		_game.Player.CurrentEmotion = _driver.MustShowEmotion ? 
+				_emotion : BoomonController.Emotion.None;
+	}
+
 	private void OnTriggerEnter(Collider other)
 	{
-		if(other.gameObject != _game.Player)
+		if(other.gameObject != _game.Player.gameObject)
 			return;
 
+		_game.Player.IsControllable = false;
 		_animator.SetTrigger(_playTriggerName);
 	}
 
@@ -35,7 +45,8 @@ public class Cutscene : MonoBehaviour
 	//==================================================
 
 	#region Private Fields
-											
+
+	[SerializeField] private BoomonController.Emotion _emotion;
 	[SerializeField] private string _playTriggerName = "Play";
 	[SerializeField] private string _playerTag = "Player";
 
