@@ -10,6 +10,8 @@ public class Transition : MonoBehaviour {
 	[SerializeField]
 	private RectTransform Center;
 	[SerializeField]
+	private Sprite CenterTex;
+	[SerializeField]
 	private RectTransform TopBorder;
 	[SerializeField]
 	private RectTransform BottomBorder;
@@ -26,22 +28,37 @@ public class Transition : MonoBehaviour {
 
 	[SerializeField]
 	private bool Reverse;
+
+	public static Transition Instance
+	{
+		get { return _instance; }
+	}
 	// Use this for initialization
 	void Start () {
-		_initialized = AlphaGroup != null && Center != null && TopBorder != null && BottomBorder != null && LeftBorder != null && RightBorder != null;
+		_initialized = AlphaGroup != null && Center != null && CenterTex != null && TopBorder != null && BottomBorder != null && LeftBorder != null && RightBorder != null;
 		if (_initialized)
 		{
+			_ratioTex = CenterTex.rect.width / CenterTex.rect.height;
+			_screenW = Screen.width;
+			_screenH = Screen.height;
+			_bigHeight = Mathf.Max(_screenW, _screenH) * 1.5f;
 			ResetValues();
+			if (_instance == null)
+			{
+				_instance = this;
+			}
+			//TODO erase this line
+			StartAnim();
 		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (_workToDo)
+		if (_initialized && _workToDo)
 		{
 			UpdatePerc();
 			_value = GetCosValue01(Reverse ? 1 - _perc : _perc);
-			_workToDo = _perc > 1;
+			_workToDo = _perc <= 1;
 			UpdateGraphics(_value);
 			if (!_workToDo)
 			{
@@ -73,7 +90,13 @@ public class Transition : MonoBehaviour {
 
 	private void UpdateGraphics(float value)
 	{
-		//TODO
+		AlphaGroup.alpha = Mathf.Clamp01(4 * value);
+		float nextSize = (1 - value) * _bigHeight;
+		Center.sizeDelta = new Vector2(nextSize * _ratioTex, nextSize);
+		float widthMargin = (_screenW - Center.sizeDelta.x) * 0.5f;
+		float heightMargin = (_screenH - Center.sizeDelta.y) * 0.5f;
+		LeftBorder.sizeDelta = RightBorder.sizeDelta = new Vector2(widthMargin, _screenH);
+		TopBorder.sizeDelta = BottomBorder.sizeDelta = new Vector2(_screenW, heightMargin);
 	}
 
 	private float GetCosValue01(float inputPerc)
@@ -88,4 +111,10 @@ public class Transition : MonoBehaviour {
 	private float _startTime;
 	private float _perc;
 	private float _value;
+
+	private float _ratioTex;
+	private float _bigHeight;
+	private float _screenW, _screenH;
+
+	private static Transition _instance;
 }
