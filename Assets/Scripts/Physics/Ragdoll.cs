@@ -29,8 +29,10 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 				"Ragdoll::Setup>> Hierarchy does not match: " 
 				+ _nodes[i].name + " VS " + refNodes[i].name, gameObject);
 
-			_nodes[i].localPosition = refNodes[i].localPosition;
-			_nodes[i].localRotation = refNodes[i].localRotation;
+			if (!_nodes[i].name.Contains(_eyebrowKeyWord)) { // TODO FRS 161027 Mejorar con hashSet configurable (blacklist)
+				_nodes[i].localPosition=refNodes[i].localPosition;
+				_nodes[i].localRotation=refNodes[i].localRotation;
+			}
 		}
 
 		gameObject.SetActive(true);
@@ -139,7 +141,9 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 	private RagdollPelvis _pelvis;
 	private Transform[] _nodes;
 
+	private string _eyebrowKeyWord = "Eyebrow";
+
 	#endregion
 
-	
+
 }

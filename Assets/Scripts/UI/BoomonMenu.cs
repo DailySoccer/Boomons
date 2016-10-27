@@ -7,10 +7,6 @@ public class BoomonMenu : MonoBehaviour
 	public void OnBoomonSelected(BoomonController boomon)
 	{
 		MetaManager.Instance.GetManager<GameManager>().BoomonRole = boomon.Role;
-
-		_cameraFollower.Target = boomon.transform;
-		_cameraFollower.StopZoomRatio = _selectionZoomRatio;
-		//boomon.GoTo(_roomMenu.transform.position);
 	}
 
 	#endregion
@@ -19,26 +15,11 @@ public class BoomonMenu : MonoBehaviour
 
 	#region Mono
 
-	private void Awake()
+	private void OnIdleReady()
 	{
-		_camera = Camera.main;
-		_cameraFollower = _camera.GetComponent<ScrollFollower>();
-
-		Debug.Assert(_cameraFollower != null, "BoomonMenu::Awake>> CameraFollower not found!", _camera);
-	}
-
-	private void OnDestroy()
-	{
-		_roomMenu = null;
-		_camera = null;
-		_cameraFollower = null;
+		Debug.Log(1);	
 	}
 
 	#endregion
 
-	[SerializeField] private Transform _roomMenu; 
-	private Camera _camera;
-	private ScrollFollower _cameraFollower;
-
-	[SerializeField, Range(0f,1f)] private float _selectionZoomRatio = .2f;
 }
