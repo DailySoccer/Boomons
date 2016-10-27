@@ -17,14 +17,21 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: 5.9350004, y: 299.291, z: -1.4300001}
-        inSlope: {x: -16.835295, y: -60.057983, z: 4.2058825}
-        outSlope: {x: 3.512618, y: -60.057983, z: -3.56041}
+        value: {x: 357, y: 359.262, z: 0.00000006011334}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
-      - time: 0.5
-        value: {x: 0.211, y: 269.262, z: 0}
-        inSlope: {x: 3.211615, y: -60.057983, z: -1.7563841}
-        outSlope: {x: -16.835295, y: -60.057983, z: 4.2058825}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Emotions/CinematicCamera
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 356.99997, y: 269.26196, z: 0.00000010686815}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -35,14 +42,21 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: 3.254, y: 0.655, z: 0.172}
-        inSlope: {x: -0.056115627, y: -1.0936974, z: -0.0007535517}
-        outSlope: {x: -0.056115627, y: -1.0936974, z: -0.0007535517}
+        value: {x: 0, y: -1.6418488, z: -5.4719424}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
-      - time: 0.5
-        value: {x: 3.2259421, y: 0.10815126, z: 0.17162323}
-        inSlope: {x: -0.056115627, y: -1.0936974, z: -0.0007535517}
-        outSlope: {x: -0.056115627, y: -1.0936974, z: -0.0007535517}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Emotions/CinematicCamera
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 3.225943, y: 0.1081512, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -319,6 +333,30 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     path: Emotions/Button 5 Cloud
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: 1.0000001}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Emotions/CinematicCamera
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1.0000006, y: 1, z: 1.0000008}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: CinematicCamera
   m_FloatCurves:
   - curve:
       serializedVersion: 2
@@ -370,26 +408,6 @@ AnimationClip:
     path: ScrollCamera
     classID: 1
     script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 45
-        inSlope: -1.1693332
-        outSlope: -1.1693332
-        tangentMode: 0
-      - time: 0.5
-        value: 50
-        inSlope: -2.4487958
-        outSlope: -2.4487958
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: field of view
-    path: CinematicCamera
-    classID: 20
-    script: {fileID: 0}
   m_PPtrCurves: []
   m_SampleRate: 50
   m_WrapMode: 0
@@ -398,18 +416,6 @@ AnimationClip:
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
     genericBindings:
-    - path: 2593664684
-      attribute: 1
-      script: {fileID: 0}
-      classID: 4
-      customType: 0
-      isPPtrCurve: 0
-    - path: 2593664684
-      attribute: 4
-      script: {fileID: 0}
-      classID: 4
-      customType: 14
-      isPPtrCurve: 0
     - path: 2407477785
       attribute: 3
       script: {fileID: 0}
@@ -488,10 +494,40 @@ AnimationClip:
       classID: 1
       customType: 0
       isPPtrCurve: 0
-    - path: 2593664684
-      attribute: 3138646591
+    - path: 3070586407
+      attribute: 1
       script: {fileID: 0}
-      classID: 20
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2593664684
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3070586407
+      attribute: 4
+      script: {fileID: 0}
+      classID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - path: 2593664684
+      attribute: 4
+      script: {fileID: 0}
+      classID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - path: 3070586407
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2593664684
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
       customType: 0
       isPPtrCurve: 0
     pptrCurveMapping: []
@@ -1470,75 +1506,145 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 3.254
-        inSlope: -0.056115627
-        outSlope: -0.056115627
+        value: 357
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
-      - time: 0.5
-        value: 3.2259421
-        inSlope: -0.056115627
-        outSlope: -0.056115627
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: Emotions/CinematicCamera
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 359.262
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: Emotions/CinematicCamera
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.00000006011334
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: Emotions/CinematicCamera
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: CinematicCamera
+    path: Emotions/CinematicCamera
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0.655
-        inSlope: -1.0936974
-        outSlope: -1.0936974
-        tangentMode: 10
-      - time: 0.5
-        value: 0.10815126
-        inSlope: -1.0936974
-        outSlope: -1.0936974
+        value: -1.6418488
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: CinematicCamera
+    path: Emotions/CinematicCamera
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0.172
-        inSlope: -0.0007535517
-        outSlope: -0.0007535517
-        tangentMode: 10
-      - time: 0.5
-        value: 0.17162323
-        inSlope: -0.0007535517
-        outSlope: -0.0007535517
+        value: -5.4719424
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: CinematicCamera
+    path: Emotions/CinematicCamera
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 5.9350004
-        inSlope: -16.835295
-        outSlope: 3.512618
-        tangentMode: 1
-      - time: 0.5
-        value: 0.211
-        inSlope: 3.211615
-        outSlope: -16.835295
-        tangentMode: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.x
+    path: Emotions/CinematicCamera
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.y
+    path: Emotions/CinematicCamera
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1.0000001
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.z
+    path: Emotions/CinematicCamera
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 356.99997
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1550,14 +1656,9 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 299.291
-        inSlope: -60.057983
-        outSlope: -60.057983
-        tangentMode: 10
-      - time: 0.5
-        value: 269.262
-        inSlope: -60.057983
-        outSlope: -60.057983
+        value: 269.26196
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -1570,15 +1671,10 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -1.4300001
-        inSlope: 4.2058825
-        outSlope: -3.56041
-        tangentMode: 1
-      - time: 0.5
-        value: 0
-        inSlope: -1.7563841
-        outSlope: 4.2058825
-        tangentMode: 1
+        value: 0.00000010686815
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1590,23 +1686,123 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 45
-        inSlope: -1.1693332
-        outSlope: -1.1693332
-        tangentMode: 0
-      - time: 0.5
-        value: 50
-        inSlope: -2.4487958
-        outSlope: -2.4487958
-        tangentMode: 0
+        value: 3.225943
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: field of view
+    attribute: m_LocalPosition.x
     path: CinematicCamera
-    classID: 20
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.1081512
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: CinematicCamera
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: CinematicCamera
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1.0000006
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.x
+    path: CinematicCamera
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.y
+    path: CinematicCamera
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1.0000008
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.z
+    path: CinematicCamera
+    classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Emotions/CinematicCamera
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Emotions/CinematicCamera
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Emotions/CinematicCamera
+    classID: 4
+    script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve: []
