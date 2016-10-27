@@ -6,6 +6,7 @@ public class ItemActivator : Touchable
 
 	#region Public Methods
 
+    [SerializeField]
 	public void Activate()
 	{
 		Debug.Log("ItemActivator::Activate>> " + name, this);
@@ -24,7 +25,7 @@ public class ItemActivator : Touchable
 	{
 		base.Awake();
 		_animator = GetComponent<Animator>();
-		_audio = GetComponent<AudioSource>();
+		_audio = GetComponent<AudioSource>();       
 	}
 
 	protected override void OnDestroy()
@@ -32,9 +33,17 @@ public class ItemActivator : Touchable
 		_audio = null;
 		_animator = null;
 		base.OnDestroy();
-	}
+    }
 
-	private void OnCollisionEnter(Collision info)
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        if (_activateOnEnable)
+            Activate();
+    }
+
+    private void OnCollisionEnter(Collision info)
 	{
 		if (info.gameObject.tag == _playerTag)
 			Activate();
@@ -62,6 +71,7 @@ public class ItemActivator : Touchable
 	private AudioSource _audio;
 	[SerializeField] private string _playTriggerName = "Play";
 	[SerializeField] private string _playerTag = "Player";
-
+    [SerializeField]
+    private bool _activateOnEnable;
 	#endregion
 }
