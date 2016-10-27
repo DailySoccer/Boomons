@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using UnityEngine.Networking;
+﻿using UnityEngine; 
 using UnityEngine.SceneManagement;
 
 
@@ -13,7 +12,7 @@ public class SceneLoader : Singleton<SceneLoader>
 
 	private void Update()
 	{
-		if (Input.GetKey(KeyCode.Escape))
+		if (Input.GetKeyDown(KeyCode.Escape))
 			OnEscape();
 	}
 
@@ -23,6 +22,7 @@ public class SceneLoader : Singleton<SceneLoader>
 		switch(SceneManager.GetActiveScene().name)
 		{
 			case "MainMenu":
+				Debug.Log("<b>APPLICATION EXIT</b>");
 				Application.Quit();
 				break;
 
@@ -47,8 +47,5 @@ public class SceneLoader : Singleton<SceneLoader>
 		SceneManager.LoadScene("SelectionMenu");
 	}
 
-	public void GoToUnblockRoom(string roomId)
-	{
-		Debug.Log("GoToUnblock>> " + roomId);
-	}
+
 }

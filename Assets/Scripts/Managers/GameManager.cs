@@ -112,11 +112,14 @@ public class GameManager : Manager
 
 	#region Events
 
-	
-
 	private void OnSceneLoaded(Scene scene, LoadSceneMode loadMode)
-	{			
+	{
+		// HACKing ético FRS -> TODO 161027 Unificar 
+		if (!scene.name.Contains("Room"))
+			return;
+
 		RespawnBoomon(BoomonRole);
+		Transition.Instance.StartAnim(1f, true); // TODO FRS 161027 Configurar un tiempo por defecto de transición
 	}
 
 	#endregion

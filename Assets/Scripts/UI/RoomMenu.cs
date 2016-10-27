@@ -31,13 +31,14 @@ public class RoomMenu : MonoBehaviour
 		}
 		else
 		{
-			SceneLoader.Instance.GoToUnblockRoom(button.TargetRoomId);
+			SceneLoader.Instance.GoToParentsMenu();
 		}
 	}
 
 
 	private void OnTransitionEnd()
 	{
+		Transition.Instance.AnimEnd -= OnTransitionEnd;
 		MetaManager.Instance.GetManager<GameManager>().StartRoom(SelectedRoom);
 	}
 

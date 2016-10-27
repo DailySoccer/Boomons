@@ -630,54 +630,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4000013939482066, guid: 6f5539df1f6ee1542a5cc7abdcdb0896,
     type: 2}
   m_PrefabInternal: {fileID: 1505358424}
---- !u!1001 &468895799
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4000012451855230, guid: cd12908801981884e9256c9b250fa969, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -3.9140544
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012451855230, guid: cd12908801981884e9256c9b250fa969, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 3.8119392
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012451855230, guid: cd12908801981884e9256c9b250fa969, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 27.19762
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012451855230, guid: cd12908801981884e9256c9b250fa969, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012451855230, guid: cd12908801981884e9256c9b250fa969, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012451855230, guid: cd12908801981884e9256c9b250fa969, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012451855230, guid: cd12908801981884e9256c9b250fa969, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012451855230, guid: cd12908801981884e9256c9b250fa969, type: 2}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: cd12908801981884e9256c9b250fa969, type: 2}
-  m_IsPrefabParent: 0
---- !u!114 &468895800 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114000010440063408, guid: cd12908801981884e9256c9b250fa969,
-    type: 2}
-  m_PrefabInternal: {fileID: 468895799}
-  m_Script: {fileID: 11500000, guid: 4bf2a3e01d3046c46915b91b1c2e7836, type: 3}
 --- !u!1001 &632875055
 Prefab:
   m_ObjectHideFlags: 0
@@ -795,7 +747,7 @@ Prefab:
     - target: {fileID: 224000012668852246, guid: fe16667a53ea62a43834d91064bce434,
         type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 224000012668852246, guid: fe16667a53ea62a43834d91064bce434,
         type: 2}
@@ -851,7 +803,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 468895800}
+      objectReference: {fileID: 0}
     - target: {fileID: 114000012750586438, guid: fe16667a53ea62a43834d91064bce434,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -867,14 +819,20 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: set_enabled
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011625957976, guid: fe16667a53ea62a43834d91064bce434,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 114000010440063408, guid: cd12908801981884e9256c9b250fa969,
+        type: 2}
+    - target: {fileID: 114000011625957976, guid: fe16667a53ea62a43834d91064bce434,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToMainMenu
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe16667a53ea62a43834d91064bce434, type: 2}
   m_IsPrefabParent: 0
---- !u!224 &1000723325 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224000010451412428, guid: fe16667a53ea62a43834d91064bce434,
-    type: 2}
-  m_PrefabInternal: {fileID: 1000723324}
 --- !u!224 &1000723326 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224000011950272316, guid: fe16667a53ea62a43834d91064bce434,
@@ -1148,7 +1106,7 @@ Prefab:
         type: 2}
       propertyPath: DisableCanvasPanel
       value: 
-      objectReference: {fileID: 1000723325}
+      objectReference: {fileID: 0}
     - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
         type: 2}
       propertyPath: SceneCamera

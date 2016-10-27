@@ -35,7 +35,16 @@ public class QRHandler : MonoBehaviour {
 
 	public void LaunchScan()
 	{
+#if QR_FAKER
+		// 161027 FRS Falseamos desbloqueo de todas las rooms
+		PlayerPrefs.SetString("Room 1", "");
+		PlayerPrefs.SetString("Room 2", "");
+		PlayerPrefs.SetString("Room 3", "");
+		PlayerPrefs.SetString("Room 4", "");
+		PlayerPrefs.Save();
+#else
 		EasyCodeScanner.launchScanner(true, "Encuadre el codigo QR en el cuadrado", -1, true);
+#endif
 	}
 	
 	//void OnGUI ()
