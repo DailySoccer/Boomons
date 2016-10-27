@@ -17,26 +17,63 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: 0.21400002, y: 269.24, z: 0}
-        inSlope: {x: -0.060165405, y: 0.05238851, z: 0}
-        outSlope: {x: -0.060165405, y: 0.05238851, z: 0}
+        value: {x: 0.211, y: 269.262, z: 0}
+        inSlope: {x: -14.595454, y: 0, z: 0}
+        outSlope: {x: -14.595454, y: 0, z: 0}
         tangentMode: 0
-      - time: 0.42
+      - time: 0.22
         value: {x: -3, y: 269.262, z: 0}
-        inSlope: {x: -0.06356024, y: 0.05238851, z: 0}
-        outSlope: {x: -0.06356024, y: 0.05238851, z: 0}
+        inSlope: {x: -7.297727, y: 0, z: -0.26057452}
+        outSlope: {x: -7.297727, y: 0, z: -0.26057452}
+        tangentMode: 0
+      - time: 0.74
+        value: {x: -3, y: 269.262, z: 0}
+        inSlope: {x: 13.960941, y: 46.92031, z: -0.7777461}
+        outSlope: {x: 13.960941, y: 46.92031, z: -3.5749993}
+        tangentMode: 0
+      - time: 1.06
+        value: {x: 5.9350004, y: 299.291, z: -1.4300001}
+        inSlope: {x: 27.921883, y: 93.84062, z: -4.468751}
+        outSlope: {x: 27.921883, y: 93.84062, z: -4.468751}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: ScrollCamera
-  m_PositionCurves: []
+    path: CinematicCamera
+  m_PositionCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 3.2259421, y: 0.10815126, z: 0.17162323}
+        inSlope: {x: 0.00026334415, y: 0.040221553, z: 0.0017126176}
+        outSlope: {x: 0.00026334415, y: 0.040221553, z: 0.0017126176}
+        tangentMode: 0
+      - time: 0.22
+        value: {x: 3.226, y: 0.117, z: 0.172}
+        inSlope: {x: 0.00013167207, y: 0.020110777, z: 0.0008563088}
+        outSlope: {x: 0.00013167207, y: 0.020110777, z: 0.0008563088}
+        tangentMode: 0
+      - time: 0.74
+        value: {x: 3.226, y: 0.117, z: 0.172}
+        inSlope: {x: 0.043749817, y: 0.84062517, z: 0}
+        outSlope: {x: 0.043749817, y: 0.84062517, z: 0}
+        tangentMode: 0
+      - time: 1.06
+        value: {x: 3.254, y: 0.655, z: 0.172}
+        inSlope: {x: 0.08749963, y: 1.6812503, z: 0}
+        outSlope: {x: 0.08749963, y: 1.6812503, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: CinematicCamera
   m_ScaleCurves: []
   m_FloatCurves:
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: 0
+      - time: 0.22
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -53,26 +90,6 @@ AnimationClip:
     path: Robot/RobotModel
     classID: 114
     script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 50
-        inSlope: -2.8938684
-        outSlope: -2.8938684
-        tangentMode: 0
-      - time: 0.42
-        value: 65
-        inSlope: -2.69617
-        outSlope: 23.809525
-        tangentMode: 1
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: field of view
-    path: ScrollCamera
-    classID: 20
-    script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -109,10 +126,70 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_Enabled
+    attribute: m_IsActive
     path: ScrollCamera
-    classID: 114
-    script: {fileID: 11500000, guid: 4796ef36eaa5db942b22ead7cebd9842, type: 3}
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: CinematicCamera
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 50
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.22
+        value: 50
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.74
+        value: 50
+        inSlope: 7.8125014
+        outSlope: 7.8125014
+        tangentMode: 10
+      - time: 1.06
+        value: 55
+        inSlope: 14.767454
+        outSlope: 14.767454
+        tangentMode: 0
+      - time: 1.22
+        value: 55
+        inSlope: -42.03024
+        outSlope: -42.03024
+        tangentMode: 10
+      - time: 1.34
+        value: 44.912743
+        inSlope: -19.966623
+        outSlope: -19.966623
+        tangentMode: 0
+      - time: 1.68
+        value: 45
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: field of view
+    path: CinematicCamera
+    classID: 20
+    script: {fileID: 0}
   m_PPtrCurves: []
   m_SampleRate: 50
   m_WrapMode: 0
@@ -121,7 +198,13 @@ AnimationClip:
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
     genericBindings:
-    - path: 3460332687
+    - path: 2593664684
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2593664684
       attribute: 4
       script: {fileID: 0}
       classID: 4
@@ -133,12 +216,6 @@ AnimationClip:
       classID: 114
       customType: 24
       isPPtrCurve: 0
-    - path: 3460332687
-      attribute: 3138646591
-      script: {fileID: 0}
-      classID: 20
-      customType: 0
-      isPPtrCurve: 0
     - path: 382368239
       attribute: 246077381
       script: {fileID: 11500000, guid: 289aced52880f3e4d8477cda9f7159f5, type: 3}
@@ -146,10 +223,22 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 0
     - path: 3460332687
-      attribute: 3305885265
-      script: {fileID: 11500000, guid: 4796ef36eaa5db942b22ead7cebd9842, type: 3}
-      classID: 114
-      customType: 24
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2593664684
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2593664684
+      attribute: 3138646591
+      script: {fileID: 0}
+      classID: 20
+      customType: 0
       isPPtrCurve: 0
     pptrCurveMapping: []
   m_AnimationClipSettings:
@@ -176,7 +265,7 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: 0
+      - time: 0.22
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -193,26 +282,6 @@ AnimationClip:
     path: Robot/RobotModel
     classID: 114
     script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 50
-        inSlope: -2.8938684
-        outSlope: -2.8938684
-        tangentMode: 0
-      - time: 0.42
-        value: 65
-        inSlope: -2.69617
-        outSlope: 23.809525
-        tangentMode: 1
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: field of view
-    path: ScrollCamera
-    classID: 20
-    script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -249,48 +318,83 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_Enabled
+    attribute: m_IsActive
     path: ScrollCamera
-    classID: 114
-    script: {fileID: 11500000, guid: 4796ef36eaa5db942b22ead7cebd9842, type: 3}
+    classID: 1
+    script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0.21400002
-        inSlope: -0.060165405
-        outSlope: -0.060165405
-        tangentMode: 0
-      - time: 0.42
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: CinematicCamera
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.211
+        inSlope: -14.595454
+        outSlope: -14.595454
+        tangentMode: 10
+      - time: 0.22
         value: -3
-        inSlope: -0.06356024
-        outSlope: -0.06356024
-        tangentMode: 0
+        inSlope: -7.297727
+        outSlope: -7.297727
+        tangentMode: 10
+      - time: 0.74
+        value: -3
+        inSlope: 13.960941
+        outSlope: 13.960941
+        tangentMode: 10
+      - time: 1.06
+        value: 5.9350004
+        inSlope: 27.921883
+        outSlope: 27.921883
+        tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: ScrollCamera
+    path: CinematicCamera
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 269.24
-        inSlope: 0.05238851
-        outSlope: 0.05238851
-        tangentMode: 10
-      - time: 0.42
         value: 269.262
-        inSlope: 0.05238851
-        outSlope: 0.05238851
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.22
+        value: 269.262
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.74
+        value: 269.262
+        inSlope: 46.92031
+        outSlope: 46.92031
+        tangentMode: 10
+      - time: 1.06
+        value: 299.291
+        inSlope: 93.84062
+        outSlope: 93.84062
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: ScrollCamera
+    path: CinematicCamera
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -301,16 +405,161 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 0.42
+      - time: 0.22
         value: 0
+        inSlope: -0.26057452
+        outSlope: -0.26057452
+        tangentMode: 0
+      - time: 0.74
+        value: 0
+        inSlope: -0.7777461
+        outSlope: -3.5749993
+        tangentMode: 1
+      - time: 1.06
+        value: -1.4300001
+        inSlope: -4.468751
+        outSlope: -4.468751
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: CinematicCamera
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 50
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.22
+        value: 50
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.74
+        value: 50
+        inSlope: 7.8125014
+        outSlope: 7.8125014
+        tangentMode: 10
+      - time: 1.06
+        value: 55
+        inSlope: 14.767454
+        outSlope: 14.767454
+        tangentMode: 0
+      - time: 1.22
+        value: 55
+        inSlope: -42.03024
+        outSlope: -42.03024
+        tangentMode: 10
+      - time: 1.34
+        value: 44.912743
+        inSlope: -19.966623
+        outSlope: -19.966623
+        tangentMode: 0
+      - time: 1.68
+        value: 45
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: field of view
+    path: CinematicCamera
+    classID: 20
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 3.2259421
+        inSlope: 0.00026334415
+        outSlope: 0.00026334415
+        tangentMode: 10
+      - time: 0.22
+        value: 3.226
+        inSlope: 0.00013167207
+        outSlope: 0.00013167207
+        tangentMode: 10
+      - time: 0.74
+        value: 3.226
+        inSlope: 0.043749817
+        outSlope: 0.043749817
+        tangentMode: 10
+      - time: 1.06
+        value: 3.254
+        inSlope: 0.08749963
+        outSlope: 0.08749963
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: CinematicCamera
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.10815126
+        inSlope: 0.040221553
+        outSlope: 0.040221553
+        tangentMode: 10
+      - time: 0.22
+        value: 0.117
+        inSlope: 0.020110777
+        outSlope: 0.020110777
+        tangentMode: 10
+      - time: 0.74
+        value: 0.117
+        inSlope: 0.84062517
+        outSlope: 0.84062517
+        tangentMode: 10
+      - time: 1.06
+        value: 0.655
+        inSlope: 1.6812503
+        outSlope: 1.6812503
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: CinematicCamera
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.17162323
+        inSlope: 0.0017126176
+        outSlope: 0.0017126176
+        tangentMode: 10
+      - time: 0.22
+        value: 0.172
+        inSlope: 0.0008563088
+        outSlope: 0.0008563088
+        tangentMode: 10
+      - time: 0.74
+        value: 0.172
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1.06
+        value: 0.172
         inSlope: 0
         outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.z
-    path: ScrollCamera
+    attribute: m_LocalPosition.z
+    path: CinematicCamera
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -321,7 +570,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: ScrollCamera
+    path: CinematicCamera
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -331,7 +580,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: ScrollCamera
+    path: CinematicCamera
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -341,7 +590,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: ScrollCamera
+    path: CinematicCamera
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
