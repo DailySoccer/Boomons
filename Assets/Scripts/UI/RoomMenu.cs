@@ -10,19 +10,35 @@ public class RoomMenu : MonoBehaviour
 
 	//=========================================================================
 
+	#region Mono
+
+	
+
+
+	#endregion
+
+	//=================================================================
+
 	#region Events
 
-	public void OnRoomClick(string roomName)
+	public void OnRoomClick(RoomButton button)
 	{
-		SelectedRoom = roomName;
-		Transition.Instance.AnimEnd += OnTransitionEnd;
-		Transition.Instance.StartAnim(_transitionSecs);
+		if (!button.IsBlocked)
+		{
+			SelectedRoom=button.TargetRoomId;
+			Transition.Instance.AnimEnd += OnTransitionEnd;
+			Transition.Instance.StartAnim(_transitionSecs);
+		}
+		else
+		{
+			SceneLoader.Instance.GoToUnblockRoom(button.TargetRoomId);
+		}
 	}
 
 
 	private void OnTransitionEnd()
 	{
-		MetaManager.Instance.GetManager<GameManager>().LoadScene(SelectedRoom);
+		MetaManager.Instance.GetManager<GameManager>().StartRoom(SelectedRoom);
 	}
 
 	#endregion

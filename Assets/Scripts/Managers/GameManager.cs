@@ -34,10 +34,10 @@ public class GameManager : Manager
 
 	public BoomonController Player { get; private set; }
 
-	public void LoadScene(string sceneName)
+	public void StartRoom(string roomName)
 	{
 		Player = null;
-		StartCoroutine(LoadSceneCoroutine(sceneName));
+		StartCoroutine(LoadSceneCoroutine(roomName));
 	}
 
 
@@ -92,10 +92,7 @@ public class GameManager : Manager
 	}
 
 	private void Update()
-	{
-		if (Input.GetKey(KeyCode.Escape))
-			OnEscape();
-
+	{		 
 
 #if UNITY_EDITOR || UNITY_STANDALONE
 		int pressedNumber;
@@ -115,19 +112,10 @@ public class GameManager : Manager
 
 	#region Events
 
-	private void OnEscape()
-	{
-		if(SceneManager.GetActiveScene().name == _mainMenuSceneName)
-			Application.Quit();
-		else
-			LoadScene(_mainMenuSceneName);
-	}
+	
 
 	private void OnSceneLoaded(Scene scene, LoadSceneMode loadMode)
-	{
-		if (scene.name == _mainMenuSceneName)
-			return;
-
+	{			
 		RespawnBoomon(BoomonRole);
 	}
 
@@ -159,7 +147,6 @@ public class GameManager : Manager
 						  
 	#region Private Fields
 
-	[SerializeField] private string _mainMenuSceneName = "RoomMenu";
 	[SerializeField] private string _spawnTag = "Respawn";
 	[SerializeField] private BoomonRole _boomonRoleEditor;
 
