@@ -42,6 +42,17 @@ public class Cutscene : MonoBehaviour
 
 	#endregion
 
+	public void OnEmotionClick(int index)
+	{
+		
+	}
+
+
+	public void OnResolutionClick(int index)
+	{
+		
+	}
+
 	//==================================================
 
 	#region Private Fields
