@@ -26,6 +26,6 @@ public class CustomSceneManager : MonoBehaviour {
 
 	public void GoToPlay()
 	{
-		SceneManager.LoadScene("RoomMenu");
+		SceneManager.LoadScene("SelectionMenu");
 	}
 }

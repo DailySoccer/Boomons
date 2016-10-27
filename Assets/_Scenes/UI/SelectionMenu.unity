@@ -116,7 +116,7 @@ Prefab:
     - target: {fileID: 114000010704009548, guid: b268150597c481e49ba04639dfd8d141,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000010704009548, guid: b268150597c481e49ba04639dfd8d141,
         type: 2}
@@ -171,21 +171,21 @@ Prefab:
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 106962144}
+      objectReference: {fileID: 1130345732}
     - target: {fileID: 114000010704009548, guid: b268150597c481e49ba04639dfd8d141,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetTrigger
+      value: OnBoomonSelected
       objectReference: {fileID: 0}
     - target: {fileID: 114000010704009548, guid: b268150597c481e49ba04639dfd8d141,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114000010704009548, guid: b268150597c481e49ba04639dfd8d141,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: StandUp
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000011369286504, guid: b268150597c481e49ba04639dfd8d141,
         type: 2}
@@ -285,7 +285,7 @@ Prefab:
     - target: {fileID: 114000010704009548, guid: b268150597c481e49ba04639dfd8d141,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000010704009548, guid: b268150597c481e49ba04639dfd8d141,
         type: 2}
@@ -296,22 +296,22 @@ Prefab:
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1130345732}
+      objectReference: {fileID: 0}
     - target: {fileID: 114000010704009548, guid: b268150597c481e49ba04639dfd8d141,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnBoomonSelected
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000010704009548, guid: b268150597c481e49ba04639dfd8d141,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: BoomonController, Assembly-CSharp
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000010704009548, guid: b268150597c481e49ba04639dfd8d141,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 198254623}
+      objectReference: {fileID: 0}
     - target: {fileID: 114000010704009548, guid: b268150597c481e49ba04639dfd8d141,
         type: 2}
       propertyPath: _tapStop.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -362,17 +362,31 @@ Prefab:
       propertyPath: _tapStop.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1000014177749778, guid: b268150597c481e49ba04639dfd8d141, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010704009548, guid: b268150597c481e49ba04639dfd8d141,
+        type: 2}
+      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 198254623}
+    - target: {fileID: 114000010704009548, guid: b268150597c481e49ba04639dfd8d141,
+        type: 2}
+      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: BoomonController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010704009548, guid: b268150597c481e49ba04639dfd8d141,
+        type: 2}
+      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b268150597c481e49ba04639dfd8d141, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &106962143 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000010352099988, guid: b268150597c481e49ba04639dfd8d141,
-    type: 2}
-  m_PrefabInternal: {fileID: 106962142}
---- !u!95 &106962144 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 95000013543123094, guid: b268150597c481e49ba04639dfd8d141,
     type: 2}
   m_PrefabInternal: {fileID: 106962142}
 --- !u!114 &198254623 stripped
@@ -458,7 +472,7 @@ Transform:
   - {fileID: 557746020}
   - {fileID: 1515082908}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!114 &540348257 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114000014191948506, guid: b2d022da98483314a98dd6f5e4ef0ac2,
@@ -674,7 +688,7 @@ Prefab:
     - target: {fileID: 114000012238170964, guid: b2d022da98483314a98dd6f5e4ef0ac2,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000012238170964, guid: b2d022da98483314a98dd6f5e4ef0ac2,
         type: 2}
@@ -729,21 +743,21 @@ Prefab:
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 726440252}
+      objectReference: {fileID: 1130345732}
     - target: {fileID: 114000012238170964, guid: b2d022da98483314a98dd6f5e4ef0ac2,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetTrigger
+      value: OnBoomonSelected
       objectReference: {fileID: 0}
     - target: {fileID: 114000012238170964, guid: b2d022da98483314a98dd6f5e4ef0ac2,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114000012238170964, guid: b2d022da98483314a98dd6f5e4ef0ac2,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: StandUp
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000014191948506, guid: b2d022da98483314a98dd6f5e4ef0ac2,
         type: 2}
@@ -843,7 +857,7 @@ Prefab:
     - target: {fileID: 114000012238170964, guid: b2d022da98483314a98dd6f5e4ef0ac2,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000012238170964, guid: b2d022da98483314a98dd6f5e4ef0ac2,
         type: 2}
@@ -854,22 +868,22 @@ Prefab:
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1130345732}
+      objectReference: {fileID: 0}
     - target: {fileID: 114000012238170964, guid: b2d022da98483314a98dd6f5e4ef0ac2,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnBoomonSelected
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000012238170964, guid: b2d022da98483314a98dd6f5e4ef0ac2,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: BoomonController, Assembly-CSharp
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000012238170964, guid: b2d022da98483314a98dd6f5e4ef0ac2,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 540348257}
+      objectReference: {fileID: 0}
     - target: {fileID: 114000012238170964, guid: b2d022da98483314a98dd6f5e4ef0ac2,
         type: 2}
       propertyPath: _tapStop.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -920,17 +934,31 @@ Prefab:
       propertyPath: _tapStop.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012167145646, guid: b2d022da98483314a98dd6f5e4ef0ac2, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012238170964, guid: b2d022da98483314a98dd6f5e4ef0ac2,
+        type: 2}
+      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 540348257}
+    - target: {fileID: 114000012238170964, guid: b2d022da98483314a98dd6f5e4ef0ac2,
+        type: 2}
+      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: BoomonController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012238170964, guid: b2d022da98483314a98dd6f5e4ef0ac2,
+        type: 2}
+      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2d022da98483314a98dd6f5e4ef0ac2, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &726440251 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000010947641314, guid: b2d022da98483314a98dd6f5e4ef0ac2,
-    type: 2}
-  m_PrefabInternal: {fileID: 726440250}
---- !u!95 &726440252 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 95000013615843898, guid: b2d022da98483314a98dd6f5e4ef0ac2,
     type: 2}
   m_PrefabInternal: {fileID: 726440250}
 --- !u!114 &767242880 stripped
@@ -1091,7 +1119,7 @@ Prefab:
     - target: {fileID: 114000010901218366, guid: e3018ac9b58950748935c7a26531278e,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000010901218366, guid: e3018ac9b58950748935c7a26531278e,
         type: 2}
@@ -1146,21 +1174,21 @@ Prefab:
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 918858283}
+      objectReference: {fileID: 1130345732}
     - target: {fileID: 114000010901218366, guid: e3018ac9b58950748935c7a26531278e,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetTrigger
+      value: OnBoomonSelected
       objectReference: {fileID: 0}
     - target: {fileID: 114000010901218366, guid: e3018ac9b58950748935c7a26531278e,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114000010901218366, guid: e3018ac9b58950748935c7a26531278e,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: StandUp
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000014060474642, guid: e3018ac9b58950748935c7a26531278e,
         type: 2}
@@ -1260,7 +1288,7 @@ Prefab:
     - target: {fileID: 114000010901218366, guid: e3018ac9b58950748935c7a26531278e,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000010901218366, guid: e3018ac9b58950748935c7a26531278e,
         type: 2}
@@ -1271,22 +1299,22 @@ Prefab:
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1130345732}
+      objectReference: {fileID: 0}
     - target: {fileID: 114000010901218366, guid: e3018ac9b58950748935c7a26531278e,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnBoomonSelected
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000010901218366, guid: e3018ac9b58950748935c7a26531278e,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: BoomonController, Assembly-CSharp
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000010901218366, guid: e3018ac9b58950748935c7a26531278e,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 657940030}
+      objectReference: {fileID: 0}
     - target: {fileID: 114000010901218366, guid: e3018ac9b58950748935c7a26531278e,
         type: 2}
       propertyPath: _tapStop.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -1337,17 +1365,31 @@ Prefab:
       propertyPath: _tapStop.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013700638954, guid: e3018ac9b58950748935c7a26531278e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010901218366, guid: e3018ac9b58950748935c7a26531278e,
+        type: 2}
+      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 657940030}
+    - target: {fileID: 114000010901218366, guid: e3018ac9b58950748935c7a26531278e,
+        type: 2}
+      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: BoomonController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010901218366, guid: e3018ac9b58950748935c7a26531278e,
+        type: 2}
+      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3018ac9b58950748935c7a26531278e, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &918858282 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000013890909442, guid: e3018ac9b58950748935c7a26531278e,
-    type: 2}
-  m_PrefabInternal: {fileID: 918858281}
---- !u!95 &918858283 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 95000012154178866, guid: e3018ac9b58950748935c7a26531278e,
     type: 2}
   m_PrefabInternal: {fileID: 918858281}
 --- !u!1 &930293507
@@ -1411,7 +1453,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 2
 --- !u!1001 &1111194162
 Prefab:
   m_ObjectHideFlags: 0
@@ -1606,7 +1648,7 @@ Prefab:
     - target: {fileID: 114000013537856616, guid: 6aa522f82adf16640aa0f8c30caaf75a,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000013537856616, guid: 6aa522f82adf16640aa0f8c30caaf75a,
         type: 2}
@@ -1617,16 +1659,16 @@ Prefab:
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1111194164}
+      objectReference: {fileID: 0}
     - target: {fileID: 114000013537856616, guid: 6aa522f82adf16640aa0f8c30caaf75a,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetTrigger
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000013537856616, guid: 6aa522f82adf16640aa0f8c30caaf75a,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000013537856616, guid: 6aa522f82adf16640aa0f8c30caaf75a,
         type: 2}
@@ -1707,7 +1749,7 @@ Prefab:
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1208687614}
     - target: {fileID: 114000013537856616, guid: 6aa522f82adf16640aa0f8c30caaf75a,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1716,7 +1758,7 @@ Prefab:
     - target: {fileID: 114000013537856616, guid: 6aa522f82adf16640aa0f8c30caaf75a,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: Tickles
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000013537856616, guid: 6aa522f82adf16640aa0f8c30caaf75a,
         type: 2}
@@ -1732,6 +1774,16 @@ Prefab:
         type: 2}
       propertyPath: _tapStop.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013122551014, guid: 6aa522f82adf16640aa0f8c30caaf75a,
+        type: 2}
+      propertyPath: _idleState
+      value: 
+      objectReference: {fileID: 114000010982181192, guid: d6a0cf6a614763849836b990cbff086f,
+        type: 2}
+    - target: {fileID: 1000011865319436, guid: 6aa522f82adf16640aa0f8c30caaf75a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6aa522f82adf16640aa0f8c30caaf75a, type: 2}
@@ -1781,7 +1833,7 @@ Transform:
   - {fileID: 726440251}
   - {fileID: 106962143}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!114 &1130345732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1951,7 +2003,7 @@ Prefab:
     - target: {fileID: 114000011723127546, guid: 98fe3e933b2e3b14c9e431df81668a90,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000011723127546, guid: 98fe3e933b2e3b14c9e431df81668a90,
         type: 2}
@@ -2006,21 +2058,21 @@ Prefab:
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1235927139}
+      objectReference: {fileID: 1130345732}
     - target: {fileID: 114000011723127546, guid: 98fe3e933b2e3b14c9e431df81668a90,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetTrigger
+      value: OnBoomonSelected
       objectReference: {fileID: 0}
     - target: {fileID: 114000011723127546, guid: 98fe3e933b2e3b14c9e431df81668a90,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114000011723127546, guid: 98fe3e933b2e3b14c9e431df81668a90,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: StandUp
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000013727416840, guid: 98fe3e933b2e3b14c9e431df81668a90,
         type: 2}
@@ -2120,7 +2172,7 @@ Prefab:
     - target: {fileID: 114000011723127546, guid: 98fe3e933b2e3b14c9e431df81668a90,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000011723127546, guid: 98fe3e933b2e3b14c9e431df81668a90,
         type: 2}
@@ -2131,22 +2183,22 @@ Prefab:
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1130345732}
+      objectReference: {fileID: 0}
     - target: {fileID: 114000011723127546, guid: 98fe3e933b2e3b14c9e431df81668a90,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnBoomonSelected
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000011723127546, guid: 98fe3e933b2e3b14c9e431df81668a90,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: BoomonController, Assembly-CSharp
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000011723127546, guid: 98fe3e933b2e3b14c9e431df81668a90,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 767242880}
+      objectReference: {fileID: 0}
     - target: {fileID: 114000011723127546, guid: 98fe3e933b2e3b14c9e431df81668a90,
         type: 2}
       propertyPath: _tapStop.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -2197,17 +2249,31 @@ Prefab:
       propertyPath: _tapStop.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010437187776, guid: 98fe3e933b2e3b14c9e431df81668a90, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011723127546, guid: 98fe3e933b2e3b14c9e431df81668a90,
+        type: 2}
+      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 767242880}
+    - target: {fileID: 114000011723127546, guid: 98fe3e933b2e3b14c9e431df81668a90,
+        type: 2}
+      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: BoomonController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011723127546, guid: 98fe3e933b2e3b14c9e431df81668a90,
+        type: 2}
+      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 98fe3e933b2e3b14c9e431df81668a90, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1235927138 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000011493204368, guid: 98fe3e933b2e3b14c9e431df81668a90,
-    type: 2}
-  m_PrefabInternal: {fileID: 1235927137}
---- !u!95 &1235927139 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 95000014056573974, guid: 98fe3e933b2e3b14c9e431df81668a90,
     type: 2}
   m_PrefabInternal: {fileID: 1235927137}
 --- !u!1001 &1444785706
@@ -2353,7 +2419,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1831282619}
     - target: {fileID: 114000014167556044, guid: c48ac1d4d4dcef340b41efe7a424db00,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -2492,7 +2558,7 @@ Prefab:
     - target: {fileID: 114000013499649118, guid: 50f692417a035ca458f96e5d44cea05d,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000013499649118, guid: 50f692417a035ca458f96e5d44cea05d,
         type: 2}
@@ -2547,21 +2613,21 @@ Prefab:
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1512877729}
+      objectReference: {fileID: 1130345732}
     - target: {fileID: 114000013499649118, guid: 50f692417a035ca458f96e5d44cea05d,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetTrigger
+      value: OnBoomonSelected
       objectReference: {fileID: 0}
     - target: {fileID: 114000013499649118, guid: 50f692417a035ca458f96e5d44cea05d,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114000013499649118, guid: 50f692417a035ca458f96e5d44cea05d,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: StandUp
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000011635208476, guid: 50f692417a035ca458f96e5d44cea05d,
         type: 2}
@@ -2661,7 +2727,7 @@ Prefab:
     - target: {fileID: 114000013499649118, guid: 50f692417a035ca458f96e5d44cea05d,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000013499649118, guid: 50f692417a035ca458f96e5d44cea05d,
         type: 2}
@@ -2672,22 +2738,22 @@ Prefab:
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1130345732}
+      objectReference: {fileID: 0}
     - target: {fileID: 114000013499649118, guid: 50f692417a035ca458f96e5d44cea05d,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnBoomonSelected
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000013499649118, guid: 50f692417a035ca458f96e5d44cea05d,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: BoomonController, Assembly-CSharp
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000013499649118, guid: 50f692417a035ca458f96e5d44cea05d,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1709027639}
+      objectReference: {fileID: 0}
     - target: {fileID: 114000013499649118, guid: 50f692417a035ca458f96e5d44cea05d,
         type: 2}
       propertyPath: _tapStop.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -2738,17 +2804,31 @@ Prefab:
       propertyPath: _tapStop.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013741079182, guid: 50f692417a035ca458f96e5d44cea05d, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013499649118, guid: 50f692417a035ca458f96e5d44cea05d,
+        type: 2}
+      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1709027639}
+    - target: {fileID: 114000013499649118, guid: 50f692417a035ca458f96e5d44cea05d,
+        type: 2}
+      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: BoomonController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013499649118, guid: 50f692417a035ca458f96e5d44cea05d,
+        type: 2}
+      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50f692417a035ca458f96e5d44cea05d, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1512877728 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000011280612538, guid: 50f692417a035ca458f96e5d44cea05d,
-    type: 2}
-  m_PrefabInternal: {fileID: 1512877727}
---- !u!95 &1512877729 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 95000011125627130, guid: 50f692417a035ca458f96e5d44cea05d,
     type: 2}
   m_PrefabInternal: {fileID: 1512877727}
 --- !u!4 &1515082908 stripped
@@ -2990,7 +3070,7 @@ RectTransform:
   - {fileID: 1196897945}
   - {fileID: 559895425}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 802.5305, y: 234.85028}
@@ -3015,6 +3095,62 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1001 &1831282618
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000012451855230, guid: cd12908801981884e9256c9b250fa969, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3.914032
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012451855230, guid: cd12908801981884e9256c9b250fa969, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 3.8119507
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012451855230, guid: cd12908801981884e9256c9b250fa969, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 27.19762
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012451855230, guid: cd12908801981884e9256c9b250fa969, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012451855230, guid: cd12908801981884e9256c9b250fa969, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012451855230, guid: cd12908801981884e9256c9b250fa969, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012451855230, guid: cd12908801981884e9256c9b250fa969, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012451855230, guid: cd12908801981884e9256c9b250fa969, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012451855230, guid: cd12908801981884e9256c9b250fa969, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012451855230, guid: cd12908801981884e9256c9b250fa969, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cd12908801981884e9256c9b250fa969, type: 2}
+  m_IsPrefabParent: 0
+--- !u!114 &1831282619 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000010440063408, guid: cd12908801981884e9256c9b250fa969,
+    type: 2}
+  m_PrefabInternal: {fileID: 1831282618}
+  m_Script: {fileID: 11500000, guid: 4bf2a3e01d3046c46915b91b1c2e7836, type: 3}
 --- !u!1001 &1838489946
 Prefab:
   m_ObjectHideFlags: 0
@@ -3040,7 +3176,7 @@ Prefab:
     - target: {fileID: 114000012684477904, guid: e7d410fbe5badf5448f3442da602e72f,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000012684477904, guid: e7d410fbe5badf5448f3442da602e72f,
         type: 2}
@@ -3095,21 +3231,21 @@ Prefab:
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1838489948}
+      objectReference: {fileID: 1130345732}
     - target: {fileID: 114000012684477904, guid: e7d410fbe5badf5448f3442da602e72f,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetTrigger
+      value: OnBoomonSelected
       objectReference: {fileID: 0}
     - target: {fileID: 114000012684477904, guid: e7d410fbe5badf5448f3442da602e72f,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114000012684477904, guid: e7d410fbe5badf5448f3442da602e72f,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: StandUp
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000012974468510, guid: e7d410fbe5badf5448f3442da602e72f,
         type: 2}
@@ -3209,7 +3345,7 @@ Prefab:
     - target: {fileID: 114000012684477904, guid: e7d410fbe5badf5448f3442da602e72f,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000012684477904, guid: e7d410fbe5badf5448f3442da602e72f,
         type: 2}
@@ -3220,22 +3356,22 @@ Prefab:
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1130345732}
+      objectReference: {fileID: 0}
     - target: {fileID: 114000012684477904, guid: e7d410fbe5badf5448f3442da602e72f,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnBoomonSelected
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000012684477904, guid: e7d410fbe5badf5448f3442da602e72f,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: BoomonController, Assembly-CSharp
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114000012684477904, guid: e7d410fbe5badf5448f3442da602e72f,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1686036669}
+      objectReference: {fileID: 0}
     - target: {fileID: 114000012684477904, guid: e7d410fbe5badf5448f3442da602e72f,
         type: 2}
       propertyPath: _tapStop.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -3286,17 +3422,37 @@ Prefab:
       propertyPath: _tapStop.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114000012974468510, guid: e7d410fbe5badf5448f3442da602e72f,
+        type: 2}
+      propertyPath: _idleState
+      value: 
+      objectReference: {fileID: 114000011078203322, guid: 50f82521edf24484a8a56a626f2b56df,
+        type: 2}
+    - target: {fileID: 1000013161679770, guid: e7d410fbe5badf5448f3442da602e72f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012684477904, guid: e7d410fbe5badf5448f3442da602e72f,
+        type: 2}
+      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1686036669}
+    - target: {fileID: 114000012684477904, guid: e7d410fbe5badf5448f3442da602e72f,
+        type: 2}
+      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: BoomonController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012684477904, guid: e7d410fbe5badf5448f3442da602e72f,
+        type: 2}
+      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7d410fbe5badf5448f3442da602e72f, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1838489947 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000014281969094, guid: e7d410fbe5badf5448f3442da602e72f,
-    type: 2}
-  m_PrefabInternal: {fileID: 1838489946}
---- !u!95 &1838489948 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 95000013847264890, guid: e7d410fbe5badf5448f3442da602e72f,
     type: 2}
   m_PrefabInternal: {fileID: 1838489946}
 --- !u!4 &1966024472 stripped
@@ -3403,7 +3559,7 @@ RectTransform:
   m_Children:
   - {fileID: 304653960}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}

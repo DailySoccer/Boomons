@@ -262,6 +262,16 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		CurrentState = State.Idle;
 	}
 
+	// TODO FRS 161027 Enfocar toda esta clase a un patrón estado inyectándonos en ellos
+	private void OnEnable()
+	{
+		_animator.GetBehaviour<BoomonIdleState>().Start += OnIdleReady;
+	}
+
+	private void OnDisable()
+	{
+		_animator.GetBehaviour<BoomonIdleState>().Start -= OnIdleReady;
+	}
 	/// <summary>
 	/// 
 	/// </summary>
@@ -768,6 +778,8 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	private Vector3 _drivenTarget;
 	private BoomonRole _role;
 	private Emotion _currentEmotion;
+
+	[SerializeField] private BoomonIdleState _idleStateState;
 
 	#endregion
 
