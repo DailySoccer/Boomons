@@ -13,19 +13,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Emotion
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Resolution
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -157,6 +157,9 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
+  - m_ConditionMode: 3
+    m_ConditionEvent: Emotion
+    m_EventTreshold: 0
   - m_ConditionMode: 7
     m_ConditionEvent: Emotion
     m_EventTreshold: 4
@@ -548,13 +551,13 @@ AnimatorStateMachine:
     m_Position: {x: 876, y: -60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102000010069856510}
-    m_Position: {x: 1188, y: -24, z: 0}
+    m_Position: {x: 1188, y: 24, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102000010847841082}
-    m_Position: {x: 1452, y: -24, z: 0}
+    m_Position: {x: 1416, y: -60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102000013798538998}
-    m_Position: {x: 1716, y: -22, z: 0}
+    m_Position: {x: 1644, y: 24, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 1101000013459144896}
