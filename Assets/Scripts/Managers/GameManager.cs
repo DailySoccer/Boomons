@@ -3,11 +3,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-
+			
 public class GameManager : Manager
 {
 	#region Public Fields
+
+	public string Room { get; private set; }
+	public BoomonController Player { get; private set; }
 
 	public BoomonRole BoomonRole
 	{
@@ -30,17 +32,17 @@ public class GameManager : Manager
 	//=====================================================================
 
 
-	#region Public Methods
-
-	public BoomonController Player { get; private set; }
+	#region Public Methods	
 
 	public void StartRoom(string roomName)
 	{
 		Player = null;
-		StartCoroutine(LoadSceneCoroutine(roomName));
+		Room = roomName;
+		Transition.Instance.AnimEnd += OnTransitionEnd;
+		Transition.Instance.StartAnim(1f);
 	}
 
-
+			 
 	public void RespawnBoomon(BoomonRole boomonRole)
 	{
 		GameObject spawnPoint = Player != null ? Player.gameObject:
@@ -105,12 +107,13 @@ public class GameManager : Manager
 		BoomonRole= _boomonRoleEditor;
 #endif
 	}
-	
+
 	#endregion
 
 	//====================================================
 
 	#region Events
+
 
 	private void OnSceneLoaded(Scene scene, LoadSceneMode loadMode)
 	{
@@ -122,8 +125,14 @@ public class GameManager : Manager
 		Transition.Instance.StartAnim(1f, true); // TODO FRS 161027 Configurar un tiempo por defecto de transición
 	}
 
+	private void OnTransitionEnd()
+	{
+		Transition.Instance.AnimEnd -= OnTransitionEnd;
+		StartCoroutine(LoadSceneCoroutine(Room));
+	}
+
 	#endregion
-						   
+
 	//========================================================
 
 	#region Private Methods

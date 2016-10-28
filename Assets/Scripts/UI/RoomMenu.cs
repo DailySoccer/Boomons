@@ -4,7 +4,6 @@ public class RoomMenu : MonoBehaviour
 {
 	#region Public Fields
 
-	public string SelectedRoom { get; private set; }
 
 	#endregion
 
@@ -24,23 +23,13 @@ public class RoomMenu : MonoBehaviour
 	public void OnRoomClick(RoomButton button)
 	{
 		if (!button.IsBlocked)
-		{
-			SelectedRoom=button.TargetRoomId;
-			Transition.Instance.AnimEnd += OnTransitionEnd;
-			Transition.Instance.StartAnim(_transitionSecs);
-		}
+			MetaManager.Instance.GetManager<GameManager>().StartRoom(button.TargetRoomId);
 		else
-		{
 			SceneLoader.Instance.GoToParentsMenu();
-		}
 	}
 
 
-	private void OnTransitionEnd()
-	{
-		Transition.Instance.AnimEnd -= OnTransitionEnd;
-		MetaManager.Instance.GetManager<GameManager>().StartRoom(SelectedRoom);
-	}
+
 
 	#endregion
 
@@ -48,7 +37,7 @@ public class RoomMenu : MonoBehaviour
 
 	#region Private Fields
 
-	[SerializeField, Range(0f, 10f)] private float _transitionSecs = 2f;
+	
 
 	#endregion
 }

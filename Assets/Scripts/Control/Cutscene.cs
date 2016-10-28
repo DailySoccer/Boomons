@@ -95,9 +95,18 @@ public class Cutscene : MonoBehaviour
 	private void OnCutsceneEnd()
 	{
 		IsPlaying = false;
-		SceneLoader.Instance.GoToMainMenu();
+
+		Transition.Instance.AnimEnd += OnTransitionEnd;
+		Transition.Instance.StartAnim(1f);
+		
 	}
 
+	private void OnTransitionEnd()
+	{
+		Transition.Instance.AnimEnd -= OnTransitionEnd;
+		SceneLoader.Instance.GoToSelectionMenu();
+		Transition.Instance.StartAnim(1f, true);
+	}
 
 	#endregion
 

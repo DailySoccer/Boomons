@@ -42,7 +42,7 @@ public class SceneLoader : Singleton<SceneLoader>
 		SceneManager.LoadScene("ParentsMenu");
 	}
 
-	public void GoToPlay()
+	public void GoToSelectionMenu()
 	{
 		SceneManager.LoadScene("SelectionMenu");
 	}
