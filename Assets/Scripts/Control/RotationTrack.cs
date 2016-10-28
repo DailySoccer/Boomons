@@ -10,6 +10,8 @@ public class RotationTrack : MonoBehaviour {
 	public MeshRenderer[] DisableMeshesList;
 	public RectTransform DisableCanvasPanel;
 	public AudioSource DisableMusic;
+	[Range(0, 1)]
+	public float VolumeAttenuance;
 	public Camera SceneCamera;
 	// Use this for initialization
 	void Awake () {
@@ -78,7 +80,7 @@ public class RotationTrack : MonoBehaviour {
 		}
 		if (DisableMusic != null)
 		{
-			DisableMusic.volume = active ? 0.5f : 1;
+			DisableMusic.volume = active ? VolumeAttenuance : 1;
 		}
 		SceneCamera.enabled = !_active;
 		Input.gyro.enabled = _active;
