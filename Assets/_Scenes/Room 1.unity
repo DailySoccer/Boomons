@@ -391,7 +391,7 @@ Prefab:
         type: 2}
       propertyPath: DisableCanvasPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 524385687}
     - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
         type: 2}
       propertyPath: SceneCamera
@@ -2036,9 +2036,20 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114000012004300266, guid: fe16667a53ea62a43834d91064bce434,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 54d555a94146ef84fa254a4c06e8c457,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe16667a53ea62a43834d91064bce434, type: 2}
   m_IsPrefabParent: 0
+--- !u!224 &524385687 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224000011206764898, guid: fe16667a53ea62a43834d91064bce434,
+    type: 2}
+  m_PrefabInternal: {fileID: 524385686}
 --- !u!1 &533144485
 GameObject:
   m_ObjectHideFlags: 0
