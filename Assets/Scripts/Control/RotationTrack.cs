@@ -6,8 +6,10 @@ public class RotationTrack : MonoBehaviour {
 
 	public Transform TargetCamera = null;
 	public RectTransform TargetCanvasPanel = null;
+	public AudioClip TargetClip;
 	public MeshRenderer[] DisableMeshesList;
 	public RectTransform DisableCanvasPanel;
+	public AudioSource DisableMusic;
 	public Camera SceneCamera;
 	// Use this for initialization
 	void Awake () {
@@ -18,6 +20,13 @@ public class RotationTrack : MonoBehaviour {
 		}
 		else
 		{
+			if (TargetClip != null)
+			{
+				auS = gameObject.AddComponent<AudioSource>();
+				auS.playOnAwake = true;
+				auS.clip = TargetClip;
+				auS.loop = true;
+			}
 			_currentRot = Quaternion.identity;
 			_active = true;
 			this.enabled = false;
@@ -55,6 +64,10 @@ public class RotationTrack : MonoBehaviour {
 		_active = active;
 		TargetCamera.gameObject.SetActive(_active);
 		TargetCanvasPanel.gameObject.SetActive(_active);
+		if (auS != null)
+		{
+			auS.enabled = active;
+		}
 		foreach (MeshRenderer mr in DisableMeshesList)
 		{
 			mr.enabled = !_active;
@@ -62,6 +75,10 @@ public class RotationTrack : MonoBehaviour {
 		if (DisableCanvasPanel != null)
 		{
 			DisableCanvasPanel.gameObject.SetActive(!_active);
+		}
+		if (DisableMusic != null)
+		{
+			DisableMusic.volume = active ? 0.5f : 1;
 		}
 		SceneCamera.enabled = !_active;
 		Input.gyro.enabled = _active;
@@ -74,4 +91,5 @@ public class RotationTrack : MonoBehaviour {
 	private bool _initialized;
 	private bool _active;
 	private Quaternion _currentRot;
+	private AudioSource auS;
 }
