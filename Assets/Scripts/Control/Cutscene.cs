@@ -96,9 +96,10 @@ public class Cutscene : MonoBehaviour
 	{
 		IsPlaying = false;
 
+		_game.Player.CurrentEmotion = BoomonController.Emotion.Happiness;
+
 		Transition.Instance.AnimEnd += OnTransitionEnd;
-		Transition.Instance.StartAnim(1f);
-		
+		Transition.Instance.StartAnim(2f);	
 	}
 
 	private void OnTransitionEnd()

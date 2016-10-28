@@ -69,7 +69,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	public State CurrentState
 	{
 		get { return _currentState; }
-		private set
+		set
 		{
 			if (value == _currentState)
 				return;
