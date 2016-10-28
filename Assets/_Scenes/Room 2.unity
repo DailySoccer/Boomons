@@ -1225,6 +1225,16 @@ Prefab:
       propertyPath: DisableMeshesList.Array.data[1]
       value: 
       objectReference: {fileID: 1456957343}
+    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
+        type: 2}
+      propertyPath: TargetClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 532e1ce04e358494a8c900eb0bae28b5, type: 3}
+    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
+        type: 2}
+      propertyPath: DisableMusic
+      value: 
+      objectReference: {fileID: 2011975112}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 115265ba1d63f5b429c2a09ac2814e1c, type: 2}
   m_IsPrefabParent: 0
@@ -2036,6 +2046,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1943819177}
   m_Script: {fileID: 11500000, guid: f2b5cc9b63dee554ca444eedf9252ff9, type: 3}
+--- !u!82 &2011975112 stripped
+AudioSource:
+  m_PrefabParentObject: {fileID: 82000013138535822, guid: 8cd9f95408c8e384086d297d0e0f7459,
+    type: 2}
+  m_PrefabInternal: {fileID: 2142895166}
 --- !u!4 &2113055058 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000012642564302, guid: cf30a98a22448b448bcff7d81f8ec573,
