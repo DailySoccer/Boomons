@@ -333,7 +333,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114000010440063408, guid: cd12908801981884e9256c9b250fa969,
+          type: 2}
         m_MethodName: GoToMainMenu
         m_Mode: 1
         m_Arguments:
@@ -691,10 +692,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 224000011206764898}
   m_RootOrder: 0
-  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 60, y: 60}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!224 &224000010746533470
 RectTransform:
@@ -731,10 +732,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 224000011950272316}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0.85, y: 0.85}
+  m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0.000000029802322, y: 0.000000029802322}
+  m_AnchoredPosition: {x: -90, y: -90}
+  m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224000011206764898
 RectTransform:
@@ -750,11 +751,11 @@ RectTransform:
   - {fileID: 224000010438274388}
   m_Father: {fileID: 224000012668852246}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: 0.8}
+  m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -20, y: -20}
+  m_SizeDelta: {x: 134, y: 138}
+  m_Pivot: {x: 1, y: 1}
 --- !u!224 &224000011648457414
 RectTransform:
   m_ObjectHideFlags: 1
