@@ -16,10 +16,13 @@ public class ScrollFollower : MonoBehaviour
 	{
 		private get
 		{
-			if(_target==null ||!_target.gameObject.activeInHierarchy) {
-				_target=GameObject.FindGameObjectWithTag(_targetTag).transform;
-				if(_target != null)
+			if(_target==null ||!_target.gameObject.activeInHierarchy)
+			{
+				GameObject targetGo = GameObject.FindGameObjectWithTag(_targetTag);
+				if (targetGo != null) {
+					_target = targetGo.transform;
 					_lastPos = _target.position;
+				}
 			}
 			return _target;
 		}
