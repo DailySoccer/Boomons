@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
+using System.Collections.Generic;
 
 public class RotationTrack : MonoBehaviour {
 
@@ -8,6 +8,8 @@ public class RotationTrack : MonoBehaviour {
 	public RectTransform TargetCanvasPanel = null;
 	public AudioClip TargetClip;
 	public MeshRenderer[] DisableMeshesList;
+	[SerializeField]
+	private List<GameObject> DisableGameObList = new List<GameObject>();
 	public RectTransform DisableCanvasPanel;
 	public AudioSource DisableMusic;
 	[Range(0, 1)]
@@ -73,6 +75,10 @@ public class RotationTrack : MonoBehaviour {
 		foreach (MeshRenderer mr in DisableMeshesList)
 		{
 			mr.enabled = !_active;
+		}
+		foreach (GameObject go in DisableGameObList)
+		{
+			go.SetActive(!_active);
 		}
 		if (DisableCanvasPanel != null)
 		{
