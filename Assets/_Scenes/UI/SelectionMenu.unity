@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4503684, g: 0.50045556, b: 0.5758988, a: 1}
+  m_IndirectSpecularColor: {r: 0.45036793, g: 0.50045496, b: 0.57589793, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -6727,7 +6727,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c81fdcf13f1b9d49a75bd9e13f6b6ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitionSecs: 1
 --- !u!114 &1823932343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7338,7 +7337,6 @@ GameObject:
   - 224: {fileID: 1996510207}
   - 114: {fileID: 1996510203}
   - 223: {fileID: 1996510206}
-  - 114: {fileID: 1996510205}
   - 114: {fileID: 1996510204}
   m_Layer: 5
   m_Name: GUI
@@ -7358,7 +7356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c81fdcf13f1b9d49a75bd9e13f6b6ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitionSecs: 2
 --- !u!114 &1996510204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7375,27 +7372,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1996510205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1996510202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1024, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.5
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
 --- !u!223 &1996510206
 Canvas:
   m_ObjectHideFlags: 0
