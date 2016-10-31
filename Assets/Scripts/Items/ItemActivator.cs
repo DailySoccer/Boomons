@@ -25,7 +25,10 @@ public class ItemActivator : Touchable
 	{
 		base.Awake();
 		_animator = GetComponent<Animator>();
-		_audio = GetComponent<AudioSource>();       
+		_audio = GetComponent<AudioSource>();
+
+		if(_game == null)
+			_game = MetaManager.Instance.GetManager<GameManager>();
 	}
 
 	protected override void OnDestroy()
@@ -43,9 +46,10 @@ public class ItemActivator : Touchable
             Activate();
     }
 
-    private void OnCollisionEnter(Collision info)
+
+    private void OnCollisionEnter(Collision collision)
 	{
-		if (info.gameObject.tag == _playerTag)
+		if (_activateOnCollision && collision.gameObject.tag == _playerTag)
 			Activate();
 	}
 
@@ -56,8 +60,9 @@ public class ItemActivator : Touchable
 	#region Events
 
 	public override void OnTapStart(GameObject go, Vector2 touchPos)
-	{
-		Activate();
+	{		   
+		if(_game.Player.CurrentState == BoomonController.State.Idle)
+			Activate();
 	}
 
 	
@@ -69,9 +74,12 @@ public class ItemActivator : Touchable
 
 	private Animator _animator;
 	private AudioSource _audio;
+	
 	[SerializeField] private string _playTriggerName = "Play";
 	[SerializeField] private string _playerTag = "Player";
-    [SerializeField]
-    private bool _activateOnEnable;
+    [SerializeField] private bool _activateOnEnable = false;
+	[SerializeField] private bool _activateOnCollision = true;
+	private static GameManager _game;
+
 	#endregion
 }
