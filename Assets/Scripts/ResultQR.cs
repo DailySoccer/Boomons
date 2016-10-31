@@ -24,7 +24,10 @@ public class ResultQR : MonoBehaviour {
 		if (_initialized)
 		{
 			Result = result;
-			PlayerPrefs.SetInt("ExtraContents", 1);
+			PlayerPrefs.SetString("Room 1", "");
+			PlayerPrefs.SetString("Room 2", "");
+			PlayerPrefs.SetString("Room 3", "");
+			PlayerPrefs.SetString("Room 4", "");
 			PlayerPrefs.Save();
 			CorrectPanel.gameObject.SetActive(Result);
 			IncorrectPanel.gameObject.SetActive(!Result);
