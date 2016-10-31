@@ -10,7 +10,10 @@ public class RotationTrack : MonoBehaviour {
 	public MeshRenderer[] DisableMeshesList;
 	[SerializeField]
 	private List<GameObject> DisableGameObList = new List<GameObject>();
+	[SerializeField]
+	private List<GameObject> EnableGameObList = new List<GameObject>();
 	public RectTransform DisableCanvasPanel;
+	public ItemActivator DisableTelescope;
 	public AudioSource DisableMusic;
 	[Range(0, 1)]
 	public float VolumeAttenuance;
@@ -26,14 +29,15 @@ public class RotationTrack : MonoBehaviour {
 		{
 			if (TargetClip != null)
 			{
-				auS = gameObject.AddComponent<AudioSource>();
-				auS.playOnAwake = true;
-				auS.clip = TargetClip;
-				auS.loop = true;
+				_auS = gameObject.AddComponent<AudioSource>();
+				_auS.playOnAwake = true;
+				_auS.clip = TargetClip;
+				_auS.loop = true;
 			}
 			_currentRot = Quaternion.identity;
 			_active = true;
 			this.enabled = false;
+			_SceneCameraRelated = SceneCamera.gameObject.GetComponent<AudioListener>();
 		}
 	}
 
@@ -47,12 +51,20 @@ public class RotationTrack : MonoBehaviour {
 				DisableGameObList.Add(go);
 			}
 		}
-		GameObject[] toggleTag = GameObject.FindGameObjectsWithTag("TelescopeToggle");
-		foreach (GameObject go in toggleTag)
+		GameObject[] InactiveTag = GameObject.FindGameObjectsWithTag("InactiveOnTelescope");
+		foreach (GameObject go in InactiveTag)
 		{
 			if (!DisableGameObList.Contains(go))
 			{
 				DisableGameObList.Add(go);
+			}
+		}
+		GameObject[] ActiveTag = GameObject.FindGameObjectsWithTag("ActiveOnTelescope");
+		foreach (GameObject go in ActiveTag)
+		{
+			if (!EnableGameObList.Contains(go))
+			{
+				EnableGameObList.Add(go);
 			}
 		}
 	}
@@ -88,9 +100,13 @@ public class RotationTrack : MonoBehaviour {
 		_active = active;
 		TargetCamera.gameObject.SetActive(_active);
 		TargetCanvasPanel.gameObject.SetActive(_active);
-		if (auS != null)
+		if (_auS != null)
 		{
-			auS.enabled = active;
+			_auS.enabled = active;
+		}
+		foreach (GameObject go in EnableGameObList)
+		{
+			go.SetActive(_active);
 		}
 		foreach (MeshRenderer mr in DisableMeshesList)
 		{
@@ -98,7 +114,7 @@ public class RotationTrack : MonoBehaviour {
 		}
 		foreach (GameObject go in DisableGameObList)
 		{
-			go.SetActive(!go.activeSelf);
+			go.SetActive(!_active);
 		}
 		if (DisableCanvasPanel != null)
 		{
@@ -109,6 +125,11 @@ public class RotationTrack : MonoBehaviour {
 			DisableMusic.volume = active ? VolumeAttenuance : 1;
 		}
 		SceneCamera.enabled = !_active;
+		DisableTelescope.enabled = !_active;
+		if (_SceneCameraRelated != null)
+		{
+			_SceneCameraRelated.enabled = !_active;
+		}
 		Input.gyro.enabled = _active;
 		Vector3 accel = Input.acceleration;
 		Vector3 upRelDir = new Vector3 (-accel.x , -accel.y, accel.z);
@@ -119,5 +140,6 @@ public class RotationTrack : MonoBehaviour {
 	private bool _initialized;
 	private bool _active;
 	private Quaternion _currentRot;
-	private AudioSource auS;
+	private AudioSource _auS;
+	private AudioListener _SceneCameraRelated;
 }

@@ -21,12 +21,14 @@ public class TelescopeActivator : MonoBehaviour {
 		{
 			TrackerRef.enabled = true;
 			_readyToStart = false;
+			Debug.Log("<color=orange> Clip end</color>");
 		}
 	}
 
 	public void ClipStart()
 	{
 		_readyToStart = true;
+		Debug.Log("<color=yellow> Clip start</color>");
 	}
 
 	public void TurnOff()
