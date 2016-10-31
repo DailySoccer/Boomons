@@ -36,6 +36,26 @@ public class RotationTrack : MonoBehaviour {
 			this.enabled = false;
 		}
 	}
+
+	void Start()
+	{
+		GameObject[] playerTag = GameObject.FindGameObjectsWithTag("Player");
+		foreach (GameObject go in playerTag)
+		{
+			if (!DisableGameObList.Contains(go))
+			{
+				DisableGameObList.Add(go);
+			}
+		}
+		GameObject[] toggleTag = GameObject.FindGameObjectsWithTag("TelescopeToggle");
+		foreach (GameObject go in toggleTag)
+		{
+			if (!DisableGameObList.Contains(go))
+			{
+				DisableGameObList.Add(go);
+			}
+		}
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -78,7 +98,7 @@ public class RotationTrack : MonoBehaviour {
 		}
 		foreach (GameObject go in DisableGameObList)
 		{
-			go.SetActive(!_active);
+			go.SetActive(!go.activeSelf);
 		}
 		if (DisableCanvasPanel != null)
 		{
