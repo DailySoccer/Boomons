@@ -34,6 +34,11 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 
 	#region Public Methods
 
+	public void Setup(ReferenceSystem refSystem = null)
+	{
+		_refSystem = refSystem;
+	}
+
 	public override void Throw(Vector3 applyPosition, Vector3 velocity)
 	{
 		base.Throw(applyPosition, velocity);
@@ -44,6 +49,8 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 	{
 		Ragdoll.TeleportTo(target);
 	}
+
+	
 
 	#endregion
 
@@ -66,6 +73,9 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 
 	private void FixedUpdate()
 	{
+		if (_refSystem != null)
+			transform.position = _refSystem.ProjectOnPlane(transform.position);
+
 		IsGrounded =  Rigid.velocity.sqrMagnitude < Ragdoll.GroundParams.StopVelocityMaxSqr 
 			&& (_groundTimer -= Time.fixedDeltaTime) < 0f;
 	}
@@ -91,10 +101,11 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 	
 	private float _groundTimer;
 	private bool _isGrounded;
+	private ReferenceSystem _refSystem;
 
 	#endregion
 
-	
+
 }
 
 

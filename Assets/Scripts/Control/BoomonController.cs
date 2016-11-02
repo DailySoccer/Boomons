@@ -179,7 +179,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 			return;
 
 		CurrentState = State.Throw;
-		Ragdoll.Setup(transform);
+		Ragdoll.Setup(transform, _refSystem);
 		Ragdoll.OnSwipe(null, swipePos, swipeVector, speedRatio);
 	}
 
@@ -395,7 +395,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 		_velocity = Vector3.zero;
 		MoveSense = Sense.None;
-		transform.position = _refSystem.FixInPlane(transform.position);
+		transform.position = _refSystem.ProjectOnPlane(transform.position);
 
 		switch (lastState)
 		{
@@ -465,7 +465,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		if (rigid != null)
 		{
 			Push(rigid);
-			transform.position = _refSystem.FixInPlane(transform.position);
+			transform.position = _refSystem.ProjectOnPlane(transform.position);
 		}
 		else if (Vector3.Dot(hit.normal, _refSystem.JumpDir) < _groundSlopeCosine)
 		{
@@ -769,33 +769,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	}
 
 
-	private struct ReferenceSystem
-	{
-		public readonly Vector3 PlanePoint;
-		public readonly Vector3 Right;
-		public readonly Vector3 JumpDir;
-		public readonly Vector3 ScreenDir;
-
-		public ReferenceSystem(Vector3 point, Vector3 right)
-		{
-			PlanePoint = point;
-
-			right.Normalize();
-			JumpDir = -Physics.gravity.normalized;
-			ScreenDir = Vector3.Cross(JumpDir, right);
-			Right = Vector3.Cross(ScreenDir, JumpDir);
-		}
-
-		public Vector3 FixInPlane(Vector3 position)
-		{
-			return position - Vector3.Project(position - PlanePoint, ScreenDir);
-		}
-	}
-
-
 	private ReferenceSystem _refSystem;
-
-
 	private Dictionary<State, StateActions> _stateActions;
 	private List<Action> _goToCallbacks;
 	private Vector3 _drivenTarget;

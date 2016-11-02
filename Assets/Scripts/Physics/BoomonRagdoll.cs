@@ -7,9 +7,9 @@ public class BoomonRagdoll : Ragdoll
 
 	#region Public Methods
 
-	public override void Setup(Transform setupRef)
+	public override void Setup(Transform setupRef, ReferenceSystem refSystem)
 	{
-		base.Setup(setupRef);
+		base.Setup(setupRef, refSystem);
 		_boomon = setupRef.GetComponent<BoomonController>();
 	}
 

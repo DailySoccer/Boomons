@@ -18,9 +18,11 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 
 	#region Public Methods
 
-	public virtual void Setup(Transform setupRef)
+	public virtual void Setup(Transform setupRef, ReferenceSystem  refSystem = null)
 	{
 		IsTeleporting = false;
+
+		_pelvis.Setup(refSystem);
 
 		var refNodes = setupRef.GetComponentsInChildren<Transform>(true);
 		for(int i = 0; i < refNodes.Length; ++i)

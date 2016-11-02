@@ -1501,7 +1501,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 2
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &114000010102513956
 MonoBehaviour:
@@ -1516,6 +1516,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _touchLayerName: Touchable
   _mustReceiveOnlyItsTouches: 0
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Touchable+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   _throwSpeedMax: 25
   _touchDistanceInchesMax: 1
 --- !u!114 &114000013369479556
@@ -1713,8 +1738,8 @@ CharacterJoint:
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 0
+  m_EnableCollision: 1
+  m_EnablePreprocessing: 1
 --- !u!144 &144000010683348392
 CharacterJoint:
   m_ObjectHideFlags: 1
@@ -1755,8 +1780,8 @@ CharacterJoint:
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 0
+  m_EnableCollision: 1
+  m_EnablePreprocessing: 1
 --- !u!144 &144000013187068784
 CharacterJoint:
   m_ObjectHideFlags: 1
@@ -1797,8 +1822,8 @@ CharacterJoint:
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 0
+  m_EnableCollision: 1
+  m_EnablePreprocessing: 1
 --- !u!144 &144000014222897702
 CharacterJoint:
   m_ObjectHideFlags: 1
@@ -1839,8 +1864,8 @@ CharacterJoint:
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 0
+  m_EnableCollision: 1
+  m_EnablePreprocessing: 1
 --- !u!144 &144000014256423792
 CharacterJoint:
   m_ObjectHideFlags: 1
@@ -1881,5 +1906,5 @@ CharacterJoint:
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 0
+  m_EnableCollision: 1
+  m_EnablePreprocessing: 1
