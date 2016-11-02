@@ -1439,7 +1439,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010021008746}
-  m_LocalRotation: {x: 0.0000000023283064, y: 0.000000002793968, z: 0.000000014901161,
+  m_LocalRotation: {x: 0.0000000026760123, y: 0.0000000032112148, z: 0.000000017126478,
     w: 1}
   m_LocalPosition: {x: -0.15891492, y: -0.00012651086, z: -0.000000007450581}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -2371,11 +2371,11 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -80
+    limit: -100
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 80
+    limit: -5
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
