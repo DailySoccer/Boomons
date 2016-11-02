@@ -74,7 +74,7 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 
 	#region Mono
 
-	protected void Awake()
+	protected virtual void Awake()
 	{
 		_nodes = GetComponentsInChildren<Transform>(true);
 		if (_pelvis == null)
@@ -85,7 +85,7 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 		gameObject.SetActive(false);
 	}
 
-	protected void OnDestroy()
+	protected virtual void OnDestroy()
 	{
 		_pelvis = null;
 		_nodes = null;

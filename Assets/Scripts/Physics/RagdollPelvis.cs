@@ -27,11 +27,18 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 		get { return Ragdoll.IsTeleporting; }
 	}
 
+
 	#endregion
 
 	//================================================================
 
 	#region Public Methods
+
+	public override void Throw(Vector3 applyPosition, Vector3 velocity)
+	{
+		base.Throw(applyPosition, velocity);
+		_groundTimer = Ragdoll.GroundParams.Timeout;
+	}
 
 	public void TeleportTo(Teleport target)
 	{
@@ -54,7 +61,6 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 	{
 		base.OnEnable();
 		IsGrounded = false;
-		_groundTimer = Ragdoll.GroundParams.Timeout;
 	}
 
 
