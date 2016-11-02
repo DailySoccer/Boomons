@@ -43,24 +43,17 @@ public class Cutscene : MonoBehaviour
 	private void OnEnable()
 	{
 		_animator.GetBehaviour<CutsceneEndState>().End += OnCutsceneEnd;
+		_driver.BoomonStateChange += OnBoomonStateChange;
+		_driver.BoomonEmotionChange += OnBoomonEmotionChange;
 	}
-
-	
 
 	private void OnDisable()
 	{
 		_animator.GetBehaviour<CutsceneEndState>().End -= OnCutsceneEnd;
+		_driver.BoomonStateChange -= OnBoomonStateChange;
+		_driver.BoomonEmotionChange -= OnBoomonEmotionChange;
 	}
-	
-
-	private void Update()
-	{
-		if(_driver.MustFollow)
-			_game.Player.GoTo(_driver.transform.position);
-	
-		_game.Player.CurrentEmotion = _driver.MustShowEmotion ? 
-				_emotion : BoomonController.Emotion.None;
-	}
+	   
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -70,7 +63,7 @@ public class Cutscene : MonoBehaviour
 		Play();
 	}
 
-	
+
 
 	#endregion
 
@@ -78,6 +71,19 @@ public class Cutscene : MonoBehaviour
 	//===================================================================
 
 	#region Events
+
+	private void OnBoomonStateChange(BoomonController.State state)
+	{
+		if (state == BoomonController.State.Driven)
+			_game.Player.GoTo(_driver.transform.position);
+		else
+			_game.Player.CurrentState = state;
+	}
+
+	private void OnBoomonEmotionChange(BoomonController.Emotion emotion)
+	{
+		_game.Player.CurrentEmotion = emotion;
+	}	  
 
 	public void OnEmotionClick(int index)
 	{

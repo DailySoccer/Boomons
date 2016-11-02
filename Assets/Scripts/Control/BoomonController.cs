@@ -26,7 +26,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	#region Public Fields
 	public enum State
 	{
-		CodeDriven = -1,
+		Driven = -1,
 		Idle = 0,
 		Move = 1,
 		Throw = 2,
@@ -73,7 +73,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		{
 			if (value == _currentState)
 				return;
-
+			
 			State lastState = _currentState;
 			_stateActions[lastState].OnEnd(value);
 			_currentState = value;
@@ -155,7 +155,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 	//public void Jump(Vector2 swipeVector, float speedRatio)
 	//{
-	//	if (CurrentState == State.Jump || CurrentState == State.Throw)
+	//	if (CurrentState == State.Jump || CurrentState == BoomonState.Throw)
 	//		return;
 
 	//	float jumpDegress = Mathf.Atan(swipeVector.y / Mathf.Abs(swipeVector.x)) * Mathf.Rad2Deg;
@@ -186,7 +186,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	public void TeleportTo(Teleport target)
 	{
 		IsTeleporting = true;
-		CurrentState = State.CodeDriven;
+		CurrentState = State.Driven;
 
 		transform.position = target.transform.position;
 		_refSystem = new ReferenceSystem(transform.position, target.Right);
@@ -208,7 +208,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		MoveSense = (Sense) Mathf.Sign(moveSense);
 
 		_velocity = _moveSpeedMax * transform.forward;
-		CurrentState = State.CodeDriven;
+		CurrentState = State.Driven;
 	}
 
 	#endregion
@@ -229,7 +229,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		_goToCallbacks = new List<Action>();
 		_stateActions = new Dictionary<State, StateActions>
 		{
-			{ State.CodeDriven, new StateActions(OnCodeDriveStart, OnCodeDriveEnd, CodeDriveUpdate)},
+			{ State.Driven, new StateActions(OnCodeDriveStart, OnCodeDriveEnd, CodeDriveUpdate)},
 			{ State.Idle,       new StateActions(OnIdleStart, OnIdleEnd, IdleUpdate)},
 			{ State.Move,     new StateActions(OnMoveStart, OnMoveEnd, MoveUpdate, OnMoveCollision)},
 			{ State.Throw,   new StateActions(OnThrowStart, OnThrowEnd)},
@@ -625,6 +625,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 	private void OnEmotionEnd(State obj)
 	{
+		_currentEmotion = Emotion.None;
 	}
 
 	#endregion
