@@ -49,17 +49,24 @@ public class ItemActivator : Touchable
 
     private void OnCollisionEnter(Collision collision)
 	{
-		if (_activateOnCollision && collision.gameObject.tag == _playerTag)
+		if (_isPhysicallyActivable && collision.gameObject.tag == _playerTag)
 			Activate();
 	}
 
-	#endregion
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (_isPhysicallyActivable && collider.gameObject.tag == _playerTag)
+            Activate();
+    }
 
-	//======================================================================
 
-	#region Events
+    #endregion
 
-	public override void OnTapStart(GameObject go, Vector2 touchPos)
+    //======================================================================
+
+    #region Events
+
+    public override void OnTapStart(GameObject go, Vector2 touchPos)
 	{		   
 		if(_game.Player.CurrentState == BoomonController.State.Idle)
 			Activate();
@@ -78,7 +85,7 @@ public class ItemActivator : Touchable
 	[SerializeField] private string _playTriggerName = "Play";
 	[SerializeField] private string _playerTag = "Player";
     [SerializeField] private bool _activateOnEnable = false;
-	[SerializeField] private bool _activateOnCollision = true;
+	[SerializeField] private bool _isPhysicallyActivable = true;
 	private static GameManager _game;
 
 	#endregion
