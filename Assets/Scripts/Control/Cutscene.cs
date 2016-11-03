@@ -43,14 +43,14 @@ public class Cutscene : MonoBehaviour
 	private void OnEnable()
 	{
 		_animator.GetBehaviour<CutsceneEndState>().End += OnCutsceneEnd;
-		_driver.BoomonStateChange += OnBoomonStateChange;
+		_driver.BoomonStateChange	+= OnBoomonStateChange;
 		_driver.BoomonEmotionChange += OnBoomonEmotionChange;
 	}
 
 	private void OnDisable()
 	{
 		_animator.GetBehaviour<CutsceneEndState>().End -= OnCutsceneEnd;
-		_driver.BoomonStateChange -= OnBoomonStateChange;
+		_driver.BoomonStateChange	-= OnBoomonStateChange;
 		_driver.BoomonEmotionChange -= OnBoomonEmotionChange;
 	}
 	   
