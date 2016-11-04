@@ -5,6 +5,17 @@ public class RigidThrower : Touchable
 {
 	#region Public Methods
 
+	public override bool IsTouchEnabled 
+	{
+		get { return base.IsTouchEnabled; }
+		set 
+		{
+			if(!value)
+				_rigid.velocity = Vector3.zero;
+			base.IsTouchEnabled = value;
+		}
+	}
+
 	public override void OnSwipe(GameObject go, Vector2 position, Vector2 direction, float speedRatio)
 	{
 		if (go != gameObject)
@@ -51,7 +62,6 @@ public class RigidThrower : Touchable
 
 	protected override void OnDestroy()
 	{
-		
 		_rigid = null;
 		base.OnDestroy();
 	}

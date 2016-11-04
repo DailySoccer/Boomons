@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 public class Cutscene : MonoBehaviour
@@ -14,10 +15,9 @@ public class Cutscene : MonoBehaviour
 
 	public void Play()
 	{
-		IsPlaying = true;
-		_game.Player.SetIsControllable(false);
-		_animator.SetTrigger(_playTriggerName);
+		StartCoroutine(PlayCoroutine());
 	}
+	
 
 	#endregion
 
@@ -49,6 +49,8 @@ public class Cutscene : MonoBehaviour
 
 	private void OnDisable()
 	{
+		StopAllCoroutines();
+
 		_animator.GetBehaviour<CutsceneEndState>().End -= OnCutsceneEnd;
 		_driver.BoomonStateChange	-= OnBoomonStateChange;
 		_driver.BoomonEmotionChange -= OnBoomonEmotionChange;
@@ -57,7 +59,7 @@ public class Cutscene : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if(IsPlaying || other.gameObject != _game.Player.gameObject)
+		if(IsPlaying || other.tag != _playerTag)
 			return;
 
 		Play();
@@ -113,6 +115,18 @@ public class Cutscene : MonoBehaviour
 		Transition.Instance.AnimEnd -= OnTransitionEnd;
 		SceneLoader.Instance.GoToSelectionMenu();
 		Transition.Instance.StartAnim(1f, true);
+	}
+
+	private IEnumerator PlayCoroutine()
+	{
+		IsPlaying = true;
+		_game.Player.SetIsControllable(false);
+
+		// TODO FRS 161104 Event StateChange
+		yield return new WaitUntil(
+			() => _game.Player.CurrentState == BoomonController.State.Idle);
+
+		_animator.SetTrigger(_playTriggerName);
 	}
 
 	#endregion

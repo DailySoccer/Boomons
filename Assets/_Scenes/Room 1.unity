@@ -491,7 +491,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 239346095}
-  m_LocalRotation: {x: 0.7080198, y: 0.00028290699, z: -0.7061926, w: 0.00028021834}
+  m_LocalRotation: {x: 0.70801973, y: 0.00028290696, z: -0.70619255, w: 0.00028021832}
   m_LocalPosition: {x: 3.4468384, y: -1.4465716, z: 17.281853}
   m_LocalScale: {x: 1.0000001, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0.04563027, y: -90.14805, z: 179.99971}
@@ -1330,7 +1330,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 688584592}
-  m_LocalRotation: {x: 0.7080198, y: 0.00028096445, z: 0.7061926, w: -0.00028219837}
+  m_LocalRotation: {x: 0.70801973, y: 0.00028096442, z: 0.70619255, w: -0.00028219834}
   m_LocalPosition: {x: 3.4468384, y: -1.4464757, z: -17.28186}
   m_LocalScale: {x: 1.0000001, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: -0.045630433, y: 90.14805, z: -179.99995}
@@ -1904,7 +1904,7 @@ MonoBehaviour:
   _playTriggerName: Play
   _playerTag: Player
   _activateOnEnable: 0
-  _activateOnCollision: 1
+  _isPhysicallyActivable: 1
 --- !u!82 &994530339
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2239,7 +2239,7 @@ MonoBehaviour:
   _playTriggerName: Play
   _playerTag: Player
   _activateOnEnable: 1
-  _activateOnCollision: 0
+  _isPhysicallyActivable: 1
 --- !u!82 &1106621111
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3879,7 +3879,7 @@ MonoBehaviour:
   _playTriggerName: Play
   _playerTag: Player
   _activateOnEnable: 1
-  _activateOnCollision: 0
+  _isPhysicallyActivable: 1
 --- !u!82 &1782596563
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4792,7 +4792,7 @@ GameObject:
   - 4: {fileID: 1991211933}
   - 114: {fileID: 1991211934}
   - 95: {fileID: 1991211932}
-  - 135: {fileID: 1991211935}
+  - 65: {fileID: 1991211935}
   m_Layer: 0
   m_Name: Cutscene
   m_TagString: Untagged
@@ -4858,8 +4858,8 @@ MonoBehaviour:
   _playerTag: Player
   _emotionIntName: Emotion
   _resolutionIntName: Resolution
---- !u!135 &1991211935
-SphereCollider:
+--- !u!65 &1991211935
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -4868,8 +4868,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 2}
+  m_Size: {x: 9.99, y: 39.56, z: 1}
+  m_Center: {x: 0, y: 4.08, z: 2}
 --- !u!1 &2009917337
 GameObject:
   m_ObjectHideFlags: 0

@@ -118,7 +118,6 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 	public void SetIsControllable(bool value)
 	{
-		// TODO FRS 161027 Gestionar el ragdoll
 		if(!value && CurrentState == State.Move)
 			CurrentState = State.Idle;
 
@@ -129,7 +128,12 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	public bool IsTouchEnabled
 	{
 		get{ return _touchable.enabled; }
-		private set { _touchable.enabled = value && _isControllable; }
+		private set
+		{
+			_touchable.enabled = value && _isControllable;
+			if(_ragdoll != null)
+				_ragdoll.IsTouchEnabled = value && _isControllable;
+		}
 	}
 
 	public bool IsTeleporting { get; private set; }

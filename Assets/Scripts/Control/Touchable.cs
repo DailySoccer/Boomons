@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,8 +6,24 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider))]
 public class Touchable : MonoBehaviour, IObjectTouchListener
 {
-	
+
 	#region Public Methods
+
+	public virtual bool IsTouchEnabled 
+	{
+		get { return _isTouchEnabled; }
+		set 
+		{
+			if(value == _isTouchEnabled)
+				return;
+			_isTouchEnabled = value;
+
+			if(value)
+				Touch.AddListener(this, _mustReceiveOnlyItsTouches);
+			else
+				Touch.RemoveListener(this);
+		}
+	}
 
 	[Serializable] public class TapEvent	: UnityEvent<GameObject, Vector2> {}
 	[Serializable] public class SwipeEvent	: UnityEvent<GameObject, Vector2, Vector2, float> {}
@@ -54,8 +68,7 @@ public class Touchable : MonoBehaviour, IObjectTouchListener
 
 	protected virtual void Awake()
 	{
-		gameObject.layer = LayerMask.NameToLayer(_touchLayerName);
-		_touchManager = MetaManager.Instance.GetManager<ObjectTouchManager>();
+		gameObject.layer = LayerMask.NameToLayer(_touchLayerName);	 
 	}
 
 	protected virtual void OnDestroy()
@@ -80,7 +93,14 @@ public class Touchable : MonoBehaviour, IObjectTouchListener
 
 	#region Private Fields
 
-
+	private ObjectTouchManager Touch
+	{
+		get {
+			return _touchManager ?? 
+			 (_touchManager = MetaManager.Instance.GetManager<ObjectTouchManager>());
+		}
+	}
+	
 	[SerializeField]
 	private string _touchLayerName = "Touchable";
 	[SerializeField]
@@ -97,25 +117,10 @@ public class Touchable : MonoBehaviour, IObjectTouchListener
 	[SerializeField]
 	private SwipeEvent _swipe = new SwipeEvent();
 
+									   
 
-	protected bool IsTouchEnabled
-	{
-		get { return _isInputEnabled; }
-		set
-		{
-			if (value == _isInputEnabled)
-				return;
-			_isInputEnabled = value;
-
-			if(value)
-				_touchManager.AddListener(this, _mustReceiveOnlyItsTouches);
-			else
-				_touchManager.RemoveListener(this);
-		}
-	}
-
+	private bool _isTouchEnabled;
 	private ObjectTouchManager _touchManager;
-	private bool _isInputEnabled;
 
 	#endregion
 

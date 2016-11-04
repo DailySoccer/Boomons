@@ -12,6 +12,12 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 	public GroundDetectParams GroundParams { get { return _groundParams; } }
 
 	public bool IsTeleporting { get; private set; }
+
+	public bool IsTouchEnabled {
+		get { return _pelvis.IsTouchEnabled; }
+		set { _pelvis.IsTouchEnabled = value; }
+	}
+
 	#endregion
 
 	//========================================================================
