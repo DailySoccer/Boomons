@@ -74,17 +74,17 @@ public class Cutscene : MonoBehaviour
 
 	private void OnBoomonStateChange(BoomonController.State state)
 	{
-		if (state == BoomonController.State.Driven)
+		if (state == BoomonController.State.Driven) 
 			_game.Player.GoTo(_driver.transform.position);
 		else
 			_game.Player.CurrentState = state;
 	}
-
+		
 	private void OnBoomonEmotionChange(BoomonController.Emotion emotion)
 	{
 		_game.Player.CurrentEmotion = emotion;
-	}	  
-
+	}
+	
 	public void OnEmotionClick(int index)
 	{
 		Debug.Log("Cutscene::OnEmotionClick>> " + index);

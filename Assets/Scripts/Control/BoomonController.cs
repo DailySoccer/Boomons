@@ -26,13 +26,13 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	#region Public Fields
 	public enum State
 	{
-		Driven = -1,
-		Idle = 0,
-		Move = 1,
-		Throw = 2,
-		Jump = 3,
-		Tickles = 4,
-		Emotion = 5
+		Idle	= 0,
+		Driven	= 1,
+		Emotion = 2,
+		Move	= 3,
+		Throw	= 4,
+		StandUp = 5,
+		Tickles = 6,
 	};
 
 	public enum Emotion
@@ -75,8 +75,9 @@ public class BoomonController : MonoBehaviour, ITeleportable
 				return;
 			
 			State lastState = _currentState;
-			_stateActions[lastState].OnEnd(value);
 			_currentState = value;
+
+			_stateActions[lastState].OnEnd(value);
 			_stateActions[_currentState].OnStart(lastState);
 		}
 	}
@@ -171,7 +172,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 	public void Throw(Vector2 swipePos, Vector2 swipeVector, float speedRatio)
 	{
-		if(CurrentState == State.Throw || CurrentState == State.Jump)
+		if(CurrentState == State.Throw)
 			return;
 
 		float throwDegress = Mathf.Atan(swipeVector.y / Mathf.Abs(swipeVector.x)) * Mathf.Rad2Deg;
@@ -198,7 +199,6 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 	public void GoTo(Vector3 position, Action callback = null)
 	{
-		
 		_drivenTarget = position;
 		if(callback != null)
 			_goToCallbacks.Add(callback);
@@ -229,13 +229,13 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		_goToCallbacks = new List<Action>();
 		_stateActions = new Dictionary<State, StateActions>
 		{
-			{ State.Driven, new StateActions(OnCodeDriveStart, OnCodeDriveEnd, CodeDriveUpdate)},
-			{ State.Idle,       new StateActions(OnIdleStart, OnIdleEnd, IdleUpdate)},
-			{ State.Move,     new StateActions(OnMoveStart, OnMoveEnd, MoveUpdate, OnMoveCollision)},
-			{ State.Throw,   new StateActions(OnThrowStart, OnThrowEnd)},
-			//{ State.Jump,    new StateActions(OnJumpStart, OnJumpEnd, JumpUpdate, OnJumpCollision)},
-			{ State.Tickles,   new StateActions(OnTickleStart, OnTickleEnd)},
+			{ State.Driven,  new StateActions(OnDrivenStart, OnDrivenEnd, DrivenUpdate)},
 			{ State.Emotion, new StateActions(OnEmotionStart, OnEmotionEnd) },
+			{ State.Idle,    new StateActions(OnIdleStart, OnIdleEnd, IdleUpdate)},
+			{ State.Move,    new StateActions(OnMoveStart, OnMoveEnd, MoveUpdate, OnMoveCollision)},
+			{ State.Throw,   new StateActions(OnThrowStart, OnThrowEnd)},
+			{ State.StandUp, new StateActions(OnStandUpStart, OnStandUpEnd)},
+			{ State.Tickles, new StateActions(OnTickleStart, OnTickleEnd)},
 		};
 		
 
@@ -254,7 +254,6 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 		//_bipedOffsetPos = _bipedRoot.position - transform.position;
 	}
-
 
 
 
@@ -400,14 +399,15 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		switch (lastState)
 		{
 			case State.Throw:
+			case State.StandUp:
 				PlayAnimation(_standUpTriggerName);
 				break;
 			case State.Tickles:
 				PlayAnimation(lastState.ToString());
 				break;
-			case State.Jump:
-				//PlayAnimation(_landTriggerName);
-				break;
+			//case State.Jump:
+			//	PlayAnimation(_landTriggerName);
+			//	break;
 			default:
 				PlayAnimation(State.Idle.ToString());
 				break;
@@ -501,6 +501,23 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 	#region Events.Jump
 
+
+	private void OnStandUpStart(State obj)
+	{
+		CurrentState = State.Idle;
+	}
+
+	private void OnStandUpEnd(State obj)
+	{
+
+	}
+
+	#endregion
+
+	//----------------------------------------------------
+
+	#region Events.Jump
+
 	//private void OnJumpStart(State lastState)
 	//{
 	//	Log("OnJumpStart");
@@ -567,7 +584,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	#endregion
 
 	//------------------------------------------------------------------
-	
+
 	#region Events.Tickle
 
 	private void OnTickleStart(State obj)
@@ -587,30 +604,37 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 	#region Events.CodeDrive
 
-	private void OnCodeDriveStart(State obj)
+	private void OnDrivenStart(State obj)
 	{
-		Log("OnCodeDriveStart");
+		Log("OnDrivenStart");
 		PlayAnimation(State.Move.ToString());
 	}
 
-	private void OnCodeDriveEnd(State obj)
+	private void OnDrivenEnd(State obj)
 	{
-		Log("OnCodeDriveEnd");
+		Log("OnDrivenEnd");
 
 		IsTeleporting = false;
-
-		foreach (Action c in _goToCallbacks)
-			c();
-		_goToCallbacks.Clear();
 	}
 	
-	private void CodeDriveUpdate()
+	private void DrivenUpdate()
 	{
-		bool hasReachedTarget = Vector3.Dot(_velocity, transform.position - _drivenTarget) > 0f;
+		bool hasReachedTarget = Vector3.Dot(_velocity, transform.position - _drivenTarget) >= 0f;
 		if (hasReachedTarget)
-			CurrentState = State.Idle;
+			OnDrivenTargetReached(); 
 		else
 			_controller.SimpleMove(_velocity);
+	}
+
+	private void OnDrivenTargetReached()
+	{
+		CurrentState = State.Idle;
+
+		int n = _goToCallbacks.Count;
+		for(int i = 0; i < n; ++i)
+			_goToCallbacks[i]();
+
+		_goToCallbacks.RemoveRange(0, n);
 	}
 
 	#endregion

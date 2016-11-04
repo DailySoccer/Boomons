@@ -3,7 +3,7 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(CutsceneDriver))]
+[CustomEditor(typeof(CutsceneDriver), true)]
 [CanEditMultipleObjects]
 public class CutsceneDriverEditor : Editor
 {
