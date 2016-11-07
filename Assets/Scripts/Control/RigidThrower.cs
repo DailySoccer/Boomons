@@ -8,10 +8,11 @@ public class RigidThrower : Touchable
 	public override bool IsTouchEnabled 
 	{
 		get { return base.IsTouchEnabled; }
-		set 
+		set
 		{
-			if(!value)
+			if (!value)  
 				_rigid.velocity = Vector3.zero;
+			
 			base.IsTouchEnabled = value;
 		}
 	}

@@ -6,9 +6,7 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 	#region Public Fields
 	
 	public Ragdoll Ragdoll { get; set; }
-
-	
-
+ 
 	public bool IsGrounded
 	{
 		get { return _isGrounded; }

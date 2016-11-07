@@ -13,9 +13,18 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 
 	public bool IsTeleporting { get; private set; }
 
-	public bool IsTouchEnabled {
+	public bool IsTouchEnabled 
+	{
 		get { return _pelvis.IsTouchEnabled; }
-		set { _pelvis.IsTouchEnabled = value; }
+		set
+		{
+			_pelvis.IsTouchEnabled = value;
+			if (value)
+				return;
+
+			foreach(Rigidbody r in GetComponentsInChildren<Rigidbody>())
+				r.velocity = Vector3.zero;
+		}
 	}
 
 	#endregion

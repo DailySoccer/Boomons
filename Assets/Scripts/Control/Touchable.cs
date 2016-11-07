@@ -32,7 +32,7 @@ public class Touchable : MonoBehaviour, IObjectTouchListener
 	public TapEvent TapStop		{ get { return _tapStop;	} }
 	public TapEvent TapStay		{ get { return _tapStay;	} }
 	public TapEvent DoubleTap	{ get { return _doubleTap;	} }
-	public SwipeEvent Swipe		{ get { return _swipe;  } }
+	public SwipeEvent Swipe		{ get { return _swipe;		} }
 
 	public virtual void OnTapStart(GameObject go, Vector2 touchPos)
 	{
