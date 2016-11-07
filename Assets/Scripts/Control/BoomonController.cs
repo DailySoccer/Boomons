@@ -783,7 +783,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	//[SerializeField, Range(0f, 90f)]	private float _frontJumpDegreesMin = 80f;
 	[SerializeField, Range(0f, 90f)]	private float _throwDegreesMin;
 	[SerializeField, Range(0f, 10f)]	private float _senseReversalDistMin = 1;
-	[SerializeField, Range(0f, 5f)]		private float _fallTimeout = 1f;
+	[SerializeField, Range(0f, 1f)]		private float _fallTimeout = 0.5f;
 
 	//[SerializeField] private string _jumpTriggerName = "Jump";
 	//[SerializeField] private string _landTriggerName = "Land";
