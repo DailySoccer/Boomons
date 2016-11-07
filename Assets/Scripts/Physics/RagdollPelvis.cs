@@ -17,10 +17,11 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 			_isGrounded = value;
 
 			if (value)
-				Ragdoll.OnGroundEnter(transform.position);
+				OnGroundEnter();
 		}
 	}
 
+	
 	public bool IsTeleporting
 	{
 		get { return Ragdoll.IsTeleporting; }
@@ -38,9 +39,9 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 		_refSystem = refSystem;
 	}
 
-	public override void Throw(Vector3 applyPosition, Vector3 velocity)
-	{
-		base.Throw(applyPosition, velocity);
+	public override void Throw(Vector3 velocity, Vector3? applyPosition = null)
+	{		
+		base.Throw(velocity, applyPosition);
 		_groundTimer = Ragdoll.GroundParams.Timeout;
 	}
 
@@ -75,8 +76,10 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 		if (_refSystem != null)
 			transform.position = _refSystem.ProjectOnPlane(transform.position);
 
-		IsGrounded =  Rigid.velocity.sqrMagnitude < Ragdoll.GroundParams.StopVelocityMaxSqr 
-			&& (_groundTimer -= Time.fixedDeltaTime) < 0f;
+		if (Rigid.velocity.sqrMagnitude < Ragdoll.GroundParams.StopVelocityMaxSqr)
+			IsGrounded = (_groundTimer -= Time.fixedDeltaTime) < 0f;
+		else
+			_groundTimer = Ragdoll.GroundParams.Timeout;
 	}
 
 	private void OnCollisionStay(Collision collisionInfo)
@@ -92,12 +95,18 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 
 	#region Events
 
+	private void OnGroundEnter()
+	{
+		Rigid.velocity = Vector3.zero;
+		Ragdoll.OnGroundEnter(transform.position);
+	}
+
 	#endregion
 
 	//========================================================================
 
 	#region Private Fields
-	
+
 	private float _groundTimer;
 	private bool _isGrounded;
 	private ReferenceSystem _refSystem;

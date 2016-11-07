@@ -255,7 +255,7 @@ Prefab:
         type: 2}
       propertyPath: TargetCanvasPanel
       value: 
-      objectReference: {fileID: 1808800118}
+      objectReference: {fileID: 817902265}
     - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
         type: 2}
       propertyPath: DisableCanvasPanel
@@ -706,6 +706,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 802597681}
   m_Mesh: {fileID: 4300000, guid: 48897751f53b4b84f94706e30cc3c816, type: 3}
+--- !u!224 &817902265 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224000011950272316, guid: fe16667a53ea62a43834d91064bce434,
+    type: 2}
+  m_PrefabInternal: {fileID: 1808800116}
 --- !u!1 &858694310
 GameObject:
   m_ObjectHideFlags: 0
@@ -1635,17 +1640,32 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 329804692}
+    - target: {fileID: 1000010850839068, guid: fe16667a53ea62a43834d91064bce434, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012004300266, guid: fe16667a53ea62a43834d91064bce434,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7b7aef737fe6b04449b678b4318e91f9,
+        type: 3}
+    - target: {fileID: 114000013174188670, guid: fe16667a53ea62a43834d91064bce434,
+        type: 2}
+      propertyPath: refTexture
+      value: 
+      objectReference: {fileID: 21300000, guid: 7b7aef737fe6b04449b678b4318e91f9,
+        type: 3}
+    - target: {fileID: 1000012089831256, guid: fe16667a53ea62a43834d91064bce434, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe16667a53ea62a43834d91064bce434, type: 2}
   m_IsPrefabParent: 0
 --- !u!224 &1808800117 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224000011206764898, guid: fe16667a53ea62a43834d91064bce434,
-    type: 2}
-  m_PrefabInternal: {fileID: 1808800116}
---- !u!224 &1808800118 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224000011950272316, guid: fe16667a53ea62a43834d91064bce434,
     type: 2}
   m_PrefabInternal: {fileID: 1808800116}
 --- !u!1 &1822899841

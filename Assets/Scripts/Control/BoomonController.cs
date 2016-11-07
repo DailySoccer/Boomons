@@ -174,14 +174,25 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	//	CurrentState = State.Jump;
 	//}
 
+
+	public void Throw(Vector3 velocity, Vector3? applyPosition = null)
+	{	
+		if(CurrentState == State.Throw)
+			return;
+
+		Log("Throw", "@" + velocity, this);
+
+		CurrentState = State.Throw;
+		Ragdoll.Setup(transform, _refSystem);
+		Ragdoll.Throw(velocity, applyPosition);
+	}
+
 	public void Throw(Vector2 swipePos, Vector2 swipeVector, float speedRatio)
 	{
 		if(CurrentState == State.Throw)
 			return;
 
-		float throwDegress = Mathf.Atan(swipeVector.y / Mathf.Abs(swipeVector.x)) * Mathf.Rad2Deg;
-		if (!(throwDegress > _throwDegreesMin*Mathf.Deg2Rad))
-			return;
+		Log("Throw", "caused by Swipe", this);
 
 		CurrentState = State.Throw;
 		Ragdoll.Setup(transform, _refSystem);
@@ -225,7 +236,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	private void Awake()
 	{
 		_isControllable = true;
-
+		
 		Debug.Assert(_right != Vector3.zero, "BoomonController::Awake>> Right move direction not defined!!");
 
 		_role =  (BoomonRole) Enum.Parse(typeof (BoomonRole), name.Split('(')[0]);
@@ -312,6 +323,8 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	}
 
 
+
+
 	private void OnControllerColliderHit(ControllerColliderHit hit)
 	{
 		Action<ControllerColliderHit> collisionEnter = _stateActions[CurrentState].OnCollisionEnter;
@@ -329,6 +342,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 	private void OnRagdollGroundEnter(Vector3 groundPos)
 	{
+		Log("OnRagdollGroundEnter", this);
 		transform.position = groundPos;
 		CurrentState = State.Idle;
 	}
@@ -373,8 +387,14 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		//	if ((myScreenPos - position).sqrMagnitude > _inchesSqrMax)
 		//		return;
 		//}
-		if (go == gameObject)
-			Throw(position, direction, speedRatio);
+		if (go != gameObject)
+			return;
+
+		float throwDegress = Mathf.Atan(direction.y / Mathf.Abs(direction.x)) * Mathf.Rad2Deg;
+		if(!(throwDegress > _throwDegreesMin * Mathf.Deg2Rad))
+			return;
+
+		Throw(position, direction, speedRatio);
 	}
 
 	#endregion
@@ -404,7 +424,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		{
 			case State.Throw:
 			case State.StandUp:
-				PlayAnimation(_standUpTriggerName);
+				PlayAnimation(State.StandUp.ToString());
 				break;
 			case State.Tickles:
 				PlayAnimation(lastState.ToString());
@@ -457,6 +477,14 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 	private void MoveUpdate()
 	{
+		if(_controller.isGrounded) {
+			_fallTimer = _fallTimeout;
+
+		} else if ((_fallTimer -= Time.deltaTime) < 0f) {
+			Throw(Vector3.zero);
+			return;
+		}
+
 		_controller.SimpleMove(_velocity);
 	}
 
@@ -738,10 +766,11 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		}
 	}
 
-	
+
 
 
 	//[SerializeField] private Transform _bipedRoot;
+	
 	[SerializeField] private Vector3 _right;
 	private Vector3 _bipedOffsetPos;
 
@@ -754,10 +783,11 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	//[SerializeField, Range(0f, 90f)]	private float _frontJumpDegreesMin = 80f;
 	[SerializeField, Range(0f, 90f)]	private float _throwDegreesMin;
 	[SerializeField, Range(0f, 10f)]	private float _senseReversalDistMin = 1;
+	[SerializeField, Range(0f, 5f)]		private float _fallTimeout = 1f;
 
 	//[SerializeField] private string _jumpTriggerName = "Jump";
 	//[SerializeField] private string _landTriggerName = "Land";
-	[SerializeField] private string _standUpTriggerName = "StandUp";
+	//[SerializeField] private string _standUpTriggerName = "StandUp";
 	
 
 	
@@ -768,10 +798,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	private FacialAnimator _face;
 	private Touchable _touchable;
 
-	private Vector3 _velocity;
-	private Vector3 _jumpStartVelocity;
-	
-	private bool _isParaboling;
+	private Vector3 _velocity;	 
 	private float _groundSlopeCosine;
 
 	private Sense _moveSense;
@@ -804,9 +831,8 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	private Vector3 _drivenTarget;
 	private BoomonRole _role;
 	private Emotion _currentEmotion;
-
-	[SerializeField] private BoomonIdleState _idleStateState;
 	private bool _isControllable;
+	private float _fallTimer;
 
 	#endregion
 

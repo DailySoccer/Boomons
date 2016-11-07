@@ -55,6 +55,10 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 		gameObject.SetActive(true);
 	}
 
+	public virtual void Throw(Vector3 velocity, Vector3? applyPosition = null)
+	{
+		_pelvis.Throw(velocity, applyPosition);
+	}
 
 	public virtual void OnTapStart(GameObject go, Vector2 position)
 	{

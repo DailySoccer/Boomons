@@ -1280,34 +1280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b649353f02b0641ad6cf4579fb7a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Day:
-  - {fileID: 2800000, guid: 4f12cfd658ef7474dbe5fb8252503aec, type: 3}
-  - {fileID: 2800000, guid: 5ea6c9662bb2b1f40afa028c329d5812, type: 3}
-  - {fileID: 2800000, guid: 5ad220c70e34b504f83f271b3a31070d, type: 3}
-  - {fileID: 2800000, guid: 8300ee7bcd1b7d5439b76e6eb819e06f, type: 3}
-  - {fileID: 2800000, guid: e9f578c472f7cf84187aa241eed7a104, type: 3}
-  - {fileID: 2800000, guid: b62fa65c4336736469e1a462f38a75ca, type: 3}
-  - {fileID: 2800000, guid: 9ae796c1057b1d94e9ec50920281d934, type: 3}
-  - {fileID: 2800000, guid: 3e96d09585dff6644951650e6b4fcf8e, type: 3}
-  - {fileID: 2800000, guid: 4560423ae765a3e40bca4df5c15c2b6b, type: 3}
-  - {fileID: 2800000, guid: 6af0f37d2539c5c46900a070858b9e0b, type: 3}
-  - {fileID: 2800000, guid: 5e41d54fd8bff8f40b4871f87d2826e1, type: 3}
-  - {fileID: 2800000, guid: ecc41e163a2088044a18475edd92d240, type: 3}
-  Night:
-  - {fileID: 2800000, guid: 4f12cfd658ef7474dbe5fb8252503aec, type: 3}
-  - {fileID: 2800000, guid: 5ea6c9662bb2b1f40afa028c329d5812, type: 3}
-  - {fileID: 2800000, guid: 5ad220c70e34b504f83f271b3a31070d, type: 3}
-  - {fileID: 2800000, guid: 8300ee7bcd1b7d5439b76e6eb819e06f, type: 3}
-  - {fileID: 2800000, guid: e9f578c472f7cf84187aa241eed7a104, type: 3}
-  - {fileID: 2800000, guid: b62fa65c4336736469e1a462f38a75ca, type: 3}
-  - {fileID: 2800000, guid: 9ae796c1057b1d94e9ec50920281d934, type: 3}
-  - {fileID: 2800000, guid: 3e96d09585dff6644951650e6b4fcf8e, type: 3}
-  - {fileID: 2800000, guid: 4560423ae765a3e40bca4df5c15c2b6b, type: 3}
-  - {fileID: 2800000, guid: 6af0f37d2539c5c46900a070858b9e0b, type: 3}
-  - {fileID: 2800000, guid: 5e41d54fd8bff8f40b4871f87d2826e1, type: 3}
-  - {fileID: 2800000, guid: ecc41e163a2088044a18475edd92d240, type: 3}
-  Period: 0
-  _initialized: 0
 --- !u!4 &1032489135
 Transform:
   m_ObjectHideFlags: 0
@@ -1378,7 +1350,7 @@ MonoBehaviour:
   _playTriggerName: Play
   _playerTag: Player
   _activateOnEnable: 0
-  _activateOnCollision: 1
+  _isPhysicallyActivable: 1
 --- !u!82 &1038945400
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1441,7 +1413,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2290,10 +2262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289aced52880f3e4d8477cda9f7159f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mustShowEmotion: 0
-  _mustFollow: 0
-  _boomonState: 0
-  _boomonEmotion: 0
+  _animableBoomonState: 0
+  _animableBoomonEmotion: 0
 --- !u!224 &1561672620 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224000011206764898, guid: fe16667a53ea62a43834d91064bce434,

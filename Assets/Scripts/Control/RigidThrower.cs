@@ -30,7 +30,7 @@ public class RigidThrower : Touchable
 		}
 
 		Vector3 touchPosition =  Camera.main.ScreenToWorldPoint(position);
-		Throw(touchPosition, CalcThrowVelocity(direction, speedRatio));
+		Throw(CalcThrowVelocity(direction, speedRatio), touchPosition);
 	}
 
 
@@ -38,12 +38,17 @@ public class RigidThrower : Touchable
 	/// 
 	/// </summary>
 	/// <param name="velocity"></param>
-	/// <param name="setupRef"></param>
-	public virtual void Throw(Vector3 applyPosition, Vector3 velocity)
+	public virtual void Throw(Vector3 velocity, Vector3? applyPosition = null)
 	{
-		//Debug.Log("RigidThrower::Throw>> " + name + " throwed @ " + velocity, this);
-		_rigid.AddForceAtPosition(velocity, applyPosition, ForceMode.VelocityChange);
+		Debug.Log("RigidThrower::Throw>> " + name + " throwed @ " + velocity, this);
+
+		if(applyPosition.HasValue)
+			_rigid.AddForceAtPosition(velocity, applyPosition.Value, ForceMode.VelocityChange);
+		else
+			_rigid.AddForce(velocity, ForceMode.VelocityChange);
 	}
+
+	
 
 	#endregion
 
