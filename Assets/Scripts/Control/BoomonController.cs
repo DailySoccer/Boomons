@@ -246,7 +246,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		{
 			{ State.Driven,  new StateActions(OnDrivenStart, OnDrivenEnd, DrivenUpdate)},
 			{ State.Emotion, new StateActions(OnEmotionStart, OnEmotionEnd) },
-			{ State.Idle,    new StateActions(OnIdleStart, OnIdleEnd, IdleUpdate)},
+			{ State.Idle,    new StateActions(OnIdleStart, OnIdleEnd, MoveUpdate)},
 			{ State.Move,    new StateActions(OnMoveStart, OnMoveEnd, MoveUpdate, OnMoveCollision)},
 			{ State.Throw,   new StateActions(OnThrowStart, OnThrowEnd)},
 			{ State.StandUp, new StateActions(OnStandUpStart, OnStandUpEnd)},
@@ -452,11 +452,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 						 || nextState == State.Emotion;
 	}
 	
-	private void IdleUpdate()
-	{
-		_controller.SimpleMove(Vector3.zero);
-	}
-
+	
 	#endregion
 
 	//----------------------------------------------------------------------
@@ -476,16 +472,12 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	}
 
 	private void MoveUpdate()
-	{
-		if(_controller.isGrounded) {
-			_fallTimer = _fallTimeout;
-
-		} else if ((_fallTimer -= Time.deltaTime) < 0f) {
-			Throw(Vector3.zero);
-			return;
-		}
-
-		_controller.SimpleMove(_velocity);
+	{	 
+		if(_controller.isGrounded || 
+			Physics.Raycast(transform.position, -_refSystem.JumpDir, _fallHeightMin))
+			_controller.SimpleMove(_velocity);	   
+		else
+			Throw(_velocity);
 	}
 
 	private void OnMoveCollision(ControllerColliderHit hit)
@@ -781,16 +773,16 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	//[SerializeField, Range(0f, 50f)]	private float _jumpSpeedMax = 10f;
 	//[SerializeField, Range(0f, 90f)]	private float _jumpDegreesMin;
 	//[SerializeField, Range(0f, 90f)]	private float _frontJumpDegreesMin = 80f;
-	[SerializeField, Range(0f, 90f)]	private float _throwDegreesMin;
-	[SerializeField, Range(0f, 10f)]	private float _senseReversalDistMin = 1;
-	[SerializeField, Range(0f, 1f)]		private float _fallTimeout = 0.5f;
+	[SerializeField, Range(0f, 90f)]	private float _throwDegreesMin = 10f;
+	[SerializeField, Range(0f, 10f)]	private float _senseReversalDistMin = 1f;
+	[SerializeField, Range(0f, 10f)]	private float _fallHeightMin = 10f;
 
 	//[SerializeField] private string _jumpTriggerName = "Jump";
 	//[SerializeField] private string _landTriggerName = "Land";
 	//[SerializeField] private string _standUpTriggerName = "StandUp";
-	
 
-	
+
+
 
 	private Animator _animator;
 	private CharacterController _controller;
@@ -832,8 +824,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	private BoomonRole _role;
 	private Emotion _currentEmotion;
 	private bool _isControllable;
-	private float _fallTimer;
-
+	
 	#endregion
 
 
