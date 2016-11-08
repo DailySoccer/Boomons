@@ -99,7 +99,10 @@ public class RotationTrack : MonoBehaviour {
 	{
 		_active = active;
 		TargetCamera.gameObject.SetActive(_active);
-		TargetCanvasPanel.gameObject.SetActive(_active);
+		if (TargetCanvasPanel != null)
+		{
+			TargetCanvasPanel.gameObject.SetActive(_active);
+		}
 		if (_auS != null)
 		{
 			_auS.enabled = active;
@@ -114,7 +117,10 @@ public class RotationTrack : MonoBehaviour {
 		}
 		foreach (GameObject go in DisableGameObList)
 		{
-			go.SetActive(!_active);
+			if (go != null)
+			{
+				go.SetActive(!_active);
+			}
 		}
 		if (DisableCanvasPanel != null)
 		{
@@ -124,7 +130,10 @@ public class RotationTrack : MonoBehaviour {
 		{
 			DisableMusic.volume = active ? VolumeAttenuance : 1;
 		}
-		SceneCamera.enabled = !_active;
+		if (SceneCamera != null)
+		{
+			SceneCamera.enabled = !_active;
+		}
 		DisableTelescope.enabled = !_active;
 		if (_SceneCameraRelated != null)
 		{
