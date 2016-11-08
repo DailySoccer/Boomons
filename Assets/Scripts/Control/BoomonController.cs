@@ -378,6 +378,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	public void OnSwipe(GameObject go, Vector2 position, Vector2 direction, float speedRatio)
 	{
 		Log("OnSwipe");
+
 		//if (go != gameObject)
 		//{
 		//	if (go != null)
@@ -387,6 +388,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		//	if ((myScreenPos - position).sqrMagnitude > _inchesSqrMax)
 		//		return;
 		//}
+
 		if (go != gameObject)
 			return;
 
@@ -416,10 +418,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	{
 		Log("OnIdleStart", "Last=" + lastState);
 
-		_velocity = Vector3.zero;
-		MoveSense = Sense.None;
-		transform.position = _refSystem.ProjectOnPlane(transform.position);
-
+		
 		switch (lastState)
 		{
 			case State.Throw:
@@ -429,9 +428,6 @@ public class BoomonController : MonoBehaviour, ITeleportable
 			case State.Tickles:
 				PlayAnimation(lastState.ToString());
 				break;
-			//case State.Jump:
-			//	PlayAnimation(_landTriggerName);
-			//	break;
 			default:
 				PlayAnimation(State.Idle.ToString());
 				break;
@@ -468,7 +464,10 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	private void OnMoveEnd(State nextState)
 	{
 		Log("OnMoveEnd");
+
 		_velocity = Vector3.zero;
+		MoveSense = Sense.None;
+		transform.position = _refSystem.ProjectOnPlane(transform.position);
 	}
 
 	private void MoveUpdate()
