@@ -293,6 +293,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 						  
 	private void Start()
 	{
+		_velocity = Vector3.zero;
 		MoveSense = Sense.None;
 		CurrentState = State.Idle;
 	}
@@ -471,12 +472,18 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	}
 
 	private void MoveUpdate()
-	{	 
-		if(_controller.isGrounded || 
-			Physics.Raycast(transform.position, -_refSystem.JumpDir, _fallHeightMin))
-			_controller.SimpleMove(_velocity);	   
+	{		  
+		if (_controller.isGrounded ||
+		    Physics.Raycast(transform.position, -_refSystem.JumpDir, _fallHeightMin))
+		{
+			_controller.SimpleMove(_velocity);
+			Debug.DrawRay(transform.position, -_fallHeightMin * _refSystem.JumpDir, Color.green);
+		}
 		else
+		{
 			Throw(_velocity);
+			Debug.DrawRay(transform.position, -_fallHeightMin * _refSystem.JumpDir, Color.red);
+		}
 	}
 
 	private void OnMoveCollision(ControllerColliderHit hit)
