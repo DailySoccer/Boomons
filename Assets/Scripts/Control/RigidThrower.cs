@@ -40,7 +40,7 @@ public class RigidThrower : Touchable
 	/// <param name="velocity"></param>
 	public virtual void Throw(Vector3 velocity, Vector3? applyPosition = null)
 	{
-		Debug.Log("RigidThrower::Throw>> " + name + " throwed @ " + velocity, this);
+		//Debug.Log("RigidThrower::Throw>> " + name + " throwed @ " + velocity, this);
 
 		if(applyPosition.HasValue)
 			_rigid.AddForceAtPosition(velocity, applyPosition.Value, ForceMode.VelocityChange);
