@@ -1,15 +1,28 @@
 fileFormatVersion: 2
-guid: 32e1b4ca3ef90c84bb502184e5773c84
-timeCreated: 1477320482
+guid: 647bcad9df5a756469255b71add294cd
+timeCreated: 1478620459
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: PirateIslandToy
+    100000: LampHigh
+    100002: //RootNode
+    100004: switch
+    100006: LampHigh_switch
+    400000: LampHigh
+    400002: //RootNode
+    400004: switch
+    400006: LampHigh_switch
+    2300000: LampHigh
+    2300002: switch
+    2300004: LampHigh_switch
+    3300000: LampHigh
+    3300002: switch
+    3300004: LampHigh_switch
+    4300000: LampHigh
+    4300002: switch
+    4300004: LampHigh_switch
+    7400000: Switch
     9500000: //RootNode
   materials:
     importMaterials: 0
@@ -31,7 +44,41 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Switch
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: LampHigh
+        weight: 1
+      - path: LampHigh_switch
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
