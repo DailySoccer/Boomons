@@ -359,7 +359,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000011345181188
 GameObject:
   m_ObjectHideFlags: 1
@@ -2279,10 +2279,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: c3387ba8ad1614045ae4eed866f62746, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 0.75
+  m_Radius: 0.23
+  m_Height: 0.9
   m_Direction: 0
-  m_Center: {x: -0.31, y: 0, z: 0}
+  m_Center: {x: -0.39, y: 0, z: 0}
 --- !u!137 &137000011328909742
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2581,7 +2581,7 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: 0
+    limit: 1
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
@@ -2623,7 +2623,7 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: 0
+    limit: 1
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
@@ -2707,7 +2707,7 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: 0
+    limit: 1
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
@@ -2791,7 +2791,7 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: 0
+    limit: 1
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:

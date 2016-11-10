@@ -633,7 +633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000013861824612
 GameObject:
   m_ObjectHideFlags: 1
@@ -1580,10 +1580,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: c3387ba8ad1614045ae4eed866f62746, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 0.75
+  m_Radius: 0.28
+  m_Height: 0.91
   m_Direction: 0
-  m_Center: {x: -0.31, y: 0, z: 0}
+  m_Center: {x: -0.38, y: 0, z: 0}
 --- !u!136 &136000011789359592
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1593,8 +1593,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.1
-  m_Height: 0.36
+  m_Radius: 0.11
+  m_Height: 0.34
   m_Direction: 0
   m_Center: {x: -0.14, y: 0, z: 0}
 --- !u!136 &136000012028931788
@@ -1606,10 +1606,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: c3387ba8ad1614045ae4eed866f62746, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.075
+  m_Radius: 0.07
   m_Height: 0.25
   m_Direction: 0
-  m_Center: {x: -0.1, y: 0, z: -0.01}
+  m_Center: {x: -0.12, y: 0, z: -0.01}
 --- !u!136 &136000012245175522
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1619,10 +1619,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: c3387ba8ad1614045ae4eed866f62746, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09
-  m_Height: 0.35
+  m_Radius: 0.08
+  m_Height: 0.3
   m_Direction: 0
-  m_Center: {x: -0.16, y: 0, z: 0}
+  m_Center: {x: -0.16, y: 0, z: 0.015}
 --- !u!136 &136000012272899036
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1632,10 +1632,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: c3387ba8ad1614045ae4eed866f62746, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.09
-  m_Height: 0.35
+  m_Radius: 0.08
+  m_Height: 0.3
   m_Direction: 0
-  m_Center: {x: -0.16, y: 0, z: 0}
+  m_Center: {x: -0.16, y: 0, z: -0.015}
 --- !u!136 &136000014037898748
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1645,10 +1645,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: c3387ba8ad1614045ae4eed866f62746, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.075
+  m_Radius: 0.07
   m_Height: 0.25
   m_Direction: 0
-  m_Center: {x: -0.1, y: 0, z: 0.01}
+  m_Center: {x: -0.12, y: 0, z: 0.01}
 --- !u!137 &137000012000630730
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1812,22 +1812,22 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -80
+    limit: -60
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 80
+    limit: 60
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 3
+    limit: 30
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
-    limit: 80
+    limit: 0
     bounciness: 0
     contactDistance: 0
   m_EnableProjection: 1
