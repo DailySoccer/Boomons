@@ -43,6 +43,7 @@ public class Cutscene : MonoBehaviour
 	private void OnEnable()
 	{
 		_animator.GetBehaviour<CutsceneEndState>().End += OnCutsceneEnd;
+		_driver.BoomonActiveChange	+= OnBoomonActiveChange;
 		_driver.BoomonStateChange	+= OnBoomonStateChange;
 		_driver.BoomonEmotionChange += OnBoomonEmotionChange;
 	}
@@ -54,15 +55,9 @@ public class Cutscene : MonoBehaviour
 		_animator.GetBehaviour<CutsceneEndState>().End -= OnCutsceneEnd;
 		_driver.BoomonStateChange	-= OnBoomonStateChange;
 		_driver.BoomonEmotionChange -= OnBoomonEmotionChange;
+		_driver.BoomonActiveChange  -= OnBoomonActiveChange;
 	}
 
-
-	// UNDONE FRS 161110 WIP
-	//private void Update()
-	//{
-	//	if(_driver.BoomonRight != Vector3.zero)	
-	//		_game.Player.ReferenceSystem.SetRight
-	//}				   
 
 
 	private void OnTriggerEnter(Collider other)
@@ -81,6 +76,13 @@ public class Cutscene : MonoBehaviour
 	//===================================================================
 
 	#region Events
+
+
+	private void OnBoomonActiveChange(bool isActive)
+	{
+		_game.Player.gameObject.SetActive(isActive);
+	}
+
 
 	private void OnBoomonStateChange(BoomonController.State state)
 	{

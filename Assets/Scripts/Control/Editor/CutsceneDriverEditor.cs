@@ -12,7 +12,8 @@ public class CutsceneDriverEditor : Editor
 	{
 		_stateNames   = Enum.GetNames(typeof(BoomonController.State));
 		_emotionNames = Enum.GetNames(typeof(BoomonController.Emotion));
-		
+
+		_boomonActive = serializedObject.FindProperty("_animableBoomonActive");
 		_boomonState  = serializedObject.FindProperty("_animableBoomonState");
 		_boomonEmotion = serializedObject.FindProperty("_animableBoomonEmotion");
 	}
@@ -22,6 +23,8 @@ public class CutsceneDriverEditor : Editor
 	public override void OnInspectorGUI()
 	{
 		serializedObject.Update();
+
+		EditorGUILayout.PropertyField(_boomonActive, new GUIContent("Is Boomon Active"));
 
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.PrefixLabel("Boomon State");
@@ -53,6 +56,9 @@ public class CutsceneDriverEditor : Editor
 
 	private SerializedProperty _boomonState;
 	private SerializedProperty _boomonEmotion;
+	private SerializedProperty _boomonActive;
+
 	private string[] _emotionNames;
 	private string[] _stateNames;
+	
 }

@@ -6,8 +6,23 @@ public class CutsceneDriver : MonoBehaviour
 {
 	#region Public Fields
 
+	public event Action<bool> BoomonActiveChange;
 	public event Action<BoomonController.State>   BoomonStateChange;
 	public event Action<BoomonController.Emotion> BoomonEmotionChange;
+
+	public bool IsBoomonActive
+	{
+		get { return _isBoomonActive; }
+		private set
+		{
+			if (value == _isBoomonActive)
+				return;
+			_isBoomonActive = _animableBoomonActive = value;
+			OnBoomonActiveChange(value);
+		}
+	}
+
+	
 
 	public BoomonController.State BoomonState 
 	{
@@ -49,7 +64,7 @@ public class CutsceneDriver : MonoBehaviour
 	}
 
 
-	public Vector3 BoomonRight { get { return _boomonRight;  } }
+	//public Vector3 BoomonRight { get { return _boomonRight;  } }
 
 	#endregion
 
@@ -57,8 +72,16 @@ public class CutsceneDriver : MonoBehaviour
 
 	#region MONO
 
+	private void OnDestroy()
+	{
+		BoomonActiveChange = null;
+		BoomonStateChange = null;
+		BoomonEmotionChange = null;
+	}
+
 	private void Update()
 	{
+		IsBoomonActive = _animableBoomonActive;
 		BoomonState = (BoomonController.State)_animableBoomonState;
 		BoomonEmotion = (BoomonController.Emotion)_animableBoomonEmotion;
 	}
@@ -68,6 +91,13 @@ public class CutsceneDriver : MonoBehaviour
 	//======================================================================
 
 	#region Private Methods
+
+	private void OnBoomonActiveChange(bool value)
+	{
+		var e = BoomonActiveChange;
+		if(e != null)
+			e(value);
+	}
 
 	private void OnBoomonStateChange(BoomonController.State value)
 	{
@@ -90,13 +120,16 @@ public class CutsceneDriver : MonoBehaviour
 
 	#region Private Fields
 
-	[SerializeField] private Vector3 _boomonRight;
+	//[SerializeField] private Vector3 _boomonRight;
+	[SerializeField] private bool _animableBoomonActive = true;
 	[SerializeField] private float _animableBoomonState;
 	[SerializeField] private float _animableBoomonEmotion;
 
 
+	private bool _isBoomonActive;
 	private BoomonController.State _boomonState;
 	private BoomonController.Emotion _boomonEmotion;
+	
 
 	#endregion
 
