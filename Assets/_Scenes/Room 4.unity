@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289aced52880f3e4d8477cda9f7159f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animableBoomonActive: 1
   _animableBoomonState: 0
   _animableBoomonEmotion: 0
 --- !u!1 &62957804
@@ -465,7 +466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &323624978
 Transform:
   m_ObjectHideFlags: 0
@@ -1075,7 +1076,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 741977399}
   m_LocalRotation: {x: -0.23842935, y: -0, z: -0, w: 0.9711598}
-  m_LocalPosition: {x: -0.783, y: -0.041, z: -1.3659973}
+  m_LocalPosition: {x: -0.783, y: -0.041, z: -1.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: -27.566002, y: 0, z: 0}
   m_Children: []
@@ -1871,7 +1872,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1081538158}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.783, y: 0.347, z: -0.749}
+  m_LocalPosition: {x: -0.783, y: 0.347, z: -0.903}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -1887,8 +1888,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.1, z: 1.3861995}
-  m_Center: {x: 0, y: 0.00021398067, z: 0.8142275}
+  m_Size: {x: 1, y: 0.1, z: 1.59446}
+  m_Center: {x: 0, y: 0.00021398067, z: 0.91835415}
 --- !u!1001 &1090381514
 Prefab:
   m_ObjectHideFlags: 0
@@ -3062,7 +3063,7 @@ Transform:
   m_LocalRotation: {x: 0.0545978, y: -0.7096274, z: 0.055326857, w: 0.7002764}
   m_LocalPosition: {x: 1.4369676, y: 0.76914436, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: -1.7450001, y: 269.39, z: 0.115}
+  m_LocalEulerAnglesHint: {x: 5.55, y: 269.35, z: 0.039}
   m_Children: []
   m_Father: {fileID: 13936322}
   m_RootOrder: 1
