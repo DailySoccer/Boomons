@@ -49,6 +49,7 @@ public class CutsceneDriver : MonoBehaviour
 	}
 
 
+	public Vector3 BoomonRight { get { return _boomonRight;  } }
 
 	#endregion
 
@@ -89,8 +90,10 @@ public class CutsceneDriver : MonoBehaviour
 
 	#region Private Fields
 
+	[SerializeField] private Vector3 _boomonRight;
 	[SerializeField] private float _animableBoomonState;
 	[SerializeField] private float _animableBoomonEmotion;
+
 
 	private BoomonController.State _boomonState;
 	private BoomonController.Emotion _boomonEmotion;

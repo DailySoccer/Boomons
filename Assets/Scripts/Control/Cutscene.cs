@@ -55,7 +55,15 @@ public class Cutscene : MonoBehaviour
 		_driver.BoomonStateChange	-= OnBoomonStateChange;
 		_driver.BoomonEmotionChange -= OnBoomonEmotionChange;
 	}
-	   
+
+
+	// UNDONE FRS 161110 WIP
+	//private void Update()
+	//{
+	//	if(_driver.BoomonRight != Vector3.zero)	
+	//		_game.Player.ReferenceSystem.SetRight
+	//}				   
+
 
 	private void OnTriggerEnter(Collider other)
 	{
