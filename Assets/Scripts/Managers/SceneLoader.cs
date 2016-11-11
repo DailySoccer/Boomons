@@ -39,12 +39,19 @@ public class SceneLoader : Singleton<SceneLoader>
 
 	public void GoToParentsMenu()
 	{
-		SceneManager.LoadScene("ParentsMenu");
+		SceneManager.LoadScene("QRMenu");
 	}
 
 	public void GoToSelectionMenu()
 	{
-		SceneManager.LoadScene("SelectionMenu");
+		if (PlayerPrefs.GetString("Room 1") != string.Empty)
+		{
+			SceneManager.LoadScene("SelectionMenu");
+		}
+		else
+		{
+			GoToParentsMenu();
+		}
 	}
 
 
