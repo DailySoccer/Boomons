@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4463107, g: 0.4960847, b: 0.57468784, a: 1}
+  m_IndirectSpecularColor: {r: 0.44631034, g: 0.4960841, b: 0.5746869, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -576,7 +576,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 239346095}
-  m_LocalRotation: {x: 0.70801973, y: 0.00028290696, z: -0.70619255, w: 0.00028021832}
+  m_LocalRotation: {x: 0.7080198, y: 0.00028290699, z: -0.7061926, w: 0.00028021834}
   m_LocalPosition: {x: 3.4468384, y: -1.4465716, z: 17.281853}
   m_LocalScale: {x: 1.0000001, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0.04563027, y: -90.14805, z: 179.99971}
@@ -624,6 +624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289aced52880f3e4d8477cda9f7159f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animableBoomonActive: 1
   _animableBoomonState: 0
   _animableBoomonEmotion: 0
 --- !u!1 &262223822
@@ -1061,7 +1062,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 688584592}
-  m_LocalRotation: {x: 0.70801973, y: 0.00028096442, z: 0.70619255, w: -0.00028219834}
+  m_LocalRotation: {x: 0.7080198, y: 0.00028096445, z: 0.7061926, w: -0.00028219837}
   m_LocalPosition: {x: 3.4468384, y: -1.4464757, z: -17.28186}
   m_LocalScale: {x: 1.0000001, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: -0.045630433, y: 90.14805, z: -179.99995}
@@ -4371,35 +4372,35 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011183935168, guid: 2e8d49f3ec4787b468798d09506b9b2b, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.7080198
+      value: 0.70801973
       objectReference: {fileID: 0}
     - target: {fileID: 4000011183935168, guid: 2e8d49f3ec4787b468798d09506b9b2b, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.00028096445
+      value: 0.00028096442
       objectReference: {fileID: 0}
     - target: {fileID: 4000011183935168, guid: 2e8d49f3ec4787b468798d09506b9b2b, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.7061926
+      value: 0.70619255
       objectReference: {fileID: 0}
     - target: {fileID: 4000011183935168, guid: 2e8d49f3ec4787b468798d09506b9b2b, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.00028219837
+      value: -0.00028219834
       objectReference: {fileID: 0}
     - target: {fileID: 4000012968007694, guid: 2e8d49f3ec4787b468798d09506b9b2b, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.7080198
+      value: 0.70801973
       objectReference: {fileID: 0}
     - target: {fileID: 4000012968007694, guid: 2e8d49f3ec4787b468798d09506b9b2b, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.00028290699
+      value: 0.00028290696
       objectReference: {fileID: 0}
     - target: {fileID: 4000012968007694, guid: 2e8d49f3ec4787b468798d09506b9b2b, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0.7061926
+      value: -0.70619255
       objectReference: {fileID: 0}
     - target: {fileID: 4000012968007694, guid: 2e8d49f3ec4787b468798d09506b9b2b, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.00028021834
+      value: 0.00028021832
       objectReference: {fileID: 0}
     - target: {fileID: 23000010317179982, guid: 2e8d49f3ec4787b468798d09506b9b2b,
         type: 2}
