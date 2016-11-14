@@ -11,7 +11,7 @@ public class RoomMenu : MonoBehaviour
 
 	#region Mono
 
-	
+
 
 
 	#endregion
@@ -25,7 +25,7 @@ public class RoomMenu : MonoBehaviour
 		if (!button.IsBlocked)
 			MetaManager.Instance.GetManager<GameManager>().StartRoom(button.TargetRoomId);
 		else
-			SceneLoader.Instance.GoToParentsMenu();
+			SceneLoader.Instance.GoToQRUnlock("SelectionMenu");
 	}
 
 
@@ -37,7 +37,7 @@ public class RoomMenu : MonoBehaviour
 
 	#region Private Fields
 
-	
+
 
 	#endregion
 }
