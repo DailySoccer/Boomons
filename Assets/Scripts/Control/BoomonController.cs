@@ -363,10 +363,10 @@ public class BoomonController : MonoBehaviour, ITeleportable
 			return;
 
 		float throwDegress = Mathf.Atan(direction.y / Mathf.Abs(direction.x)) * Mathf.Rad2Deg;
-		if(!(throwDegress > _throwDegreesMin * Mathf.Deg2Rad))
-			return;
-
-		Throw(position, direction, speedRatio);
+		if(throwDegress > _throwDegreesMin * Mathf.Deg2Rad)
+			Throw(position, direction, speedRatio);
+		else
+			CurrentState = State.Move;
 	}
 
 	#endregion
