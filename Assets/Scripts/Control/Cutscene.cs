@@ -146,7 +146,6 @@ public class Cutscene : MonoBehaviour
 
 	#region Private Fields
 
-	[SerializeField] private BoomonController.Emotion _emotion;
 	[SerializeField] private string _playTriggerName = "Play";
 	[SerializeField] private string _playerTag = "Player";
 	[SerializeField] private string _emotionIntName = "Emotion";
