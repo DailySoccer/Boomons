@@ -254,12 +254,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 	private void OnDestroy()
 	{
-		if (_ragdoll != null)
-		{
-			_ragdoll.GroundEnter -= OnRagdollGroundEnter;
-			Destroy(_ragdoll.gameObject);
-			_ragdoll = null;
-		}
+		Ragdoll = null;
 
 		_goToCallbacks = null;
 
@@ -488,7 +483,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		Log("OnThrowEnd");
 
 		_face.Reset();
-		Ragdoll.gameObject.SetActive(false);
+		Ragdoll = null;
 		gameObject.SetActive(true);
 	}
 
@@ -639,6 +634,16 @@ public class BoomonController : MonoBehaviour, ITeleportable
 				_ragdoll.GroundEnter += OnRagdollGroundEnter;
 			}
 			return _ragdoll;
+		}
+
+		set
+		{
+			if(_ragdoll == null)
+				return;
+
+			_ragdoll.GroundEnter -= OnRagdollGroundEnter;
+			Destroy(_ragdoll.gameObject);
+			_ragdoll = null;
 		}
 	}
 
