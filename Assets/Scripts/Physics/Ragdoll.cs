@@ -9,7 +9,7 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 	public event Action<Vector3> GroundEnter;
 
 	public Vector3 Position {  get { return _pelvis.transform.position;  } }
-	public GroundDetectParams GroundParams { get { return _groundParams; } }
+	public GroundDetectionParams GroundParams { get { return _groundParams; } }
 
 	public bool IsTeleporting { get; private set; }
 
@@ -27,6 +27,8 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 		}
 	}
 
+	public ReferenceSystem ReferenceSystem { get { return _refSystem;  } }
+
 	#endregion
 
 	//========================================================================
@@ -37,7 +39,7 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 	{
 		IsTeleporting = false;
 
-		_pelvis.Setup(refSystem);
+		_refSystem = refSystem;
 
 		var refNodes = setupRef.GetComponentsInChildren<Transform>(true);
 		for(int i = 0; i < refNodes.Length; ++i)
@@ -58,6 +60,7 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 	public virtual void Throw(Vector3 velocity, Vector3? applyPosition = null)
 	{
 		_pelvis.Throw(velocity, applyPosition);
+		IsTouchEnabled = _isRethrowable;
 	}
 
 	public virtual void OnTapStart(GameObject go, Vector2 position)
@@ -125,6 +128,8 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 		var e = GroundEnter;
 		if (e != null)
 			e(groundPos);
+
+		IsTouchEnabled = true;
 	}
 
 	#endregion
@@ -140,22 +145,36 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 
 	#region Private Fields
 
+	[SerializeField] private bool _isRethrowable = false;
+	[SerializeField] private GroundDetectionParams _groundParams;
 	
-	[SerializeField] private GroundDetectParams _groundParams;
 	[Serializable]
-	public struct GroundDetectParams
+	public class GroundDetectionParams
 	{
-		[SerializeField, Range(0.01f, 5f)] public float  StopVelocityMaxSqr;
-		[SerializeField, Range(0.1f, 5f)]  public float  Timeout;
-		[SerializeField]				   public string LayerName;
+		public float StopVelocityMaxSqr { get { return _stopVelocityMaxSqr; } }
+		public float Timeout			{ get { return _timeoutSecs;		} }
 
-		private int _layer;
+		public float GroundCosine {
+			get {
+				return _groundCosine ?? 
+					(_groundCosine = Mathf.Cos(_groundDegreesMax*Mathf.Deg2Rad)).Value;
+			}
+		}
+		
 		public int Layer {
 			get {
 				return _layer > 0 ?  _layer :
-					(_layer = LayerMask.NameToLayer(LayerName));
+					(_layer = LayerMask.NameToLayer(_layerName));
 			}
 		}
+			
+		[SerializeField, Range(0.01f, 5f)] private float  _stopVelocityMaxSqr = .1f;
+		[SerializeField, Range(0.1f, 5f)]  private float  _timeoutSecs = 1f;
+		[SerializeField]				   private string _layerName = "Ground";
+		[SerializeField, Range(0f, 90f)]   private float  _groundDegreesMax = 45f;
+
+		private int _layer;
+		private float? _groundCosine;
 	}
 
 
@@ -163,6 +182,7 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 	private Transform[] _nodes;
 
 	private string _eyebrowKeyWord = "Eyebrow";
+	private ReferenceSystem _refSystem;
 
 	#endregion
 

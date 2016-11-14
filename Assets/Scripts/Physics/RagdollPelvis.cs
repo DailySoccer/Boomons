@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof (Rigidbody))]
 public class RagdollPelvis : RigidThrower, ITeleportable
 {
 	#region Public Fields
-	
+
 	public Ragdoll Ragdoll { get; set; }
- 
+
 	public bool IsGrounded
 	{
 		get { return _isGrounded; }
@@ -21,7 +21,7 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 		}
 	}
 
-	
+
 	public bool IsTeleporting
 	{
 		get { return Ragdoll.IsTeleporting; }
@@ -34,13 +34,8 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 
 	#region Public Methods
 
-	public void Setup(ReferenceSystem refSystem = null)
-	{
-		_refSystem = refSystem;
-	}
-
 	public override void Throw(Vector3 velocity, Vector3? applyPosition = null)
-	{		
+	{
 		base.Throw(velocity, applyPosition);
 		_groundTimer = Ragdoll.GroundParams.Timeout;
 	}
@@ -50,13 +45,20 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 		Ragdoll.TeleportTo(target);
 	}
 
-	
+
 
 	#endregion
 
 	//================================================================
 
 	#region Mono
+
+	protected override void Awake()
+	{
+		base.Awake();
+
+		_gravityDir = Physics.gravity.normalized;
+	}
 
 	protected override void OnDestroy()
 	{
@@ -73,8 +75,7 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 
 	private void FixedUpdate()
 	{
-		if (_refSystem != null)
-			transform.position = _refSystem.ProjectOnPlane(transform.position);
+		transform.position = Ragdoll.ReferenceSystem.ProjectOnPlane(transform.position);
 
 		if (Rigid.velocity.sqrMagnitude < Ragdoll.GroundParams.StopVelocityMaxSqr)
 			IsGrounded = (_groundTimer -= Time.fixedDeltaTime) < 0f;
@@ -82,12 +83,22 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 			_groundTimer = Ragdoll.GroundParams.Timeout;
 	}
 
-	private void OnCollisionStay(Collision collisionInfo)
+	private void OnCollisionEnter(Collision collision)
 	{
-		if (collisionInfo.gameObject.layer == Ragdoll.GroundParams.Layer
-			&& Rigid.velocity.sqrMagnitude < Ragdoll.GroundParams.StopVelocityMaxSqr)
-			Ragdoll.OnGroundEnter(collisionInfo.contacts[0].point);
+		if (collision.rigidbody == null
+		    && Vector3.Dot(-_gravityDir, collision.contacts[0].normal) > Ragdoll.GroundParams.GroundCosine)
+		{
+			OnGroundEnter();
+		}
 	}
+
+	// UNDONE FRS 161114 Ya no se están usando capas
+	//private void OnCollisionStay(Collision collision)
+	//{
+	//	if (collision.gameObject.layer == Ragdoll.GroundParams.Layer
+	//		&& Rigid.velocity.sqrMagnitude < Ragdoll.GroundParams.StopVelocityMaxSqr)
+	//		Ragdoll.OnGroundEnter(collision.contacts[0].point);
+	//}
 
 	#endregion
 
@@ -107,9 +118,10 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 
 	#region Private Fields
 
+
 	private float _groundTimer;
 	private bool _isGrounded;
-	private ReferenceSystem _refSystem;
+	private Vector3 _gravityDir;
 
 	#endregion
 

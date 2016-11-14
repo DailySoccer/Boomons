@@ -7,8 +7,6 @@ public class BoomonRagdoll : Ragdoll
 
 	#region Public Methods
 
-
-
 	public override void Setup(Transform setupRef, ReferenceSystem refSystem)
 	{
 		base.Setup(setupRef, refSystem);

@@ -413,7 +413,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	{
 		Log("OnIdleEnd" , "Next=" + nextState);
 
-		IsTouchEnabled = nextState == State.Tickles
+		IsTouchEnabled =    nextState == State.Tickles
 						 || nextState == State.Move
 						 || nextState == State.Emotion;
 	}
