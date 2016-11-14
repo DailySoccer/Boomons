@@ -653,7 +653,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
    	[SerializeField, Range(0.5f, 50f)]	private float _moveSpeedMax = 5f;
 	[SerializeField, Range(0f, 90f)]	private float _throwDegreesMin = 10f;
 	[SerializeField, Range(0f, 10f)]	private float _senseReversalDistMin = 1f;
-	[SerializeField, Range(0f, 10f)]	private float _fallHeightMin = 10f;
+	[SerializeField, Range(0f, 100f)]	private float _fallHeightMin = 100f;
 
 															
 	private Animator _animator;
