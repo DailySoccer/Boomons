@@ -35,7 +35,11 @@ public class QRHandler : MonoBehaviour {
 
 	public void LaunchScan()
 	{
+#if UNITY_EDITOR
+		onScannerMessage((new System.Random()).NextDouble() > 0.1f ? "bla" : QRCode);
+#else
 		EasyCodeScanner.launchScanner(true, "Encuadre el codigo QR en el cuadrado", -1, false);
+#endif
 	}
 	
 	//void OnGUI ()

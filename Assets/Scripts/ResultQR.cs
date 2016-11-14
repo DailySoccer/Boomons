@@ -4,14 +4,14 @@ using System.Collections;
 
 public class ResultQR : MonoBehaviour {
 
+	public RectTransform Background;
+	public RectTransform ScanningPanel;
 	public RectTransform CorrectPanel;
 	public RectTransform IncorrectPanel;
-	public RectTransform CorrectBackMenu;
-	public RectTransform IncorrectBackMenu;
 	public bool Result;
 	// Use this for initialization
-	void Start () {
-		_initialized = CorrectPanel != null && IncorrectPanel != null;
+	void Awake () {
+		_initialized = CorrectPanel != null && IncorrectPanel != null && ScanningPanel != null && Background != null;
 	}
 	
 	// Update is called once per frame
@@ -23,23 +23,30 @@ public class ResultQR : MonoBehaviour {
 	{
 		if (_initialized)
 		{
+			ScanningPanel.gameObject.SetActive(false);
+			Background.gameObject.SetActive(true);
 			Result = result;
-			PlayerPrefs.SetString("Room 1", "");
-			PlayerPrefs.SetString("Room 2", "");
-			PlayerPrefs.SetString("Room 3", "");
-			PlayerPrefs.SetString("Room 4", "");
-			PlayerPrefs.Save();
+			if (result)
+			{
+				PlayerPrefs.SetString("Room 1", "");
+				PlayerPrefs.SetString("Room 2", "");
+				PlayerPrefs.SetString("Room 3", "");
+				PlayerPrefs.SetString("Room 4", "");
+				PlayerPrefs.Save();
+			}
 			CorrectPanel.gameObject.SetActive(Result);
 			IncorrectPanel.gameObject.SetActive(!Result);
 		}
 	}
 
-	public void GoBackToMenu()
+	public void StartScan()
 	{
 		if (_initialized)
 		{
-			CorrectBackMenu.gameObject.SetActive(Result);
-			IncorrectBackMenu.gameObject.SetActive(!Result);
+			ScanningPanel.gameObject.SetActive(true);
+			Background.gameObject.SetActive(false);
+			CorrectPanel.gameObject.SetActive(false);
+			IncorrectPanel.gameObject.SetActive(false);
 		}
 	}
 
