@@ -89,7 +89,7 @@ public class QRHandler : MonoBehaviour {
 
 		if (QRListener != null)
 		{
-			QRListener.SetResult(result);
+			QRListener.SetResult(result, data);
 		}
 		//Just to show case : get the image and display it on a Plane
 		//Texture2D tex = EasyCodeScanner.getScannerImage(200, 200);

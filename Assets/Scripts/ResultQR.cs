@@ -19,7 +19,7 @@ public class ResultQR : MonoBehaviour {
 	
 	}
 
-	public void SetResult(bool result)
+	public void SetResult(bool result, string data)
 	{
 		if (_initialized)
 		{
@@ -28,6 +28,12 @@ public class ResultQR : MonoBehaviour {
 			Result = result;
 			if (result)
 			{
+				switch (data)
+				{
+					default:
+						MetaManager.Instance.GetManager<GameManager>().BoomonRole = BoomonRole.Music;
+						break;
+				}
 				PlayerPrefs.SetString("Room 1", "");
 				PlayerPrefs.SetString("Room 2", "");
 				PlayerPrefs.SetString("Room 3", "");
