@@ -24,7 +24,8 @@ ModelImporter:
     4300000: JackBoxPirateBarrel
     4300002: JackBoxPirate
     4300004: JackBoxPiratePush
-    7400000: JackBoxPirateAnimation
+    7400000: JackBoxPirateIdle
+    7400002: JackBoxPirateAnimation
     9500000: //RootNode
   materials:
     importMaterials: 0
@@ -52,6 +53,44 @@ ModelImporter:
       takeName: Take 001
       firstFrame: 0
       lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: JackBoxPirateBarrel
+        weight: 1
+      - path: JackBoxPiratePush
+        weight: 1
+      - path: rig_JackBoxPirate
+        weight: 1
+      - path: rig_JackBoxPirate/JackBoxPirate
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: JackBoxPirateIdle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 0
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
