@@ -6,8 +6,8 @@ public class LoadScreen : Singleton<LoadScreen>
 	#region Public Fields
 
 	public float ProgressRatio {
-		get { return _ratioImg.fillAmount; }
-		set { _ratioImg.fillAmount = Mathf.Clamp01(value); }
+		get { return _slider.value; }
+		set { _slider.value = Mathf.Clamp01(value); }
 	}
 
 	public bool IsVisible
@@ -51,6 +51,12 @@ public class LoadScreen : Singleton<LoadScreen>
 		IsVisible = false;
 	}
 
+	protected override void OnDestroy()
+	{
+		_text	= null;
+		_slider	= null;
+		base.OnDestroy();
+	}
 
 	// Updates once per frame
 	private void Update()
@@ -69,7 +75,7 @@ public class LoadScreen : Singleton<LoadScreen>
 
 	#region Private Fields
 	[SerializeField] private Text _text;
-	[SerializeField] private Image _ratioImg;
+	[SerializeField] private Slider _slider;
 	[SerializeField] private string _loadTextFormat = "Loading {0} ...";
 
 	#endregion
