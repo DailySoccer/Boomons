@@ -67,7 +67,7 @@ public class WebcamToTexture : MonoBehaviour {
 		if (QRRes != null && Listener != null)
 		{
 			string decodedString = QRRes.Text;
-			Listener.SetResult(decodedString.Equals(QRCode), decodedString);
+			Listener.SetResult(ResultQR.TextToBoomon(decodedString).HasValue, decodedString);
 		}
 	}
 
@@ -89,5 +89,4 @@ public class WebcamToTexture : MonoBehaviour {
 	private float _timeCounter;
 	private float _TIME_STEP = 2;
 
-	private string QRCode = "Boomon code";
-}
+	}

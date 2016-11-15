@@ -28,12 +28,7 @@ public class ResultQR : MonoBehaviour {
 			Result = result;
 			if (result)
 			{
-				switch (data)
-				{
-					default:
-						MetaManager.Instance.Get<GameManager>().BoomonRole = BoomonRole.Music;
-						break;
-				}
+				MetaManager.Instance.Get<GameManager>().BoomonRole = TextToBoomon(data).Value;
 				PlayerPrefs.SetString("Room 1", "");
 				PlayerPrefs.SetString("Room 2", "");
 				PlayerPrefs.SetString("Room 3", "");
@@ -42,6 +37,29 @@ public class ResultQR : MonoBehaviour {
 			}
 			CorrectPanel.gameObject.SetActive(Result);
 			IncorrectPanel.gameObject.SetActive(!Result);
+		}
+	}
+
+	public static BoomonRole? TextToBoomon(string boomon)
+	{
+		switch (boomon)
+		{
+			case "Boomons-Mimi-Artista":
+				return BoomonRole.Artist;
+			case "Boomons-Auri-Naturaleza":
+				return BoomonRole.Naturalist;
+			case "Boomons-Tati-DeportistaChica":
+				return BoomonRole.FemaleSport;
+			case "Boomons-Tato-DeportistaChico":
+				return BoomonRole.MaleSport;
+			case "Boomons-Tras-Músico":
+				return BoomonRole.Music;
+			case "Boomons-Mike-Manitas":
+				return BoomonRole.Maker;
+			case "Boomons-Fleki-Gamer":
+				return BoomonRole.Gamer;
+			default:
+				return null;
 		}
 	}
 
