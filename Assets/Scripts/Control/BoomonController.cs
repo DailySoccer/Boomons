@@ -113,7 +113,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 			} else {
 				transform.forward = (int) value*_refSystem.Right;
-				_velocity = _moveSpeedMax * transform.forward;
+				_velocity = _moveSpeed * transform.forward;
 			}
 
 			_animator.SetInteger("Direction", (int)value);
@@ -142,6 +142,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	}
 
 	public bool IsTeleporting { get; private set; }
+
 	#endregion
 	
 	//==============================================================
@@ -199,7 +200,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 	
 
-	public void GoTo(Vector3 position, Action callback = null)
+	public void GoTo(Vector3 position, float? speed = null, Action callback = null)
 	{
 		_drivenTarget = position;
 		if(callback != null)
@@ -209,6 +210,9 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		float moveSense = Vector3.Dot(move, _refSystem.Right);
 
 		MoveSense = (Sense) Mathf.Sign(moveSense);
+		if (speed.HasValue)
+			_velocity = speed.Value * transform.forward;
+
 		CurrentState = State.Driven;
 	}
 
@@ -247,7 +251,9 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		_controller = GetComponent<CharacterController>();
 		_touchable = GetComponent<Touchable>();
 		_face = GetComponent<FacialAnimator>();
-		_groundSlopeCosine = Mathf.Cos(_controller.slopeLimit * Mathf.Deg2Rad);	
+
+		_groundSlopeCosine = Mathf.Cos(_controller.slopeLimit * Mathf.Deg2Rad);
+		_animator.SetFloat(_moveMultiplierParam, _moveSpeed * _moveAnimMultiplierBase);
 	}
 
 
@@ -434,7 +440,18 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	}
 
 	private void MoveUpdate()
-	{		  
+	{  
+#if UNITY_EDITOR
+		_animator.SetFloat(_moveMultiplierParam, _moveSpeed * _moveAnimMultiplierBase);
+#endif 
+
+		// TODO FRS 161115 Ahora mismo deja al boomon encajonado al primer contacto, pero seguir investigando
+		//if ((_controller.collisionFlags & CollisionFlags.Sides) != 0) 
+		//{
+		//	CurrentState = State.Idle;
+		//	return;
+		//}
+
 		if (_controller.isGrounded ||
 		    Physics.Raycast(transform.position, -_refSystem.JumpDir, _fallHeightMin))
 		{
@@ -452,15 +469,17 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	{
 		//Log("OnMoveCollision", hit.gameObject.name);
 
+#if UNITY_EDITOR
+		_groundSlopeCosine = Mathf.Cos(_controller.slopeLimit*Mathf.Deg2Rad);
+#endif 
+
 		Rigidbody rigid = hit.collider.attachedRigidbody;
 
-		if (rigid != null)
-		{
+		if (rigid != null) {
 			Push(rigid);
 			transform.position = _refSystem.ProjectOnPlane(transform.position);
-		}
-		else if (Vector3.Dot(hit.normal, _refSystem.JumpDir) < _groundSlopeCosine)
-		{
+
+		} else if(Vector3.Dot(hit.normal, _refSystem.JumpDir) < _groundSlopeCosine) {
 			CurrentState = State.Idle;
 		}
 	}
@@ -651,15 +670,17 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 
 	//[SerializeField] private Transform _bipedRoot;
-	
+
+	[SerializeField] private string _moveMultiplierParam = "MoveMultiplier";
 	[SerializeField] private Vector3 _right; 
 	[SerializeField, Range(0f, 1f)]		private float _bounciness = 0.8f;
 	[SerializeField, Range(0f, 20f)]	private float _pushMass = 5f;
-   	[SerializeField, Range(0.5f, 50f)]	private float _moveSpeedMax = 5f;
+   	[SerializeField, Range(0.5f, 50f)]	private float _moveSpeed = 2.5f;
+	[SerializeField, Range(0f, 1f)]     private float _moveAnimMultiplierBase = .3f;
 	[SerializeField, Range(0f, 90f)]	private float _throwDegreesMin = 10f;
 	[SerializeField, Range(0f, 10f)]	private float _senseReversalDistMin = 1f;
 	[SerializeField, Range(0f, 100f)]	private float _fallHeightMin = 100f;
-
+	
 															
 	private Animator _animator;
 	private CharacterController _controller;
@@ -701,7 +722,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	private BoomonRole _role;
 	private Emotion _currentEmotion;
 	private bool _isControllable;
-	
+
 	#endregion
 
 

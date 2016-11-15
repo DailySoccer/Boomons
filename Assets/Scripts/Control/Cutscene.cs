@@ -87,7 +87,7 @@ public class Cutscene : MonoBehaviour
 	private void OnBoomonStateChange(BoomonController.State state)
 	{
 		if (state == BoomonController.State.Driven) 
-			_game.Player.GoTo(_driver.transform.position);
+			_game.Player.GoTo(_driver.transform.position, _driver.BoomonMoveSpeed);
 		else
 			_game.Player.CurrentState = state;
 	}

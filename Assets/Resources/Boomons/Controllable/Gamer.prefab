@@ -1972,10 +1972,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 898413f0aa25f0848b554da295fe40d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveMultiplierParam: MoveMultiplier
   _right: {x: 0, y: 0, z: 1}
   _bounciness: 0.5
   _pushMass: 5
-  _moveSpeedMax: 2.5
+  _moveSpeed: 2.5
+  _moveAnimMultiplierBase: 0.3
   _throwDegreesMin: 45
   _senseReversalDistMin: 1
   _fallHeightMin: 100

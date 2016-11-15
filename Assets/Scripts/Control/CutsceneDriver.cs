@@ -10,6 +10,8 @@ public class CutsceneDriver : MonoBehaviour
 	public event Action<BoomonController.State>   BoomonStateChange;
 	public event Action<BoomonController.Emotion> BoomonEmotionChange;
 
+	public float BoomonMoveSpeed { get { return _boomonMoveSpeed; } }
+
 	public bool IsBoomonActive
 	{
 		get { return _isBoomonActive; }
@@ -62,6 +64,7 @@ public class CutsceneDriver : MonoBehaviour
 			OnBoomonEmotionChange(value);
 		}
 	}
+
 
 
 	//public Vector3 BoomonRight { get { return _boomonRight;  } }
@@ -124,6 +127,7 @@ public class CutsceneDriver : MonoBehaviour
 	[SerializeField] private bool _animableBoomonActive = true;
 	[SerializeField] private float _animableBoomonState;
 	[SerializeField] private float _animableBoomonEmotion;
+	[SerializeField] private float _boomonMoveSpeed = 5f;
 
 
 	private bool _isBoomonActive;
