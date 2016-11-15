@@ -40,11 +40,6 @@ public class SceneLoader : Singleton<SceneLoader>
 	public void GoToParentsMenu()
 	{
 		Application.OpenURL("http://www.unusualwonder.com/");
-		PlayerPrefs.DeleteKey("Room 1");
-		PlayerPrefs.DeleteKey("Room 2");
-		PlayerPrefs.DeleteKey("Room 3");
-		PlayerPrefs.DeleteKey("Room 4");
-		PlayerPrefs.Save();
 	}
 
 	public void GoToQRUnlock(string previousScene)
@@ -55,7 +50,7 @@ public class SceneLoader : Singleton<SceneLoader>
 
 	public void GoToSelectionMenu()
 	{
-		if (PlayerPrefs.GetString("Room 1") == string.Empty)
+		if (!PlayerPrefs.HasKey("Room 1"))
 			GoToQRUnlock("SelectionMenu");
 		else
 			SceneManager.LoadScene("SelectionMenu");
