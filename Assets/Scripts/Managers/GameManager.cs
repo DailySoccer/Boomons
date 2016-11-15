@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +9,7 @@ public class GameManager : Manager
 
 	public BoomonController Player { get; private set; }
 
-	public BoomonRole? BoomonRole
+	public BoomonRole BoomonRole
 	{
 		get { return _boomonRole; }
 		set
@@ -21,8 +20,8 @@ public class GameManager : Manager
 #if UNITY_EDITOR
 			_boomonRoleEditor = value;
 #endif						
-			if(value.HasValue && Player != null)
-				SpawnBoomon(value.Value, Player.transform);
+			if(value != BoomonRole.None && Player != null)
+				SpawnBoomon(value, Player.transform);
 		}
 	}
 
@@ -31,7 +30,8 @@ public class GameManager : Manager
 	public string ActiveRoom { get; private set; }
 	public bool IsReadyToPlay  {
 		get {
-			return BoomonRole.HasValue && !string.IsNullOrEmpty(Room);
+			return BoomonRole != BoomonRole.None 
+				&& !string.IsNullOrEmpty(Room);
 		}
 	}
 
@@ -84,9 +84,9 @@ public class GameManager : Manager
 
 #if UNITY_EDITOR || UNITY_STANDALONE
 		int pressedNumber;
-		if( int.TryParse(Input.inputString, out pressedNumber)  
-		 && Enum.IsDefined(typeof(BoomonRole), pressedNumber - 1))
-			BoomonRole = (BoomonRole) (pressedNumber - 1);
+		if( int.TryParse(Input.inputString, out pressedNumber) 
+			&& Enum.IsDefined(typeof(BoomonRole), pressedNumber) )
+			BoomonRole = (BoomonRole) pressedNumber;
 #endif
 
 #if UNITY_EDITOR
@@ -115,15 +115,13 @@ public class GameManager : Manager
 	{
 		ActiveRoom = roomName;
 		Transition.Instance.StartAnim(1f, true); // TODO FRS 161027 Configurar un tiempo por defecto de transición
-
-		Debug.Assert(BoomonRole.HasValue, "GameManager::OnSceneLoaded>> Boomon role not defined!!", this);
-		SpawnBoomon(BoomonRole ?? global::BoomonRole.Music, spawner);
+		SpawnBoomon(BoomonRole, spawner);
 	}
 
 	private void OnRoomExit(string roomName)
 	{
 		ActiveRoom = Room = null;
-		BoomonRole = null;
+		BoomonRole = BoomonRole.None;
 		Player = null;
 	}
 
@@ -135,6 +133,11 @@ public class GameManager : Manager
 
 	private void SpawnBoomon(BoomonRole boomonRole, Transform spawner)
 	{
+		if (boomonRole == BoomonRole.None) {
+			Debug.LogError("GameManager::SpawnBoomon>> Boomon role not defined!!", this);
+			return;
+		}
+
 		if(Player != null)
 			Destroy(Player.gameObject);
 
@@ -167,11 +170,10 @@ public class GameManager : Manager
 	[SerializeField] private string _spawnTag = "Respawn";
 
 #if UNITY_EDITOR   
-	[SerializeField] private BoomonRole? _boomonRoleEditor;
+	[SerializeField] private BoomonRole _boomonRoleEditor;
 #endif
 
-	private BoomonRole? _boomonRole;
-	private Scene _activeRoom;
+	private BoomonRole _boomonRole;
 
 	#endregion
 

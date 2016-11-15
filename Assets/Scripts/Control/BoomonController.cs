@@ -8,13 +8,14 @@ using Debug = UnityEngine.Debug;
 // TODO Automatizar configuración (animators y lo que se pueda) a partir de esto
 public enum BoomonRole
 {
-	Artist = 0,
-	Gamer = 1,
-	Maker = 2,
-	Music = 3,
-	Naturalist = 4,
-	FemaleSport = 5,
-	MaleSport = 6
+	None = 0,
+	Artist = 1,
+	Gamer = 2,
+	Maker = 3,
+	Music = 4,
+	Naturalist = 5,
+	FemaleSport = 6,
+	MaleSport = 7
 }
 
 

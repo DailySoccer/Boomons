@@ -582,7 +582,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 239346095}
-  m_LocalRotation: {x: 0.70801973, y: 0.00028290696, z: -0.70619255, w: 0.00028021832}
+  m_LocalRotation: {x: 0.7080198, y: 0.00028290699, z: -0.7061926, w: 0.00028021834}
   m_LocalPosition: {x: 3.4468384, y: -1.4465716, z: 17.281853}
   m_LocalScale: {x: 1.0000001, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0.04563027, y: -90.14805, z: 179.99971}
@@ -633,6 +633,7 @@ MonoBehaviour:
   _animableBoomonActive: 1
   _animableBoomonState: 0
   _animableBoomonEmotion: 0
+  _boomonMoveSpeed: 5
 --- !u!1 &262223822
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,6 +829,11 @@ Prefab:
     - target: {fileID: 1000010374536020, guid: 486cac62d07c7284aad4a126803b738f, type: 2}
       propertyPath: m_Name
       value: FooGameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011612637180, guid: 486cac62d07c7284aad4a126803b738f,
+        type: 2}
+      propertyPath: _boomonRoleEditor
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 486cac62d07c7284aad4a126803b738f, type: 2}
@@ -1432,7 +1438,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 688584592}
-  m_LocalRotation: {x: 0.70801973, y: 0.00028096442, z: 0.70619255, w: -0.00028219834}
+  m_LocalRotation: {x: 0.7080198, y: 0.00028096445, z: 0.7061926, w: -0.00028219837}
   m_LocalPosition: {x: 3.4468384, y: -1.4464757, z: -17.28186}
   m_LocalScale: {x: 1.0000001, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: -0.045630433, y: 90.14805, z: -179.99995}
