@@ -59,7 +59,9 @@ public class GameManager : Manager
 	protected override void Awake()
 	{
 		base.Awake();
+#if UNITY_EDITOR
 		_boomonRole = _boomonRoleEditor;
+#endif
 	}
 
 	protected void OnDestroy()
