@@ -31,7 +31,7 @@ public class ResultQR : MonoBehaviour {
 				switch (data)
 				{
 					default:
-						MetaManager.Instance.GetManager<GameManager>().BoomonRole = BoomonRole.Music;
+						MetaManager.Instance.Get<GameManager>().BoomonRole = BoomonRole.Music;
 						break;
 				}
 				PlayerPrefs.SetString("Room 1", "");

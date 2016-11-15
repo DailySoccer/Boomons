@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MetaManager : Singleton<MetaManager>
 {
-	public T GetManager<T>()
+	public T Get<T>()
 		where T : Manager
 	{
 		return FindManager<T>() ?? CreateInstance<T>();

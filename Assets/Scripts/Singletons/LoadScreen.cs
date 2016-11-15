@@ -32,8 +32,7 @@ public class LoadScreen : Singleton<LoadScreen>
 	public void Show(string whatIsBeingLoaded)
 	{
 		IsVisible = !string.IsNullOrEmpty(whatIsBeingLoaded);
-		if (IsVisible)
-		{
+		if (IsVisible) {
 			ProgressRatio = 0f;
 			LoadingText = string.Format(_loadTextFormat, whatIsBeingLoaded);
 		}

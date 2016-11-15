@@ -30,7 +30,7 @@ public class Cutscene : MonoBehaviour
 	{
 		_animator = GetComponent<Animator>();
 		_driver = GetComponentInChildren<CutsceneDriver>();
-		_game = MetaManager.Instance.GetManager<GameManager>();
+		_game = MetaManager.Instance.Get<GameManager>();
 	}
 
 	private void OnDestroy()

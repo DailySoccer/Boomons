@@ -97,7 +97,7 @@ public class Touchable : MonoBehaviour, IObjectTouchListener
 	{
 		get {
 			return _touchManager ?? 
-			 (_touchManager = MetaManager.Instance.GetManager<ObjectTouchManager>());
+			 (_touchManager = MetaManager.Instance.Get<ObjectTouchManager>());
 		}
 	}
 	

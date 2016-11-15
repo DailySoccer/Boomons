@@ -28,7 +28,7 @@ public class ItemActivator : Touchable
 		_audio = GetComponent<AudioSource>();
 
 		if(_game == null)
-			_game = MetaManager.Instance.GetManager<GameManager>();
+			_game = MetaManager.Instance.Get<GameManager>();
 	}
 
 	protected override void OnDestroy()

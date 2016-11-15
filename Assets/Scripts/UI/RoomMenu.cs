@@ -22,10 +22,15 @@ public class RoomMenu : MonoBehaviour
 
 	public void OnRoomClick(RoomButton button)
 	{
-		if (!button.IsBlocked)
-			MetaManager.Instance.GetManager<GameManager>().StartRoom(button.TargetRoomId);
-		else
+		var game = MetaManager.Instance.Get<GameManager>();
+		game.Room = button.TargetRoomId;
+
+		if (button.IsBlocked)
 			SceneLoader.Instance.GoToQRUnlock("SelectionMenu");
+		else if (game.IsReadyToPlay)
+			game.Play();
+		else
+			Camera.main.GetComponent<Animator>().SetTrigger("ShowBoomons");		  
 	}
 
 

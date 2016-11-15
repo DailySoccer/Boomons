@@ -8,10 +8,9 @@ public class GameManager : Manager
 {
 	#region Public Fields
 
-	public string Room { get; private set; }
 	public BoomonController Player { get; private set; }
 
-	public BoomonRole BoomonRole
+	public BoomonRole? BoomonRole
 	{
 		get { return _boomonRole; }
 		set
@@ -19,14 +18,24 @@ public class GameManager : Manager
 			if (value == _boomonRole)
 				return;
 			_boomonRole = value;
-			RespawnBoomon(value);
-
 #if UNITY_EDITOR
 			_boomonRoleEditor = value;
-#endif
+#endif						
+			if(value.HasValue && Player != null)
+				SpawnBoomon(value.Value, Player.transform);
 		}
 	}
-	#endregion 
+
+
+	public string Room { get; set; }
+	public string ActiveRoom { get; private set; }
+	public bool IsReadyToPlay  {
+		get {
+			return BoomonRole.HasValue && !string.IsNullOrEmpty(Room);
+		}
+	}
+
+	#endregion
 
 
 	//=====================================================================
@@ -34,36 +43,11 @@ public class GameManager : Manager
 
 	#region Public Methods	
 
-	public void StartRoom(string roomName)
+	public void Play()
 	{
-		Player = null;
-		Room = roomName;
-		Transition.Instance.AnimEnd += OnTransitionEnd;
-		Transition.Instance.StartAnim(1f);
-	}
-
-			 
-	public void RespawnBoomon(BoomonRole boomonRole)
-	{
-		GameObject spawnPoint = Player != null ? Player.gameObject:
-				GameObject.FindGameObjectWithTag(_spawnTag);
-
-		if (spawnPoint == null) {
-			Debug.LogWarning("GameManager::Spawn>> Spawn point not found");
-			return;
-		}
-
-		if (Player != null)
-			Destroy(Player.gameObject);
-
-		string boomonPath = PathSolver.Instance.GetBoomonPath(boomonRole, 
-			PathSolver.InstanceType.Controllable);
-		
-		GameObject boomonGo = (GameObject)Instantiate(
-			Resources.Load<GameObject>(boomonPath),
-			spawnPoint.transform.position, spawnPoint.transform.rotation);
-
-		Player = boomonGo.GetComponent<BoomonController>();
+		Debug.Assert(IsReadyToPlay, "GameManager::Play>> Game not ready yet!!");
+		if(IsReadyToPlay)
+			SceneLoader.Instance.GoToRoom(Room);
 	}
 
 	#endregion
@@ -117,18 +101,28 @@ public class GameManager : Manager
 
 	private void OnSceneLoaded(Scene scene, LoadSceneMode loadMode)
 	{
-		// HACKing ético FRS -> TODO 161027 Unificar 
-		if (!scene.name.Contains("Room"))
-			return;
-
-		RespawnBoomon(BoomonRole);
-		Transition.Instance.StartAnim(1f, true); // TODO FRS 161027 Configurar un tiempo por defecto de transición
+		Transform spawner = FindSpawner();
+		
+		if(spawner != null) 
+			OnRoomEnter(scene.name, spawner);
+		else if(ActiveRoom != null)
+			OnRoomExit(ActiveRoom);
 	}
 
-	private void OnTransitionEnd()
+	private void OnRoomEnter(string roomName, Transform spawner)
 	{
-		Transition.Instance.AnimEnd -= OnTransitionEnd;
-		StartCoroutine(LoadSceneCoroutine(Room));
+		ActiveRoom = roomName;
+		Transition.Instance.StartAnim(1f, true); // TODO FRS 161027 Configurar un tiempo por defecto de transición
+
+		Debug.Assert(BoomonRole.HasValue, "GameManager::OnSceneLoaded>> Boomon role not defined!!", this);
+		SpawnBoomon(BoomonRole ?? global::BoomonRole.Music, spawner);
+	}
+
+	private void OnRoomExit(string roomName)
+	{
+		ActiveRoom = Room = null;
+		BoomonRole = null;
+		Player = null;
 	}
 
 	#endregion
@@ -137,20 +131,29 @@ public class GameManager : Manager
 
 	#region Private Methods
 
-	private IEnumerator LoadSceneCoroutine(string sceneName)
+	private void SpawnBoomon(BoomonRole boomonRole, Transform spawner)
 	{
-		AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
-		if (operation == null)
-			yield break;
+		if(Player != null)
+			Destroy(Player.gameObject);
 
-		LoadScreen.Instance.Show(sceneName);
-		
-		yield return new WaitUntil(() => {
-			LoadScreen.Instance.ProgressRatio = operation.progress;
-			return operation.isDone;
-		});
+		string boomonPath = PathSolver.Instance.GetBoomonPath(boomonRole, PathSolver.InstanceType.Controllable);
+		var prefab = Resources.Load<GameObject>(boomonPath);
+		var boomonGo = (GameObject)Instantiate(prefab, spawner.position, spawner.rotation);
 
-		LoadScreen.Instance.IsVisible = false;
+		Player = boomonGo.GetComponent<BoomonController>();
+	}
+
+	private Transform FindSpawner()
+	{
+		GameObject spawnPoint = GameObject.FindGameObjectWithTag(_spawnTag);
+
+		if(spawnPoint == null) {
+			Debug.LogWarning("GameManager::Spawn>> Spawn point not found");
+			return null;
+
+		} else {
+			return spawnPoint.transform;
+		}
 	}
 
 	#endregion
@@ -160,10 +163,16 @@ public class GameManager : Manager
 	#region Private Fields
 
 	[SerializeField] private string _spawnTag = "Respawn";
-	[SerializeField] private BoomonRole _boomonRoleEditor;
 
-	private BoomonRole _boomonRole;
+#if UNITY_EDITOR   
+	[SerializeField] private BoomonRole? _boomonRoleEditor;
+#endif
+
+	private BoomonRole? _boomonRole;
+	private Scene _activeRoom;
 
 	#endregion
+
+	
 
 }

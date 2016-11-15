@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class BoomonMenu : MonoBehaviour
 {
@@ -7,14 +8,12 @@ public class BoomonMenu : MonoBehaviour
 	#region Public Methods
 
 	public void OnBoomonSelected(BoomonController boomon)
-	{
-		MetaManager.Instance.GetManager<GameManager>().BoomonRole = boomon.Role;
+	{	   	  
+		MetaManager.Instance.Get<GameManager>().BoomonRole = boomon.Role;
 
 		_boomonAnimator = boomon.GetComponent<Animator>();
 		_boomonAnimator.SetTrigger("StandUp");
-		_boomonAnimator.GetBehaviour<BoomonIdleState>().Start += OnBoomonIdleReady;
-
-		
+		_boomonAnimator.GetBehaviour<BoomonIdleState>().Start += OnBoomonIdleReady;	  
 	}
 
 	#endregion
@@ -45,8 +44,13 @@ public class BoomonMenu : MonoBehaviour
 
 	public void OnBoomonIdleReady()
 	{
-		_boomonAnimator.SetTrigger("Tickles");
-		Camera.main.GetComponent<Animator>().SetTrigger("ShowRooms");
+		_boomonAnimator.GetBehaviour<BoomonIdleState>().Start -= OnBoomonIdleReady;
+
+		var game = MetaManager.Instance.Get<GameManager>();
+		if(game.IsReadyToPlay)
+			game.Play();
+		else
+			Camera.main.GetComponent<Animator>().SetTrigger("ShowRooms");
 	}
 
 	#endregion		 
@@ -57,3 +61,4 @@ public class BoomonMenu : MonoBehaviour
 	private Animator _boomonAnimator;
 	#endregion
 }
+																	
