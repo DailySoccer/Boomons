@@ -416,7 +416,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1000011090326006
 GameObject:
@@ -674,7 +674,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1000011637119642
 GameObject:
@@ -929,6 +929,7 @@ GameObject:
   - 33: {fileID: 33000010134207440}
   - 23: {fileID: 23000012442995996}
   - 95: {fileID: 95000012616902736}
+  - 65: {fileID: 65000011050930486}
   m_Layer: 12
   m_Name: BoxSpaceBase
   m_TagString: Untagged
@@ -1033,12 +1034,12 @@ GameObject:
   - 65: {fileID: 65000010220425738}
   - 65: {fileID: 65000010109339006}
   - 65: {fileID: 65000013015563224}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: chairB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1000012600834422
 GameObject:
@@ -1529,7 +1530,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1000013561353886
 GameObject:
@@ -1642,6 +1643,7 @@ GameObject:
   - 33: {fileID: 33000011471330776}
   - 23: {fileID: 23000013184362646}
   - 95: {fileID: 95000013599802174}
+  - 64: {fileID: 64000011607314714}
   m_Layer: 12
   m_Name: BoxAerial
   m_TagString: Untagged
@@ -1756,7 +1758,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013084975850}
   m_LocalRotation: {x: -0.29214033, y: -0.64393634, z: -0.6439365, w: 0.29214022}
-  m_LocalPosition: {x: -39.103, y: 0, z: 6.405}
+  m_LocalPosition: {x: -38.24, y: 0, z: 6.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: -90.019, y: -180, z: 48.607986}
   m_Children: []
@@ -2134,7 +2136,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011916111954}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: -20.49, y: 0, z: -0.91}
+  m_LocalPosition: {x: -12.83, y: 0, z: -10.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children:
@@ -2470,7 +2472,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013915255300}
   m_LocalRotation: {x: -0.6950001, y: 0.13028754, z: 0.13028754, w: 0.6950001}
-  m_LocalPosition: {x: -26.011, y: -0.6300001, z: 4.142}
+  m_LocalPosition: {x: -26.01, y: -0.6300001, z: 4.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: -89.981, y: 0, z: 20.972}
   m_Children: []
@@ -2727,7 +2729,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012326358652}
   m_LocalRotation: {x: -0.7064338, y: 0.030843556, z: 0.030843556, w: 0.7064338}
-  m_LocalPosition: {x: -25.9, y: 0, z: 4.05}
+  m_LocalPosition: {x: -25.9, y: 0, z: 4.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -6579,6 +6581,18 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_Mesh: {fileID: 4300000, guid: 2bfe7d7bed6c980498b36cf52973e386, type: 3}
+--- !u!64 &64000011607314714
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013915255300}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_Mesh: {fileID: 4300000, guid: 621b5bbd0c93ee34896872b3879cf286, type: 3}
 --- !u!65 &65000010109339006
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -6687,6 +6701,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 100.301056, y: 20, z: 20.000002}
   m_Center: {x: 0.15051667, y: -10, z: 9.999983}
+--- !u!65 &65000011050930486
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012397107954}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.690466, y: 1.7097261, z: 2.306922}
+  m_Center: {x: 0, y: 0.00000011920929, z: 1.1554203}
 --- !u!65 &65000011347665578
 BoxCollider:
   m_ObjectHideFlags: 1
