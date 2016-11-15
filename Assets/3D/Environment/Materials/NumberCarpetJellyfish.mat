@@ -6,20 +6,19 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Glass
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHABLEND_ON _EMISSION
+  m_Name: NumberCarpetJellyfish
+  m_Shader: {fileID: 4800000, guid: 32076f740c465e2468f9d2e771564b59, type: 3}
+  m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
-  m_CustomRenderQueue: 3000
-  stringTagMap:
-    RenderType: Transparent
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
     - first:
         name: _BumpMap
       second:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 37fa30c2b7ba68d46aed17ae71145198, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -49,7 +48,7 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 5765b70c92cdac1459d44d6779f2b997, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -76,19 +75,19 @@ Material:
       second: 1
     - first:
         name: _Cutoff
-      second: 0.273
+      second: 0.5
     - first:
         name: _DetailNormalMapScale
       second: 1
     - first:
         name: _DstBlend
-      second: 10
+      second: 0
     - first:
         name: _GlossMapScale
       second: 1
     - first:
         name: _Glossiness
-      second: 1
+      second: 0.5
     - first:
         name: _GlossyReflections
       second: 1
@@ -97,7 +96,7 @@ Material:
       second: 0
     - first:
         name: _Mode
-      second: 2
+      second: 0
     - first:
         name: _OcclusionStrength
       second: 1
@@ -112,17 +111,17 @@ Material:
       second: 1
     - first:
         name: _SrcBlend
-      second: 5
+      second: 1
     - first:
         name: _UVSec
       second: 0
     - first:
         name: _ZWrite
-      second: 0
+      second: 1
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.447, g: 0.447, b: 0.447, a: 0.627451}
+      second: {r: 0.64705884, g: 0.64705884, b: 0.64705884, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
