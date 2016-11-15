@@ -45,7 +45,10 @@ public class WebcamToTexture : MonoBehaviour {
 		{
 			_cameraFeed.requestedWidth = Screen.width;
 			_cameraFeed.requestedHeight = Screen.height;
+
+#if !QR_FAKER
 			_cameraFeed.Play();
+#endif
 			CameraView.sharedMaterial.mainTexture = _cameraFeed;
 			CameraView.transform.RotateAround(CameraView.transform.position, CameraView.transform.forward, -_cameraFeed.videoRotationAngle);
 			_timeCounter = 0;
@@ -63,12 +66,17 @@ public class WebcamToTexture : MonoBehaviour {
 		{
 			_qrReader = new BarcodeReader();
 		}
+
+#if QR_FAKER
+		Listener.SetResult(new System.Random().NextDouble() > .1, "Boomons-Auri-Naturaleza");
+#else
 		Result QRRes = _qrReader.Decode(_camTexture, _cameraFeed.width, _cameraFeed.height); //_qrReader.decode(new BinaryBitmap(new HybridBinarizer(new RGBLuminanceSource(_rawCamTex, W, H))));
 		if (QRRes != null && Listener != null)
 		{
 			string decodedString = QRRes.Text;
 			Listener.SetResult(ResultQR.TextToBoomon(decodedString).HasValue, decodedString);
 		}
+#endif
 	}
 
 	private void CheckUpdate()
