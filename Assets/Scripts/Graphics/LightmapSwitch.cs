@@ -24,7 +24,6 @@ public class LightmapSwitch : MonoBehaviour {
 		get { return (DayPeriod)_period; }
 		set
 		{
-			_isThereChange = _period != (float)value;
 			_period = (float)value;
 		}
 	}
@@ -60,12 +59,14 @@ public class LightmapSwitch : MonoBehaviour {
 				NightLightmap[i].lightmapNear = NightNear[i];
 				NightLightmap[i].lightmapFar = NightFar[i];
 			}
-			_isThereChange = true;
+			_oldPeriod = -1;
 		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		_isThereChange = _oldPeriod != _period;
+		_oldPeriod = _period;
 		if (_initialized && _isThereChange)
 		{
 			if (Period == DayPeriod.Day)
@@ -87,4 +88,5 @@ public class LightmapSwitch : MonoBehaviour {
 	private float _period;
 	[SerializeField]
 	private bool _isThereChange;
+	private float _oldPeriod;
 }

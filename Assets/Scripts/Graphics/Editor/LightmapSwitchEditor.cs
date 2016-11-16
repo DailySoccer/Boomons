@@ -13,7 +13,7 @@ public class LightmapSwitchEditor : Editor
 		_periodNames = Enum.GetNames(typeof(LightmapSwitch.DayPeriod));
 
 		_period = serializedObject.FindProperty("_period");
-		_isThereChange = serializedObject.FindProperty("_isThereChange");
+		//_isThereChange = serializedObject.FindProperty("_isThereChange");
 		_period = serializedObject.FindProperty("_period");
 		DayNear = serializedObject.FindProperty("DayNear");
 		DayFar = serializedObject.FindProperty("DayFar");
@@ -34,7 +34,7 @@ public class LightmapSwitchEditor : Editor
 		EditorGUILayout.PrefixLabel("Day Period");
 		int oldIndex = Mathf.FloorToInt(_period.floatValue);
 		int indexSelected = EditorGUILayout.Popup(oldIndex, _periodNames);
-		_isThereChange.boolValue = oldIndex != indexSelected;
+		//_isThereChange.boolValue = oldIndex != indexSelected;
 		_period.floatValue = indexSelected;
 		EditorGUILayout.EndHorizontal();
 
@@ -42,7 +42,7 @@ public class LightmapSwitchEditor : Editor
 	}
 
 	private SerializedProperty _period;
-	private SerializedProperty _isThereChange;
+	//private SerializedProperty _isThereChange;
 	private SerializedProperty DayNear;
 	private SerializedProperty DayFar;
 	private SerializedProperty NightNear;
