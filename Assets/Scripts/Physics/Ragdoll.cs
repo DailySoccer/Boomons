@@ -60,7 +60,6 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 	public virtual void Throw(Vector3 velocity, Vector3? applyPosition = null)
 	{
 		_pelvis.Throw(velocity, applyPosition);
-		IsTouchEnabled = _isRethrowable;
 	}
 
 	public virtual void OnTapStart(GameObject go, Vector2 position)
@@ -145,7 +144,7 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 
 	#region Private Fields
 
-	[SerializeField] private bool _isRethrowable = false;
+
 	[SerializeField] private GroundDetectionParams _groundParams;
 	
 	[Serializable]

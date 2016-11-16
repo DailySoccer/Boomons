@@ -41,6 +41,7 @@ public class RigidThrower : Touchable
 	public virtual void Throw(Vector3 velocity, Vector3? applyPosition = null)
 	{
 		//Debug.Log("RigidThrower::Throw>> " + name + " throwed @ " + velocity, this);
+		IsTouchEnabled = _isRethrowable;
 
 		if(applyPosition.HasValue)
 			_rigid.AddForceAtPosition(velocity, applyPosition.Value, ForceMode.VelocityChange);
@@ -112,6 +113,8 @@ public class RigidThrower : Touchable
 	
 
 	private Rigidbody _rigid;
+
+	[SerializeField] private bool _isRethrowable = false;
 	[SerializeField, Range(0.5f, 50f)] private float _throwSpeedMax = 30f;
 	[SerializeField, Range(0f, 100f)] private float _touchDistanceInchesMax = 1f;
 	private float _inchesSqrMax;
