@@ -283,6 +283,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	// TODO FRS 161027 Enfocar toda esta clase a un patrón estado inyectándonos en ellos
 	private void OnEnable()
 	{
+		_animator.SetFloat(_moveMultiplierParam, _moveSpeed * _moveAnimMultiplierBase);
 		_animator.GetBehaviour<BoomonIdleState>().Start += OnIdleReady;
 	}
 
