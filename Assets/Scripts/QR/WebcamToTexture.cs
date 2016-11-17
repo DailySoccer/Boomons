@@ -43,8 +43,8 @@ public class WebcamToTexture : MonoBehaviour {
 	{
 		if (_cameraFeed != null)
 		{
-			_cameraFeed.requestedWidth = Screen.width;
-			_cameraFeed.requestedHeight = Screen.height;
+			_cameraFeed.requestedWidth = Mathf.FloorToInt(Screen.width * WebcamResolution);
+			_cameraFeed.requestedHeight = Mathf.FloorToInt(Screen.height * WebcamResolution);
 
 #if !QR_FAKER
 			_cameraFeed.Play();
@@ -96,5 +96,6 @@ public class WebcamToTexture : MonoBehaviour {
 	private string _decodedResult;
 	private float _timeCounter;
 	private float _TIME_STEP = 2;
+	private float WebcamResolution = 0.6f;
 
 	}
