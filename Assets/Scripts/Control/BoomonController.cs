@@ -143,9 +143,10 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	}
 
 	public bool IsTeleporting { get; private set; }
+	public ReferenceSystem ReferenceSystem { get { return _refSystem;  } } 
 
 	#endregion
-	
+
 	//==============================================================
 
 	#region Public Methods
@@ -667,7 +668,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		}
 	}
 
-
+	
 
 
 	//[SerializeField] private Transform _bipedRoot;

@@ -17,8 +17,10 @@ public class ReferenceSystem
 		Right = Vector3.Cross(ScreenDir, JumpDir);
 	}
 
-	public Vector3 ProjectOnPlane(Vector3 position)
-	{
-		return position - Vector3.Project(position - _planePoint, ScreenDir);
+	public Vector3 ProjectOnPlane(Vector3 v, bool isPoint = true)
+	{ 
+		return isPoint ? 
+			v - Vector3.Project(v - _planePoint, ScreenDir) :
+			Vector3.ProjectOnPlane(v, ScreenDir);
 	}
 }
