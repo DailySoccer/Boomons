@@ -302,7 +302,8 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 #if UNITY_EDITOR || UNITY_STANDALONE
 		if (Input.GetKeyDown(KeyCode.E))
-			CurrentEmotion = (Emotion) ((int)(CurrentEmotion + 1) % Enum.GetValues(typeof(Emotion)).Length);
+			CurrentEmotion = (Emotion) ((int)(CurrentEmotion + 1) 
+				% Enum.GetValues(typeof(Emotion)).Length);
 #endif
 	}
 

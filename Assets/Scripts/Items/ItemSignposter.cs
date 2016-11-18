@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 
+[RequireComponent(typeof(AudioSource))]
 public class ItemSignposter : MonoBehaviour
 {
 
@@ -46,6 +47,7 @@ public class ItemSignposter : MonoBehaviour
 	private void Awake()
 	{
 		_animator = GetComponentInChildren<Animator>();
+		_audio = GetComponent<AudioSource>();
 
 		if(_itemToSignpost == null) {
 			Debug.LogWarning("ItemSignposter::Start>> No target defined; deactivating...", this);
@@ -61,9 +63,12 @@ public class ItemSignposter : MonoBehaviour
 	
 	private void OnDestroy()
 	{
+		_audio = null;
 		_itemToSignpost = null;
 		_boomon = null;
 		_animator = null;
+		_activationClip = null;
+		_deactivationClip = null;
 	}
 
 	// TODO FRS 161117 Se puede bajar la frecuencia de esta detección
@@ -89,10 +94,12 @@ public class ItemSignposter : MonoBehaviour
 	{
 		Debug.Log("ItemSignposter::Activate>> " + _itemToSignpost.name, this);
 		_animator.SetTrigger("Play");
+		_audio.PlayOneShot(_activationClip);
 	}
 
 	private void OnDeactivate()
 	{
+		_audio.PlayOneShot(_deactivationClip);
 	}
 
 	#endregion
@@ -104,7 +111,10 @@ public class ItemSignposter : MonoBehaviour
 	[SerializeField] private Animator _animator;
 	[SerializeField] private ItemActivator _itemToSignpost;
 	[SerializeField, Range(0f, 10f)] private float _activationDistance = 2f;
+	[SerializeField] private AudioClip _activationClip;
+	[SerializeField] private AudioClip _deactivationClip;
 
+	private AudioSource _audio;
 	private BoomonController _boomon;
 	private bool _isActive;
 	private bool _isVisible;
