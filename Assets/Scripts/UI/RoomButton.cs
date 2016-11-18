@@ -39,18 +39,22 @@ public class RoomButton : MonoBehaviour
 
 	private void Start()
 	{
-		IsBlocked= !PlayerPrefs.HasKey(_targetRoomId);
+#if UNBLOCK_CHEAT
+		IsBlocked = false;
+#else
+		IsBlocked = !PlayerPrefs.HasKey(_targetRoomId);
+#endif
 	}
 
-	#endregion
+#endregion
 
 	//=================================================================
 
-	#region Private Fields
+#region Private Fields
 	[SerializeField] private string _blockerName = "roomBlocker";
 	[SerializeField] private GameObject _blocker;
 	[SerializeField] private string _targetRoomId = "Room 1";
-	#endregion
+#endregion
 
 
 }

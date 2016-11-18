@@ -53,9 +53,9 @@ public class ItemActivator : Touchable
 			Activate();
 	}
 
-    private void OnTriggerEnter(Collider collider)
+    private void OnTriggerEnter(Collider other)
     {
-        if (_isPhysicallyActivable && collider.gameObject.tag == _playerTag)
+        if (_isPhysicallyActivable && other.gameObject.tag == _playerTag)
             Activate();
     }
 
