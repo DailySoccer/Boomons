@@ -181,6 +181,81 @@ AnimationClip:
     path: CinematicCamera_ON
     classID: 20
     script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 21
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchoredPosition.y
+    path: CinematicCamera_ON/Cinemascope/BottomMargin
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.15
+        inSlope: 0.375
+        outSlope: 0.375
+        tangentMode: 21
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchorMax.y
+    path: CinematicCamera_ON/Cinemascope/BottomMargin
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 21
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_SizeDelta.y
+    path: CinematicCamera_ON/Cinemascope/BottomMargin
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 21
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchoredPosition.y
+    path: CinematicCamera_ON/Cinemascope/TopMargin
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.85
+        inSlope: -0.37499994
+        outSlope: -0.37499994
+        tangentMode: 21
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchorMin.y
+    path: CinematicCamera_ON/Cinemascope/TopMargin
+    classID: 224
+    script: {fileID: 0}
   m_PPtrCurves: []
   m_SampleRate: 50
   m_WrapMode: 0
@@ -219,6 +294,18 @@ AnimationClip:
       classID: 20
       customType: 0
       isPPtrCurve: 0
+    - path: 3588268259
+      attribute: 3600656472
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3569311326
+      attribute: 193093493
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
     - path: 382368239
       attribute: 1
       script: {fileID: 0}
@@ -248,6 +335,24 @@ AnimationClip:
       script: {fileID: 0}
       classID: 4
       customType: 14
+      isPPtrCurve: 0
+    - path: 3588268259
+      attribute: 538195251
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3588268259
+      attribute: 38095219
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3569311326
+      attribute: 538195251
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
       isPPtrCurve: 0
     pptrCurveMapping: []
   m_AnimationClipSettings:
@@ -600,6 +705,81 @@ AnimationClip:
     attribute: field of view
     path: CinematicCamera_ON
     classID: 20
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 21
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchoredPosition.y
+    path: CinematicCamera_ON/Cinemascope/BottomMargin
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.15
+        inSlope: 0.375
+        outSlope: 0.375
+        tangentMode: 21
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchorMax.y
+    path: CinematicCamera_ON/Cinemascope/BottomMargin
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 21
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_SizeDelta.y
+    path: CinematicCamera_ON/Cinemascope/BottomMargin
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 21
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchoredPosition.y
+    path: CinematicCamera_ON/Cinemascope/TopMargin
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.85
+        inSlope: -0.37499994
+        outSlope: -0.37499994
+        tangentMode: 21
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchorMin.y
+    path: CinematicCamera_ON/Cinemascope/TopMargin
+    classID: 224
     script: {fileID: 0}
   m_EulerEditorCurves:
   - curve:
