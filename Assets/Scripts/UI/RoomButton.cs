@@ -39,7 +39,7 @@ public class RoomButton : MonoBehaviour
 
 	private void Start()
 	{
-#if UNBLOCK_CHEAT
+#if CHEATS
 		IsBlocked = false;
 #else
 		IsBlocked = !PlayerPrefs.HasKey(_targetRoomId);
