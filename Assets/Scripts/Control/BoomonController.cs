@@ -21,8 +21,8 @@ public enum BoomonRole
 
 
 [RequireComponent(typeof(Animator), typeof(CharacterController))]
-[RequireComponent(typeof(Touchable), typeof(FacialAnimator))]
-public class BoomonController : MonoBehaviour, ITeleportable
+[RequireComponent(typeof(Toucher), typeof(FacialAnimator))]
+public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportable
 {
 	#region Public Fields
 	public enum State
@@ -133,10 +133,10 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 	public bool IsTouchEnabled
 	{
-		get{ return _touchable.enabled; }
+		get{ return _toucher.enabled; }
 		private set
 		{
-			_touchable.enabled = value && _isControllable;
+			_toucher.enabled = value && _isControllable;
 			if(_ragdoll != null)
 				_ragdoll.IsTouchEnabled = value && _isControllable;
 		}
@@ -251,7 +251,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 		_animator = GetComponent<Animator>();
 		_controller = GetComponent<CharacterController>();
-		_touchable = GetComponent<Touchable>();
+		_toucher = GetComponent<Toucher>();
 		_face = GetComponent<FacialAnimator>();
 
 		_groundSlopeCosine = Mathf.Cos(_controller.slopeLimit * Mathf.Deg2Rad);
@@ -266,7 +266,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 		_goToCallbacks = null;
 
-		_touchable = null;
+		_toucher = null;
 		_face = null;
 		_ragdoll = null;
 		//_bipedRoot = null;
@@ -334,37 +334,39 @@ public class BoomonController : MonoBehaviour, ITeleportable
 
 	//----------------------------------------------------------------------------------
 	
-	#region Events.Touch
+	#region Events.Toucher
 
-	public void OnTapStart(GameObject go, Vector2 touchPos)
+	public void OnTapStart(Toucher toucher, Vector2 touchPos)
 	{
-		if (go == null && (CurrentState == State.Idle || CurrentState == State.Emotion) ) 
-			CurrentState = State.Move;
+		if(toucher != null || CurrentState != State.Idle && CurrentState != State.Emotion)
+			return;
+
+		CurrentState = State.Move;
 	}
 
-	public void OnTapStop(GameObject go, Vector2 position)
+	public void OnTapStop(Toucher toucher, Vector2 position)
 	{
 		if (CurrentState == State.Move)
 			CurrentState = State.Idle;
 	}
 
-	public void OnTapStay(GameObject go, Vector2 touchPos)
+	public void OnTapStay(Toucher toucher, Vector2 touchPos)
 	{
-		if (go == null && CurrentState == State.Move)
+		if(CurrentState == State.Move)
 			Move(touchPos);
 	}
 
-	public void OnDoubleTap(GameObject go, Vector2 position)
+	public void OnDoubleTap(Toucher toucher, Vector2 position)
 	{
-		if ((CurrentState==State.Idle||CurrentState==State.Emotion) && go == gameObject)
+		if ((CurrentState==State.Idle||CurrentState==State.Emotion) && toucher == _toucher)
 			CurrentState = State.Tickles;
 	}
 
-	public void OnSwipe(GameObject go, Vector2 position, Vector2 direction, float speedRatio)
+	public void OnSwipe(Toucher toucher, Vector2 position, Vector2 direction, float speedRatio)
 	{
 		Log("OnSwipe");	
 
-		if (go != gameObject)
+		if (toucher != _toucher)
 			return;
 
 		float throwDegress = Mathf.Atan(direction.y / Mathf.Abs(direction.x)) * Mathf.Rad2Deg;
@@ -617,9 +619,9 @@ public class BoomonController : MonoBehaviour, ITeleportable
 		rigid.AddForce( (1f - _bounciness) * _pushMass * _velocity, ForceMode.Impulse);
 		_velocity *= _bounciness;
 
-		var item = rigid.GetComponent<ItemActivator>();
+		var item = rigid.GetComponent<Item>();
 		if (item != null)
-			item.Activate();
+			item.Play();
 	}
 
 	
@@ -690,7 +692,7 @@ public class BoomonController : MonoBehaviour, ITeleportable
 	private CharacterController _controller;
 	private BoomonRagdoll _ragdoll;
 	private FacialAnimator _face;
-	private Touchable _touchable;
+	private Toucher _toucher;
 
 	private Vector3 _velocity;	 
 	private float _groundSlopeCosine;

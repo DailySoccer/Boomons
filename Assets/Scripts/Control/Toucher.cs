@@ -4,10 +4,15 @@ using UnityEngine.Events;
 
 
 [RequireComponent(typeof(Collider))]
-public class Touchable : MonoBehaviour, IObjectTouchListener
+public class Toucher : MonoBehaviour, IObjectTouchListener
 {
 
 	#region Public Methods
+
+	public bool MustReceiveOnlyItsTouches {
+		get { return _mustReceiveOnlyItsTouches; }
+		set { _mustReceiveOnlyItsTouches = value; }
+	}
 
 	public virtual bool IsTouchEnabled 
 	{
@@ -19,14 +24,14 @@ public class Touchable : MonoBehaviour, IObjectTouchListener
 			_isTouchEnabled = value;
 
 			if(value)
-				Touch.AddListener(this, _mustReceiveOnlyItsTouches);
+				TouchManager.AddListener(this, _mustReceiveOnlyItsTouches);
 			else
-				Touch.RemoveListener(this);
+				TouchManager.RemoveListener(this);
 		}
 	}
 
-	[Serializable] public class TapEvent	: UnityEvent<GameObject, Vector2> {}
-	[Serializable] public class SwipeEvent	: UnityEvent<GameObject, Vector2, Vector2, float> {}
+	[Serializable] public class TapEvent	: UnityEvent<Toucher, Vector2> {}
+	[Serializable] public class SwipeEvent	: UnityEvent<Toucher, Vector2, Vector2, float> {}
 
 	public TapEvent TapStart	{ get { return _tapStart;	} }
 	public TapEvent TapStop		{ get { return _tapStop;	} }
@@ -34,29 +39,29 @@ public class Touchable : MonoBehaviour, IObjectTouchListener
 	public TapEvent DoubleTap	{ get { return _doubleTap;	} }
 	public SwipeEvent Swipe		{ get { return _swipe;		} }
 
-	public virtual void OnTapStart(GameObject go, Vector2 touchPos)
+	public virtual void OnTapStart(Toucher toucher, Vector2 touchPos)
 	{
-		_tapStart.Invoke(go, touchPos);
+		_tapStart.Invoke(toucher, touchPos);
 	}
 
-	public virtual void OnTapStop(GameObject go, Vector2 position)
+	public virtual void OnTapStop(Toucher toucher, Vector2 position)
 	{
-		_tapStop.Invoke(go, position);
+		_tapStop.Invoke(toucher, position);
 	}
 
-	public virtual void OnTapStay(GameObject go, Vector2 position)
+	public virtual void OnTapStay(Toucher toucher, Vector2 position)
 	{
-		_tapStay.Invoke(go, position);
+		_tapStay.Invoke(toucher, position);
 	}
 
-	public virtual void OnDoubleTap(GameObject go, Vector2 position)
+	public virtual void OnDoubleTap(Toucher toucher, Vector2 position)
 	{
-		_doubleTap.Invoke(go, position);
+		_doubleTap.Invoke(toucher, position);
 	}
 
-	public virtual void OnSwipe(GameObject go, Vector2 position, Vector2 direction, float speedRatio)
+	public virtual void OnSwipe(Toucher toucher, Vector2 position, Vector2 direction, float speedRatio)
 	{
-		_swipe.Invoke(go, position, direction, speedRatio);
+		_swipe.Invoke(toucher, position, direction, speedRatio);
 	}
 
 	#endregion
@@ -93,13 +98,14 @@ public class Touchable : MonoBehaviour, IObjectTouchListener
 
 	#region Private Fields
 
-	private ObjectTouchManager Touch
+	private ObjectTouchManager TouchManager
 	{
 		get {
 			return _touchManager ?? 
 			 (_touchManager = MetaManager.Instance.Get<ObjectTouchManager>());
 		}
 	}
+
 	
 	[SerializeField]
 	private string _touchLayerName = "Touchable";

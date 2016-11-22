@@ -62,25 +62,25 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 		_pelvis.Throw(velocity, applyPosition);
 	}
 
-	public virtual void OnTapStart(GameObject go, Vector2 position)
+	public virtual void OnTapStart(Toucher toucher, Vector2 position)
 	{
 	}
 
-	public virtual void OnTapStop(GameObject go, Vector2 position)
+	public virtual void OnTapStop(Toucher toucher, Vector2 position)
 	{
 	}
 
-	public virtual void OnTapStay(GameObject go, Vector2 position)
+	public virtual void OnTapStay(Toucher toucher, Vector2 position)
 	{
 	}
 
-	public virtual void OnDoubleTap(GameObject go, Vector2 position)
+	public virtual void OnDoubleTap(Toucher toucher, Vector2 position)
 	{
 	}
 
-	public virtual void OnSwipe(GameObject go, Vector2 position, Vector2 direction, float speedRatio)
+	public virtual void OnSwipe(Toucher toucher, Vector2 position, Vector2 direction, float speedRatio)
 	{
-		_pelvis.OnSwipe(go, position, direction, speedRatio);
+		_pelvis.OnSwipe(toucher, position, direction, speedRatio);
 	}
 
 	public virtual void TeleportTo(Teleport target)

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Touch = UnityEngine.Touch;
 
 /// <summary>
 /// 
@@ -58,32 +59,32 @@ public class ObjectTouchManager : TouchManager
 	protected override void OnTapStart(Vector2 position)
 	{
 		base.OnTapStart(position);
-		OnObjectTapStart(FindObjectAtPosition(position), position);
+		OnObjectTapStart(FindToucherAtPosition(position), position);
 	}
 
 	protected override void OnTapStop(Vector2 position)
 	{
 		base.OnTapStop(position);
-		OnObjectTapStop(FindObjectAtPosition(position), position);
+		OnObjectTapStop(FindToucherAtPosition(position), position);
 	}
 
 	
 	protected override void OnTapStay(Vector2 position)
 	{
 		base.OnTapStay(position);
-		OnObjectTapStay(FindObjectAtPosition(position), position);
+		OnObjectTapStay(FindToucherAtPosition(position), position);
 	}
 
 	protected override void OnDoubleTap(Vector2 position)
 	{
 		base.OnDoubleTap(position);
-		OnObjectDoubleTap(FindObjectAtPosition(position), position);
+		OnObjectDoubleTap(FindToucherAtPosition(position), position);
 	}
 	
 	protected override void OnSwipe(Vector2 position, Vector2 swipeVector, float speedRatio)
 	{
 		base.OnSwipe(position, swipeVector, speedRatio);
-		OnObjectSwipe(FindObjectAtPosition(position), position, swipeVector, speedRatio);
+		OnObjectSwipe(FindToucherAtPosition(position), position, swipeVector, speedRatio);
 	}
 
 	//----------------------------------------------------------
@@ -91,98 +92,88 @@ public class ObjectTouchManager : TouchManager
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="o"></param>
-	private void OnObjectTapStart(GameObject o, Vector2 position)
+	/// <param name="toucher"></param>
+	/// <param name="position"></param>
+	private void OnObjectTapStart(Toucher toucher, Vector2 position)
 	{
 		Log("OnObjectTapStart");
+		
+		if (toucher != null) 
+			toucher.OnTapStart(toucher, position);
 
-		if (o != null)
-		{
-			IObjectTouchListener listener = o.GetComponent<IObjectTouchListener>();
-			if (listener != null && _selfListeners.Contains(listener)) 
-				listener.OnTapStart(o, position);
-		}
-	
 		for(int i = _broadcastListeners.Count - 1; i >= 0; --i)
-			_broadcastListeners[i].OnTapStart(o, position);
+			if(_broadcastListeners[i] != toucher)
+				_broadcastListeners[i].OnTapStart(toucher, position);
 	}
 
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="o"></param>
-	private void OnObjectTapStay(GameObject o, Vector2 position)
-	{
-		if (o != null)
-		{
-			IObjectTouchListener listener = o.GetComponent<IObjectTouchListener>();
-			if (listener != null && _selfListeners.Contains(listener))
-				listener.OnTapStay(o, position);
-		}
+	/// <param name="toucher"></param>
+	/// <param name="position"></param>
+	private void OnObjectTapStay(Toucher toucher, Vector2 position)
+	{ 
+		if(toucher != null)
+			toucher.OnTapStay(toucher, position);
 
 		for (int i = _broadcastListeners.Count - 1; i >= 0; --i)
-			_broadcastListeners[i].OnTapStay(o, position);
+			if(_broadcastListeners[i] != toucher)
+				_broadcastListeners[i].OnTapStay(toucher, position);
 	}
 
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="o"></param>
-	private void OnObjectTapStop(GameObject o, Vector2 position)
+	/// <param name="toucher"></param>
+	/// <param name="position"></param>
+	private void OnObjectTapStop(Toucher toucher, Vector2 position)
 	{
 		Log("OnObjectTapStop");
-
-		if (o != null)
-		{
-			IObjectTouchListener listener = o.GetComponent<IObjectTouchListener>();
-			if (listener != null && _selfListeners.Contains(listener))
-				listener.OnTapStop(o, position);
-		}
+	 
+		if(toucher != null)
+			toucher.OnTapStop(toucher, position);
 
 		for (int i = _broadcastListeners.Count - 1; i >= 0; --i)
-			_broadcastListeners[i].OnTapStop(o, position);
+			if(_broadcastListeners[i] != toucher)
+				_broadcastListeners[i].OnTapStop(toucher, position);
 	}
 
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="o"></param>
-	private void OnObjectDoubleTap(GameObject o, Vector2 position)
+	/// <param name="toucher"></param>
+	/// <param name="position"></param>
+	private void OnObjectDoubleTap(Toucher toucher, Vector2 position)
 	{
-		Log("OnObjectDoubleTap");
-
-		if (o != null)
-		{
-			IObjectTouchListener listener = o.GetComponent<IObjectTouchListener>();
-			if (listener != null && _selfListeners.Contains(listener))
-				listener.OnDoubleTap(o, position);
-		}
+		Log("OnObjectDoubleTap");	
+	
+		if(toucher != null)
+			toucher.OnDoubleTap(toucher, position);
 
 		for (int i = _broadcastListeners.Count - 1; i >= 0; --i)
-			_broadcastListeners[i].OnDoubleTap(o, position);
+			if(_broadcastListeners[i] != toucher)
+				_broadcastListeners[i].OnDoubleTap(toucher, position);
 	}
 
 
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="o"></param>
+	/// <param name="toucher"></param>
 	/// <param name="position"></param>
 	/// <param name="direction"></param>
 	/// <param name="speedRatio"></param>
-	private void OnObjectSwipe(GameObject o, Vector2 position, Vector2 direction, float speedRatio)
+	private void OnObjectSwipe(Toucher toucher, Vector2 position, Vector2 direction, float speedRatio)
 	{
-		if (o != null)
-		{
-			Log("OnObjectSwipe", o.name);
+		if(!_selfListeners.Contains(toucher) && !_broadcastListeners.Contains(toucher))
+			toucher = null;
 
-			IObjectTouchListener listener = o.GetComponent<IObjectTouchListener>();
-			if (listener != null && _selfListeners.Contains(listener))
-				listener.OnSwipe(o, position, direction, speedRatio);
-		}
+		if(toucher != null)
+			toucher.OnSwipe(toucher, position, direction, speedRatio);
 
 		for (int i = _broadcastListeners.Count - 1; i >= 0; --i)
-			_broadcastListeners[i].OnSwipe(o, position, direction, speedRatio);
+			if(_broadcastListeners[i] != toucher)
+				_broadcastListeners[i].OnSwipe(toucher, position, direction, speedRatio);
 	}
 
 	#endregion
@@ -192,15 +183,19 @@ public class ObjectTouchManager : TouchManager
 
 	#region Private Methods
 
-	private GameObject FindObjectAtPosition(Vector2 position)
+	private Toucher FindToucherAtPosition(Vector2 position)
 	{
-		Ray ray = Camera.main.ScreenPointToRay(position);
+		Toucher toucher = null;
 
-		RaycastHit hitInfo;
+		Ray ray = Camera.main.ScreenPointToRay(position); 
+		RaycastHit hitInfo;	  
 		if (Physics.Raycast(ray, out hitInfo, _objectDistanceMax, _touchLayerMask))
-			return hitInfo.collider.gameObject;
-		else
-			return null;
+			toucher = hitInfo.collider.gameObject.GetComponent<Toucher>();
+
+		if(!_selfListeners.Contains(toucher) && !_broadcastListeners.Contains(toucher))
+			toucher = null;
+
+		return toucher;
 	}
 
 	#endregion

@@ -13,7 +13,7 @@ public class RotationTrack : MonoBehaviour {
 	[SerializeField]
 	private List<GameObject> EnableGameObList = new List<GameObject>();
 	public RectTransform DisableCanvasPanel;
-	public ItemActivator DisableTelescope;
+	public Item DisableTelescope;
 	public AudioSource DisableMusic;
 	[Range(0, 1)]
 	public float VolumeAttenuance;

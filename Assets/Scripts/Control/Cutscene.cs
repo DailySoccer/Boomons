@@ -68,7 +68,7 @@ public class Cutscene : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if(IsPlaying || other.tag != _playerTag)
+		if(IsPlaying || other.gameObject != _game.Boomon.gameObject)
 			return;
 
 		Play();
@@ -86,21 +86,21 @@ public class Cutscene : MonoBehaviour
 
 	private void OnBoomonActiveChange(bool isActive)
 	{
-		_game.Player.gameObject.SetActive(isActive);
+		_game.Boomon.gameObject.SetActive(isActive);
 	}
 
 
 	private void OnBoomonStateChange(BoomonController.State state)
 	{
 		if (state == BoomonController.State.Driven) 
-			_game.Player.GoTo(_driver.transform.position, _driver.BoomonMoveSpeed);
+			_game.Boomon.GoTo(_driver.transform.position, _driver.BoomonMoveSpeed);
 		else
-			_game.Player.CurrentState = state;
+			_game.Boomon.CurrentState = state;
 	}
 		
 	private void OnBoomonEmotionChange(BoomonController.Emotion emotion)
 	{
-		_game.Player.CurrentEmotion = emotion;
+		_game.Boomon.CurrentEmotion = emotion;
 	}
 	
 	public void OnEmotionClick(int index)
@@ -120,7 +120,7 @@ public class Cutscene : MonoBehaviour
 	{
 		IsPlaying = false;
 
-		_game.Player.CurrentEmotion = BoomonController.Emotion.Happiness;
+		_game.Boomon.CurrentEmotion = BoomonController.Emotion.Happiness;
 
 		Transition.Instance.AnimEnd += OnTransitionEnd;
 		Transition.Instance.StartAnim(2f);	
@@ -136,11 +136,11 @@ public class Cutscene : MonoBehaviour
 	private IEnumerator PlayCoroutine()
 	{
 		IsPlaying = true;
-		_game.Player.SetIsControllable(false);
+		_game.Boomon.SetIsControllable(false);
 
 		// TODO FRS 161104 Event StateChange
 		yield return new WaitUntil(
-			() => _game.Player.CurrentState == BoomonController.State.Idle);
+			() => _game.Boomon.CurrentState == BoomonController.State.Idle);
 
 		_animator.SetTrigger(_playTriggerName);
 	}
@@ -153,7 +153,6 @@ public class Cutscene : MonoBehaviour
 	#region Private Fields
 
 	[SerializeField] private string _playTriggerName = "Play";
-	[SerializeField] private string _playerTag = "Player";
 	[SerializeField] private string _emotionIntName = "Emotion";
 	[SerializeField] private string _resolutionIntName = "Resolution";
 

@@ -8,9 +8,9 @@ using UnityEngine;
 /// </summary>
 public interface IObjectTouchListener
 {
-	void OnTapStart(GameObject go, Vector2 position);
-	void OnTapStop(GameObject go, Vector2 position);
-	void OnTapStay(GameObject go, Vector2 position);
-	void OnDoubleTap(GameObject go, Vector2 position);
-	void OnSwipe(GameObject go, Vector2 position, Vector2 direction, float speedRatio);
+	void OnTapStart(Toucher toucher, Vector2 position);
+	void OnTapStop(Toucher toucher, Vector2 position);
+	void OnTapStay(Toucher toucher, Vector2 position);
+	void OnDoubleTap(Toucher toucher, Vector2 position);
+	void OnSwipe(Toucher toucher, Vector2 position, Vector2 direction, float speedRatio);
 }

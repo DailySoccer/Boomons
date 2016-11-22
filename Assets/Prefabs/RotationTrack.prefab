@@ -67,10 +67,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012499814858}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.837, y: 2.94, z: 11.083}
-  m_LocalScale: {x: 2.366104, y: 2.3661017, z: 2.3661036}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalRotation: {x: -0, y: 0.8752807, z: -0, w: 0.48361537}
+  m_LocalPosition: {x: -10.848, y: 4.52, z: -15.57}
+  m_LocalScale: {x: 2.3661027, y: 2.3661017, z: 2.366103}
+  m_LocalEulerAnglesHint: {x: 0, y: 122.26201, z: 0}
   m_Children:
   - {fileID: 4000012076718622}
   m_Father: {fileID: 0}
@@ -163,11 +163,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetCamera: {fileID: 4000012076718622}
   TargetCanvasPanel: {fileID: 0}
+  TargetClip: {fileID: 8300000, guid: 532e1ce04e358494a8c900eb0bae28b5, type: 3}
   DisableMeshesList:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  DisableGameObList: []
+  EnableGameObList: []
   DisableCanvasPanel: {fileID: 0}
+  DisableTelescope: {fileID: 0}
+  DisableMusic: {fileID: 0}
+  VolumeAttenuance: 0.2
   SceneCamera: {fileID: 0}
 --- !u!124 &124000014045002368
 Behaviour:

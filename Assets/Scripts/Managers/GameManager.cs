@@ -7,7 +7,7 @@ public class GameManager : Manager
 {
 	#region Public Fields
 
-	public BoomonController Player { get; private set; }
+	public BoomonController Boomon { get; private set; }
 
 	public BoomonRole BoomonRole
 	{
@@ -20,8 +20,8 @@ public class GameManager : Manager
 #if UNITY_EDITOR
 			_boomonRoleEditor = value;
 #endif						
-			if(value != BoomonRole.None && Player != null)
-				SpawnBoomon(value, Player.transform);
+			if(value != BoomonRole.None && Boomon != null)
+				SpawnBoomon(value, Boomon.transform);
 		}
 	}
 
@@ -66,7 +66,7 @@ public class GameManager : Manager
 
 	protected void OnDestroy()
 	{
-		Player = null;
+		Boomon = null;
 	}
 
 	protected void OnEnable()
@@ -122,7 +122,7 @@ public class GameManager : Manager
 	{
 		ActiveRoom = Room = null;
 		BoomonRole = BoomonRole.None;
-		Player = null;
+		Boomon = null;
 	}
 
 	#endregion
@@ -138,14 +138,14 @@ public class GameManager : Manager
 			return;
 		}
 
-		if(Player != null)
-			Destroy(Player.gameObject);
+		if(Boomon != null)
+			Destroy(Boomon.gameObject);
 
 		string boomonPath = PathSolver.Instance.GetBoomonPath(boomonRole, PathSolver.InstanceType.Controllable);
 		var prefab = Resources.Load<GameObject>(boomonPath);
 		var boomonGo = (GameObject)Instantiate(prefab, spawner.position, spawner.rotation);
 
-		Player = boomonGo.GetComponent<BoomonController>();
+		Boomon = boomonGo.GetComponent<BoomonController>();
 	}
 
 	private Transform FindSpawner()

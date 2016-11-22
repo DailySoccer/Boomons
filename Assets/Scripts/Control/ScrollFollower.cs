@@ -101,7 +101,7 @@ public class ScrollFollower : MonoBehaviour
 	
 
 	[SerializeField] private Transform _target;
-	[SerializeField] private string _targetTag = "Player";
+	[SerializeField] private string _targetTag = "Player"; // TODO FRS 161122 Usar GameManager.Boomon
 	[SerializeField] private Vector3 _distance;
 	[SerializeField, Range(0f, 1f)] private float _stopZoomRatio;
 	[SerializeField, Range(0f, 20f)] private float _depthSpeed;

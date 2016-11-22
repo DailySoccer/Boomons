@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class RigidThrower : Touchable
+public class RigidThrower : Toucher
 {
 	#region Public Methods
 
@@ -17,11 +17,11 @@ public class RigidThrower : Touchable
 		}
 	}
 
-	public override void OnSwipe(GameObject go, Vector2 position, Vector2 direction, float speedRatio)
+	public override void OnSwipe(Toucher toucher, Vector2 position, Vector2 direction, float speedRatio)
 	{
-		if (go != gameObject)
+		if (toucher != gameObject)
 		{
-			if (go != null)
+			if (toucher != null)
 				return;
 			
 			Vector2 myScreenPos = Camera.main.WorldToScreenPoint(_rigid.position);
