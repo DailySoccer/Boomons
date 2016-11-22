@@ -274,7 +274,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: -89.981, y: 0, z: -7.774}
   m_Children: []
   m_Father: {fileID: 4000010193232148}
-  m_RootOrder: 9
+  m_RootOrder: 10
 --- !u!4 &4000010193232148
 Transform:
   m_ObjectHideFlags: 1
@@ -289,6 +289,7 @@ Transform:
   - {fileID: 4000012144118684}
   - {fileID: 4000010917269168}
   - {fileID: 4000012725682218}
+  - {fileID: 4000012475956758}
   - {fileID: 4000010413925234}
   - {fileID: 4000011892852348}
   - {fileID: 4000011755994482}
@@ -298,7 +299,6 @@ Transform:
   - {fileID: 4000010098437340}
   - {fileID: 4000014121160402}
   - {fileID: 4000010704854310}
-  - {fileID: 4000012475956758}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &4000010354211524
@@ -313,7 +313,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: -89.981, y: 0, z: -7.774}
   m_Children: []
   m_Father: {fileID: 4000010193232148}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!4 &4000010413925234
 Transform:
   m_ObjectHideFlags: 1
@@ -326,7 +326,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: -89.981, y: 0, z: -7.774}
   m_Children: []
   m_Father: {fileID: 4000010193232148}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!4 &4000010704854310
 Transform:
   m_ObjectHideFlags: 1
@@ -339,7 +339,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: -89.981, y: 0, z: -7.774}
   m_Children: []
   m_Father: {fileID: 4000010193232148}
-  m_RootOrder: 11
+  m_RootOrder: 12
 --- !u!4 &4000010917269168
 Transform:
   m_ObjectHideFlags: 1
@@ -365,7 +365,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: -89.981, y: 0, z: -7.774}
   m_Children: []
   m_Father: {fileID: 4000010193232148}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!4 &4000011892852348
 Transform:
   m_ObjectHideFlags: 1
@@ -378,7 +378,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: -89.981, y: 0, z: -7.774}
   m_Children: []
   m_Father: {fileID: 4000010193232148}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!4 &4000012144118684
 Transform:
   m_ObjectHideFlags: 1
@@ -404,7 +404,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: -89.981, y: 0, z: -7.774}
   m_Children: []
   m_Father: {fileID: 4000010193232148}
-  m_RootOrder: 8
+  m_RootOrder: 9
 --- !u!4 &4000012475956758
 Transform:
   m_ObjectHideFlags: 1
@@ -417,7 +417,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: -89.981, y: 0, z: 20.444}
   m_Children: []
   m_Father: {fileID: 4000010193232148}
-  m_RootOrder: 12
+  m_RootOrder: 3
 --- !u!4 &4000012725682218
 Transform:
   m_ObjectHideFlags: 1
@@ -438,12 +438,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011455897278}
   m_LocalRotation: {x: -0.70538914, y: -0.049256735, z: -0.049256735, w: 0.70538914}
-  m_LocalPosition: {x: 1.647, y: 0.077, z: 1.329}
+  m_LocalPosition: {x: 1.645, y: -0, z: 1.357}
   m_LocalScale: {x: 1.1935, y: 1.1935003, z: 0.52999455}
   m_LocalEulerAnglesHint: {x: -89.981, y: 121.148, z: -7.774}
   m_Children: []
   m_Father: {fileID: 4000010193232148}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!4 &4000014121160402
 Transform:
   m_ObjectHideFlags: 1
@@ -456,7 +456,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: -89.981, y: 0, z: -7.774}
   m_Children: []
   m_Father: {fileID: 4000010193232148}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!23 &23000010276616806
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -1242,37 +1242,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _touchLayerName: Touchable
-  _mustReceiveOnlyItsTouches: 1
-  _tapStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _tapStop:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _tapStay:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _doubleTap:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _swipe:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+  _playOnEnable: 0
+  _isPhysicallyPlayable: 1
+  _interactableRadio: 4
   _playTriggerName: Play
-  _playerTag: Player
-  _activateOnEnable: 0
-  _isPhysicallyActivable: 1
 --- !u!114 &114000011645172772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1284,37 +1257,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _touchLayerName: Touchable
-  _mustReceiveOnlyItsTouches: 1
-  _tapStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _tapStop:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _tapStay:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _doubleTap:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _swipe:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+  _playOnEnable: 0
+  _isPhysicallyPlayable: 1
+  _interactableRadio: 4
   _playTriggerName: Play
-  _playerTag: Player
-  _activateOnEnable: 0
-  _isPhysicallyActivable: 1
 --- !u!114 &114000013149204254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1326,37 +1272,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _touchLayerName: Touchable
-  _mustReceiveOnlyItsTouches: 1
-  _tapStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _tapStop:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _tapStay:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _doubleTap:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _swipe:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+  _playOnEnable: 0
+  _isPhysicallyPlayable: 1
+  _interactableRadio: 4
   _playTriggerName: Play
-  _playerTag: Player
-  _activateOnEnable: 0
-  _isPhysicallyActivable: 1
 --- !u!114 &114000014200036140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1368,37 +1287,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _touchLayerName: Touchable
-  _mustReceiveOnlyItsTouches: 1
-  _tapStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _tapStop:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _tapStay:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _doubleTap:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _swipe:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+  _playOnEnable: 0
+  _isPhysicallyPlayable: 1
+  _interactableRadio: 4
   _playTriggerName: Play
-  _playerTag: Player
-  _activateOnEnable: 0
-  _isPhysicallyActivable: 1
 --- !u!135 &135000010032793690
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1421,7 +1313,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.05
+  m_Radius: 0.1
   m_Center: {x: -0.00000011920929, y: -0.00000017881393, z: 0.5}
 --- !u!135 &135000013839431922
 SphereCollider:
@@ -1433,7 +1325,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.05
+  m_Radius: 0.1
   m_Center: {x: -0.00000011920929, y: -0.00000017881393, z: 0.5}
 --- !u!135 &135000013964558830
 SphereCollider:
@@ -1445,5 +1337,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.05
+  m_Radius: 0.1
   m_Center: {x: -0.00000011920929, y: -0.00000017881393, z: 0.5}
