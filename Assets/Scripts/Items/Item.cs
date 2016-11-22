@@ -84,13 +84,13 @@ public class Item : MonoBehaviour
 
 	protected virtual void OnCollisionEnter(Collision collision)
 	{
-		if (_isPhysicallyPlayable && collision.gameObject == _game.Boomon.gameObject)
+		if (_isPhysicallyPlayable && collision.gameObject.tag == _game.Boomon.tag)
 			Play();
 	}
 
 	protected virtual void OnTriggerEnter(Collider other)
     {
-        if (_isPhysicallyPlayable && other.gameObject == _game.Boomon.gameObject)
+        if (_isPhysicallyPlayable && other.gameObject.tag == _game.Boomon.tag)
             Play();
     }
 

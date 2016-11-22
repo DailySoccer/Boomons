@@ -66,7 +66,7 @@ public class Cutscene : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if(IsPlaying || other.gameObject != _game.Boomon.gameObject)
+		if(IsPlaying || other.tag != _game.Boomon.tag)
 			return;
 
 		Play();
