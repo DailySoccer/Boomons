@@ -42,9 +42,8 @@ public class Cutscene : MonoBehaviour
 
 	private void OnEnable()
 	{
-		var endState = _animator.GetBehaviour<CutsceneEndState>();
-		if(endState != null)
-			endState.End += OnCutsceneEnd;
+		foreach (var s in _animator.GetBehaviours<CutsceneEndState>())
+			s.End += OnCutsceneEnd;
 
 		_driver.BoomonActiveChange	+= OnBoomonActiveChange;
 		_driver.BoomonStateChange	+= OnBoomonStateChange;
@@ -55,9 +54,8 @@ public class Cutscene : MonoBehaviour
 	{
 		StopAllCoroutines();
 
-		var endState = _animator.GetBehaviour<CutsceneEndState>();
-		if(endState != null)
-			endState.End -= OnCutsceneEnd;
+		foreach(var s in _animator.GetBehaviours<CutsceneEndState>())
+			s.End -= OnCutsceneEnd;
 
 		_driver.BoomonStateChange	-= OnBoomonStateChange;
 		_driver.BoomonEmotionChange -= OnBoomonEmotionChange;
