@@ -40,6 +40,7 @@ GameObject:
   - 82: {fileID: 82000011253737436}
   - 136: {fileID: 136000012117924172}
   - 114: {fileID: 114000012001078882}
+  - 114: {fileID: 114000012982326204}
   m_Layer: 12
   m_Name: JackBoxPirate
   m_TagString: Untagged
@@ -156,7 +157,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011386174170}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -10.76, y: 0, z: 14.03}
+  m_LocalPosition: {x: -10.41, y: 0, z: 22.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children:
@@ -336,7 +337,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -376,36 +377,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playOnEnable: 0
+  _isPhysicallyPlayable: 0
+  _interactableRadio: 4
+  _playTriggerName: Play
+--- !u!114 &114000012982326204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011386174170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _touchLayerName: Touchable
   _mustReceiveOnlyItsTouches: 1
   _tapStart:
     m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      m_Calls:
+      - m_Target: {fileID: 114000012001078882}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   _tapStop:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   _tapStay:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   _doubleTap:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   _swipe:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Touchable+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  _playTriggerName: Play
-  _playerTag: Player
-  _activateOnEnable: 0
 --- !u!136 &136000012117924172
 CapsuleCollider:
   m_ObjectHideFlags: 1

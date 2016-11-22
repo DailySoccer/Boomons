@@ -52,9 +52,8 @@ GameObject:
   - 4: {fileID: 4000012642564302}
   - 95: {fileID: 95000012096050402}
   - 82: {fileID: 82000013345252754}
-  - 135: {fileID: 135000013292141994}
+  - 135: {fileID: 135000013856549852}
   - 114: {fileID: 114000011625727842}
-  - 114: {fileID: 114000011253867382}
   m_Layer: 12
   m_Name: Parrot
   m_TagString: Untagged
@@ -95,7 +94,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012531956130}
   m_LocalRotation: {x: -0, y: -0.27475643, z: -0, w: 0.9615139}
-  m_LocalPosition: {x: -11.77, y: 1.38, z: -12.34}
+  m_LocalPosition: {x: -11.6, y: 1.38, z: -12.34}
   m_LocalScale: {x: 2.5035148, y: 2.503515, z: 2.503515}
   m_LocalEulerAnglesHint: {x: 0, y: -31.990002, z: 0}
   m_Children:
@@ -194,55 +193,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114000011253867382
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012531956130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _touchLayerName: Touchable
-  _mustReceiveOnlyItsTouches: 1
-  _tapStart:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114000011625727842}
-        m_MethodName: OnTapStart
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _tapStop:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _tapStay:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _doubleTap:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _swipe:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!114 &114000011625727842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,7 +208,7 @@ MonoBehaviour:
   _isPhysicallyPlayable: 0
   _interactableRadio: 4
   _playTriggerName: Play
---- !u!135 &135000013292141994
+--- !u!135 &135000013856549852
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
