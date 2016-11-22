@@ -33,14 +33,22 @@ public class ItemSignposter : MonoBehaviour
 		_animator = GetComponentInChildren<Animator>();
 		_audio = GetComponent<AudioSource>();
 
-		if(_itemToSignpost == null) {
-			Debug.LogWarning("ItemSignposter::Start>> No target defined; deactivating...", this);
+		if (_itemToSignpost == null) {
+			Debug.LogWarning("ItemSignposter::Awake>> No target defined; deactivating...", this);
 			enabled = false;
+
+		} else {
+			_itemToSignpost.InteractableChange += OnItemInteractableChange;
 		}
+
+		gameObject.SetActive(false);
 	}				
 	
 	private void OnDestroy()
 	{
+		if(_itemToSignpost != null)
+			_itemToSignpost.InteractableChange -= OnItemInteractableChange;
+		
 		_audio = null;
 		_itemToSignpost = null;	  
 		_animator = null;
