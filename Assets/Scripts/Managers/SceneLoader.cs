@@ -7,7 +7,7 @@ public class SceneLoader : Singleton<SceneLoader>
 {
 	// Use this for initialization
 	void Start () {
-	
+		_alreadyShown = false;
 	}
 
 	private void Update()
@@ -39,7 +39,7 @@ public class SceneLoader : Singleton<SceneLoader>
 
 	public void GoToParentsMenu()
 	{
-		Application.OpenURL("http://www.unusualwonder.com/");
+		SceneManager.LoadScene("ParentsWebView");
 	}
 
 	public void GoToQRUnlock(string previousScene)
@@ -50,9 +50,10 @@ public class SceneLoader : Singleton<SceneLoader>
 
 	public void GoToSelectionMenu()
 	{
-		if (!PlayerPrefs.HasKey("Room 1"))
+		if (!PlayerPrefs.HasKey("Room 1") && !_alreadyShown) {
 			GoToQRUnlock("SelectionMenu");
-		else
+			_alreadyShown = true;
+		}else
 			SceneManager.LoadScene("SelectionMenu");
 	}
 
@@ -124,5 +125,6 @@ public class SceneLoader : Singleton<SceneLoader>
 	//============================================================
 
 	public int BoomonLinked = -1;
+	private bool _alreadyShown;
 	private string PreviousScene;
 }
