@@ -127,7 +127,7 @@ public class Cutscene : MonoBehaviour
 	private void OnTransitionEnd()
 	{
 		Transition.Instance.AnimEnd -= OnTransitionEnd;
-		SceneLoader.Instance.GoToMainMenu();
+		SceneLoader.Instance.GoToSelectionMenu();
 		Transition.Instance.StartAnim(1f, true);
 	}
 
