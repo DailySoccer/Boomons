@@ -66,7 +66,7 @@ public class RigidThrower : Toucher
 
 		_inchesSqrMax = Mathf.Pow(_touchDistanceInchesMax*Screen.dpi, 2f);
 
-		_verticalSpeed = CalcVerticalSpeed(_throwPeakHeight);
+		//_throwSpeedMax = CalcVerticalSpeed(_throwPeakHeight);
 	}
 
 
@@ -108,7 +108,7 @@ public class RigidThrower : Toucher
 		}
 
 		float tan = swipeVector.x/swipeVector.y;
-		return _verticalSpeed*(camera.transform.up + tan*camera.transform.right);
+		return _throwSpeedMax * (camera.transform.up + tan*camera.transform.right);
 /**/
 
 	}
@@ -137,12 +137,12 @@ public class RigidThrower : Toucher
 	[SerializeField, Range(0f, 100f)] private float _touchDistanceInchesMax = 1f;
 	[SerializeField] private bool _isRethrowable = false;
 	[SerializeField, Range(0f, 20f)] private float _throwPeakHeight = 10f;
-	//[SerializeField, Range(0.5f, 50f)] private float _throwSpeedMax = 30f;
+	[SerializeField, Range(0.5f, 50f)] private float _throwSpeedMax = 20f;
 
 
 
 	private float _inchesSqrMax;
-	private float _verticalSpeed;
+	//private float _verticalSpeed;
 
 	#endregion
 
