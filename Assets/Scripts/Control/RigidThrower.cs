@@ -65,7 +65,11 @@ public class RigidThrower : Toucher
 			_rigid = GetComponentInChildren<Rigidbody>();
 
 		_inchesSqrMax = Mathf.Pow(_touchDistanceInchesMax*Screen.dpi, 2f);
+
+		_verticalSpeed = CalcVerticalSpeed(_throwPeakHeight);
 	}
+
+
 
 	protected override void OnDestroy()
 	{
@@ -88,15 +92,31 @@ public class RigidThrower : Toucher
 	private Vector3 CalcThrowVelocity(Vector2 swipeVector, float swipeSpeedRatio)
 	{
 		Camera camera = Camera.main;
+/*
 		Vector3 dir = swipeVector.x * camera.transform.right 
-			        + swipeVector.y * camera.transform.up;
+					+ swipeVector.y * camera.transform.up;
 
 		swipeSpeedRatio = .25f + .75f*swipeSpeedRatio;
-//*
+
 		return swipeSpeedRatio * _throwSpeedMax * dir.normalized;
 /*/
-		return _throwSpeedMax * dir.normalized;
+
+		if (swipeVector.y <= 0f) {
+			Debug.LogWarning("RigidThrower::CalcThrowVelocity>> Throw degrees <= 0f; " +
+			                 "horizontal velocity should be infinity to reach Peak Heigh", this);
+			swipeVector.y = 0.1f;
+		}
+
+		float tan = swipeVector.x/swipeVector.y;
+		return _verticalSpeed*(camera.transform.up + tan*camera.transform.right);
 /**/
+
+	}
+
+
+	private static float CalcVerticalSpeed(float parabolePeakHeight)
+	{
+		return Mathf.Sqrt(2f * parabolePeakHeight * Physics.gravity.magnitude);
 	}
 	#endregion
 
@@ -114,10 +134,15 @@ public class RigidThrower : Toucher
 
 	private Rigidbody _rigid;
 
-	[SerializeField] private bool _isRethrowable = false;
-	[SerializeField, Range(0.5f, 50f)] private float _throwSpeedMax = 30f;
 	[SerializeField, Range(0f, 100f)] private float _touchDistanceInchesMax = 1f;
+	[SerializeField] private bool _isRethrowable = false;
+	[SerializeField, Range(0f, 20f)] private float _throwPeakHeight = 10f;
+	//[SerializeField, Range(0.5f, 50f)] private float _throwSpeedMax = 30f;
+
+
+
 	private float _inchesSqrMax;
+	private float _verticalSpeed;
 
 	#endregion
 

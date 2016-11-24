@@ -1553,9 +1553,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _groundParams:
-    StopVelocityMaxSqr: 0.1
-    Timeout: 1
-    LayerName: Ground
+    _stopVelocityMaxSqr: 0.1
+    _timeoutSecs: 1
+    _layerName: Ground
+    _groundDegreesMax: 45
 --- !u!114 &114000011486835598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1572,30 +1573,31 @@ MonoBehaviour:
   _tapStart:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   _tapStop:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   _tapStay:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   _doubleTap:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   _swipe:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Touchable+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  _throwSpeedMax: 30
   _touchDistanceInchesMax: 1
+  _isRethrowable: 0
+  _throwPeakHeight: 20
 --- !u!136 &136000010973252800
 CapsuleCollider:
   m_ObjectHideFlags: 1

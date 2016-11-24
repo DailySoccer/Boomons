@@ -3518,6 +3518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playOnEnable: 0
+  _playOnInteractable: 0
   _isPhysicallyPlayable: 0
   _interactableRadio: 3
   _playTriggerName: Play
@@ -4772,6 +4773,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.2919308
       objectReference: {fileID: 0}
+    - target: {fileID: 82000011803829034, guid: d47d519f61422df42ab3a2a06fd70c62,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d47d519f61422df42ab3a2a06fd70c62, type: 2}
   m_IsPrefabParent: 0
@@ -5296,6 +5302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playOnEnable: 0
+  _playOnInteractable: 0
   _isPhysicallyPlayable: 0
   _interactableRadio: 4
   _playTriggerName: Play
@@ -5821,6 +5828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playOnEnable: 1
+  _playOnInteractable: 0
   _isPhysicallyPlayable: 0
   _interactableRadio: 4
   _playTriggerName: Play
@@ -11108,6 +11116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playOnEnable: 1
+  _playOnInteractable: 0
   _isPhysicallyPlayable: 0
   _interactableRadio: 4
   _playTriggerName: Play
