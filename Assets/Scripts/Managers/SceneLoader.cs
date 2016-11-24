@@ -39,8 +39,6 @@ public class SceneLoader : Singleton<SceneLoader>
 	public void GoToParentsMenu()
 	{
 		SceneManager.LoadScene("ParentsWebView");
-		PlayerPrefs.DeleteAll();
-		PlayerPrefs.Save();
 	}
 
 	public void GoToQRUnlock(string previousScene)
