@@ -138,6 +138,9 @@ public class Item : MonoBehaviour
 
 	private void OnInteractableChange(bool value)
 	{
+		if(value && _playOnInteractable)
+			Play();
+
 		if(_toucher != null)
 			_toucher.IsTouchEnabled = value;
 
@@ -153,6 +156,7 @@ public class Item : MonoBehaviour
 	#region Private Fields
 
     [SerializeField] private bool _playOnEnable = false;
+	[SerializeField] private bool _playOnInteractable = false;
 	[SerializeField] private bool _isPhysicallyPlayable = false;
 	[SerializeField, Range(0f, 10f)] private float _interactableRadio = 4f;
 	[SerializeField] private string _playTriggerName = "Play";
