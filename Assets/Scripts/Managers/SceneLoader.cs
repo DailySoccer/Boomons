@@ -103,7 +103,7 @@ public class SceneLoader : Singleton<SceneLoader>
 		if(operation == null || operation.isDone)
 			yield break;
 
-		yield return new WaitForSeconds(.5f);
+		//yield return new WaitForSeconds(.1f);
 		if (operation.isDone)
 			yield break;
 
