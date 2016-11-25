@@ -8,7 +8,7 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 
 	public event Action<Vector3> GroundEnter;
 
-	public Vector3 Position {  get { return _pelvis.transform.position;  } }
+	public Transform Transform { get { return _pelvis.transform; } }
 	public GroundDetectionParams GroundParams { get { return _groundParams; } }
 
 	public bool IsTeleporting { get; private set; }

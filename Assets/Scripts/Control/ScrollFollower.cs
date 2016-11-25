@@ -6,15 +6,10 @@ public class ScrollFollower : MonoBehaviour
 {
 
 	#region Public Fields
-
-	public float StopZoomRatio {
-		get { return _stopZoomRatio; }
-		set { _stopZoomRatio = Mathf.Clamp01(value);  }
-	}
-
-	public Transform Target 
+	
+	public virtual Transform Target 
 	{
-		private get
+		get
 		{
 			if(_target==null ||!_target.gameObject.activeInHierarchy)
 			{
@@ -26,7 +21,6 @@ public class ScrollFollower : MonoBehaviour
 			}
 			return _target;
 		}
-		set { _target = value; }
 	}
 
 	#endregion
@@ -36,20 +30,16 @@ public class ScrollFollower : MonoBehaviour
 
 	#region Mono
 
-	private void Awake()
+	protected virtual void Awake()
 	{
-		_forward = transform.forward;
-		_right = transform.right;
-		_up = transform.up;
+		
 	}
 
-	private void OnDestroy()
+	protected virtual void OnDestroy()
 	{
 		_target = null;
 
 	}
-
-	
 
 
 	private void LateUpdate()
@@ -61,19 +51,19 @@ public class ScrollFollower : MonoBehaviour
 		Vector3 deltaPos = targetPos - _lastPos;
 
 		Vector3 cameraPos = targetPos;
-		cameraPos += _distance.y * _up;
-		cameraPos -= (1f - _stopZoomRatio) *_distance.z*_forward;
+		cameraPos += _distance.y * RefSystem.Up;
+		cameraPos += (1f - _stopZoomRatio) *_distance.z*RefSystem.ScreenDir;
 
-		int direction = Math.Sign(Vector3.Dot(deltaPos, _right));
+		int direction = Math.Sign(Vector3.Dot(deltaPos, RefSystem.Right));
 
-		cameraPos -= Math.Abs( direction ) * _stopZoomRatio *_distance.z * _forward;
-		cameraPos += direction * _distance.x * _right;
+		cameraPos += Math.Abs( direction ) * _stopZoomRatio *_distance.z * RefSystem.ScreenDir;
+		cameraPos += direction * _distance.x * RefSystem.Right;
 
-		Vector3 fwdDeltaPos = Vector3.Project(cameraPos - transform.position, _forward);
+		Vector3 fwdDeltaPos = Vector3.Project(cameraPos - transform.position, RefSystem.ScreenDir);
 		transform.position = Vector3.Lerp(transform.position, cameraPos - fwdDeltaPos, _lateralSpeed * Time.deltaTime);;
 		transform.position = Vector3.Lerp(transform.position, cameraPos, _depthSpeed * Time.deltaTime);
 
-		transform.forward = (Target.position + .5f * _distance.y * _up - transform.position).normalized;
+		transform.forward = (Target.position + .5f * _distance.y * RefSystem.Up - transform.position).normalized;
 
 		_lastPos = targetPos;
 	}
@@ -96,9 +86,9 @@ public class ScrollFollower : MonoBehaviour
 	#endregion
 
 
-		//=================================================================
+	//=================================================================
 
-	
+	#region Private Fields
 
 	[SerializeField] private Transform _target;
 	[SerializeField] private string _targetTag = "Player"; // TODO FRS 161122 Usar GameManager.Boomon
@@ -109,7 +99,16 @@ public class ScrollFollower : MonoBehaviour
 
 
 	private Vector3 _lastPos;
-	private Vector3 _forward;
-	private Vector3 _right;
-	private Vector3 _up;
+
+	private ReferenceSystem _refSystem;
+	protected virtual ReferenceSystem  RefSystem
+	{
+		get {
+			return _refSystem ??
+			(_refSystem = new ReferenceSystem(transform.position, transform.right) );
+		}
+	}
+	#endregion 
+
 }
+

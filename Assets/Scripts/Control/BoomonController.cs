@@ -53,13 +53,15 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		Right = 1
 	}
 
-	
-	public Vector3 Position {
+
+	public Transform Transform {
 		get {
-			return CurrentState == State.Throw ?
-				Ragdoll.Position : transform.position;
+			return _ragdoll == null ? 
+				transform : _ragdoll.Transform;
 		}
 	}
+
+
 
 	public BoomonRole Role
 	{
@@ -247,7 +249,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		
 
 		_refSystem = new ReferenceSystem(transform.position, _right);
-		transform.up = _refSystem.JumpDir;
+		transform.up = _refSystem.Up;
 
 		_animator = GetComponent<Animator>();
 		_controller = GetComponent<CharacterController>();
@@ -459,15 +461,15 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		//}
 
 		if (_controller.isGrounded ||
-		    Physics.Raycast(transform.position, -_refSystem.JumpDir, _fallHeightMin))
+		    Physics.Raycast(transform.position, -_refSystem.Up, _fallHeightMin))
 		{
 			_controller.SimpleMove(_velocity);
-			Debug.DrawRay(transform.position, -_fallHeightMin * _refSystem.JumpDir, Color.green);
+			Debug.DrawRay(transform.position, -_fallHeightMin * _refSystem.Up, Color.green);
 		}
 		else
 		{
 			Throw(_velocity);
-			Debug.DrawRay(transform.position, -_fallHeightMin * _refSystem.JumpDir, Color.red);
+			Debug.DrawRay(transform.position, -_fallHeightMin * _refSystem.Up, Color.red);
 		}
 	}
 
@@ -485,7 +487,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 			Push(rigid);
 			transform.position = _refSystem.ProjectOnPlane(transform.position);
 
-		} else if(Vector3.Dot(hit.normal, _refSystem.JumpDir) < _groundSlopeCosine) {
+		} else if(Vector3.Dot(hit.normal, _refSystem.Up) < _groundSlopeCosine) {
 			CurrentState = State.Idle;
 		}
 	}
