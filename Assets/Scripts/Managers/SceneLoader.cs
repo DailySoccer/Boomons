@@ -35,18 +35,18 @@ public class SceneLoader : Singleton<SceneLoader>
 
 	public void GoToMainMenu()
 	{
-		SceneManager.LoadScene("MainMenu");
+		LoadSceneAsync("MainMenu");
 	}
 
 	public void GoToParentsMenu()
 	{
-		SceneManager.LoadScene("ParentsWebView");
+		LoadSceneAsync("ParentsWebView");
 	}
 
 	public void GoToQRUnlock(string previousScene)
 	{
 		PreviousScene = previousScene;
-		SceneManager.LoadScene("QRMenu");
+		LoadSceneAsync("QRMenu");
 	}
 
 	public void GoToSelectionMenu()
@@ -55,26 +55,30 @@ public class SceneLoader : Singleton<SceneLoader>
 		{
 			_alreadyShown = true;
 			GoToQRUnlock("SelectionMenu");
-		}else
-			SceneManager.LoadScene("SelectionMenu");
+		}
+		else
+			LoadSceneAsync("SelectionMenu");
+			//SceneManager.LoadScene("SelectionMenu");
 	}
 
 	public void GoBackToPreviousScene()
 	{
 		if (PreviousScene != string.Empty)
 		{
-			SceneManager.LoadScene(PreviousScene);
+			LoadSceneAsync(PreviousScene);
+			//SceneManager.LoadScene(PreviousScene);
 		}
 		else
 		{
 			Debug.Log("<color=orange> Previous Scene not declared! </color>. Set previousScene name before calling 'GoBackToPreviousScene()'");
-			SceneManager.LoadScene("SelectionMenu");
+			LoadSceneAsync("SelectionMenu");
+			//SceneManager.LoadScene("SelectionMenu");
 		}
 	}
 
 	public void GoToRoom(string roomName)
 	{
-		StartCoroutine(GoToRoomCoroutine(roomName));
+		Instance.StartCoroutine(GoToRoomCoroutine(roomName));
 	}
 
 	
@@ -83,7 +87,7 @@ public class SceneLoader : Singleton<SceneLoader>
 
 	private void LoadSceneAsync(string sceneName)
 	{
-		StartCoroutine(LoadSceneCoroutine(sceneName));
+		Instance.StartCoroutine(LoadSceneCoroutine(sceneName));
 	}
 		   
 	private IEnumerator GoToRoomCoroutine(string roomName)
