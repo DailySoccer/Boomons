@@ -131,7 +131,7 @@ Transform:
   - {fileID: 278369343}
   - {fileID: 1926303812}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!65 &13936323
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -262,7 +262,7 @@ Transform:
   - {fileID: 899735241}
   - {fileID: 1341733376}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!4 &185506694 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000013047834078, guid: 3f2951897df93ae4cb5fd72f38170be4,
@@ -413,7 +413,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012865521836, guid: f70f5baaf7768984f8f2609d2e3e8975, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f70f5baaf7768984f8f2609d2e3e8975, type: 2}
@@ -861,12 +861,15 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 347552409}
+  - 65: {fileID: 347552410}
+  - 136: {fileID: 347552411}
+  - 136: {fileID: 347552412}
   m_Layer: 12
   m_Name: Piano
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &347552409
 Transform:
@@ -896,6 +899,44 @@ Transform:
   - {fileID: 1640153608}
   m_Father: {fileID: 62957805}
   m_RootOrder: 11
+--- !u!65 &347552410
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 347552408}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 28.464777, y: 7.2552605, z: 119.237686}
+  m_Center: {x: 6.969035, y: 0.2158368, z: 0.73126626}
+--- !u!136 &347552411
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 347552408}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.3
+  m_Height: 15
+  m_Direction: 0
+  m_Center: {x: 12, y: -0.49, z: -58.85}
+--- !u!136 &347552412
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 347552408}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.3
+  m_Height: 15
+  m_Direction: 0
+  m_Center: {x: 12, y: -0.49, z: 60.37}
 --- !u!1 &397961313
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,15 +949,16 @@ GameObject:
   - 33: {fileID: 397961320}
   - 23: {fileID: 397961319}
   - 95: {fileID: 397961318}
-  - 135: {fileID: 397961317}
   - 82: {fileID: 397961316}
+  - 65: {fileID: 397961317}
   - 114: {fileID: 397961315}
+  - 114: {fileID: 397961321}
   m_Layer: 12
   m_Name: WhiteKey1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &397961314
 Transform:
@@ -957,8 +999,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: e36fe9cce7ce41c4185dac5bc403bf16, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -999,7 +1041,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1010,7 +1052,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1021,9 +1063,9 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!135 &397961317
-SphereCollider:
+    m_RotationOrder: 0
+--- !u!65 &397961317
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -1032,8 +1074,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
-  m_Center: {x: 7, y: 0.000034332275, z: 5.421011e-20}
+  m_Size: {x: 10.527456, y: 7.3789406, z: 16.525478}
+  m_Center: {x: 9.657095, y: -0.68344593, z: 8.104183}
 --- !u!95 &397961318
 Animator:
   serializedVersion: 3
@@ -1089,6 +1131,55 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 397961313}
   m_Mesh: {fileID: 4300002, guid: 7969f7c0c5531e84a91f01dc7591fa79, type: 3}
+--- !u!114 &397961321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 397961313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 397961315}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &446032926
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,15 +1301,16 @@ GameObject:
   - 33: {fileID: 522030507}
   - 23: {fileID: 522030506}
   - 95: {fileID: 522030505}
-  - 135: {fileID: 522030504}
   - 82: {fileID: 522030503}
   - 114: {fileID: 522030502}
+  - 114: {fileID: 522030508}
+  - 65: {fileID: 522030504}
   m_Layer: 12
   m_Name: WhiteKey5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &522030501
 Transform:
@@ -1259,8 +1351,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 3f25cace477ff2e41a62adb346ee9134, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1301,7 +1393,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1312,7 +1404,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1323,9 +1415,9 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!135 &522030504
-SphereCollider:
+    m_RotationOrder: 0
+--- !u!65 &522030504
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -1334,8 +1426,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
-  m_Center: {x: 7, y: -1.6940659e-21, z: -0.000000119209275}
+  m_Size: {x: 10.527456, y: 7.3789406, z: 16.525478}
+  m_Center: {x: 9.657095, y: -0.68344593, z: 8.104183}
 --- !u!95 &522030505
 Animator:
   serializedVersion: 3
@@ -1391,6 +1483,55 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 522030500}
   m_Mesh: {fileID: 4300010, guid: 7969f7c0c5531e84a91f01dc7591fa79, type: 3}
+--- !u!114 &522030508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 522030500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 522030502}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!4 &580239364 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000010847195012, guid: bac76631513a8204f9ac616ae834e320,
@@ -1694,15 +1835,16 @@ GameObject:
   - 33: {fileID: 622397010}
   - 23: {fileID: 622397009}
   - 95: {fileID: 622397008}
-  - 135: {fileID: 622397007}
   - 82: {fileID: 622397006}
   - 114: {fileID: 622397005}
+  - 114: {fileID: 622397011}
+  - 65: {fileID: 622397007}
   m_Layer: 12
   m_Name: WhiteKey3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &622397004
 Transform:
@@ -1743,8 +1885,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 60770d690d649794ba91ed12ca24ca3c, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1785,7 +1927,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1796,7 +1938,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1807,9 +1949,9 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!135 &622397007
-SphereCollider:
+    m_RotationOrder: 0
+--- !u!65 &622397007
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -1818,8 +1960,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
-  m_Center: {x: 7, y: 0.000034332275, z: 5.421011e-20}
+  m_Size: {x: 10.527456, y: 7.3789406, z: 16.525478}
+  m_Center: {x: 9.657095, y: -0.68344593, z: 8.104183}
 --- !u!95 &622397008
 Animator:
   serializedVersion: 3
@@ -1829,7 +1971,7 @@ Animator:
   m_GameObject: {fileID: 622397003}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b5974fbe8c23a784bbe640ee205448a0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6f53be218ad9f6c45892457e07c479d5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1875,6 +2017,55 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 622397003}
   m_Mesh: {fileID: 4300006, guid: 7969f7c0c5531e84a91f01dc7591fa79, type: 3}
+--- !u!114 &622397011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 622397003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 622397005}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!4 &673937845 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000013152381128, guid: a2c242c144de649469768a9db96a1183,
@@ -2514,12 +2705,17 @@ GameObject:
   - 4: {fileID: 977029787}
   - 33: {fileID: 977029789}
   - 23: {fileID: 977029788}
+  - 65: {fileID: 977029792}
+  - 95: {fileID: 977029794}
+  - 82: {fileID: 977029793}
+  - 114: {fileID: 977029790}
+  - 114: {fileID: 977029791}
   m_Layer: 12
   m_Name: BlackKey3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &977029787
 Transform:
@@ -2573,6 +2769,174 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 977029786}
   m_Mesh: {fileID: 4300022, guid: 7969f7c0c5531e84a91f01dc7591fa79, type: 3}
+--- !u!114 &977029790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 977029786}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playOnEnable: 0
+  _playOnInteractable: 0
+  _isPhysicallyPlayable: 0
+  _interactableRadio: 4
+  _playTriggerName: Play
+--- !u!114 &977029791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 977029786}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 977029790}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!65 &977029792
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 977029786}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 19.6623, y: 10.208724, z: 4.849256}
+  m_Center: {x: -2.646978e-23, y: 0.000030517578, z: -0.000000119209275}
+--- !u!82 &977029793
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 977029786}
+  m_Enabled: 0
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f466245ce3cd4d44a8626e85ea72f77b, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!95 &977029794
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 977029786}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &983044426
 GameObject:
   m_ObjectHideFlags: 0
@@ -2589,7 +2953,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &983044427
 Transform:
@@ -2969,12 +3333,17 @@ GameObject:
   - 4: {fileID: 1079254743}
   - 33: {fileID: 1079254745}
   - 23: {fileID: 1079254744}
+  - 65: {fileID: 1079254748}
+  - 95: {fileID: 1079254750}
+  - 82: {fileID: 1079254749}
+  - 114: {fileID: 1079254746}
+  - 114: {fileID: 1079254747}
   m_Layer: 12
   m_Name: BlackKey2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1079254743
 Transform:
@@ -3028,6 +3397,174 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1079254742}
   m_Mesh: {fileID: 4300020, guid: 7969f7c0c5531e84a91f01dc7591fa79, type: 3}
+--- !u!114 &1079254746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1079254742}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playOnEnable: 0
+  _playOnInteractable: 0
+  _isPhysicallyPlayable: 0
+  _interactableRadio: 4
+  _playTriggerName: Play
+--- !u!114 &1079254747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1079254742}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1079254746}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!65 &1079254748
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1079254742}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 19.6623, y: 9.85916, z: 4.849256}
+  m_Center: {x: -2.646978e-23, y: 3.3881318e-21, z: -0.000000119209275}
+--- !u!82 &1079254749
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1079254742}
+  m_Enabled: 0
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f5d3d611db9df49478c09ff8867994c7, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!95 &1079254750
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1079254742}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1081538158
 GameObject:
   m_ObjectHideFlags: 0
@@ -3106,7 +3643,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 485982, guid: d44e3c7e20cb8fd41ab9e5fd57048a8f, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1000014014936846, guid: d44e3c7e20cb8fd41ab9e5fd57048a8f, type: 2}
       propertyPath: m_IsActive
@@ -3204,7 +3741,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013047834078, guid: 3f2951897df93ae4cb5fd72f38170be4, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4000013126207800, guid: 3f2951897df93ae4cb5fd72f38170be4, type: 2}
       propertyPath: m_LocalScale.x
@@ -3212,11 +3749,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000014162747384, guid: 3f2951897df93ae4cb5fd72f38170be4, type: 2}
       propertyPath: m_RootOrder
-      value: 29
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4000011985950262, guid: 3f2951897df93ae4cb5fd72f38170be4, type: 2}
       propertyPath: m_RootOrder
-      value: 30
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012551222380, guid: 3f2951897df93ae4cb5fd72f38170be4, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3f2951897df93ae4cb5fd72f38170be4, type: 2}
@@ -3715,12 +4256,17 @@ GameObject:
   - 4: {fileID: 1465807629}
   - 33: {fileID: 1465807631}
   - 23: {fileID: 1465807630}
+  - 65: {fileID: 1465807634}
+  - 95: {fileID: 1465807636}
+  - 82: {fileID: 1465807635}
+  - 114: {fileID: 1465807632}
+  - 114: {fileID: 1465807633}
   m_Layer: 12
   m_Name: BlackKey5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1465807629
 Transform:
@@ -3774,6 +4320,174 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1465807628}
   m_Mesh: {fileID: 4300026, guid: 7969f7c0c5531e84a91f01dc7591fa79, type: 3}
+--- !u!114 &1465807632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1465807628}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playOnEnable: 0
+  _playOnInteractable: 0
+  _isPhysicallyPlayable: 0
+  _interactableRadio: 4
+  _playTriggerName: Play
+--- !u!114 &1465807633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1465807628}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1465807632}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!65 &1465807634
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1465807628}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 19.6623, y: 9.85916, z: 4.849256}
+  m_Center: {x: -2.646978e-23, y: 0.000030517578, z: -0.000000119209275}
+--- !u!82 &1465807635
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1465807628}
+  m_Enabled: 0
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7b113d6bcc6dc2546be42a3cd4cfca7f, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!95 &1465807636
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1465807628}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1521317031 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000010956795548, guid: 921bc75671b6ff144aff80c7ef202a4e,
@@ -3986,15 +4700,16 @@ GameObject:
   - 33: {fileID: 1640153614}
   - 23: {fileID: 1640153613}
   - 95: {fileID: 1640153612}
-  - 135: {fileID: 1640153611}
   - 82: {fileID: 1640153610}
   - 114: {fileID: 1640153609}
+  - 114: {fileID: 1640153615}
+  - 65: {fileID: 1640153611}
   m_Layer: 12
   m_Name: WhiteKey8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1640153608
 Transform:
@@ -4035,8 +4750,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 0369347026af31f4fa884f047456b641, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -4077,7 +4792,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -4088,7 +4803,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -4099,9 +4814,9 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!135 &1640153611
-SphereCollider:
+    m_RotationOrder: 0
+--- !u!65 &1640153611
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -4110,8 +4825,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
-  m_Center: {x: 7, y: 0.000029563904, z: -1.3552527e-20}
+  m_Size: {x: 10.527456, y: 7.3789406, z: 16.525478}
+  m_Center: {x: 9.657095, y: -0.68344593, z: 8.104183}
 --- !u!95 &1640153612
 Animator:
   serializedVersion: 3
@@ -4121,7 +4836,7 @@ Animator:
   m_GameObject: {fileID: 1640153607}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b5974fbe8c23a784bbe640ee205448a0, type: 2}
+  m_Controller: {fileID: 9100000, guid: be11363ab2312994ba13db69f8d0b58c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4167,6 +4882,55 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1640153607}
   m_Mesh: {fileID: 4300016, guid: 7969f7c0c5531e84a91f01dc7591fa79, type: 3}
+--- !u!114 &1640153615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1640153607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1640153609}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1655044391
 GameObject:
   m_ObjectHideFlags: 0
@@ -4179,15 +4943,16 @@ GameObject:
   - 33: {fileID: 1655044398}
   - 23: {fileID: 1655044397}
   - 95: {fileID: 1655044396}
-  - 135: {fileID: 1655044395}
   - 82: {fileID: 1655044394}
   - 114: {fileID: 1655044393}
+  - 114: {fileID: 1655044399}
+  - 65: {fileID: 1655044395}
   m_Layer: 12
   m_Name: WhiteKey7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1655044392
 Transform:
@@ -4228,8 +4993,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 7a177cd0ac611e64e98b555a44925691, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -4270,7 +5035,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -4281,7 +5046,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -4292,9 +5057,9 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!135 &1655044395
-SphereCollider:
+    m_RotationOrder: 0
+--- !u!65 &1655044395
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -4303,8 +5068,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
-  m_Center: {x: 7, y: -0.0000023841858, z: -3.3881318e-20}
+  m_Size: {x: 10.527456, y: 7.3789406, z: 16.525478}
+  m_Center: {x: 9.657095, y: -0.68344593, z: 8.104183}
 --- !u!95 &1655044396
 Animator:
   serializedVersion: 3
@@ -4314,7 +5079,7 @@ Animator:
   m_GameObject: {fileID: 1655044391}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b5974fbe8c23a784bbe640ee205448a0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6f53be218ad9f6c45892457e07c479d5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4360,6 +5125,55 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1655044391}
   m_Mesh: {fileID: 4300014, guid: 7969f7c0c5531e84a91f01dc7591fa79, type: 3}
+--- !u!114 &1655044399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1655044391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1655044393}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1668740998
 GameObject:
   m_ObjectHideFlags: 0
@@ -4454,12 +5268,17 @@ GameObject:
   - 4: {fileID: 1681310660}
   - 33: {fileID: 1681310662}
   - 23: {fileID: 1681310661}
+  - 65: {fileID: 1681310665}
+  - 95: {fileID: 1681310667}
+  - 82: {fileID: 1681310666}
+  - 114: {fileID: 1681310663}
+  - 114: {fileID: 1681310664}
   m_Layer: 12
   m_Name: BlackKey1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1681310660
 Transform:
@@ -4513,74 +5332,94 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1681310659}
   m_Mesh: {fileID: 4300018, guid: 7969f7c0c5531e84a91f01dc7591fa79, type: 3}
---- !u!23 &1682661417 stripped
-MeshRenderer:
-  m_PrefabParentObject: {fileID: 23000010227605188, guid: 0d9396ef052992b4a8a7820c619152ca,
-    type: 2}
-  m_PrefabInternal: {fileID: 1035616935}
---- !u!1 &1690020351
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1000010532645884, guid: 247ba509dde07bf489b01864a7705d65,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1690020352}
-  - 33: {fileID: 1690020358}
-  - 23: {fileID: 1690020357}
-  - 95: {fileID: 1690020356}
-  - 135: {fileID: 1690020355}
-  - 82: {fileID: 1690020354}
-  - 114: {fileID: 1690020353}
-  m_Layer: 12
-  m_Name: WhiteKey2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1690020352
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4000014076966272, guid: 247ba509dde07bf489b01864a7705d65,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1690020351}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 6.4146523, y: 2.453512, z: -36.32991}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 347552409}
-  m_RootOrder: 7
---- !u!114 &1690020353
+--- !u!114 &1681310663
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1690020351}
-  m_Enabled: 1
+  m_GameObject: {fileID: 1681310659}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 1
+  _isPhysicallyPlayable: 0
   _interactableRadio: 4
   _playTriggerName: Play
---- !u!82 &1690020354
+--- !u!114 &1681310664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1681310659}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1681310663}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!65 &1681310665
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1681310659}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 19.6623, y: 10.208724, z: 4.849256}
+  m_Center: {x: -2.646978e-23, y: 0.000030517578, z: -0.000000119209275}
+--- !u!82 &1681310666
 AudioSource:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1690020351}
-  m_Enabled: 1
+  m_GameObject: {fileID: 1681310659}
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: fc72fedb42b9c694b8fe2e0768c9efec, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -4621,7 +5460,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -4632,7 +5471,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -4643,9 +5482,158 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!95 &1681310667
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1681310659}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!23 &1682661417 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 23000010227605188, guid: 0d9396ef052992b4a8a7820c619152ca,
+    type: 2}
+  m_PrefabInternal: {fileID: 1035616935}
+--- !u!1 &1690020351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1000010532645884, guid: 247ba509dde07bf489b01864a7705d65,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1690020352}
+  - 33: {fileID: 1690020358}
+  - 23: {fileID: 1690020357}
+  - 95: {fileID: 1690020356}
+  - 82: {fileID: 1690020354}
+  - 114: {fileID: 1690020353}
+  - 114: {fileID: 1690020359}
+  - 65: {fileID: 1690020355}
+  m_Layer: 12
+  m_Name: WhiteKey2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1690020352
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4000014076966272, guid: 247ba509dde07bf489b01864a7705d65,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1690020351}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 6.4146523, y: 2.453512, z: -36.32991}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 347552409}
+  m_RootOrder: 7
+--- !u!114 &1690020353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1690020351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playOnEnable: 0
+  _playOnInteractable: 0
+  _isPhysicallyPlayable: 1
+  _interactableRadio: 4
+  _playTriggerName: Play
+--- !u!82 &1690020354
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1690020351}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8fbe2d3a93d39d14480316f7cd327366, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!135 &1690020355
-SphereCollider:
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!65 &1690020355
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -4654,8 +5642,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
-  m_Center: {x: 7, y: 0, z: 0}
+  m_Size: {x: 10.527456, y: 7.3789406, z: 16.525478}
+  m_Center: {x: 9.657095, y: -0.68344593, z: 8.104183}
 --- !u!95 &1690020356
 Animator:
   serializedVersion: 3
@@ -4665,7 +5653,7 @@ Animator:
   m_GameObject: {fileID: 1690020351}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b5974fbe8c23a784bbe640ee205448a0, type: 2}
+  m_Controller: {fileID: 9100000, guid: ffbe69f3ed7b55e448f82df3e8667a76, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4711,6 +5699,55 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1690020351}
   m_Mesh: {fileID: 4300004, guid: 7969f7c0c5531e84a91f01dc7591fa79, type: 3}
+--- !u!114 &1690020359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1690020351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1690020353}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!4 &1711599293 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000010289050520, guid: 921bc75671b6ff144aff80c7ef202a4e,
@@ -4807,15 +5844,16 @@ GameObject:
   - 33: {fileID: 1756935873}
   - 23: {fileID: 1756935872}
   - 95: {fileID: 1756935871}
-  - 135: {fileID: 1756935870}
   - 82: {fileID: 1756935869}
   - 114: {fileID: 1756935868}
+  - 114: {fileID: 1756935874}
+  - 65: {fileID: 1756935870}
   m_Layer: 12
   m_Name: WhiteKey4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1756935867
 Transform:
@@ -4856,8 +5894,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: ed04b5e6d4633e3419c36254ff39143d, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -4898,7 +5936,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -4909,7 +5947,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -4920,9 +5958,9 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!135 &1756935870
-SphereCollider:
+    m_RotationOrder: 0
+--- !u!65 &1756935870
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -4931,8 +5969,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
-  m_Center: {x: 7, y: 0.0000019073486, z: 2.7105054e-20}
+  m_Size: {x: 10.527456, y: 7.3789406, z: 16.525478}
+  m_Center: {x: 9.657095, y: -0.68344593, z: 8.104183}
 --- !u!95 &1756935871
 Animator:
   serializedVersion: 3
@@ -4942,7 +5980,7 @@ Animator:
   m_GameObject: {fileID: 1756935866}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b5974fbe8c23a784bbe640ee205448a0, type: 2}
+  m_Controller: {fileID: 9100000, guid: be11363ab2312994ba13db69f8d0b58c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4988,6 +6026,55 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1756935866}
   m_Mesh: {fileID: 4300008, guid: 7969f7c0c5531e84a91f01dc7591fa79, type: 3}
+--- !u!114 &1756935874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1756935866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1756935868}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1759850719
 GameObject:
   m_ObjectHideFlags: 0
@@ -5000,15 +6087,16 @@ GameObject:
   - 33: {fileID: 1759850726}
   - 23: {fileID: 1759850725}
   - 95: {fileID: 1759850724}
-  - 135: {fileID: 1759850723}
   - 82: {fileID: 1759850722}
   - 114: {fileID: 1759850721}
+  - 114: {fileID: 1759850727}
+  - 65: {fileID: 1759850723}
   m_Layer: 12
   m_Name: WhiteKey6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1759850720
 Transform:
@@ -5049,8 +6137,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 64378b8a594050b459358d40b24bbe55, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -5091,7 +6179,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -5102,7 +6190,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -5113,9 +6201,9 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!135 &1759850723
-SphereCollider:
+    m_RotationOrder: 0
+--- !u!65 &1759850723
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -5124,8 +6212,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
-  m_Center: {x: 7, y: 0, z: 0}
+  m_Size: {x: 10.527456, y: 7.3789406, z: 16.525478}
+  m_Center: {x: 9.657095, y: -0.68344593, z: 8.104183}
 --- !u!95 &1759850724
 Animator:
   serializedVersion: 3
@@ -5135,7 +6223,7 @@ Animator:
   m_GameObject: {fileID: 1759850719}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b5974fbe8c23a784bbe640ee205448a0, type: 2}
+  m_Controller: {fileID: 9100000, guid: ffbe69f3ed7b55e448f82df3e8667a76, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5181,6 +6269,55 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1759850719}
   m_Mesh: {fileID: 4300012, guid: 7969f7c0c5531e84a91f01dc7591fa79, type: 3}
+--- !u!114 &1759850727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1759850719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1759850721}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1001 &1808800116
 Prefab:
   m_ObjectHideFlags: 0
@@ -5473,7 +6610,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011728424258, guid: be7b012368604c945b5424d2609bb80b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.29
+      value: 4.44
       objectReference: {fileID: 0}
     - target: {fileID: 4000011728424258, guid: be7b012368604c945b5424d2609bb80b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5497,7 +6634,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011728424258, guid: be7b012368604c945b5424d2609bb80b, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be7b012368604c945b5424d2609bb80b, type: 2}
@@ -5576,12 +6713,17 @@ GameObject:
   - 4: {fileID: 1855183946}
   - 33: {fileID: 1855183948}
   - 23: {fileID: 1855183947}
+  - 65: {fileID: 1855183951}
+  - 95: {fileID: 1855183953}
+  - 82: {fileID: 1855183952}
+  - 114: {fileID: 1855183949}
+  - 114: {fileID: 1855183950}
   m_Layer: 12
   m_Name: BlackKey4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1855183946
 Transform:
@@ -5635,6 +6777,174 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1855183945}
   m_Mesh: {fileID: 4300024, guid: 7969f7c0c5531e84a91f01dc7591fa79, type: 3}
+--- !u!114 &1855183949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855183945}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playOnEnable: 0
+  _playOnInteractable: 0
+  _isPhysicallyPlayable: 0
+  _interactableRadio: 4
+  _playTriggerName: Play
+--- !u!114 &1855183950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855183945}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1855183949}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!65 &1855183951
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855183945}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 19.6623, y: 10.208724, z: 5.0358634}
+  m_Center: {x: -2.646978e-23, y: 0.000030517578, z: -0.000000119209275}
+--- !u!82 &1855183952
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855183945}
+  m_Enabled: 0
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 42066705152a11a499dcb924add622e9, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!95 &1855183953
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855183945}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!224 &1926303812 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224000012668852246, guid: fe16667a53ea62a43834d91064bce434,
@@ -5996,7 +7306,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012451855230, guid: cd12908801981884e9256c9b250fa969, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd12908801981884e9256c9b250fa969, type: 2}
