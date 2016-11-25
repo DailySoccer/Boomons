@@ -140,7 +140,7 @@ public class Item : MonoBehaviour
 	{
 		if(value && _playOnInteractable)
 			Play();
-
+			 
 		if(_toucher != null)
 			_toucher.IsTouchEnabled = value;
 

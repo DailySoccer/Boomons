@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : Singleton<SceneLoader>
 {
 	// Use this for initialization
-	void Start () {
+	protected override void Awake()
+	{
+		base.Awake();
 	}
 
 	private void Update()

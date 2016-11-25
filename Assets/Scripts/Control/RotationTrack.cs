@@ -41,33 +41,7 @@ public class RotationTrack : MonoBehaviour {
 		}
 	}
 
-	void Start()
-	{
-		GameObject[] playerTag = GameObject.FindGameObjectsWithTag("Player");
-		foreach (GameObject go in playerTag)
-		{
-			if (!DisableGameObList.Contains(go))
-			{
-				DisableGameObList.Add(go);
-			}
-		}
-		GameObject[] InactiveTag = GameObject.FindGameObjectsWithTag("InactiveOnTelescope");
-		foreach (GameObject go in InactiveTag)
-		{
-			if (!DisableGameObList.Contains(go))
-			{
-				DisableGameObList.Add(go);
-			}
-		}
-		GameObject[] ActiveTag = GameObject.FindGameObjectsWithTag("ActiveOnTelescope");
-		foreach (GameObject go in ActiveTag)
-		{
-			if (!EnableGameObList.Contains(go))
-			{
-				EnableGameObList.Add(go);
-			}
-		}
-	}
+
 	
 	// Update is called once per frame
 	void Update () {
@@ -79,12 +53,32 @@ public class RotationTrack : MonoBehaviour {
 		}
 	}
 
-	void OnEnable()
+	private void OnEnable()
 	{
-		if (!_active)
-		{
-			SetActive(true);
+		if (_active)
+			return;
+
+		GameObject[] playerTag = GameObject.FindGameObjectsWithTag("Player");
+		foreach(GameObject go in playerTag) {
+			if(!DisableGameObList.Contains(go)) {
+				DisableGameObList.Add(go);
+			}
 		}
+
+		GameObject[] InactiveTag = GameObject.FindGameObjectsWithTag("InactiveOnTelescope");
+		foreach(GameObject go in InactiveTag) {
+			if(!DisableGameObList.Contains(go)) {
+				DisableGameObList.Add(go);
+			}
+		}
+		GameObject[] ActiveTag = GameObject.FindGameObjectsWithTag("ActiveOnTelescope");
+		foreach(GameObject go in ActiveTag) {
+			if(!EnableGameObList.Contains(go)) {
+				EnableGameObList.Add(go);
+			}
+		}
+
+		SetActive(true);
 	}
 
 	void OnDisable()
