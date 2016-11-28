@@ -136,7 +136,6 @@ public class RigidThrower : Toucher
 
 	[SerializeField, Range(0f, 100f)] private float _touchDistanceInchesMax = 1f;
 	[SerializeField] private bool _isRethrowable = false;
-	[SerializeField, Range(0f, 20f)] private float _throwPeakHeight = 10f;
 	[SerializeField, Range(0.5f, 50f)] private float _throwSpeedMax = 20f;
 
 
