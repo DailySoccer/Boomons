@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Runtime.Remoting;
 using UnityEngine;
 
 
@@ -15,20 +17,26 @@ public class ItemSignposter : MonoBehaviour
 		public AudioClip Clip;
 	}
 
-	//public void Show()
-	//{
-	//	gameObject.SetActive(true);
+	public void Show()
+	{
+		gameObject.SetActive(true);
 
-	//	_animator.SetTrigger("Play");
-	//	_audio.PlayOneShot(_activationClip);
-	//}
+		if(_animator != null)
+			_animator.SetTrigger(_activation.Trigger);
 
-	//public void Hide()
-	//{	
-	//	_audio.PlayOneShot(_deactivationClip);
-	//	gameObject.SetActive(false);
-	//}
+		PlayClip(_activation.Clip);
+	}
 
+	public void Hide()
+	{
+		if(_animator != null)
+			_animator.SetTrigger(_deactivation.Trigger);
+
+		PlayClip(_deactivation.Clip);
+		DelayedDeactivate(_animator.GetCurrentAnimatorStateInfo(0).length);
+	}
+
+	
 	#endregion
 
 	//==============================================================================
@@ -39,9 +47,7 @@ public class ItemSignposter : MonoBehaviour
 	private void Awake()
 	{
 		_animator = GetComponentInChildren<Animator>();
-		_audio = GetComponent<AudioSource>();
-		if (_audio == null)
-			_audio = gameObject.AddComponent<AudioSource>();
+		_audio = GetComponent<AudioSource>();	
 
 		if (_itemToSignpost == null) {
 			Debug.LogWarning("ItemSignposter::Awake>> No target defined; deactivating...", this);
@@ -64,23 +70,10 @@ public class ItemSignposter : MonoBehaviour
 		_animator = null;
 	}
 
-	private void OnEnable()
+	private IEnumerator DelayedDeactivateCoroutine(float secs)
 	{
-		if(_animator != null)
-			_animator.SetTrigger(_activation.Trigger);
-
-		if(_activation.Clip != null)
-			_audio.PlayOneShot(_activation.Clip);
-		else
-			_audio.Play();
-	}
-
-	private void OnDisable()
-	{
-		if(_animator != null)
-			_animator.SetTrigger(_deactivation.Trigger);
-
-		_audio.PlayOneShot(_deactivation.Clip);
+		yield return new WaitForSeconds(secs);
+		gameObject.SetActive(false);
 	}
 
 	#endregion
@@ -92,10 +85,32 @@ public class ItemSignposter : MonoBehaviour
 
 	private void OnItemInteractableChange(bool value)
 	{
-		gameObject.SetActive(value);
+		if (value)
+			Show();
+		else
+			Hide();
 	}
 
 
+
+	#endregion
+
+	//=======================================================================
+
+	#region Private Methods
+
+	private void PlayClip(AudioClip clip)
+	{
+		if(_audio == null)	
+			_audio = gameObject.AddComponent<AudioSource>();
+
+		_audio.PlayOneShot(clip);
+	}
+
+	private void DelayedDeactivate(float secs)
+	{
+		StartCoroutine(DelayedDeactivateCoroutine(secs));
+	}
 
 	#endregion
 
@@ -104,8 +119,8 @@ public class ItemSignposter : MonoBehaviour
 	#region Private Fields
 
 	private AudioSource _audio;
+	private Animator _animator;
 
-	[SerializeField] private Animator _animator;
 	[SerializeField] private Item _itemToSignpost;
 
 	[SerializeField] private AnimationData _activation 
