@@ -70,6 +70,11 @@ public class ItemSignposter : MonoBehaviour
 		_animator = null;
 	}
 
+	private void OnDisable()
+	{
+		StopAllCoroutines();
+	}
+
 	private IEnumerator DelayedDeactivateCoroutine(float secs)
 	{
 		yield return new WaitForSeconds(secs);
