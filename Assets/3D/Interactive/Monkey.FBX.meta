@@ -1,45 +1,48 @@
 fileFormatVersion: 2
-guid: b3585604ff640b1418a38a105a70bc8d
-timeCreated: 1480411124
+guid: caa8bc62936d4814ab2b10de6f407884
+timeCreated: 1480420427
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Bip001 Footsteps
-    100002: DummyFacial
-    100004: //RootNode
-    100006: monkeyArmLeft
-    100008: monkeyArmRight
-    100010: monkeyBody
-    100012: monkeyLegLeft
-    100014: monkeyLegRight
-    100016: path_monkey
-    100018: rig_monkey
-    400000: Bip001 Footsteps
-    400002: DummyFacial
-    400004: //RootNode
-    400006: monkeyArmLeft
-    400008: monkeyArmRight
-    400010: monkeyBody
-    400012: monkeyLegLeft
-    400014: monkeyLegRight
-    400016: path_monkey
-    400018: rig_monkey
+    100000: //RootNode
+    100002: monkeyArmLeft
+    100004: monkeyArmRight
+    100006: monkeyBody
+    100008: monkeyLegLeft
+    100010: monkeyLegRight
+    100012: path_monkey
+    100014: rig_monkey
+    100016: string
+    400000: //RootNode
+    400002: monkeyArmLeft
+    400004: monkeyArmRight
+    400006: monkeyBody
+    400008: monkeyLegLeft
+    400010: monkeyLegRight
+    400012: path_monkey
+    400014: rig_monkey
+    400016: string
     2300000: monkeyArmLeft
     2300002: monkeyArmRight
     2300004: monkeyBody
     2300006: monkeyLegLeft
     2300008: monkeyLegRight
+    2300010: string
     3300000: monkeyArmLeft
     3300002: monkeyArmRight
     3300004: monkeyBody
     3300006: monkeyLegLeft
     3300008: monkeyLegRight
+    3300010: string
     4300000: monkeyArmRight
     4300002: monkeyLegRight
     4300004: monkeyLegLeft
     4300006: monkeyArmLeft
     4300008: monkeyBody
+    4300010: string
+    7400000: Idle
+    7400002: Walk
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -61,7 +64,99 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: path_monkey
+        weight: 1
+      - path: rig_monkey
+        weight: 1
+      - path: rig_monkey/monkeyArmLeft
+        weight: 1
+      - path: rig_monkey/monkeyArmRight
+        weight: 1
+      - path: rig_monkey/monkeyBody
+        weight: 1
+      - path: rig_monkey/monkeyLegLeft
+        weight: 1
+      - path: rig_monkey/monkeyLegRight
+        weight: 1
+      - path: rig_monkey/string
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 24
+      lastFrame: 274
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: path_monkey
+        weight: 1
+      - path: rig_monkey
+        weight: 1
+      - path: rig_monkey/monkeyArmLeft
+        weight: 1
+      - path: rig_monkey/monkeyArmRight
+        weight: 1
+      - path: rig_monkey/monkeyBody
+        weight: 1
+      - path: rig_monkey/monkeyLegLeft
+        weight: 1
+      - path: rig_monkey/monkeyLegRight
+        weight: 1
+      - path: rig_monkey/string
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -96,7 +191,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    rootMotionBoneName: 
+    rootMotionBoneName: rig_monkey
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
