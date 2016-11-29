@@ -11,39 +11,6 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1000012989043436}
   m_IsPrefabParent: 1
---- !u!1 &1000010362344986
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 4000013050653202}
-  - 33: {fileID: 33000013555515092}
-  - 23: {fileID: 23000010743489826}
-  m_Layer: 12
-  m_Name: Signalicon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1000012249509994
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 4000011711030294}
-  - 95: {fileID: 95000010977320928}
-  m_Layer: 0
-  m_Name: SignalIcon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1000012989043436
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,32 +28,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4000011711030294
+--- !u!1 &1000013369784424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000012899200746}
+  - 33: {fileID: 33000014082905882}
+  - 23: {fileID: 23000013921297476}
+  - 95: {fileID: 95000010834970952}
+  m_Layer: 12
+  m_Name: ArrowJump
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4000012899200746
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012249509994}
-  m_LocalRotation: {x: -1.26786e-24, y: -5.3028762e-17, z: 0.86602545, w: -0.49999994}
-  m_LocalPosition: {x: 0.3, y: -0.7, z: 0}
-  m_LocalScale: {x: 0.3648289, y: 0.3648289, z: 0.3648289}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children:
-  - {fileID: 4000013050653202}
-  m_Father: {fileID: 4000013587240466}
-  m_RootOrder: 0
---- !u!4 &4000013050653202
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010362344986}
-  m_LocalRotation: {x: 0.000000059604645, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0250274, y: 1.3803481, z: 0.6159395}
+  m_GameObject: {fileID: 1000013369784424}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.7, y: 1.4, z: 1.4}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 4000011711030294}
+  m_Father: {fileID: 4000013587240466}
   m_RootOrder: 0
 --- !u!4 &4000013587240466
 Transform:
@@ -94,29 +65,28 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012989043436}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -11.19, y: 0, z: -39.115}
+  m_LocalRotation: {x: -0.626379, y: -0.42227265, z: -0.5432705, w: -0.3663228}
+  m_LocalPosition: {x: -10.667, y: 1.61, z: -57.565}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.006, y: -262.093, z: 111.775}
   m_Children:
-  - {fileID: 4000011711030294}
+  - {fileID: 4000012899200746}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &23000010743489826
+--- !u!23 &23000013921297476
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010362344986}
+  m_GameObject: {fileID: 1000013369784424}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
+  m_ReceiveShadows: 0
+  m_MotionVectors: 0
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 78641ec1f22ac9b48bbd348d404339dd, type: 2}
-  - {fileID: 2100000, guid: 0c76fcb3dd397214cb1044379e8f03c6, type: 2}
+  - {fileID: 2100000, guid: a76469a18c5e6f542a12e3edf05dd6ad, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -132,13 +102,13 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &33000013555515092
+--- !u!33 &33000014082905882
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010362344986}
-  m_Mesh: {fileID: 4300000, guid: 8be0d8359d84d8d4c90f68a05d1b4263, type: 3}
+  m_GameObject: {fileID: 1000013369784424}
+  m_Mesh: {fileID: 4300000, guid: e63aa6e2216dd8d478b2a075fe71760c, type: 3}
 --- !u!82 &82000011166051352
 AudioSource:
   m_ObjectHideFlags: 1
@@ -201,7 +171,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -213,16 +183,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!95 &95000010977320928
+--- !u!95 &95000010834970952
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012249509994}
+  m_GameObject: {fileID: 1000013369784424}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 8be0d8359d84d8d4c90f68a05d1b4263, type: 3}
-  m_Controller: {fileID: 9100000, guid: 8463a6c766aaae6429064bd7fa68781a, type: 2}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ebf417b846c67d8439fa5a64a928788a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -241,7 +211,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9555afca723833f4e988adfc7fd87d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 95000010977320928}
+  _animator: {fileID: 0}
   _itemToSignpost: {fileID: 0}
-  _activationClip: {fileID: 8300000, guid: 022bc50869e0a3147821ceda9159e2b1, type: 3}
-  _deactivationClip: {fileID: 0}
+  _activation:
+    Trigger: In
+    Clip: {fileID: 8300000, guid: 4b7ffb1603d09fc4fb75083896e21349, type: 3}
+  _deactivation:
+    Trigger: Out
+    Clip: {fileID: 8300000, guid: 4b7ffb1603d09fc4fb75083896e21349, type: 3}
