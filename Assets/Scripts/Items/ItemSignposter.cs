@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 
 [RequireComponent(typeof(AudioSource))]
@@ -6,6 +7,13 @@ public class ItemSignposter : MonoBehaviour
 {
 
 	#region Public Fields
+
+	[Serializable]
+	public struct AnimationData
+	{
+		public string Trigger;
+		public AudioClip Clip;
+	}
 
 	//public void Show()
 	//{
@@ -32,6 +40,8 @@ public class ItemSignposter : MonoBehaviour
 	{
 		_animator = GetComponentInChildren<Animator>();
 		_audio = GetComponent<AudioSource>();
+		if (_audio == null)
+			_audio = gameObject.AddComponent<AudioSource>();
 
 		if (_itemToSignpost == null) {
 			Debug.LogWarning("ItemSignposter::Awake>> No target defined; deactivating...", this);
@@ -52,19 +62,25 @@ public class ItemSignposter : MonoBehaviour
 		_audio = null;
 		_itemToSignpost = null;	  
 		_animator = null;
-		_activationClip = null;
-		_deactivationClip = null;
 	}
 
 	private void OnEnable()
 	{
-		_animator.SetTrigger("Play");
-		_audio.PlayOneShot(_activationClip);
+		if(_animator != null)
+			_animator.SetTrigger(_activation.Trigger);
+
+		if(_activation.Clip != null)
+			_audio.PlayOneShot(_activation.Clip);
+		else
+			_audio.Play();
 	}
 
 	private void OnDisable()
 	{
-		_audio.PlayOneShot(_deactivationClip);
+		if(_animator != null)
+			_animator.SetTrigger(_deactivation.Trigger);
+
+		_audio.PlayOneShot(_deactivation.Clip);
 	}
 
 	#endregion
@@ -79,7 +95,7 @@ public class ItemSignposter : MonoBehaviour
 		gameObject.SetActive(value);
 	}
 
-	
+
 
 	#endregion
 
@@ -87,12 +103,16 @@ public class ItemSignposter : MonoBehaviour
 
 	#region Private Fields
 
+	private AudioSource _audio;
+
 	[SerializeField] private Animator _animator;
 	[SerializeField] private Item _itemToSignpost;
-	[SerializeField] private AudioClip _activationClip;
-	[SerializeField] private AudioClip _deactivationClip;
 
-	private AudioSource _audio;
+	[SerializeField] private AnimationData _activation 
+		= new AnimationData() { Trigger = "Play", Clip = null};
+	[SerializeField] private AnimationData _deactivation;
+
+	
 
 	#endregion
 }

@@ -27,11 +27,11 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	#region Public Fields
 	public enum State
 	{
-		Idle	= 0,
-		Driven	= 1,
+		Idle = 0,
+		Driven = 1,
 		Emotion = 2,
-		Move	= 3,
-		Throw	= 4,
+		Move = 3,
+		Throw = 4,
 		StandUp = 5,
 		Tickles = 6,
 	};
@@ -43,7 +43,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		Shame = 2,
 		Happiness = 3,
 		Sadness = 4,
-		Scare =	5,
+		Scare = 5,
 	}
 
 	public enum Sense
@@ -56,27 +56,24 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 
 	public Transform Transform {
 		get {
-			return _ragdoll == null ? 
+			return _ragdoll == null ?
 				transform : _ragdoll.Transform;
 		}
 	}
 
 
 
-	public BoomonRole Role
-	{
+	public BoomonRole Role {
 		get { return _role; }
 	}
 
-	
-	public State CurrentState
-	{
+
+	public State CurrentState {
 		get { return _currentState; }
-		set
-		{
-			if (value == _currentState)
+		set {
+			if(value == _currentState)
 				return;
-			
+
 			State lastState = _currentState;
 			_currentState = value;
 
@@ -86,36 +83,32 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	}
 
 
-	public Emotion CurrentEmotion
-	{
+	public Emotion CurrentEmotion {
 		get { return _currentEmotion; }
-		set 
-		{
+		set {
 			if(value == _currentEmotion)
 				return;
-			_currentEmotion=value;
+			_currentEmotion = value;
 
-			CurrentState = value == Emotion.None ? 
+			CurrentState = value == Emotion.None ?
 				State.Idle : State.Emotion;
-			
+
 			if(value != Emotion.None)
 				PlayAnimation(value.ToString());
 		}
 	}
 
 
-	public Sense MoveSense
-	{
+	public Sense MoveSense {
 		get { return _moveSense; }
-		private set
-		{
-			if (value == Sense.None) {
+		private set {
+			if(value == Sense.None) {
 				transform.forward = _refSystem.ScreenDir;
 				transform.position = _refSystem.ProjectOnPlane(transform.position);
 				_velocity = Vector3.zero;
 
 			} else {
-				transform.forward = (int) value*_refSystem.Right;
+				transform.forward = (int)value * _refSystem.Right;
 				_velocity = _moveSpeed * transform.forward;
 			}
 
@@ -133,11 +126,9 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	}
 
 
-	public bool IsTouchEnabled
-	{
-		get{ return _toucher.enabled; }
-		private set
-		{
+	public bool IsTouchEnabled {
+		get { return _toucher.enabled; }
+		private set {
 			_toucher.enabled = value && _isControllable;
 			if(_ragdoll != null)
 				_ragdoll.IsTouchEnabled = value && _isControllable;
@@ -145,7 +136,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	}
 
 	public bool IsTeleporting { get; private set; }
-	public ReferenceSystem ReferenceSystem { get { return _refSystem;  } } 
+	public ReferenceSystem ReferenceSystem { get { return _refSystem; } }
 
 	#endregion
 
@@ -156,19 +147,19 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	public void Move(Vector2 touchPos)
 	{
 		Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
-//*
+		//*
 		float moveValue = Vector3.Dot(Vector3.right, touchPos - screenPos);
-/*/
-		float moveValue = 2f * (touchPos - screenPos).x / Screen.width;
-/**/
-		if (MoveSense == Sense.None || Mathf.Abs(moveValue) > _senseReversalDistMin)
+		/*/
+				float moveValue = 2f * (touchPos - screenPos).x / Screen.width;
+		/**/
+		if(MoveSense == Sense.None || Mathf.Abs(moveValue) > _senseReversalDistMin)
 			MoveSense = (Sense)Mathf.Sign(moveValue);
 
 		CurrentState = State.Move;
 	}
 
 	public void Throw(Vector3 velocity, Vector3? applyPosition = null)
-	{	
+	{
 		if(CurrentState == State.Throw)
 			return;
 
@@ -199,10 +190,10 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		transform.position = target.transform.position;
 		_refSystem = new ReferenceSystem(transform.position, target.Right);
 
-		GoTo( target.ExitPoint );
+		GoTo(target.ExitPoint);
 	}
 
-	
+
 
 	public void GoTo(Vector3 position, float? speed = null, Action callback = null)
 	{
@@ -213,8 +204,8 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		Vector3 move = _drivenTarget - transform.position;
 		float moveSense = Vector3.Dot(move, _refSystem.Right);
 
-		MoveSense = (Sense) Mathf.Sign(moveSense);
-		if (speed.HasValue)
+		MoveSense = (Sense)Mathf.Sign(moveSense);
+		if(speed.HasValue)
 			_velocity = speed.Value * transform.forward;
 
 		CurrentState = State.Driven;
@@ -223,17 +214,17 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	#endregion
 
 	//==============================================================
-	
+
 	#region Mono
 
 	// TODO Extraer subinicializaicones
 	private void Awake()
 	{
 		_isControllable = true;
-		
+
 		Debug.Assert(_right != Vector3.zero, "BoomonController::Awake>> Right move direction not defined!!");
 
-		_role =  (BoomonRole) Enum.Parse(typeof (BoomonRole), name.Split('(')[0]);
+		_role = (BoomonRole)Enum.Parse(typeof(BoomonRole), name.Split('(')[0]);
 
 		_goToCallbacks = new List<Action>();
 		_stateActions = new Dictionary<State, StateActions>
@@ -246,7 +237,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 			{ State.StandUp, new StateActions(OnStandUpStart, OnStandUpEnd)},
 			{ State.Tickles, new StateActions(OnTickleStart, OnTickleEnd)},
 		};
-		
+
 
 		_refSystem = new ReferenceSystem(transform.position, _right);
 		transform.up = _refSystem.Up;
@@ -275,7 +266,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		_animator = null;
 		_controller = null;
 	}
-						  
+
 	private void Start()
 	{
 		MoveSense = Sense.None;
@@ -299,12 +290,12 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	private void Update()
 	{
 		Action update = _stateActions[CurrentState].Update;
-		if (update != null)
+		if(update != null)
 			update();
 
 #if UNITY_EDITOR || UNITY_STANDALONE
-		if (Input.GetKeyDown(KeyCode.E))
-			CurrentEmotion = (Emotion) ((int)(CurrentEmotion + 1) 
+		if(Input.GetKeyDown(KeyCode.E))
+			CurrentEmotion = (Emotion)((int)(CurrentEmotion + 1)
 				% Enum.GetValues(typeof(Emotion)).Length);
 #endif
 	}
@@ -315,7 +306,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	private void OnControllerColliderHit(ControllerColliderHit hit)
 	{
 		Action<ControllerColliderHit> collisionEnter = _stateActions[CurrentState].OnCollisionEnter;
-		if (collisionEnter != null)
+		if(collisionEnter != null)
 			collisionEnter(hit);
 	}
 
@@ -335,7 +326,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	}
 
 	//----------------------------------------------------------------------------------
-	
+
 	#region Events.Toucher
 
 	public void OnTapStart(Toucher toucher, Vector2 touchPos)
@@ -348,7 +339,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 
 	public void OnTapStop(Toucher toucher, Vector2 position)
 	{
-		if (CurrentState == State.Move)
+		if(CurrentState == State.Move)
 			CurrentState = State.Idle;
 	}
 
@@ -360,15 +351,15 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 
 	public void OnDoubleTap(Toucher toucher, Vector2 position)
 	{
-		if ((CurrentState==State.Idle||CurrentState==State.Emotion) && toucher == _toucher)
+		if((CurrentState == State.Idle || CurrentState == State.Emotion) && toucher == _toucher)
 			CurrentState = State.Tickles;
 	}
 
 	public void OnSwipe(Toucher toucher, Vector2 position, Vector2 direction, float speedRatio)
 	{
-		Log("OnSwipe");	
+		Log("OnSwipe");
 
-		if (toucher != _toucher)
+		if(toucher != _toucher)
 			return;
 
 		float throwDegress = Mathf.Atan(direction.y / Mathf.Abs(direction.x)) * Mathf.Rad2Deg;
@@ -381,7 +372,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	#endregion
 
 	//---------------------------------------------------------
-	
+
 	#region Events.Idle
 
 	/// <summary>
@@ -397,9 +388,8 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	{
 		Log("OnIdleStart", "Last=" + lastState);
 
-		
-		switch (lastState)
-		{
+
+		switch(lastState) {
 			case State.Throw:
 			case State.StandUp:
 				PlayAnimation(State.StandUp.ToString());
@@ -412,7 +402,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 				break;
 		}
 	}
-	
+
 
 	/// <summary>
 	/// 
@@ -420,14 +410,14 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	/// <param name="nextState"></param>
 	private void OnIdleEnd(State nextState)
 	{
-		Log("OnIdleEnd" , "Next=" + nextState);
+		Log("OnIdleEnd", "Next=" + nextState);
 
-		IsTouchEnabled =    nextState == State.Tickles
+		IsTouchEnabled = nextState == State.Tickles
 						 || nextState == State.Move
 						 || nextState == State.Emotion;
 	}
-	
-	
+
+
 	#endregion
 
 	//----------------------------------------------------------------------
@@ -448,10 +438,10 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	}
 
 	private void MoveUpdate()
-	{  
+	{
 #if UNITY_EDITOR
 		_animator.SetFloat(_moveMultiplierParam, _moveSpeed * _moveAnimMultiplierBase);
-#endif 
+#endif
 
 		// TODO FRS 161115 Ahora mismo deja al boomon encajonado al primer contacto, pero seguir investigando
 		//if ((_controller.collisionFlags & CollisionFlags.Sides) != 0) 
@@ -460,30 +450,28 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		//	return;
 		//}
 
-		if (_controller.isGrounded ||
-		    Physics.Raycast(transform.position, -_refSystem.Up, _fallHeightMin))
-		{
+		if(_controller.isGrounded ||
+			Physics.Raycast(transform.position, -_refSystem.Up, _fallHeightMin)) {
 			_controller.SimpleMove(_velocity);
 			Debug.DrawRay(transform.position, -_fallHeightMin * _refSystem.Up, Color.green);
-		}
-		else
-		{
+		} else {
 			Throw(_velocity);
 			Debug.DrawRay(transform.position, -_fallHeightMin * _refSystem.Up, Color.red);
 		}
 	}
+
 
 	private void OnMoveCollision(ControllerColliderHit hit)
 	{
 		//Log("OnMoveCollision", hit.gameObject.name);
 
 #if UNITY_EDITOR
-		_groundSlopeCosine = Mathf.Cos(_controller.slopeLimit*Mathf.Deg2Rad);
-#endif 
+		_groundSlopeCosine = Mathf.Cos(_controller.slopeLimit * Mathf.Deg2Rad);
+#endif
 
 		Rigidbody rigid = hit.collider.attachedRigidbody;
 
-		if (rigid != null) {
+		if(rigid != null) {
 			Push(rigid);
 			transform.position = _refSystem.ProjectOnPlane(transform.position);
 
@@ -532,7 +520,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	}
 
 	#endregion
-   
+
 	//------------------------------------------------------------------
 
 	#region Events.Tickle
@@ -567,12 +555,12 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		IsTeleporting = false;
 		MoveSense = Sense.None;
 	}
-	
+
 	private void DrivenUpdate()
 	{
 		bool hasReachedTarget = Vector3.Dot(_velocity, transform.position - _drivenTarget) >= 0f;
-		if (hasReachedTarget)
-			OnDrivenTargetReached(); 
+		if(hasReachedTarget)
+			OnDrivenTargetReached();
 		else
 			_controller.SimpleMove(_velocity);
 	}
@@ -615,18 +603,18 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 
 	private void Push(Rigidbody rigid)
 	{
-		if (rigid == null || rigid.isKinematic)
+		if(rigid == null || rigid.isKinematic)
 			return;
 
-		rigid.AddForce( (1f - _bounciness) * _pushMass * _velocity, ForceMode.Impulse);
+		rigid.AddForce((1f - _bounciness) * _pushMass * _velocity, ForceMode.Impulse);
 		_velocity *= _bounciness;
 
 		var item = rigid.GetComponent<Item>();
-		if (item != null)
+		if(item != null)
 			item.Play();
 	}
 
-	
+
 
 	private void PlayAnimation(string trigger)
 	{
@@ -639,7 +627,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	protected void Log(string method, object msg = null, UnityEngine.Object context = null)
 	{
 		string log = "BoomonController::" + method;
-		if (msg != null && msg.ToString() != string.Empty)
+		if(msg != null && msg.ToString() != string.Empty)
 			log += ">> " + msg;
 
 		Debug.Log("<b><color=cyan>" + log + "</color></b>", context ?? this);
@@ -650,11 +638,9 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 
 	#region Private Fields
 
-	private Ragdoll Ragdoll
-	{
-		get
-		{
-			if (_ragdoll == null) {
+	private Ragdoll Ragdoll {
+		get {
+			if(_ragdoll == null) {
 				string ragdollPath = PathSolver.Instance.GetBoomonPath(_role, PathSolver.InstanceType.Ragdoll);
 				var ragdollPrefab = Resources.Load<GameObject>(ragdollPath);
 				_ragdoll = Instantiate(ragdollPrefab).GetComponent<BoomonRagdoll>();
@@ -663,8 +649,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 			return _ragdoll;
 		}
 
-		set
-		{
+		set {
 			if(_ragdoll == null)
 				return;
 
@@ -674,29 +659,38 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		}
 	}
 
-	
+
 
 
 	//[SerializeField] private Transform _bipedRoot;
 
-	[SerializeField] private string _moveMultiplierParam = "MoveMultiplier";
-	[SerializeField] private Vector3 _right; 
-	[SerializeField, Range(0f, 1f)]		private float _bounciness = 0.8f;
-	[SerializeField, Range(0f, 20f)]	private float _pushMass = 5f;
-   	[SerializeField, Range(0.5f, 50f)]	private float _moveSpeed = 2.5f;
-	[SerializeField, Range(0f, 1f)]     private float _moveAnimMultiplierBase = .3f;
-	[SerializeField, Range(0f, 90f)]	private float _throwDegreesMin = 10f;
-	[SerializeField, Range(0f, 10f)]	private float _senseReversalDistMin = 1f;
-	[SerializeField, Range(0f, 100f)]	private float _fallHeightMin = 100f;
-	
-															
+	[SerializeField]
+	private string _moveMultiplierParam = "MoveMultiplier";
+	[SerializeField]
+	private Vector3 _right;
+	[SerializeField, Range(0f, 1f)]
+	private float _bounciness = 0.8f;
+	[SerializeField, Range(0f, 20f)]
+	private float _pushMass = 5f;
+	[SerializeField, Range(0.5f, 50f)]
+	private float _moveSpeed = 2.5f;
+	[SerializeField, Range(0f, 1f)]
+	private float _moveAnimMultiplierBase = .3f;
+	[SerializeField, Range(0f, 90f)]
+	private float _throwDegreesMin = 10f;
+	[SerializeField, Range(0f, 10f)]
+	private float _senseReversalDistMin = 1f;
+	[SerializeField, Range(0f, 100f)]
+	private float _fallHeightMin = 100f;
+
+
 	private Animator _animator;
 	private CharacterController _controller;
 	private BoomonRagdoll _ragdoll;
 	private FacialAnimator _face;
 	private Toucher _toucher;
 
-	private Vector3 _velocity;	 
+	private Vector3 _velocity;
 	private float _groundSlopeCosine;
 
 	private Sense _moveSense;
@@ -708,10 +702,10 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		public readonly Action<State> OnEnd;
 		public readonly Action Update;
 		public readonly Action<ControllerColliderHit> OnCollisionEnter;
-		
+
 		public StateActions(
-			Action<State> onStart, 
-			Action<State> onEnd, 
+			Action<State> onStart,
+			Action<State> onEnd,
 			Action update = null,
 			Action<ControllerColliderHit> onCollisionEnter = null)
 		{
