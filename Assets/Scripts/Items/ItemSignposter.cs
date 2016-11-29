@@ -19,6 +19,8 @@ public class ItemSignposter : MonoBehaviour
 
 	public void Show()
 	{
+		Debug.Log("ItemSignposter::Show>> " + name, this);
+
 		gameObject.SetActive(true);
 
 		if(_animator != null)
@@ -29,6 +31,8 @@ public class ItemSignposter : MonoBehaviour
 
 	public void Hide()
 	{
+		Debug.Log("ItemSignposter::Hide>> " + name, this);
+
 		if(_animator != null)
 			_animator.SetTrigger(_deactivation.Trigger);
 
@@ -70,6 +74,10 @@ public class ItemSignposter : MonoBehaviour
 		_animator = null;
 	}
 
+	private void OnEnable()
+	{
+	}
+
 	private void OnDisable()
 	{
 		StopAllCoroutines();
@@ -90,6 +98,8 @@ public class ItemSignposter : MonoBehaviour
 
 	private void OnItemInteractableChange(bool value)
 	{
+		StopAllCoroutines();
+
 		if (value)
 			Show();
 		else
