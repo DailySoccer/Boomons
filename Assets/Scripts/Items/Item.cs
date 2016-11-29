@@ -161,7 +161,7 @@ public class Item : MonoBehaviour
 	[SerializeField, Range(0f, 10f)] private float _interactableRadio = 4f;
 	[SerializeField] private string _playTriggerName = "Play";
 
-	public readonly WaitForSeconds InteractableCheckYield = new WaitForSeconds(1f);
+	public readonly WaitForSeconds InteractableCheckYield = new WaitForSeconds(.25f);
 
 	private static GameManager _game;
 	private Animator _animator;
