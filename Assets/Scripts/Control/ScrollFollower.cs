@@ -50,18 +50,18 @@ public class ScrollFollower : MonoBehaviour
 		Vector3 targetPos = Target.position;
 		Vector3 deltaPos = targetPos - _lastPos;
 
-		Vector3 cameraPos = targetPos;
-		cameraPos += _distance.y * RefSystem.Up;
-		cameraPos += (1f - _stopZoomRatio) *_distance.z*RefSystem.ScreenDir;
+		Vector3 pos = targetPos;
+		pos += _distance.y * RefSystem.Up;
+		pos += (1f - _stopZoomRatio) *_distance.z*RefSystem.ScreenDir;
 
 		int direction = Math.Sign(Vector3.Dot(deltaPos, RefSystem.Right));
 
-		cameraPos += Math.Abs( direction ) * _stopZoomRatio *_distance.z * RefSystem.ScreenDir;
-		cameraPos += direction * _distance.x * RefSystem.Right;
+		pos += Math.Abs( direction ) * _stopZoomRatio *_distance.z * RefSystem.ScreenDir;
+		pos += direction * _distance.x * RefSystem.Right;
 
-		Vector3 fwdDeltaPos = Vector3.Project(cameraPos - transform.position, RefSystem.ScreenDir);
-		transform.position = Vector3.Lerp(transform.position, cameraPos - fwdDeltaPos, _lateralSpeed * Time.deltaTime);;
-		transform.position = Vector3.Lerp(transform.position, cameraPos, _depthSpeed * Time.deltaTime);
+		Vector3 fwdDeltaPos = Vector3.Project(pos - transform.position, RefSystem.ScreenDir);
+		transform.position = Vector3.Lerp(transform.position, pos - fwdDeltaPos, _lateralSpeed * Time.deltaTime);;
+		transform.position = Vector3.Lerp(transform.position, pos, _depthSpeed * Time.deltaTime);
 
 		transform.forward = (Target.position + .5f * _distance.y * RefSystem.Up - transform.position).normalized;
 
@@ -90,8 +90,28 @@ public class ScrollFollower : MonoBehaviour
 
 	#region Private Fields
 
+	protected Vector3 Distance{
+		get { return _distance;	 }
+		set { _distance = value; }
+	}
+
+	protected float StopDistanceRatio {
+		get { return _stopZoomRatio;  }
+		set { _stopZoomRatio = value; }
+	}
+
+	protected float DepthSpeed {
+		get { return _depthSpeed;	}
+		set { _depthSpeed = value;  }
+	}
+
+	protected float LateralSpeed {
+		get { return _lateralSpeed;	 }
+		set { _lateralSpeed = value; }
+	}
+
 	[SerializeField] private Transform _target;
-	[SerializeField] private string _targetTag = "Player"; // TODO FRS 161122 Usar GameManager.Boomon
+	[SerializeField] private string _targetTag = "Player"; 
 	[SerializeField] private Vector3 _distance;
 	[SerializeField, Range(0f, 1f)] private float _stopZoomRatio;
 	[SerializeField, Range(0f, 20f)] private float _depthSpeed;

@@ -7,7 +7,12 @@ public class GameManager : Manager
 {
 	#region Public Fields
 
+	public ReferenceSystem ReferenceSystem {
+		get { return Boomon.ReferenceSystem;  }
+	}
 	public BoomonController Boomon { get; private set; }
+	public BoomonCamera Camera { get; private set; }
+
 
 	public BoomonRole BoomonRole
 	{
@@ -34,6 +39,8 @@ public class GameManager : Manager
 				&& !string.IsNullOrEmpty(Room);
 		}
 	}
+
+	
 
 	#endregion
 
@@ -67,6 +74,7 @@ public class GameManager : Manager
 	protected void OnDestroy()
 	{
 		Boomon = null;
+		Camera = null;
 	}
 
 	protected void OnEnable()
@@ -78,7 +86,7 @@ public class GameManager : Manager
 	{
 		SceneManager.sceneLoaded -= OnSceneLoaded;
 	}
-
+ 
 	private void Update()
 	{		 
 
@@ -103,6 +111,9 @@ public class GameManager : Manager
 
 	private void OnSceneLoaded(Scene scene, LoadSceneMode loadMode)
 	{
+		Camera = UnityEngine.Camera.main.GetComponent<BoomonCamera>();
+		Debug.Assert(Camera != null, "GameManager::Start>> Camera not found!!", this);
+
 		Transform spawner = FindSpawner();
 		
 		if(spawner != null) 

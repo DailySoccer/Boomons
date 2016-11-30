@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator), typeof(AudioSource))]
-public class Item : MonoBehaviour
+public class Item : BoomonProximityDetector
 {
 
 	#region Public Fields
@@ -45,8 +44,10 @@ public class Item : MonoBehaviour
 
 	#region Mono
 
-	protected virtual void Awake()
+	protected override void Awake()
 	{
+		base.Awake();
+
 		if(_animator == null)
 			_animator = GetComponent<Animator>();
 		if(_audio == null)
@@ -61,27 +62,23 @@ public class Item : MonoBehaviour
 			_game = MetaManager.Instance.Get<GameManager>();
 	}
 
-	protected virtual void OnDestroy()
+	protected override void OnDestroy()
 	{
 		_audio = null;
 		_animator = null;
 		_toucher = null;
 		_game = null;
+		base.OnDestroy();
 	}
 
-	protected virtual void OnEnable()
+	protected override void OnEnable()
     {
+		base.OnEnable();
         if (_playOnEnable)
             Play();
+    }
 
-		StartCoroutine(InteractableChecker());
-	}
-
-	protected virtual void OnDisable()
-	{
-		StopAllCoroutines();
-	}
-
+	
 	protected virtual void OnCollisionEnter(Collision collision)
 	{
 		if (_isPhysicallyPlayable && collision.gameObject.tag == _game.Boomon.tag)
@@ -95,34 +92,11 @@ public class Item : MonoBehaviour
     }
 
 
-	private IEnumerator InteractableChecker()
-	{
-		for(;;) {
-			IsInteractable = IsBoomonWithinInteractionRadius();
-			yield return InteractableCheckYield;
-		}
-	}
 
 
 	#endregion
 
-	//======================================================================
 
-	#region Private Methods
-
-	private bool IsBoomonWithinInteractionRadius()
-	{
-		if (_game.Boomon == null)
-			return false;
-
-		Vector3 boomonDist = _game.Boomon.transform.position - transform.position;
-		boomonDist = _game.Boomon.ReferenceSystem.ProjectOnPlane(boomonDist, false);
-		float boomonDistSqr = Vector3.SqrMagnitude(boomonDist);
-
-		return boomonDistSqr < _interactableRadio * _interactableRadio;
-	}
-
-	#endregion
 
 	//======================================================================
 
@@ -133,8 +107,19 @@ public class Item : MonoBehaviour
 
 		if(_game.Boomon.CurrentState == BoomonController.State.Idle)
 			Play();
+	}	 
+
+	protected override void OnTargetEnter()
+	{
+		base.OnTargetEnter();
+		IsInteractable = true;
 	}
 
+	protected override void OnTargetExit()
+	{
+		IsInteractable = false;
+		base.OnTargetExit();
+	}
 
 	private void OnInteractableChange(bool value)
 	{
@@ -158,10 +143,9 @@ public class Item : MonoBehaviour
     [SerializeField] private bool _playOnEnable = false;
 	[SerializeField] private bool _playOnInteractable = false;
 	[SerializeField] private bool _isPhysicallyPlayable = false;
-	[SerializeField, Range(0f, 10f)] private float _interactableRadio = 4f;
+	
 	[SerializeField] private string _playTriggerName = "Play";
 
-	public readonly WaitForSeconds InteractableCheckYield = new WaitForSeconds(.25f);
 
 	private static GameManager _game;
 	private Animator _animator;

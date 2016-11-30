@@ -9,7 +9,10 @@ public class BoomonFollower : ScrollFollower
 		get { return _game.Boomon.Transform; }
 	}
 
+
 	#endregion
+
+
 
 	//==============================================
 
@@ -40,4 +43,6 @@ public class BoomonFollower : ScrollFollower
 	private GameManager _game;
 
 	#endregion
+
+	
 }
