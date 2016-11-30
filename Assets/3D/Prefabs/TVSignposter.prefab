@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011239980790}
   m_LocalRotation: {x: -0.16556281, y: 0.68745106, z: -0.16556281, w: 0.68745106}
-  m_LocalPosition: {x: -11.74, y: 6.03, z: -5.72}
+  m_LocalPosition: {x: -11.74, y: 6.03, z: -4.7}
   m_LocalScale: {x: 2.5124888, y: 2.512489, z: 2.512489}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: -27.082}
   m_Children:
@@ -240,7 +240,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9555afca723833f4e988adfc7fd87d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 95000011584984068}
   _itemToSignpost: {fileID: 0}
-  _activationClip: {fileID: 8300000, guid: 4b7ffb1603d09fc4fb75083896e21349, type: 3}
-  _deactivationClip: {fileID: 0}
+  _activation:
+    Trigger: Play
+    Clip: {fileID: 8300000, guid: 4b7ffb1603d09fc4fb75083896e21349, type: 3}
+  _deactivation:
+    Trigger: 
+    Clip: {fileID: 0}

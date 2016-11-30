@@ -240,7 +240,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9555afca723833f4e988adfc7fd87d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 95000013066344390}
   _itemToSignpost: {fileID: 0}
-  _activationClip: {fileID: 8300000, guid: 4b7ffb1603d09fc4fb75083896e21349, type: 3}
-  _deactivationClip: {fileID: 0}
+  _activation:
+    Trigger: Play
+    Clip: {fileID: 8300000, guid: 4b7ffb1603d09fc4fb75083896e21349, type: 3}
+  _deactivation:
+    Trigger: 
+    Clip: {fileID: 0}

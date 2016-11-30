@@ -742,15 +742,6 @@ Prefab:
       propertyPath: m_Name
       value: TelephoneSignposter
       objectReference: {fileID: 0}
-    - target: {fileID: 114000010622021848, guid: f17b76ff8eb404246ae1658e5ef22e59,
-        type: 2}
-      propertyPath: _itemToSignpost
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010344070444, guid: f17b76ff8eb404246ae1658e5ef22e59, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.9229684
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f17b76ff8eb404246ae1658e5ef22e59, type: 2}
   m_IsPrefabParent: 0
@@ -3825,15 +3816,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
-    - target: {fileID: 1000014153953032, guid: f17b76ff8eb404246ae1658e5ef22e59, type: 2}
-      propertyPath: m_Name
-      value: HorseSignposter
-      objectReference: {fileID: 0}
     - target: {fileID: 114000010622021848, guid: f17b76ff8eb404246ae1658e5ef22e59,
         type: 2}
       propertyPath: _itemToSignpost
       value: 
       objectReference: {fileID: 1521317034}
+    - target: {fileID: 1000014153953032, guid: f17b76ff8eb404246ae1658e5ef22e59, type: 2}
+      propertyPath: m_Name
+      value: HorseSignposter
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f17b76ff8eb404246ae1658e5ef22e59, type: 2}
   m_IsPrefabParent: 0
@@ -6706,37 +6697,20 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 1000011842278812, guid: a576efd59e9a7134689ff52f9e1e4d19, type: 2}
-      propertyPath: m_Name
-      value: BinocularsSignposter
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012744304720, guid: a576efd59e9a7134689ff52f9e1e4d19, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.922968
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012744304720, guid: a576efd59e9a7134689ff52f9e1e4d19, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.9229673
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012744304720, guid: a576efd59e9a7134689ff52f9e1e4d19, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1.9229696
-      objectReference: {fileID: 0}
     - target: {fileID: 114000012826017066, guid: a576efd59e9a7134689ff52f9e1e4d19,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1637039630}
-    - target: {fileID: 114000012826017066, guid: a576efd59e9a7134689ff52f9e1e4d19,
-        type: 2}
-      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnTapStart
-      objectReference: {fileID: 0}
     - target: {fileID: 114000014257035156, guid: a576efd59e9a7134689ff52f9e1e4d19,
         type: 2}
       propertyPath: _itemToSignpost
       value: 
       objectReference: {fileID: 1637039630}
+    - target: {fileID: 1000011842278812, guid: a576efd59e9a7134689ff52f9e1e4d19, type: 2}
+      propertyPath: m_Name
+      value: BinocularsSignposter
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a576efd59e9a7134689ff52f9e1e4d19, type: 2}
   m_IsPrefabParent: 0
