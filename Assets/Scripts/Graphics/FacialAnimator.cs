@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[ExecuteInEditMode]
 [RequireComponent(typeof(Animator))]
 public class FacialAnimator : MonoBehaviour
 {
