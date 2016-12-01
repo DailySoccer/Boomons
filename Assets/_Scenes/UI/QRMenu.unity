@@ -1160,6 +1160,7 @@ GameObject:
   - 224: {fileID: 392224097}
   - 222: {fileID: 392224099}
   - 114: {fileID: 392224098}
+  - 114: {fileID: 392224100}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -1218,6 +1219,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 392224096}
+--- !u!114 &392224100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 392224096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598866eea2edd1a42bbfa9814057c027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  refTexture: {fileID: 21300000, guid: c837e0ed3f3afd348868d5bad411d62b, type: 3}
 --- !u!1 &445971702
 GameObject:
   m_ObjectHideFlags: 0
