@@ -103,8 +103,7 @@ public class Item : BoomonProximityDetector
 	#region Events
 
 	public void OnTapStart(Toucher toucher, Vector2 touchPos)
-	{
-
+	{	  
 		if(_game.Boomon.CurrentState == BoomonController.State.Idle)
 			Play();
 	}	 

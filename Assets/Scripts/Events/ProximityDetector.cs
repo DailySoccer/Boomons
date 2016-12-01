@@ -40,6 +40,15 @@ public class ProximityDetector : MonoBehaviour
 		_proximityTarget = null;
 	}
 
+	private void OnDrawGizmosSelected()
+	{
+		Vector3 gizmoPos = _game.ReferenceSystem.ProjectOnPlane(transform.position);
+
+		Gizmos.color = Color.blue;
+		Gizmos.DrawWireSphere(gizmoPos, _proximityRadius); 
+	}
+
+
 	private IEnumerator DistanceChecker()
 	{
 		for(;;) {
@@ -48,6 +57,7 @@ public class ProximityDetector : MonoBehaviour
 		}
 	}
 
+	
 	#endregion
 	
 	//======================================================================
