@@ -21,6 +21,7 @@ GameObject:
   - 4: {fileID: 4000013587240466}
   - 82: {fileID: 82000011166051352}
   - 114: {fileID: 114000010251292022}
+  - 95: {fileID: 95000010276115352}
   m_Layer: 0
   m_Name: JumpSignposter
   m_TagString: Untagged
@@ -38,7 +39,6 @@ GameObject:
   - 4: {fileID: 4000012899200746}
   - 33: {fileID: 33000014082905882}
   - 23: {fileID: 23000013921297476}
-  - 95: {fileID: 95000010834970952}
   m_Layer: 12
   m_Name: ArrowJump
   m_TagString: Untagged
@@ -53,9 +53,9 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013369784424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7, y: 1.4, z: 1.4}
-  m_LocalEulerAnglesHint: {x: 0, y: 720, z: 0}
+  m_LocalPosition: {x: 0.574, y: 0.496, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000013587240466}
   m_RootOrder: 0
@@ -65,10 +65,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012989043436}
-  m_LocalRotation: {x: -0.5426759, y: -0.52033424, z: -0.45023268, w: -0.4817113}
-  m_LocalPosition: {x: -11.29, y: 1.61, z: 16.57}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 3.0820003, y: -262.695, z: 89.689}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -1.59, y: 0.74, z: -33.18}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children:
   - {fileID: 4000012899200746}
   m_Father: {fileID: 0}
@@ -86,7 +86,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a76469a18c5e6f542a12e3edf05dd6ad, type: 2}
+  - {fileID: 2100000, guid: b93bf1636798dbb4182ad6f2dd1089c7, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -108,7 +108,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013369784424}
-  m_Mesh: {fileID: 4300000, guid: e63aa6e2216dd8d478b2a075fe71760c, type: 3}
+  m_Mesh: {fileID: 4300000, guid: a8c43bc54f448de46bb0678b9642264f, type: 3}
 --- !u!82 &82000011166051352
 AudioSource:
   m_ObjectHideFlags: 1
@@ -183,13 +183,13 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!95 &95000010834970952
+--- !u!95 &95000010276115352
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013369784424}
+  m_GameObject: {fileID: 1000012989043436}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ebf417b846c67d8439fa5a64a928788a, type: 2}
@@ -217,4 +217,4 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 4b7ffb1603d09fc4fb75083896e21349, type: 3}
   _deactivation:
     Trigger: Out
-    Clip: {fileID: 8300000, guid: 4b7ffb1603d09fc4fb75083896e21349, type: 3}
+    Clip: {fileID: 0}
