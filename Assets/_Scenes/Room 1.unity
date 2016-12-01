@@ -185,7 +185,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
         type: 2}
-      propertyPath: DisableGameObList.Array.size
+      propertyPath: DisableMeshesList.Array.size
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4000011640052098, guid: 115265ba1d63f5b429c2a09ac2814e1c, type: 2}
@@ -237,36 +237,6 @@ Prefab:
       objectReference: {fileID: 235654993}
     - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
         type: 2}
-      propertyPath: DisableMeshesList.Array.data[2]
-      value: 
-      objectReference: {fileID: 1564437053}
-    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
-        type: 2}
-      propertyPath: DisableCanvasPanel
-      value: 
-      objectReference: {fileID: 524385687}
-    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
-        type: 2}
-      propertyPath: SceneCamera
-      value: 
-      objectReference: {fileID: 341432873}
-    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
-        type: 2}
-      propertyPath: TargetClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 249d7d58641224b45b9e34c20f294201, type: 3}
-    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
-        type: 2}
-      propertyPath: DisableMusic
-      value: 
-      objectReference: {fileID: 855970335}
-    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
-        type: 2}
-      propertyPath: VolumeAttenuance
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
-        type: 2}
       propertyPath: DisableGameObList.Array.data[0]
       value: 
       objectReference: {fileID: 931549973}
@@ -287,13 +257,44 @@ Prefab:
       objectReference: {fileID: 1782596560}
     - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
         type: 2}
+      propertyPath: DisableGameObList.Array.data[4]
+      value: 
+      objectReference: {fileID: 599346914}
+    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
+        type: 2}
+      propertyPath: DisableGameObList.Array.data[5]
+      value: 
+      objectReference: {fileID: 1254246075}
+    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
+        type: 2}
+      propertyPath: DisableCanvasPanel
+      value: 
+      objectReference: {fileID: 524385687}
+    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
+        type: 2}
       propertyPath: DisableTelescope
       value: 
       objectReference: {fileID: 599346915}
-    - target: {fileID: 4000011640052098, guid: 115265ba1d63f5b429c2a09ac2814e1c, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -50.029003
-      objectReference: {fileID: 0}
+    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
+        type: 2}
+      propertyPath: DisableMusic
+      value: 
+      objectReference: {fileID: 855970335}
+    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
+        type: 2}
+      propertyPath: SceneCamera
+      value: 
+      objectReference: {fileID: 341432873}
+    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
+        type: 2}
+      propertyPath: DisableMeshesList.Array.data[2]
+      value: 
+      objectReference: {fileID: 1254246076}
+    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
+        type: 2}
+      propertyPath: DisableMeshesList.Array.data[3]
+      value: 
+      objectReference: {fileID: 1015937753}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 115265ba1d63f5b429c2a09ac2814e1c, type: 2}
   m_IsPrefabParent: 0
@@ -2591,6 +2592,15 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23000010796137390, guid: 3acddd922a50607478f45919dba5eb71,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010856600608, guid: 3acddd922a50607478f45919dba5eb71, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114000010410859858, guid: 3acddd922a50607478f45919dba5eb71, type: 2}
     - {fileID: 114000013750761380, guid: 3acddd922a50607478f45919dba5eb71, type: 2}
@@ -2601,6 +2611,11 @@ Prefab:
 --- !u!4 &1015937752 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000014144975008, guid: 3acddd922a50607478f45919dba5eb71,
+    type: 2}
+  m_PrefabInternal: {fileID: 1015937751}
+--- !u!23 &1015937753 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 23000011955600594, guid: 3acddd922a50607478f45919dba5eb71,
     type: 2}
   m_PrefabInternal: {fileID: 1015937751}
 --- !u!1 &1018110291
@@ -3750,6 +3765,16 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a576efd59e9a7134689ff52f9e1e4d19, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1254246075 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000011842278812, guid: a576efd59e9a7134689ff52f9e1e4d19,
+    type: 2}
+  m_PrefabInternal: {fileID: 1254246074}
+--- !u!23 &1254246076 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 23000011286113718, guid: a576efd59e9a7134689ff52f9e1e4d19,
+    type: 2}
+  m_PrefabInternal: {fileID: 1254246074}
 --- !u!1 &1255591930
 GameObject:
   m_ObjectHideFlags: 0
@@ -4805,11 +4830,6 @@ Transform:
   - {fileID: 1330298098}
   m_Father: {fileID: 0}
   m_RootOrder: 5
---- !u!23 &1564437053 stripped
-MeshRenderer:
-  m_PrefabParentObject: {fileID: 23000011955600594, guid: 3acddd922a50607478f45919dba5eb71,
-    type: 2}
-  m_PrefabInternal: {fileID: 1015937751}
 --- !u!1 &1594392626
 GameObject:
   m_ObjectHideFlags: 0

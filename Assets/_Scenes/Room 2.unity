@@ -2626,6 +2626,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 62957805}
     m_Modifications:
+    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
+        type: 2}
+      propertyPath: DisableMeshesList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011640052098, guid: 115265ba1d63f5b429c2a09ac2814e1c, type: 2}
       propertyPath: m_LocalPosition.x
       value: -10.848
@@ -2693,6 +2698,21 @@ Prefab:
       propertyPath: SceneCamera
       value: 
       objectReference: {fileID: 2142895167}
+    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
+        type: 2}
+      propertyPath: DisableGameObList.Array.data[0]
+      value: 
+      objectReference: {fileID: 1456957345}
+    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
+        type: 2}
+      propertyPath: DisableGameObList.Array.data[1]
+      value: 
+      objectReference: {fileID: 1355392556}
+    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
+        type: 2}
+      propertyPath: DisableMeshesList.Array.data[2]
+      value: 
+      objectReference: {fileID: 1355392557}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 115265ba1d63f5b429c2a09ac2814e1c, type: 2}
   m_IsPrefabParent: 0
@@ -2930,6 +2950,16 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a576efd59e9a7134689ff52f9e1e4d19, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1355392556 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000011842278812, guid: a576efd59e9a7134689ff52f9e1e4d19,
+    type: 2}
+  m_PrefabInternal: {fileID: 1355392555}
+--- !u!23 &1355392557 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 23000011286113718, guid: a576efd59e9a7134689ff52f9e1e4d19,
+    type: 2}
+  m_PrefabInternal: {fileID: 1355392555}
 --- !u!1001 &1392858892
 Prefab:
   m_ObjectHideFlags: 0
@@ -3173,6 +3203,11 @@ MeshRenderer:
 --- !u!23 &1456957344 stripped
 MeshRenderer:
   m_PrefabParentObject: {fileID: 23000013816467992, guid: e09d43ccb1341544fa251d169d4952ff,
+    type: 2}
+  m_PrefabInternal: {fileID: 1456957341}
+--- !u!1 &1456957345 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000012150900502, guid: e09d43ccb1341544fa251d169d4952ff,
     type: 2}
   m_PrefabInternal: {fileID: 1456957341}
 --- !u!1001 &1505358424

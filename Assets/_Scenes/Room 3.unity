@@ -6580,7 +6580,7 @@ Prefab:
     - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
         type: 2}
       propertyPath: DisableMeshesList.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4000011640052098, guid: 115265ba1d63f5b429c2a09ac2814e1c, type: 2}
       propertyPath: m_LocalPosition.x
@@ -6689,6 +6689,11 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
+        type: 2}
+      propertyPath: DisableMeshesList.Array.data[4]
+      value: 
+      objectReference: {fileID: 919244990}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 115265ba1d63f5b429c2a09ac2814e1c, type: 2}
   m_IsPrefabParent: 0
@@ -7492,6 +7497,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dec9928bafb2d324d89de26fc611d884, type: 2}
   m_IsPrefabParent: 0
+--- !u!23 &919244990 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 23000013623880626, guid: dec9928bafb2d324d89de26fc611d884,
+    type: 2}
+  m_PrefabInternal: {fileID: 919244989}
 --- !u!1001 &943429108
 Prefab:
   m_ObjectHideFlags: 0
