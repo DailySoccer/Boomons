@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 
@@ -42,10 +43,21 @@ public class ProximityDetector : MonoBehaviour
 
 	private void OnDrawGizmosSelected()
 	{
-		Vector3 gizmoPos = _game.ReferenceSystem.ProjectOnPlane(transform.position);
+		Vector3 gizmoPos = _game == null ? transform.position :
+			_game.ReferenceSystem.ProjectOnPlane(transform.position);
 
 		Gizmos.color = Color.blue;
-		Gizmos.DrawWireSphere(gizmoPos, _proximityRadius); 
+		//Gizmos.DrawWireSphere(gizmoPos, _proximityRadius);
+
+		//Gizmos.DrawWireSphere(gizmoPos, _proximityRadius);
+
+		//EditorGUI.BeginChangeCheck();
+		//point = Handles.DoPositionHandle(point, handleRotation);
+		//if(EditorGUI.EndChangeCheck()) {
+		//	Undo.RecordObject(curve, "Move Point");
+		//	EditorUtility.SetDirty(curve);
+		//	curve.points[index] = handleTransform.InverseTransformPoint(point);
+		//}
 	}
 
 
@@ -120,6 +132,7 @@ public class ProximityDetector : MonoBehaviour
 		}
 	}
 
+	
 
 	public readonly WaitForSeconds ProximityCheckYield = new WaitForSeconds(.5f);
 
