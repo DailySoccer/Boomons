@@ -74,6 +74,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010183918926}
+  - 114: {fileID: 114000013645953368}
   - 65: {fileID: 65000010217388430}
   - 135: {fileID: 135000013496892956}
   - 65: {fileID: 65000013615250174}
@@ -547,7 +548,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -569,7 +570,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!82 &82000011176314068
 AudioSource:
   m_ObjectHideFlags: 1
@@ -621,7 +622,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -643,7 +644,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!82 &82000012191285314
 AudioSource:
   m_ObjectHideFlags: 1
@@ -695,7 +696,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -717,7 +718,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!95 &95000013065479872
 Animator:
   serializedVersion: 3
@@ -798,11 +799,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4.5
   _playOnEnable: 0
   _playOnInteractable: 0
   _isPhysicallyPlayable: 0
-  _interactableRadio: 3.6
   _playTriggerName: Play
+--- !u!114 &114000013645953368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011837088190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab8014f2a6388f439078a15270681ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _proximityRadius: 4
+  _modifiers:
+    _distance: {x: 0, y: 0.8, z: 4}
+    _stopZoomRatio: 0.3
+    _depthSpeed: 3
+    _lateralSpeed: 15
+    _fieldOfView: 60
 --- !u!114 &114000013913550136
 MonoBehaviour:
   m_ObjectHideFlags: 1
