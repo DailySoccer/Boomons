@@ -956,7 +956,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &347552409
 Transform:
@@ -1045,7 +1045,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &397961314
 Transform:
@@ -1072,10 +1072,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
   _playOnInteractable: 0
   _isPhysicallyPlayable: 1
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!82 &397961316
 AudioSource:
@@ -1439,7 +1439,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &522030501
 Transform:
@@ -1466,10 +1466,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
   _playOnInteractable: 0
   _isPhysicallyPlayable: 1
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!82 &522030503
 AudioSource:
@@ -1783,10 +1783,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 1
   _playOnInteractable: 0
   _isPhysicallyPlayable: 0
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!82 &581314374
 AudioSource:
@@ -1973,7 +1973,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &622397004
 Transform:
@@ -2000,10 +2000,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
   _playOnInteractable: 0
   _isPhysicallyPlayable: 1
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!82 &622397006
 AudioSource:
@@ -2636,10 +2636,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
   _playOnInteractable: 0
   _isPhysicallyPlayable: 0
-  _interactableRadio: 6.9
   _playTriggerName: Play
 --- !u!95 &947128740
 Animator:
@@ -2819,7 +2819,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &977029787
 Transform:
@@ -2884,10 +2884,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
   _playOnInteractable: 0
   _isPhysicallyPlayable: 0
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!114 &977029791
 MonoBehaviour:
@@ -3057,7 +3057,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &983044427
 Transform:
@@ -3541,7 +3541,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1079254743
 Transform:
@@ -3606,10 +3606,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
   _playOnInteractable: 0
   _isPhysicallyPlayable: 0
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!114 &1079254747
 MonoBehaviour:
@@ -4081,24 +4081,6 @@ Prefab:
       propertyPath: m_Name
       value: Farm
       objectReference: {fileID: 0}
-    - target: {fileID: 4000013795316440, guid: 2f9b4263ef6f9d84fb54e17b803e6525, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 2.485
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013795316440, guid: 2f9b4263ef6f9d84fb54e17b803e6525, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 2.411
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012941772662, guid: 2f9b4263ef6f9d84fb54e17b803e6525,
-        type: 2}
-      propertyPath: _interactableRadio
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 82000011987055190, guid: 2f9b4263ef6f9d84fb54e17b803e6525,
-        type: 2}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: fbcedda2c8a40254f8af5f785d1f196f, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f9b4263ef6f9d84fb54e17b803e6525, type: 2}
   m_IsPrefabParent: 0
@@ -4192,7 +4174,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1465807629
 Transform:
@@ -4257,10 +4239,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
   _playOnInteractable: 0
   _isPhysicallyPlayable: 0
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!114 &1465807633
 MonoBehaviour:
@@ -4660,10 +4642,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c80b0ba94dfc31458133b09ad465e4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 3
   _playOnEnable: 0
   _playOnInteractable: 0
   _isPhysicallyPlayable: 0
-  _interactableRadio: 3
   _playTriggerName: Play
   _tracker: {fileID: 329804692}
 --- !u!1 &1640153607
@@ -4687,7 +4669,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1640153608
 Transform:
@@ -4714,10 +4696,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
   _playOnInteractable: 0
   _isPhysicallyPlayable: 1
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!82 &1640153610
 AudioSource:
@@ -4930,7 +4912,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1655044392
 Transform:
@@ -4957,10 +4939,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
   _playOnInteractable: 0
   _isPhysicallyPlayable: 1
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!82 &1655044394
 AudioSource:
@@ -5262,7 +5244,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1681310660
 Transform:
@@ -5327,10 +5309,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
   _playOnInteractable: 0
   _isPhysicallyPlayable: 0
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!114 &1681310664
 MonoBehaviour:
@@ -5510,7 +5492,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1690020352
 Transform:
@@ -5537,10 +5519,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
   _playOnInteractable: 0
   _isPhysicallyPlayable: 1
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!82 &1690020354
 AudioSource:
@@ -5907,7 +5889,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1756935867
 Transform:
@@ -5934,10 +5916,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
   _playOnInteractable: 0
   _isPhysicallyPlayable: 1
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!82 &1756935869
 AudioSource:
@@ -6150,7 +6132,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1759850720
 Transform:
@@ -6177,10 +6159,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
   _playOnInteractable: 0
   _isPhysicallyPlayable: 1
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!82 &1759850722
 AudioSource:
@@ -6783,7 +6765,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1855183946
 Transform:
@@ -6848,10 +6830,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
   _playOnInteractable: 0
   _isPhysicallyPlayable: 0
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!114 &1855183950
 MonoBehaviour:

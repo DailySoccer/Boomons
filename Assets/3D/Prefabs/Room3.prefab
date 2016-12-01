@@ -55,7 +55,7 @@ GameObject:
   - 4: {fileID: 4000011087034666}
   - 33: {fileID: 33000012611780166}
   - 23: {fileID: 23000012782195080}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - 4: {fileID: 4000013524029300}
   - 33: {fileID: 33000011460949974}
   - 23: {fileID: 23000011349312126}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ GameObject:
   - 4: {fileID: 4000011016585888}
   - 33: {fileID: 33000013305361810}
   - 23: {fileID: 23000010409181758}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: e
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   - 4: {fileID: 4000012657607422}
   - 33: {fileID: 33000013670305386}
   - 23: {fileID: 23000011734650334}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,7 +520,7 @@ GameObject:
   - 4: {fileID: 4000012616629836}
   - 33: {fileID: 33000011805286464}
   - 23: {fileID: 23000012685925680}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: o
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,7 +537,7 @@ GameObject:
   - 4: {fileID: 4000012214198604}
   - 33: {fileID: 33000013480901852}
   - 23: {fileID: 23000010184218732}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -724,7 +724,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011473343578}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sponges
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -913,7 +913,7 @@ GameObject:
   - 4: {fileID: 4000012925746428}
   - 33: {fileID: 33000013789794572}
   - 23: {fileID: 23000010627188124}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -945,7 +945,7 @@ GameObject:
   - 4: {fileID: 4000013831793086}
   - 33: {fileID: 33000010545687842}
   - 23: {fileID: 23000012987514736}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: i
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1343,7 +1343,7 @@ GameObject:
   - 4: {fileID: 4000011164972442}
   - 33: {fileID: 33000014109746090}
   - 23: {fileID: 23000010293718788}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: u
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1377,7 +1377,7 @@ GameObject:
   - 4: {fileID: 4000013907366958}
   - 33: {fileID: 33000011983617012}
   - 23: {fileID: 23000013132791396}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5974,10 +5974,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
   _playOnInteractable: 0
   _isPhysicallyPlayable: 1
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!114 &114000012518704742
 MonoBehaviour:
@@ -5990,10 +5990,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
   _playOnInteractable: 0
   _isPhysicallyPlayable: 1
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!114 &114000013372328322
 MonoBehaviour:
@@ -6006,10 +6006,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
   _playOnInteractable: 0
   _isPhysicallyPlayable: 1
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!135 &135000011670454480
 SphereCollider:

@@ -669,7 +669,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010311602382}
   m_LocalRotation: {x: -0, y: 0.31338304, z: -0, w: 0.94962686}
-  m_LocalPosition: {x: 2.476, y: -2.789, z: 2.418}
+  m_LocalPosition: {x: 2.485, y: -2.789, z: 2.411}
   m_LocalScale: {x: 1.1424264, y: 1.1424263, z: 1.1424263}
   m_LocalEulerAnglesHint: {x: 0, y: 26.264002, z: 0}
   m_Children:
@@ -950,7 +950,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f84f8739874d5fc40aee921fc7b8f1a1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fbcedda2c8a40254f8af5f785d1f196f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1367,9 +1367,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
+  _playOnInteractable: 0
   _isPhysicallyPlayable: 0
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!114 &114000010595127026
 MonoBehaviour:
@@ -1480,9 +1481,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
+  _playOnInteractable: 0
   _isPhysicallyPlayable: 0
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!114 &114000012407155362
 MonoBehaviour:
@@ -1495,9 +1497,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
+  _playOnInteractable: 0
   _isPhysicallyPlayable: 0
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!114 &114000012490017216
 MonoBehaviour:
@@ -1608,9 +1611,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
+  _playOnInteractable: 0
   _isPhysicallyPlayable: 0
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!114 &114000012941772662
 MonoBehaviour:
@@ -1623,9 +1627,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 2.5
   _playOnEnable: 0
+  _playOnInteractable: 0
   _isPhysicallyPlayable: 0
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!114 &114000012947439288
 MonoBehaviour:
@@ -1736,9 +1741,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
+  _playOnInteractable: 0
   _isPhysicallyPlayable: 0
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!114 &114000013574736958
 MonoBehaviour:
@@ -1751,9 +1757,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
+  _playOnInteractable: 0
   _isPhysicallyPlayable: 0
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!114 &114000013692082460
 MonoBehaviour:
