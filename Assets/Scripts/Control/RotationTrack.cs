@@ -34,7 +34,7 @@ public class RotationTrack : MonoBehaviour {
 				_auS.clip = TargetClip;
 				_auS.loop = true;
 			}
-			_currentRot = Quaternion.identity;
+			
 			_active = true;
 			this.enabled = false;
 			_SceneCameraRelated = SceneCamera.gameObject.GetComponent<AudioListener>();
@@ -142,7 +142,7 @@ public class RotationTrack : MonoBehaviour {
 
 	private bool _initialized;
 	private bool _active;
-	private Quaternion _currentRot;
+
 	private AudioSource _auS;
 	private AudioListener _SceneCameraRelated;
 }

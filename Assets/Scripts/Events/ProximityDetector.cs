@@ -24,7 +24,7 @@ public class ProximityDetector : MonoBehaviour
 
 	#endregion
 
-
+												  
 	//======================================================
 
 	#region Mono
@@ -40,24 +40,24 @@ public class ProximityDetector : MonoBehaviour
 		_proximityTarget = null;
 	}
 
-	private void OnDrawGizmosSelected()
-	{
-		Vector3 gizmoPos = _game == null ? transform.position :
-			_game.ReferenceSystem.ProjectOnPlane(transform.position);
+	//private void OnDrawGizmosSelected()
+	//{
+	//	Vector3 gizmoPos = _game == null ? transform.position :
+	//		_game.ReferenceSystem.ProjectOnPlane(transform.position);
 
-		Gizmos.color = Color.blue;
-		//Gizmos.DrawWireSphere(gizmoPos, _proximityRadius);
+	//	Gizmos.color = Color.blue;
+	//	Gizmos.DrawWireSphere(gizmoPos, _proximityRadius);
 
-		//Gizmos.DrawWireSphere(gizmoPos, _proximityRadius);
+	//	Gizmos.DrawWireSphere(gizmoPos, _proximityRadius);
 
-		//EditorGUI.BeginChangeCheck();
-		//point = Handles.DoPositionHandle(point, handleRotation);
-		//if(EditorGUI.EndChangeCheck()) {
-		//	Undo.RecordObject(curve, "Move Point");
-		//	EditorUtility.SetDirty(curve);
-		//	curve.points[index] = handleTransform.InverseTransformPoint(point);
-		//}
-	}
+	//	EditorGUI.BeginChangeCheck();
+	//	point = Handles.DoPositionHandle(point, handleRotation);
+	//	if(EditorGUI.EndChangeCheck()) {
+	//		Undo.RecordObject(curve, "Move Point");
+	//		EditorUtility.SetDirty(curve);
+	//		curve.points[index] = handleTransform.InverseTransformPoint(point);
+	//	}
+	//}
 
 
 	private IEnumerator DistanceChecker()
