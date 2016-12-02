@@ -19,7 +19,7 @@ public class ParentsFilter : MonoBehaviour {
     {
         if (Convert.ToInt32(result.text) == _sum)
         {
-            SceneLoader.Instance.GoToParentsMenu();
+            SceneLoader.Instance.GoToParentWebView();
         }
         else
         {

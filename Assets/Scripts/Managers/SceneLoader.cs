@@ -46,6 +46,11 @@ public class SceneLoader : Singleton<SceneLoader>
 		LoadSceneAsync("ParentFilter");
 	}
 
+    public void GoToParentWebView()
+    {
+        LoadSceneAsync("ParentsWebView");
+    }
+
 	public void GoToQRUnlock(string previousScene)
 	{
 		PreviousScene = previousScene;
