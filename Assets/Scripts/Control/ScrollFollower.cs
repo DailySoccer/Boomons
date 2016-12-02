@@ -1,5 +1,5 @@
 ﻿using System;
-
+using UnityEditor;
 using UnityEngine;
 
 public class ScrollFollower : MonoBehaviour
@@ -46,24 +46,34 @@ public class ScrollFollower : MonoBehaviour
 	{
 		if (Target == null)
 			return;
-
+	
 		Vector3 targetPos = Target.position;
 		Vector3 deltaPos = targetPos - _lastPos;
 
-		Vector3 pos = targetPos;
-		pos += _distance.y * RefSystem.Up;
-		pos += (1f - _stopZoomRatio) *_distance.z*RefSystem.ScreenDir;
+		Vector3 p = targetPos;
+		p += _distance.y * RefSystem.Up;
+		p += (1f - _stopZoomRatio) *_distance.z*RefSystem.ScreenDir;
 
 		int direction = Math.Sign(Vector3.Dot(deltaPos, RefSystem.Right));
 
-		pos += Math.Abs( direction ) * _stopZoomRatio *_distance.z * RefSystem.ScreenDir;
-		pos += direction * _distance.x * RefSystem.Right;
+		p += Math.Abs( direction ) * _stopZoomRatio *_distance.z * RefSystem.ScreenDir;
+		p += direction * _distance.x * RefSystem.Right;
 
-		Vector3 fwdDeltaPos = Vector3.Project(pos - transform.position, RefSystem.ScreenDir);
-		transform.position = Vector3.Lerp(transform.position, pos - fwdDeltaPos, _lateralSpeed * Time.deltaTime);;
-		transform.position = Vector3.Lerp(transform.position, pos, _depthSpeed * Time.deltaTime);
+//* // WITH LERP
+		Vector3 fwdDeltaPos = Vector3.Project(p - transform.position, RefSystem.ScreenDir);
+		Vector3 latPos = p - fwdDeltaPos;
 
-		transform.forward = (Target.position + .5f * _distance.y * RefSystem.Up - transform.position).normalized;
+		if(_lateralSpeed < LateralSpeedMax)
+			latPos = Vector3.Lerp(transform.position, latPos , _lateralSpeed * Time.deltaTime);
+		if (_depthSpeed  < DepthSpeedMax)
+			p = Vector3.Lerp(latPos, p, _depthSpeed*Time.deltaTime);
+
+		transform.position = p;	   
+		transform.forward = (Target.position + .5f * _distance.y * RefSystem.Up - transform.position).normalized;	
+
+/*/ // WITHOUT LERP
+		transform.position = pos;
+/**/
 
 		_lastPos = targetPos;
 	}
@@ -90,6 +100,10 @@ public class ScrollFollower : MonoBehaviour
 
 	#region Private Fields
 
+	private const float DepthSpeedMax = 20f;
+	private const float LateralSpeedMax = 20f; 
+
+
 	protected Vector3 Distance{
 		get { return _distance;	 }
 		set { _distance = value; }
@@ -114,8 +128,8 @@ public class ScrollFollower : MonoBehaviour
 	[SerializeField] private string _targetTag = "Player"; 
 	[SerializeField] private Vector3 _distance;
 	[SerializeField, Range(0f, 1f)] private float _stopZoomRatio;
-	[SerializeField, Range(0f, 20f)] private float _depthSpeed;
-	[SerializeField, Range(0f, 20f)] private float _lateralSpeed;
+	[SerializeField, Range(0f, DepthSpeedMax)]   private float _depthSpeed;
+	[SerializeField, Range(0f, LateralSpeedMax)] private float _lateralSpeed;
 
 
 	private Vector3 _lastPos;

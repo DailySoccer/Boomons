@@ -48,15 +48,7 @@ public class BoomonCamera : BoomonFollower
 	#region Public Methods
 
 	public void SetModifiers(Modifiers modifiers)
-	{
-		_backupSetup = new Modifiers(
-			Distance,
-			StopDistanceRatio,
-			DepthSpeed,
-			LateralSpeed,
-			_camera.fieldOfView
-		);
-
+	{	  
 		ApplyModifiers(modifiers);
 	}
 
@@ -77,6 +69,22 @@ public class BoomonCamera : BoomonFollower
 		_camera = GetComponent<Camera>();
 	}
 
+	protected override void OnDestroy()
+	{
+		_camera = null;
+		base.OnDestroy();
+	}
+
+	protected virtual void OnEnable()
+	{
+		_backupSetup = new Modifiers(
+			Distance,
+			StopDistanceRatio,
+			DepthSpeed,
+			LateralSpeed,
+			_camera.fieldOfView
+		);
+	}
 
 	//==============================================================
 

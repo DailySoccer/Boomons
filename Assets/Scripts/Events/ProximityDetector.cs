@@ -36,8 +36,8 @@ public class ProximityDetector : MonoBehaviour
 	
 	protected virtual void OnDestroy()
 	{
+		ProximityTarget = null;
 		_game = null;
-		_proximityTarget = null;
 	}
 
 	//private void OnDrawGizmosSelected()
@@ -126,8 +126,10 @@ public class ProximityDetector : MonoBehaviour
 		{
 			StopAllCoroutines();
 			_proximityTarget = value;
-			if(_proximityTarget != null)
+			if (_proximityTarget != null)
 				StartCoroutine(DistanceChecker());
+			else
+				IsTargetNearby = false;
 		}
 	}
 
