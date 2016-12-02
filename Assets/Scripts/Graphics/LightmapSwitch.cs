@@ -48,16 +48,16 @@ public class LightmapSwitch : MonoBehaviour {
 			for (int i = 0; i < DayNear.Length; i++)
 			{
 				DayLightmap[i] = new LightmapData();
-				DayLightmap[i].lightmapNear = DayNear[i];
-				DayLightmap[i].lightmapFar = DayFar[i];
+				DayLightmap[i].lightmapDir = DayNear[i];
+				DayLightmap[i].lightmapLight = DayFar[i];
 			}
 
 			NightLightmap = new LightmapData[NightNear.Length];
 			for (int i = 0; i < NightNear.Length; i++)
 			{
 				NightLightmap[i] = new LightmapData();
-				NightLightmap[i].lightmapNear = NightNear[i];
-				NightLightmap[i].lightmapFar = NightFar[i];
+				NightLightmap[i].lightmapDir = NightNear[i];
+				NightLightmap[i].lightmapLight = NightFar[i];
 			}
 			_oldPeriod = -1;
 		}
