@@ -16,9 +16,4 @@ public class AdjustToScreen : MonoBehaviour {
             mine.sizeDelta = new Vector2(finalHeight * ratioTex, finalHeight);
         }
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
