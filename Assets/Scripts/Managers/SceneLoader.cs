@@ -9,6 +9,9 @@ public class SceneLoader : Singleton<SceneLoader>
 	protected override void Awake()
 	{
 		base.Awake();
+
+		// HACK FRS 161202 Hacerlo configurable
+		Application.targetFrameRate = 30;
 	}
 
 	private void Update()
