@@ -16,7 +16,8 @@ public class CutsceneDriverEditor : Editor
 		_boomonActive = serializedObject.FindProperty("_animableBoomonActive");
 		_boomonState  = serializedObject.FindProperty("_animableBoomonState");
 		_boomonEmotion = serializedObject.FindProperty("_animableBoomonEmotion");
-	}
+        _boomonMoveSpeed = serializedObject.FindProperty("_boomonMoveSpeed");
+    }
 
 
 
@@ -36,7 +37,9 @@ public class CutsceneDriverEditor : Editor
 		_boomonEmotion.floatValue = EditorGUILayout.Popup( Mathf.FloorToInt(_boomonEmotion.floatValue), _emotionNames);
 		EditorGUILayout.EndHorizontal();
 
-		serializedObject.ApplyModifiedProperties();
+        EditorGUILayout.PropertyField(_boomonMoveSpeed, new GUIContent("Boomon Move Speed"));
+
+        serializedObject.ApplyModifiedProperties();
 	}
 
 
@@ -57,8 +60,8 @@ public class CutsceneDriverEditor : Editor
 	private SerializedProperty _boomonState;
 	private SerializedProperty _boomonEmotion;
 	private SerializedProperty _boomonActive;
+    private SerializedProperty _boomonMoveSpeed;
 
-	private string[] _emotionNames;
+    private string[] _emotionNames;
 	private string[] _stateNames;
-	
 }
