@@ -43,7 +43,7 @@ public class SceneLoader : Singleton<SceneLoader>
 
 	public void GoToParentsMenu()
 	{
-		LoadSceneAsync("ParentsFilter");
+		LoadSceneAsync("ParentFilter");
 	}
 
 	public void GoToQRUnlock(string previousScene)
