@@ -51,7 +51,9 @@ public class WebcamToTexture : MonoBehaviour {
 #endif
 			CameraView.sharedMaterial.mainTexture = _cameraFeed;
             Debug.Log("Camera device rotation: " + _cameraFeed.videoRotationAngle);
-			CameraView.transform.RotateAround(CameraView.transform.position, CameraView.transform.forward, -_cameraFeed.videoRotationAngle);
+            Debug.Log("Camera vertically flipped?: " + _cameraFeed.videoVerticallyMirrored);
+            CameraView.transform.RotateAround(CameraView.transform.position, CameraView.transform.forward, -_cameraFeed.videoRotationAngle);
+            CameraView.transform.localScale = new Vector3(1, _cameraFeed.videoVerticallyMirrored ? -1 : 1, 1);
 			_timeCounter = 0;
 		}
 	}
