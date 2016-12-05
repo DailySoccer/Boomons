@@ -49,9 +49,14 @@ public class WebcamToTexture : MonoBehaviour {
 #if !QR_FAKER
 			_cameraFeed.Play();
 #endif
-			CameraView.sharedMaterial.mainTexture = _cameraFeed;
-            Debug.Log("Camera device rotation: " + _cameraFeed.videoRotationAngle);
-			CameraView.transform.RotateAround(CameraView.transform.position, CameraView.transform.forward, -_cameraFeed.videoRotationAngle);
+            int flipValue = 1;
+#if UNITY_IOS
+            flipValue = -1;
+#endif
+            CameraView.sharedMaterial.mainTexture = _cameraFeed;
+
+            CameraView.transform.RotateAround(CameraView.transform.position, CameraView.transform.forward, -_cameraFeed.videoRotationAngle);
+            CameraView.transform.localScale = new Vector3(1, flipValue * (_cameraFeed.videoVerticallyMirrored ? -1 : 1), 1);
 			_timeCounter = 0;
 		}
 	}
