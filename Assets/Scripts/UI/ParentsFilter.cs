@@ -10,8 +10,14 @@ public class ParentsFilter : MonoBehaviour {
     public List<Text> Results = new List<Text>();
     public RectTransform WrongPanel, QuestionPanel;
 
+    public static int FailCount
+    {
+        get { return _failCount; }
+    }
+
 	// Use this for initialization
 	void OnEnable() {
+        _failCount = 0;
         ResetValues();
 	}
 
@@ -23,6 +29,7 @@ public class ParentsFilter : MonoBehaviour {
         }
         else
         {
+            _failCount++;
             ResetValues();
             WrongPanel.gameObject.SetActive(true);
             QuestionPanel.gameObject.SetActive(false);
@@ -53,4 +60,5 @@ public class ParentsFilter : MonoBehaviour {
     }
 
     private int _sum;
+    private static int _failCount;
 }

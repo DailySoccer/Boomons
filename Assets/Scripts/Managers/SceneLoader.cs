@@ -57,6 +57,11 @@ public class SceneLoader : Singleton<SceneLoader>
 		LoadSceneAsync("QRMenu");
 	}
 
+    public void GoToWebCamCheck()
+    {
+        LoadSceneAsync("ParentWebCamCheck");
+    }
+
 	public void GoToSelectionMenu()
 	{
 		if (!_alreadyShown && !PlayerPrefs.HasKey("Room 1"))
