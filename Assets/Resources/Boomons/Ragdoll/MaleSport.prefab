@@ -1762,10 +1762,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 4
   _modifiers:
-    _distance: {x: 0, y: 0, z: 3}
+    _distance: {x: 0, y: 0, z: 3.5}
     _stopZoomRatio: 0
-    _depthSpeed: 20
-    _lateralSpeed: 20
+    _depthSpeed: 3
+    _lateralSpeed: 15
     _fieldOfView: 60
 --- !u!136 &136000011322709448
 CapsuleCollider:
@@ -1846,7 +1846,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 6a554bb0044f4974a854ab166e6a3c1a, type: 2}
-  - {fileID: 2100000, guid: 6a554bb0044f4974a854ab166e6a3c1a, type: 2}
+  - {fileID: 2100000, guid: 088566d552dd55c4a8df8a0ffcf42311, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

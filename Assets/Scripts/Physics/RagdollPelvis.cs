@@ -75,7 +75,8 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 
 	private void FixedUpdate()
 	{
-		transform.position = Ragdoll.ReferenceSystem.ProjectOnPlane(transform.position);
+		if(Ragdoll.ReferenceSystem != null)
+			Rigid.MovePosition( Ragdoll.ReferenceSystem.ProjectOnPlane(Rigid.position) );
 
 		if (Rigid.velocity.sqrMagnitude < Ragdoll.GroundParams.StopVelocityMaxSqr)
 			IsGrounded = (_groundTimer -= Time.fixedDeltaTime) < 0f;

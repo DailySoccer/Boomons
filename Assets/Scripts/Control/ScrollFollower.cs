@@ -1,12 +1,41 @@
 ﻿using System;
-using UnityEditor;
 using UnityEngine;
 
 public class ScrollFollower : MonoBehaviour
 {
 
 	#region Public Fields
-	
+
+
+	[Serializable]
+	public class Setup
+	{
+		public Vector3 Distance { get { return _distance; } }
+		public float StopZoomRatio { get { return _stopZoomRatio; } }
+		public float DepthSpeed { get { return _depthSpeed; } }
+		public float LateralSpeed { get { return _lateralSpeed; } }
+
+		[SerializeField] private Vector3 _distance = new Vector3(0f, .8f, 4f);
+		[SerializeField, Range(0f, 1f)] private float _stopZoomRatio = .3f;
+		[SerializeField, Range(0f, 20f)] private float _depthSpeed = 3f;
+		[SerializeField, Range(0f, 20f)] private float _lateralSpeed = 15f;
+
+		public Setup() { }
+
+		public Setup(
+			Vector3 distance,
+			float stopZoomRatio = .3f,
+			float depthSpeed = 3f,
+			float lateralSpeed = 15f)
+		{
+			_distance = distance;
+			_stopZoomRatio = stopZoomRatio;
+			_depthSpeed = depthSpeed;
+			_lateralSpeed = lateralSpeed;
+		}
+
+	}
+
 	public virtual Transform Target 
 	{
 		get
@@ -69,7 +98,7 @@ public class ScrollFollower : MonoBehaviour
 			p = Vector3.Lerp(latPos, p, _depthSpeed*Time.deltaTime);
 
 		transform.position = p;	   
-		transform.forward = (Target.position + .5f * _distance.y * RefSystem.Up - transform.position).normalized;	
+		//transform.forward = (Target.position + .5f * _distance.y * RefSystem.Up - transform.position).normalized;	
 
 /*/ // WITHOUT LERP
 		transform.position = pos;
@@ -126,7 +155,7 @@ public class ScrollFollower : MonoBehaviour
 
 	[SerializeField] private Transform _target;
 	[SerializeField] private string _targetTag = "Player"; 
-	[SerializeField] private Vector3 _distance;
+	[SerializeField] private Vector3 _distance = new Vector3(0f, .8f, 4f);
 	[SerializeField, Range(0f, 1f)] private float _stopZoomRatio;
 	[SerializeField, Range(0f, DepthSpeedMax)]   private float _depthSpeed;
 	[SerializeField, Range(0f, LateralSpeedMax)] private float _lateralSpeed;

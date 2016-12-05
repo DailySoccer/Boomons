@@ -8,18 +8,10 @@ public class BoomonCamera : BoomonFollower
 	#region Public Fields
 
 	[Serializable]
-	public class Modifiers
+	public class  Modifiers : Setup 
 	{
 		public float FieldOfView	{ get { return _fieldOfView; } }
-		public Vector3 Distance		{ get { return _distance; } }
-		public float StopZoomRatio	{ get { return _stopZoomRatio; } }
-		public float DepthSpeed		{ get { return _depthSpeed; } }
-		public float LateralSpeed	{ get { return _lateralSpeed; } }
 
-		[SerializeField] private Vector3 _distance = new Vector3(0f, .8f, 4f);
-		[SerializeField, Range(0f, 1f)]  private float _stopZoomRatio = .3f;
-		[SerializeField, Range(0f, 20f)] private float _depthSpeed = 3f;
-		[SerializeField, Range(0f, 20f)] private float _lateralSpeed = 15f;
 		[SerializeField, Range(1f, 180f)] private float _fieldOfView = 60f;
 
 		public Modifiers() { }
@@ -29,13 +21,10 @@ public class BoomonCamera : BoomonFollower
 			float stopZoomRatio = .3f,
 			float depthSpeed = 3f,
 			float lateralSpeed = 15f,
-			float fieldOfView = 60f)
+			float fieldOfView = 60f)	   :
+			base(distance, stopZoomRatio, depthSpeed, lateralSpeed)
 		{
 			_fieldOfView	  = fieldOfView;
-			_distance = distance;
-			_stopZoomRatio = stopZoomRatio;
-			_depthSpeed = depthSpeed;
-			_lateralSpeed = lateralSpeed;
 		}
 		
 	}
@@ -85,6 +74,13 @@ public class BoomonCamera : BoomonFollower
 			_camera.fieldOfView
 		);
 	}
+
+#if UNITY_EDITOR
+	protected virtual void Update()
+	{
+		Debug.DrawLine(transform.position, Target.position, Color.blue);
+	}
+#endif
 
 	//==============================================================
 

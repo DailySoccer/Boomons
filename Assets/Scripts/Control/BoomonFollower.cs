@@ -5,14 +5,15 @@ public class BoomonFollower : ScrollFollower
 
 	#region Public Fields
 
-	public override Transform Target  {
-		get { return _game.Boomon.Transform; }
+	public override Transform Target   {
+		get {
+			return Boomon != null ? 
+				Boomon.Transform :
+				base.Target;
+		}
 	}
 
-
 	#endregion
-
-
 
 	//==============================================
 
@@ -27,6 +28,7 @@ public class BoomonFollower : ScrollFollower
 	protected override void OnDestroy()
 	{
 		_game = null;
+		_boomon = null;
 		base.OnDestroy();
 	}
 
@@ -37,10 +39,19 @@ public class BoomonFollower : ScrollFollower
 	#region Private Fields
 
 	protected override ReferenceSystem RefSystem {
-		get { return _game.Boomon.ReferenceSystem; }
+		get {
+			return Boomon != null
+				? Boomon.ReferenceSystem
+				: base.RefSystem;
+		}
+	}
+
+	protected BoomonController Boomon {
+		get { return _boomon ?? (_boomon = _game.Boomon); }
 	}
 
 	private GameManager _game;
+	private BoomonController _boomon;
 
 	#endregion
 
