@@ -43,14 +43,24 @@ public class SceneLoader : Singleton<SceneLoader>
 
 	public void GoToParentsMenu()
 	{
-		LoadSceneAsync("ParentsWebView");
+		LoadSceneAsync("ParentFilter");
 	}
+
+    public void GoToParentWebView()
+    {
+        LoadSceneAsync("ParentsWebView");
+    }
 
 	public void GoToQRUnlock(string previousScene)
 	{
 		PreviousScene = previousScene;
 		LoadSceneAsync("QRMenu");
 	}
+
+    public void GoToWebCamCheck()
+    {
+        LoadSceneAsync("ParentWebCamCheck");
+    }
 
 	public void GoToSelectionMenu()
 	{

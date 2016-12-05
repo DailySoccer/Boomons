@@ -50,6 +50,7 @@ public class WebcamToTexture : MonoBehaviour {
 			_cameraFeed.Play();
 #endif
 			CameraView.sharedMaterial.mainTexture = _cameraFeed;
+            Debug.Log("Camera device rotation: " + _cameraFeed.videoRotationAngle);
 			CameraView.transform.RotateAround(CameraView.transform.position, CameraView.transform.forward, -_cameraFeed.videoRotationAngle);
 			_timeCounter = 0;
 		}
