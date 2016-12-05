@@ -18,11 +18,11 @@ public class BoomonCamera : BoomonFollower
 
 		public Modifiers(
 			Vector3 distance,
-			float stopZoomRatio = .3f,
+			float stopDistanceRatio = .3f,
 			float depthSpeed = 3f,
 			float lateralSpeed = 15f,
 			float fieldOfView = 60f)	   :
-			base(distance, stopZoomRatio, depthSpeed, lateralSpeed)
+			base(distance, stopDistanceRatio, depthSpeed, lateralSpeed)
 		{
 			_fieldOfView	  = fieldOfView;
 		}
@@ -67,10 +67,10 @@ public class BoomonCamera : BoomonFollower
 	protected virtual void OnEnable()
 	{
 		_backupSetup = new Modifiers(
-			Distance,
-			StopDistanceRatio,
-			DepthSpeed,
-			LateralSpeed,
+			CurrentSetup.Distance,
+			CurrentSetup.StopDistanceRatio,
+			CurrentSetup.DepthSpeed,
+			CurrentSetup.LateralSpeed,
 			_camera.fieldOfView
 		);
 	}
@@ -88,11 +88,8 @@ public class BoomonCamera : BoomonFollower
 
 	private void ApplyModifiers(Modifiers modifiers)
 	{
+		CurrentSetup = modifiers;
 		_camera.fieldOfView = modifiers.FieldOfView;
-		Distance = modifiers.Distance;
-		StopDistanceRatio = modifiers.StopZoomRatio;
-		DepthSpeed = modifiers.DepthSpeed;
-		LateralSpeed = modifiers.LateralSpeed;
 	}
 
 	#endregion

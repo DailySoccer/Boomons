@@ -11,27 +11,29 @@ public class ScrollFollower : MonoBehaviour
 	public class Setup
 	{
 		public Vector3 Distance { get { return _distance; } }
-		public float StopZoomRatio { get { return _stopZoomRatio; } }
+		public float StopDistanceRatio { get { return _stopDistanceRatio; } }
 		public float DepthSpeed { get { return _depthSpeed; } }
 		public float LateralSpeed { get { return _lateralSpeed; } }
 
+		public const float DepthSpeedMax = 20f;
+		public const float LateralSpeedMax = 20f;
 		[SerializeField] private Vector3 _distance = new Vector3(0f, .8f, 4f);
-		[SerializeField, Range(0f, 1f)] private float _stopZoomRatio = .3f;
-		[SerializeField, Range(0f, 20f)] private float _depthSpeed = 3f;
-		[SerializeField, Range(0f, 20f)] private float _lateralSpeed = 15f;
+		[SerializeField, Range(0f, 1f)] private float _stopDistanceRatio = .3f;
+		[SerializeField, Range(0f, DepthSpeedMax)] private float _depthSpeed = 3f;
+		[SerializeField, Range(0f, LateralSpeedMax)] private float _lateralSpeed = 15f;
 
 		public Setup() { }
 
 		public Setup(
 			Vector3 distance,
-			float stopZoomRatio = .3f,
+			float stopDistanceRatio = .3f,
 			float depthSpeed = 3f,
 			float lateralSpeed = 15f)
 		{
 			_distance = distance;
-			_stopZoomRatio = stopZoomRatio;
-			_depthSpeed = depthSpeed;
-			_lateralSpeed = lateralSpeed;
+			_stopDistanceRatio = stopDistanceRatio;
+			_depthSpeed = Mathf.Clamp(depthSpeed, 0f, DepthSpeedMax);
+			_lateralSpeed = Mathf.Clamp(lateralSpeed, 0f, LateralSpeedMax);
 		}
 
 	}
@@ -54,6 +56,11 @@ public class ScrollFollower : MonoBehaviour
 
 	#endregion
 
+
+	//=================================================
+
+	#region
+	#endregion
 
 	//=================================================
 
@@ -80,22 +87,22 @@ public class ScrollFollower : MonoBehaviour
 		Vector3 deltaPos = targetPos - _lastPos;
 
 		Vector3 p = targetPos;
-		p += _distance.y * RefSystem.Up;
-		p += (1f - _stopZoomRatio) *_distance.z*RefSystem.ScreenDir;
+		p += _currentSetup.Distance.y * RefSystem.Up;
+		p += (1f - _currentSetup.StopDistanceRatio) *_currentSetup.Distance.z*RefSystem.ScreenDir;
 
 		int direction = Math.Sign(Vector3.Dot(deltaPos, RefSystem.Right));
 
-		p += Math.Abs( direction ) * _stopZoomRatio *_distance.z * RefSystem.ScreenDir;
-		p += direction * _distance.x * RefSystem.Right;
+		p += Math.Abs( direction ) * _currentSetup.StopDistanceRatio *_currentSetup.Distance.z * RefSystem.ScreenDir;
+		p += direction * _currentSetup.Distance.x * RefSystem.Right;
 
 //* // WITH LERP
 		Vector3 fwdDeltaPos = Vector3.Project(p - transform.position, RefSystem.ScreenDir);
 		Vector3 latPos = p - fwdDeltaPos;
 
-		if(_lateralSpeed < LateralSpeedMax)
-			latPos = Vector3.Lerp(transform.position, latPos , _lateralSpeed * Time.deltaTime);
-		if (_depthSpeed  < DepthSpeedMax)
-			p = Vector3.Lerp(latPos, p, _depthSpeed*Time.deltaTime);
+		if(_currentSetup.LateralSpeed < Setup.LateralSpeedMax)
+			latPos = Vector3.Lerp(transform.position, latPos , _currentSetup.LateralSpeed * Time.deltaTime);
+		if (_currentSetup.DepthSpeed  < Setup.DepthSpeedMax)
+			p = Vector3.Lerp(latPos, p, _currentSetup.DepthSpeed*Time.deltaTime);
 
 		transform.position = p;	   
 		//transform.forward = (Target.position + .5f * _distance.y * RefSystem.Up - transform.position).normalized;	
@@ -129,36 +136,15 @@ public class ScrollFollower : MonoBehaviour
 
 	#region Private Fields
 
-	private const float DepthSpeedMax = 20f;
-	private const float LateralSpeedMax = 20f; 
-
-
-	protected Vector3 Distance{
-		get { return _distance;	 }
-		set { _distance = value; }
-	}
-
-	protected float StopDistanceRatio {
-		get { return _stopZoomRatio;  }
-		set { _stopZoomRatio = value; }
-	}
-
-	protected float DepthSpeed {
-		get { return _depthSpeed;	}
-		set { _depthSpeed = value;  }
-	}
-
-	protected float LateralSpeed {
-		get { return _lateralSpeed;	 }
-		set { _lateralSpeed = value; }
-	}
 
 	[SerializeField] private Transform _target;
-	[SerializeField] private string _targetTag = "Player"; 
-	[SerializeField] private Vector3 _distance = new Vector3(0f, .8f, 4f);
-	[SerializeField, Range(0f, 1f)] private float _stopZoomRatio;
-	[SerializeField, Range(0f, DepthSpeedMax)]   private float _depthSpeed;
-	[SerializeField, Range(0f, LateralSpeedMax)] private float _lateralSpeed;
+	[SerializeField] private string _targetTag = "Player";
+	[SerializeField] private Setup _currentSetup;  
+	protected Setup CurrentSetup {
+		get { return _currentSetup; }
+		set { _currentSetup = value;  }
+	}
+
 
 
 	private Vector3 _lastPos;
