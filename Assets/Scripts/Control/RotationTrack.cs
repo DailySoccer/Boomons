@@ -45,11 +45,18 @@ public class RotationTrack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (_initialized && _active)
-		{
-			Vector3 gyroRot = -Input.gyro.rotationRate;
-			gyroRot.z = -gyroRot.z;
-			TargetCamera.transform.Rotate(gyroRot);
+        if (_initialized && _active)
+        {
+            if (Input.gyro != null && Input.gyro.enabled)
+            {
+                Vector3 gyroRot = -Input.gyro.rotationRate;
+                gyroRot.z = -gyroRot.z;
+                TargetCamera.transform.Rotate(gyroRot);
+            }
+            else
+            {
+                //TODO handle screen controls to rotate camera
+            }
 		}
 	}
 
