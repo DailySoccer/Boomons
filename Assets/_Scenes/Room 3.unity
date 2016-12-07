@@ -6694,6 +6694,16 @@ Prefab:
       propertyPath: DisableMeshesList.Array.data[4]
       value: 
       objectReference: {fileID: 919244990}
+    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
+        type: 2}
+      propertyPath: ControlsCanvas
+      value: 
+      objectReference: {fileID: 1897911522}
+    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
+        type: 2}
+      propertyPath: VerticalRotationSpeed
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 115265ba1d63f5b429c2a09ac2814e1c, type: 2}
   m_IsPrefabParent: 0
@@ -14032,6 +14042,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe16667a53ea62a43834d91064bce434, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1897911522 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000010846449744, guid: fe16667a53ea62a43834d91064bce434,
+    type: 2}
+  m_PrefabInternal: {fileID: 1897911521}
+  m_Script: {fileID: 11500000, guid: e79f5fd4c334b794f9801be72032cf14, type: 3}
 --- !u!4 &1901618763 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000012669513394, guid: 49da6b1e6052c6c46ad68de31078d4fd,

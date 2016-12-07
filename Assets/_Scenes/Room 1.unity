@@ -300,6 +300,16 @@ Prefab:
       propertyPath: TargetClip
       value: 
       objectReference: {fileID: 8300000, guid: 249d7d58641224b45b9e34c20f294201, type: 3}
+    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
+        type: 2}
+      propertyPath: ControlsCanvas
+      value: 
+      objectReference: {fileID: 121607056}
+    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
+        type: 2}
+      propertyPath: VerticalRotationSpeed
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 115265ba1d63f5b429c2a09ac2814e1c, type: 2}
   m_IsPrefabParent: 0
@@ -422,6 +432,12 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224000012668852246, guid: fe16667a53ea62a43834d91064bce434,
     type: 2}
   m_PrefabInternal: {fileID: 121607054}
+--- !u!114 &121607056 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000010846449744, guid: fe16667a53ea62a43834d91064bce434,
+    type: 2}
+  m_PrefabInternal: {fileID: 121607054}
+  m_Script: {fileID: 11500000, guid: e79f5fd4c334b794f9801be72032cf14, type: 3}
 --- !u!1 &130809384
 GameObject:
   m_ObjectHideFlags: 0
