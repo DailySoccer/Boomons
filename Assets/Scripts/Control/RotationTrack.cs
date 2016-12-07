@@ -6,6 +6,7 @@ public class RotationTrack : MonoBehaviour {
 
 	public Transform TargetCamera = null;
 	public RectTransform TargetCanvasPanel = null;
+    public TelescopeControls ControlsCanvas = null;
 	public AudioClip TargetClip;
 	public MeshRenderer[] DisableMeshesList;
 	[SerializeField]
@@ -15,12 +16,16 @@ public class RotationTrack : MonoBehaviour {
 	public RectTransform DisableCanvasPanel;
 	public Item DisableTelescope;
 	public AudioSource DisableMusic;
+    public float VerticalRotationSpeed = 15;
+    public float HorizontalRotationSpeed = 180;
+    [Range(0,89)]
+    public float VerticalLimitAngle = 45;
 	[Range(0, 1)]
 	public float VolumeAttenuance;
 	public Camera SceneCamera;
 	// Use this for initialization
 	void Awake () {
-		_initialized = TargetCamera != null && TargetCanvasPanel != null;
+		_initialized = TargetCamera != null && TargetCanvasPanel != null && ControlsCanvas != null;
 		if (!_initialized)
 		{
 			Debug.LogError("<color=orange> Instance of type " + this.GetType() + " not initialized." + (TargetCamera == null ? " Reference to TargetCamera missing." : string.Empty));
@@ -39,6 +44,7 @@ public class RotationTrack : MonoBehaviour {
 			this.enabled = false;
 			_SceneCameraRelated = SceneCamera.gameObject.GetComponent<AudioListener>();
 		}
+        _hasGyro = Input.gyro != null && Input.gyro.enabled;
 	}
 
 
@@ -47,7 +53,7 @@ public class RotationTrack : MonoBehaviour {
 	void Update () {
         if (_initialized && _active)
         {
-            if (Input.gyro != null && Input.gyro.enabled)
+            if (_hasGyro)
             {
                 Vector3 gyroRot = -Input.gyro.rotationRate;
                 gyroRot.z = -gyroRot.z;
@@ -55,7 +61,14 @@ public class RotationTrack : MonoBehaviour {
             }
             else
             {
-                //TODO handle screen controls to rotate camera
+                Vector3 rotAngles = TargetCamera.transform.rotation.eulerAngles;
+                rotAngles.x -= Time.deltaTime * VerticalRotationSpeed * ControlsCanvas.GetVertical();
+                rotAngles.y += Time.deltaTime * HorizontalRotationSpeed * ControlsCanvas.GetHorizontal();
+                if(rotAngles.x > 180)
+                    rotAngles.x = Mathf.Clamp(rotAngles.x, 360-VerticalLimitAngle, 360+VerticalLimitAngle);
+                else
+                    rotAngles.x = Mathf.Clamp(rotAngles.x, -VerticalLimitAngle, VerticalLimitAngle);
+                TargetCamera.transform.rotation = Quaternion.Euler(rotAngles);
             }
 		}
 	}
@@ -140,7 +153,14 @@ public class RotationTrack : MonoBehaviour {
 		{
 			_SceneCameraRelated.enabled = !_active;
 		}
-		Input.gyro.enabled = _active;
+        if (_hasGyro)
+        {
+            Input.gyro.enabled = _active;
+        }
+        else
+        {
+            ControlsCanvas.gameObject.SetActive(_active);
+        }
 		Vector3 accel = Input.acceleration;
 		Vector3 upRelDir = new Vector3 (-accel.x , -accel.y, accel.z);
 		Quaternion rotFix = Quaternion.FromToRotation(upRelDir, Vector3.up);
@@ -149,6 +169,7 @@ public class RotationTrack : MonoBehaviour {
 
 	private bool _initialized;
 	private bool _active;
+    private bool _hasGyro;
 
 	private AudioSource _auS;
 	private AudioListener _SceneCameraRelated;
