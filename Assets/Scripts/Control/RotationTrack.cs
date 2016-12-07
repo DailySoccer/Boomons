@@ -44,7 +44,7 @@ public class RotationTrack : MonoBehaviour {
 			this.enabled = false;
 			_SceneCameraRelated = SceneCamera.gameObject.GetComponent<AudioListener>();
 		}
-        _hasGyro = Input.gyro != null && Input.gyro.enabled;
+        _hasGyro = SystemInfo.supportsGyroscope;
 	}
 
 
@@ -156,15 +156,15 @@ public class RotationTrack : MonoBehaviour {
         if (_hasGyro)
         {
             Input.gyro.enabled = _active;
+            Vector3 accel = Input.acceleration;
+            Vector3 upRelDir = new Vector3(-accel.x, -accel.y, accel.z);
+            Quaternion rotFix = Quaternion.FromToRotation(upRelDir, Vector3.up);
+            TargetCamera.rotation = rotFix;
         }
         else
         {
             ControlsCanvas.gameObject.SetActive(_active);
         }
-		Vector3 accel = Input.acceleration;
-		Vector3 upRelDir = new Vector3 (-accel.x , -accel.y, accel.z);
-		Quaternion rotFix = Quaternion.FromToRotation(upRelDir, Vector3.up);
-		TargetCamera.rotation = rotFix;
 	}
 
 	private bool _initialized;
