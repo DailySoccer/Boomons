@@ -52,7 +52,7 @@ public class ResultQR : MonoBehaviour {
 				return BoomonRole.FemaleSport;
 			case "Boomons-Tato-DeportistaChico":
 				return BoomonRole.MaleSport;
-			case "Boomons-Tras-Músico":
+			case "Boomons-Tras-Musico":
 				return BoomonRole.Music;
 			case "Boomons-Mike-Manitas":
 				return BoomonRole.Maker;
@@ -63,7 +63,7 @@ public class ResultQR : MonoBehaviour {
 		}
 	}
 
-	public void StartScan()
+    public void StartScan()
 	{
 		if (_initialized)
 		{
