@@ -14,10 +14,6 @@ public class WebcamToTexture : MonoBehaviour {
 		_initialized = CameraView != null && Listener != null;
 		if (_initialized)
 		{
-			if (_cameraFeed == null)
-			{
-				_cameraFeed = new WebCamTexture();
-			}
 			/*_cameraFeed.requestedWidth = Screen.width;
 			_cameraFeed.requestedHeight = Screen.height;
 			_cameraFeed.Play();*/
@@ -40,8 +36,12 @@ public class WebcamToTexture : MonoBehaviour {
 	}
 
 	void OnEnable()
-	{
-		if (_cameraFeed != null)
+    {
+        if (_cameraFeed == null)
+        {
+            _cameraFeed = new WebCamTexture();
+        }
+        if (_cameraFeed != null)
 		{
 			_cameraFeed.requestedWidth = Mathf.FloorToInt(Screen.width * WebcamResolution);
 			_cameraFeed.requestedHeight = Mathf.FloorToInt(Screen.height * WebcamResolution);
