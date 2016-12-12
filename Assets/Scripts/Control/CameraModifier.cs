@@ -4,7 +4,11 @@ public class CameraModifier : BoomonProximityDetector
 {  
 	  // TODO Habilitar con la distancia
 	#region Mono
-
+							   
+	protected void OnDisable()
+	{
+		ProximityTarget = null;
+	}
 
 	protected override void OnDestroy()
 	{

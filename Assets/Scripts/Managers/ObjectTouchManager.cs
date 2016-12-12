@@ -18,7 +18,8 @@ public class ObjectTouchManager : TouchManager
 	{
 		if (onlyMyEvents)
 			_selfListeners.Add(listener);
-		else
+
+		else if(!_broadcastListeners.Contains(listener))
 			_broadcastListeners.Add(listener);
 	}
 

@@ -34,8 +34,8 @@ public class Item : BoomonProximityDetector
 	{
 		Debug.Log("Item::Play>> " + name, this);
 		
-		_animator.SetTrigger(_playTriggerName);
-		_audio.Play();
+		Animator.SetTrigger(_playTriggerName);
+		Audio.Play();
 	}
 
 	#endregion
@@ -48,15 +48,12 @@ public class Item : BoomonProximityDetector
 	{
 		base.Awake();
 
-		if(_animator == null)
-			_animator = GetComponent<Animator>();
-		if(_audio == null)
-			_audio = GetComponent<AudioSource>();
-		if(_toucher == null)
-			_toucher = GetComponent<Toucher>();
-
-		if(_toucher != null)
-			_toucher.MustReceiveOnlyItsTouches = true;
+		if(Animator == null)
+			Animator = GetComponent<Animator>();
+		if(Audio == null)
+			Audio = GetComponent<AudioSource>();
+		if(Toucher == null)
+			Toucher = GetComponent<Toucher>();
 
 		if(_game == null)
 			_game = MetaManager.Instance.Get<GameManager>();
@@ -64,21 +61,25 @@ public class Item : BoomonProximityDetector
 
 	protected override void OnDestroy()
 	{
-		_audio = null;
-		_animator = null;
-		_toucher = null;
+		Audio = null;
+		Animator = null;
+		Toucher = null;
 		_game = null;
 		base.OnDestroy();
 	}
 
 	protected override void OnEnable()
-    {
+	{
 		base.OnEnable();
         if (_playOnEnable)
             Play();
     }
+	  
+	protected virtual void OnDisable()
+	{
+		ProximityTarget = null;
+	}
 
-	
 	protected virtual void OnCollisionEnter(Collision collision)
 	{
 		if (_isPhysicallyPlayable && collision.gameObject.tag == _game.Boomon.tag)
@@ -90,10 +91,7 @@ public class Item : BoomonProximityDetector
         if (_isPhysicallyPlayable && other.gameObject.tag == _game.Boomon.tag)
             Play();
     }
-
-
-
-
+  
 	#endregion
 
 
@@ -120,13 +118,13 @@ public class Item : BoomonProximityDetector
 		base.OnTargetExit();
 	}
 
-	private void OnInteractableChange(bool value)
+	protected virtual void OnInteractableChange(bool value)
 	{
 		if(value && _playOnInteractable)
 			Play();
 			 
-		if(_toucher != null)
-			_toucher.IsTouchEnabled = value;
+		if(Toucher != null)
+			Toucher.enabled = value;
 
 		var e = InteractableChange;
 		if (e != null)
@@ -146,12 +144,12 @@ public class Item : BoomonProximityDetector
 	[SerializeField] private string _playTriggerName = "Play";
 
 
-	private static GameManager _game;
-	private Animator _animator;
-	private AudioSource _audio;
-
 	private bool _isInteractable;
-	private Toucher _toucher;
+
+	private static GameManager _game;
+	protected AudioSource Audio { get; private set; }
+	protected Animator Animator { get; private set; }
+	protected Toucher Toucher { get; private set; }
 
 	#endregion
 }

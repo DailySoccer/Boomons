@@ -31,13 +31,18 @@ public class ProximityDetector : MonoBehaviour
 
 	protected virtual void Awake()
 	{
-		_game = MetaManager.Instance.Get<GameManager>();
+		Game = MetaManager.Instance.Get<GameManager>();
 	}  
 	
 	protected virtual void OnDestroy()
 	{
 		ProximityTarget = null;
-		_game = null;
+		Game = null;
+	}
+
+	protected virtual void Start()
+	{
+		StartCoroutine(DistanceChecker());
 	}
 
 	//private void OnDrawGizmosSelected()
@@ -104,7 +109,7 @@ public class ProximityDetector : MonoBehaviour
 			return false;
 
 		Vector3 dist = target.position - transform.position;
-		dist = _game.ReferenceSystem.ProjectOnPlane(dist, false);
+		dist = Game.ReferenceSystem.ProjectOnPlane(dist, false);
 		float distSqr = Vector3.SqrMagnitude(dist);
 
 		return distSqr < _proximityRadius * _proximityRadius;
@@ -118,7 +123,9 @@ public class ProximityDetector : MonoBehaviour
 
 	[SerializeField, Range(0f, 10f)] private float _proximityRadius = 4f;
 
-	protected GameManager Game { get { return _game;  } }
+	protected GameManager Game { get; private set; }
+
+	[SerializeField] private Transform _proximityTarget;
 	protected virtual Transform ProximityTarget 
 	{
 		get { return _proximityTarget; }
@@ -138,8 +145,7 @@ public class ProximityDetector : MonoBehaviour
 	public readonly WaitForSeconds ProximityCheckYield = new WaitForSeconds(.5f);
 
 	private bool _isTargetNearby;
-	private Transform _proximityTarget;
-	private GameManager _game;
+	
 
 	#endregion
 }

@@ -16,17 +16,17 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000012538807290}
-  - 95: {fileID: 95000012137275132}
-  - 82: {fileID: 82000011365218106}
-  - 114: {fileID: 114000011745729552}
-  - 136: {fileID: 136000011122301850}
-  - 65: {fileID: 65000011676828800}
-  - 135: {fileID: 135000011307187324}
-  - 135: {fileID: 135000012207179604}
-  - 114: {fileID: 114000012962310286}
+  - component: {fileID: 4000012538807290}
+  - component: {fileID: 95000012137275132}
+  - component: {fileID: 82000011365218106}
+  - component: {fileID: 114000011745729552}
+  - component: {fileID: 136000011122301850}
+  - component: {fileID: 65000011676828800}
+  - component: {fileID: 135000011307187324}
+  - component: {fileID: 135000012207179604}
+  - component: {fileID: 114000012962310286}
   m_Layer: 12
   m_Name: Alien 1
   m_TagString: Untagged
@@ -39,10 +39,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013240127796}
-  - 137: {fileID: 137000010183876686}
+  - component: {fileID: 4000013240127796}
+  - component: {fileID: 137000010183876686}
   m_Layer: 12
   m_Name: alien
   m_TagString: Untagged
@@ -55,9 +55,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000011711986128}
+  - component: {fileID: 4000011711986128}
   m_Layer: 12
   m_Name: rig_alien
   m_TagString: Untagged
@@ -74,10 +74,10 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000012538807290}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4000012538807290
 Transform:
   m_ObjectHideFlags: 1
@@ -85,14 +85,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010150963214}
   m_LocalRotation: {x: -0, y: 0.77783716, z: -0, w: 0.62846595}
-  m_LocalPosition: {x: -10.41, y: 0.004999995, z: 25.4}
+  m_LocalPosition: {x: -10.59, y: 0.004999995, z: 25.15}
   m_LocalScale: {x: 1.3175445, y: 1.317545, z: 1.317545}
-  m_LocalEulerAnglesHint: {x: 0, y: 101.840004, z: 0}
   m_Children:
   - {fileID: 4000013240127796}
   - {fileID: 4000011711986128}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 101.840004, z: 0}
 --- !u!4 &4000013240127796
 Transform:
   m_ObjectHideFlags: 1
@@ -102,10 +102,10 @@ Transform:
   m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0.0000003832032}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000012538807290}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &65000011676828800
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -127,13 +127,14 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f998348a5786e1b47ae62391fdd15e1e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b82e0fa8e583523448815c0a29cb7744, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
+  SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -146,12 +147,14 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 0
       inSlope: 0
       outSlope: 0
@@ -162,7 +165,8 @@ AudioSource:
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
@@ -173,7 +177,8 @@ AudioSource:
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
@@ -184,7 +189,8 @@ AudioSource:
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
@@ -220,9 +226,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _proximityRadius: 4
   _playOnEnable: 0
+  _playOnInteractable: 0
   _isPhysicallyPlayable: 0
-  _interactableRadio: 4
   _playTriggerName: Play
 --- !u!114 &114000012962310286
 MonoBehaviour:
@@ -324,7 +331,9 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 4f639b9135444ad4cbdc55ae355228f2, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -332,7 +341,7 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
