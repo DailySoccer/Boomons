@@ -42,7 +42,12 @@ public class ResultQR : MonoBehaviour {
 
 	public static BoomonRole? TextToBoomon(string boomon)
 	{
-		switch (boomon)
+        /*Debug.Log(boomon);
+        Debug.Log("Is equal 'Boomons-Tras-Musico' to '" + boomon + "': "+ ("Boomons-Tras-Musico" == boomon));
+        Debug.Log("Is equal 'Boomons-Tras-Musico' to '" + boomon + "': " + ("Boomons-Tras-Musico".Equals(boomon)));
+        Debug.Log("Is equal 'Boomons-Tras-Musico' to '" + boomon + "': " + string.Equals("Boomons-Tras-Musico",boomon));*/
+        boomon = boomon.Replace("\n", string.Empty).Replace("\r", string.Empty);
+        switch (boomon)
 		{
 			case "Boomons-Mimi-Artista":
 				return BoomonRole.Artist;
