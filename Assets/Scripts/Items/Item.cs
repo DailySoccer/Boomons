@@ -33,9 +33,10 @@ public class Item : BoomonProximityDetector
 	public virtual void Play()
 	{
 		Debug.Log("Item::Play>> " + name, this);
-		
-		Animator.SetTrigger(_playTriggerName);
+
 		Audio.Play();
+		if(!string.IsNullOrEmpty(_playTriggerName))
+			Animator.SetTrigger(_playTriggerName);
 	}
 
 	#endregion
