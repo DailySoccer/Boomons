@@ -154,9 +154,10 @@ public class GameManager : Manager
 
 		string boomonPath = PathSolver.Instance.GetBoomonPath(boomonRole, PathSolver.InstanceType.Controllable);
 		var prefab = Resources.Load<GameObject>(boomonPath);
-		var boomonGo = (GameObject)Instantiate(prefab, spawner.position, spawner.rotation);
+		var boomonGo = Instantiate(prefab, spawner.position, spawner.rotation);
 
 		Boomon = boomonGo.GetComponent<BoomonController>();
+		MetaManager.Instance.Get<ObjectTouchManager>().enabled = true;
 	}
 
 	private Transform FindSpawner()

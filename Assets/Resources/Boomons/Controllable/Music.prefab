@@ -608,10 +608,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4000011280612538}
   - component: {fileID: 114000011635208476}
+  - component: {fileID: 114477654473836466}
   - component: {fileID: 95000011125627130}
   - component: {fileID: 143000011386243084}
   - component: {fileID: 114000010826552294}
   - component: {fileID: 114000013499649118}
+  - component: {fileID: 82737076148249716}
   m_Layer: 12
   m_Name: Music
   m_TagString: Player
@@ -1403,6 +1405,86 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014257810480}
   m_Mesh: {fileID: 4300004, guid: 0778944ae6b5d384ab4ff351781275c8, type: 3}
+--- !u!82 &82737076148249716
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013741079182}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95000011125627130
 Animator:
   serializedVersion: 3
@@ -1547,6 +1629,33 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114477654473836466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013741079182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4583199541ad8694ca715daaf498a17d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _leftStep: {fileID: 8300000, guid: 80d7ee0e1efb3d946b1743eba335917a, type: 3}
+  _rightStep: {fileID: 8300000, guid: fe6224641ef97d24ea2ed6d65d8669e4, type: 3}
+  _stateClips:
+  - State: 6
+    File: {fileID: 8300000, guid: 85331e7d6f477874fb6c0d92c49ed95e, type: 3}
+  _emotionClips:
+  - Emotion: 1
+    File: {fileID: 8300000, guid: e2037042c4688ae498afe531b532c142, type: 3}
+  - Emotion: 2
+    File: {fileID: 8300000, guid: 5f12a57dd5c99c0418ae22fe2504862b, type: 3}
+  - Emotion: 3
+    File: {fileID: 8300000, guid: 66884ce31ccc77f4da7013752a9e0c7c, type: 3}
+  - Emotion: 4
+    File: {fileID: 8300000, guid: 18939b4e61b85754dbc91e2998f971b3, type: 3}
+  - Emotion: 5
+    File: {fileID: 8300000, guid: ba94e987596dbc649aa6c45592fdf1a5, type: 3}
 --- !u!137 &137000014006894684
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

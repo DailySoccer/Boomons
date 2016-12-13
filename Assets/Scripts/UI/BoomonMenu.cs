@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class BoomonMenu : MonoBehaviour
 {
@@ -8,7 +7,8 @@ public class BoomonMenu : MonoBehaviour
 	#region Public Methods
 
 	public void OnBoomonSelected(BoomonController boomon)
-	{	   	  
+	{
+		MetaManager.Instance.Get<ObjectTouchManager>().enabled = false;
 		MetaManager.Instance.Get<GameManager>().BoomonRole = boomon.Role;
 
 		_boomonAnimator = boomon.GetComponent<Animator>();

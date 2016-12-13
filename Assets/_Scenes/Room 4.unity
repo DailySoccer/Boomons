@@ -886,7 +886,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1083,6 +1083,11 @@ Prefab:
       propertyPath: VerticalRotationSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 114000013795803516, guid: 115265ba1d63f5b429c2a09ac2814e1c,
+        type: 2}
+      propertyPath: TargetClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 78c9d248546d66b4c980f90a71540d19, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 115265ba1d63f5b429c2a09ac2814e1c, type: 2}
   m_IsPrefabParent: 0
@@ -2148,7 +2153,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2625,80 +2630,31 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 1000012713447810, guid: a2c242c144de649469768a9db96a1183, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010383001964, guid: a2c242c144de649469768a9db96a1183,
-        type: 2}
-      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 13936325}
-    - target: {fileID: 114000010383001964, guid: a2c242c144de649469768a9db96a1183,
-        type: 2}
-      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnEmotionClick
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000011296518630, guid: a2c242c144de649469768a9db96a1183,
-        type: 2}
-      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 13936325}
-    - target: {fileID: 114000011296518630, guid: a2c242c144de649469768a9db96a1183,
-        type: 2}
-      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnEmotionClick
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000011312518056, guid: a2c242c144de649469768a9db96a1183,
-        type: 2}
-      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 13936325}
-    - target: {fileID: 114000011312518056, guid: a2c242c144de649469768a9db96a1183,
-        type: 2}
-      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnEmotionClick
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000011965106616, guid: a2c242c144de649469768a9db96a1183,
+    - target: {fileID: 114000013231616100, guid: a2c242c144de649469768a9db96a1183,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 13936325}
     - target: {fileID: 114000011965106616, guid: a2c242c144de649469768a9db96a1183,
         type: 2}
-      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnEmotionClick
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000013231616100, guid: a2c242c144de649469768a9db96a1183,
+      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 13936325}
+    - target: {fileID: 114000011312518056, guid: a2c242c144de649469768a9db96a1183,
         type: 2}
       propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 13936325}
-    - target: {fileID: 114000013231616100, guid: a2c242c144de649469768a9db96a1183,
+    - target: {fileID: 114000011296518630, guid: a2c242c144de649469768a9db96a1183,
         type: 2}
-      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnEmotionClick
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011373378956, guid: a2c242c144de649469768a9db96a1183, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012061915368, guid: a2c242c144de649469768a9db96a1183, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010812711866, guid: a2c242c144de649469768a9db96a1183, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010194525382, guid: a2c242c144de649469768a9db96a1183, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011569314820, guid: a2c242c144de649469768a9db96a1183, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.02
-      objectReference: {fileID: 0}
+      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 13936325}
+    - target: {fileID: 114000010383001964, guid: a2c242c144de649469768a9db96a1183,
+        type: 2}
+      propertyPath: _tapStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 13936325}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2c242c144de649469768a9db96a1183, type: 2}
   m_IsPrefabParent: 0
@@ -2936,6 +2892,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3b8b3218360c9204ab5e6a43c7e5543d, type: 2}
+    - target: {fileID: 82000013884058018, guid: 7828165db924d9d49a39acd2c4ebd79f,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7828165db924d9d49a39acd2c4ebd79f, type: 2}
   m_IsPrefabParent: 0
@@ -3625,7 +3586,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:

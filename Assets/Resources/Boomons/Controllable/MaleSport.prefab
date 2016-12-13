@@ -731,10 +731,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4000010352099988}
   - component: {fileID: 114000011369286504}
+  - component: {fileID: 114288486950443038}
   - component: {fileID: 95000013543123094}
   - component: {fileID: 143000011943608576}
   - component: {fileID: 114000013171140752}
   - component: {fileID: 114000010704009548}
+  - component: {fileID: 82743327943358072}
   m_Layer: 12
   m_Name: MaleSport
   m_TagString: Player
@@ -1605,6 +1607,86 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012615816890}
   m_Mesh: {fileID: 4300006, guid: 473bc4c0fba2a9545a580c0e006e1e75, type: 3}
+--- !u!82 &82743327943358072
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014177749778}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95000013543123094
 Animator:
   serializedVersion: 3
@@ -1749,6 +1831,33 @@ MonoBehaviour:
   _renderer: {fileID: 137000010466141072}
   _facialBoneName: DummyFacial
   _facialMaterialIndex: 1
+--- !u!114 &114288486950443038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014177749778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4583199541ad8694ca715daaf498a17d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _leftStep: {fileID: 8300000, guid: 80d7ee0e1efb3d946b1743eba335917a, type: 3}
+  _rightStep: {fileID: 8300000, guid: fe6224641ef97d24ea2ed6d65d8669e4, type: 3}
+  _stateClips:
+  - State: 6
+    File: {fileID: 8300000, guid: 169ad4b987c57834b8dfb31475e6183f, type: 3}
+  _emotionClips:
+  - Emotion: 1
+    File: {fileID: 8300000, guid: 00c949eb62bd60947a819025827f1021, type: 3}
+  - Emotion: 2
+    File: {fileID: 8300000, guid: ed0a4671ae995b5478333fd851dce3ff, type: 3}
+  - Emotion: 3
+    File: {fileID: 8300000, guid: 507a5445e7274ed4391da284aa4d60ee, type: 3}
+  - Emotion: 4
+    File: {fileID: 8300000, guid: 39bab3e6b62d6114faf151fe671c1d7a, type: 3}
+  - Emotion: 5
+    File: {fileID: 8300000, guid: 41a74855e63632547ad3b00b82ef1615, type: 3}
 --- !u!137 &137000010466141072
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
