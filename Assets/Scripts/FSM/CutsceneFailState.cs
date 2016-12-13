@@ -3,9 +3,12 @@
 public class CutsceneFailState : StateMachineBehaviour
 {
 
+	//[SerializeField] private AudioClip _audioClip;
+
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
+	//	AudioSource.PlayClipAtPoint(_audioClip, Vector3.zero, 1f);
 		animator.SetInteger("Emotion", 0);
 		animator.SetInteger("Resolution", 0);
 	}
