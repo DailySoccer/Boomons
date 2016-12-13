@@ -16,15 +16,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000011099011750}
-  - 114: {fileID: 114000013722270920}
-  - 20: {fileID: 20000010579575336}
-  - 92: {fileID: 92000012004108758}
-  - 124: {fileID: 124000011268819484}
-  - 81: {fileID: 81000012803269558}
-  - 82: {fileID: 82000013138535822}
+  - component: {fileID: 4000011099011750}
+  - component: {fileID: 114000013722270920}
+  - component: {fileID: 20000010579575336}
+  - component: {fileID: 92000012004108758}
+  - component: {fileID: 124000011268819484}
+  - component: {fileID: 81000012803269558}
+  - component: {fileID: 82372229947000664}
   m_Layer: 0
   m_Name: ScrollCamera
   m_TagString: MainCamera
@@ -38,13 +38,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013129732974}
-  m_LocalRotation: {x: -0.00131173, y: 0.7117797, z: -0.0013292457, w: -0.70240027}
-  m_LocalPosition: {x: 13.357063, y: 1.1900004, z: 16.525}
+  m_LocalRotation: {x: -0.0013117194, y: 0.7117797, z: -0.0013292353, w: -0.70240027}
+  m_LocalPosition: {x: 12.312, y: 0.476313, z: -13.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: -3, y: 269.262, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -3, y: 269.262, z: 0}
 --- !u!20 &20000010579575336
 Camera:
   m_ObjectHideFlags: 1
@@ -86,7 +86,7 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013129732974}
   m_Enabled: 1
---- !u!82 &82000013138535822
+--- !u!82 &82372229947000664
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -97,11 +97,12 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2a25faa78fc629f4990def0cff39ab03, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
+  SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -114,12 +115,14 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 0
       inSlope: 0
       outSlope: 0
@@ -130,7 +133,8 @@ AudioSource:
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
@@ -141,18 +145,20 @@ AudioSource:
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
@@ -180,10 +186,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _targetTag: Player
-  _distance: {x: 0, y: 0.8, z: 4}
-  _stopZoomRatio: 0.3
-  _depthSpeed: 3
-  _lateralSpeed: 15
+  _currentSetup:
+    _distance: {x: 0, y: 0.8, z: 4}
+    _stopDistanceRatio: 0.3
+    _depthSpeed: 3
+    _lateralSpeed: 15
 --- !u!124 &124000011268819484
 Behaviour:
   m_ObjectHideFlags: 1
