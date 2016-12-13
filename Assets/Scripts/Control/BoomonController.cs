@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.VR.WSA;
 using Debug = UnityEngine.Debug;
 
 
@@ -68,40 +69,44 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	}
 
 
-	public State CurrentState {
+	public State CurrentState 
+	{
 		get { return _currentState; }
-		set {
+		set 
+		{
 			if(value == _currentState)
 				return;
 
 			State lastState = _currentState;
 			_currentState = value;
-
-			_stateActions[lastState].OnEnd(value);
-			_stateActions[_currentState].OnStart(lastState);
+			OnStateChange(lastState, _currentState);
 		}
 	}
 
 
-	public Emotion CurrentEmotion {
+
+
+	public Emotion CurrentEmotion
+	{
 		get { return _currentEmotion; }
-		set {
+		set 
+		{
 			if(value == _currentEmotion)
 				return;
+			Emotion lastEmotion = _currentEmotion;
 			_currentEmotion = value;
-
-			CurrentState = value == Emotion.None ?
-				State.Idle : State.Emotion;
-
-			if(value != Emotion.None)
-				PlayAnimation(value.ToString());
+			OnEmotionChange(lastEmotion, _currentEmotion);
 		}
 	}
 
 
-	public Sense MoveSense {
+
+
+	public Sense MoveSense 
+	{
 		get { return _moveSense; }
-		private set {
+		private set 
+		{
 			if(value == Sense.None) {
 				transform.forward = _refSystem.ScreenDir;
 				transform.position = _refSystem.ProjectOnPlane(transform.position);
@@ -134,6 +139,10 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 				_ragdoll.IsTouchEnabled = value && _isControllable;
 		}
 	}
+
+
+	public event Action<State, State> StateChange;
+	public event Action<Emotion, Emotion> EmotionChange;
 
 	public bool IsTeleporting { get; private set; }
 	public ReferenceSystem ReferenceSystem { get { return _refSystem; } }
@@ -255,6 +264,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 
 	private void OnDestroy()
 	{
+		StateChange = null;
 		Ragdoll = null;
 
 		_goToCallbacks = null;
@@ -318,15 +328,38 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 
 	#region Events
 
+	private void OnStateChange(State lastState, State nextState)
+	{
+		_stateActions[lastState].OnEnd(nextState);
+		_stateActions[nextState].OnStart(lastState);
+
+		var e = StateChange;
+		if(e != null)
+			e(lastState, nextState);
+	}
+
+	private void OnEmotionChange(Emotion lastEmotion, Emotion nextEmotion)
+	{
+		CurrentState = nextEmotion == Emotion.None ?
+				State.Idle : State.Emotion;
+
+		if(nextEmotion != Emotion.None)
+			PlayAnimation(nextEmotion.ToString());
+
+		var e = EmotionChange;
+		if (e != null)
+			e(lastEmotion, nextEmotion);
+	}
+
 	private void OnRagdollGroundEnter(Vector3 groundPos)
 	{
 		Log("OnRagdollGroundEnter", this);
 		transform.position = groundPos;
 		CurrentState = State.Idle;
 	}
-
+		 
 	//----------------------------------------------------------------------------------
-
+		
 	#region Events.Toucher
 
 	public void OnTapStart(Toucher toucher, Vector2 touchPos)
@@ -727,5 +760,5 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 
 	#endregion
 
-
+	
 }
