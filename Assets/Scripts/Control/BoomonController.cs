@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.VR.WSA;
 using Debug = UnityEngine.Debug;
 
 
@@ -61,8 +60,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 				transform : _ragdoll.Transform;
 		}
 	}
-
-
+	   
 
 	public BoomonRole Role {
 		get { return _role; }
@@ -82,9 +80,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 			OnStateChange(lastState, _currentState);
 		}
 	}
-
-
-
+								 
 
 	public Emotion CurrentEmotion
 	{

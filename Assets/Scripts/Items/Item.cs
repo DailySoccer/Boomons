@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Extension;
 
 [RequireComponent(typeof(Animator), typeof(AudioSource))]
 public class Item : BoomonProximityDetector
@@ -34,7 +35,7 @@ public class Item : BoomonProximityDetector
 	{
 		Debug.Log("Item::Play>> " + name, this);
 
-		Audio.Play();
+		AudioSource.Play(true);
 		if(!string.IsNullOrEmpty(_playTriggerName))
 			Animator.SetTrigger(_playTriggerName);
 	}
@@ -51,8 +52,8 @@ public class Item : BoomonProximityDetector
 
 		if(Animator == null)
 			Animator = GetComponent<Animator>();
-		if(Audio == null)
-			Audio = GetComponent<AudioSource>();
+		if(AudioSource == null)
+			AudioSource = GetComponent<AudioSource>();
 		if(Toucher == null)
 			Toucher = GetComponent<Toucher>();
 
@@ -62,7 +63,7 @@ public class Item : BoomonProximityDetector
 
 	protected override void OnDestroy()
 	{
-		Audio = null;
+		AudioSource = null;
 		Animator = null;
 		Toucher = null;
 		_game = null;
@@ -148,7 +149,7 @@ public class Item : BoomonProximityDetector
 	private bool _isInteractable;
 
 	private static GameManager _game;
-	protected AudioSource Audio { get; private set; }
+	protected AudioSource AudioSource { get; private set; }
 	protected Animator Animator { get; private set; }
 	protected Toucher Toucher { get; private set; }
 

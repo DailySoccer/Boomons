@@ -37,7 +37,7 @@ public class ShootTarget : Item
 	private void Shoot(Toucher toucher, Vector2 pos)
 	{
 		Animator.SetTrigger(_shootTriggerName);
-		Audio.PlayOneShot(_shootClip);
+		AudioSource.PlayOneShot(_shootClip);
 		enabled = false;
 	}
 

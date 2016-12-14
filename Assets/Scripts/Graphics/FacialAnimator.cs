@@ -46,6 +46,8 @@ public class FacialAnimator : MonoBehaviour
 
 	private void OnDestroy()
 	{	
+		Reset();
+
 		_renderer = null;
 		_animator = null;
 		_facialMaterial = null;
