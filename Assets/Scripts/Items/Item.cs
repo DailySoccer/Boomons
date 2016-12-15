@@ -43,7 +43,7 @@ public class Item : BoomonProximityDetector
 		if(!string.IsNullOrEmpty(_playTriggerName))
 			Animator.SetTrigger(_playTriggerName);
 
-		_canPlay = _isReplayable;
+		_canPlay = _canPlayWhilePlaying;
 	}
 
 	
@@ -80,8 +80,10 @@ public class Item : BoomonProximityDetector
 	protected override void OnEnable()
 	{
 		var idleState = Animator.GetBehaviour<ItemIdleState>();
-		if(idleState != null)
+		if (idleState != null)
 			idleState.Enter += OnAnimationIdleEnter;
+		else
+			_canPlayWhilePlaying = true;
 
 		base.OnEnable();
         if (_playOnEnable)
@@ -168,13 +170,10 @@ public class Item : BoomonProximityDetector
 
 	#region Private Fields
 
-	
-
-	[SerializeField] private bool _isReplayable = false;
-    [SerializeField] private bool _playOnEnable = false;
-	[SerializeField] private bool _playOnInteractable = false;
+	[SerializeField] private bool _canPlayWhilePlaying = false;
 	[SerializeField] private bool _isPhysicallyPlayable = false;
-	
+	[SerializeField] private bool _playOnEnable = false;
+	[SerializeField] private bool _playOnInteractable = false;
 	[SerializeField] private string _playTriggerName = "Play";
 
 
