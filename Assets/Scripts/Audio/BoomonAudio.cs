@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
-using Extension;
 
 [RequireComponent(typeof(BoomonController))]
 public class BoomonAudio : MonoBehaviour
@@ -88,9 +87,11 @@ public class BoomonAudio : MonoBehaviour
 		BoomonController.State lastState, 
 		BoomonController.State nextState)
 	{
+		_source.Stop();
+
 		StateAudioClip clip = _stateClips.FirstOrDefault(a => a.State == nextState);
 		if (clip != null)
-			_source.PlayOneShot(clip.File, true);
+			_source.PlayOneShot(clip.File);
 	}
 
 
@@ -99,9 +100,11 @@ public class BoomonAudio : MonoBehaviour
 		BoomonController.Emotion lastEmotion,
 		BoomonController.Emotion nextEmotion)
 	{
+		_source.Stop();
+
 		EmotionAudioClip clip = _emotionClips.FirstOrDefault(a => a.Emotion == nextEmotion);
 		if(clip != null)
-			_source.PlayOneShot(clip.File, true);
+			_source.PlayOneShot(clip.File);
 	}
 
 	#endregion
