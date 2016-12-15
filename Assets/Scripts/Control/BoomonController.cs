@@ -283,12 +283,12 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	private void OnEnable()
 	{
 		_animator.SetFloat(_moveMultiplierParam, _moveSpeed * _moveAnimMultiplierBase);
-		_animator.GetBehaviour<BoomonIdleState>().Start += OnIdleReady;
+		_animator.GetBehaviour<BoomonIdleState>().Enter += OnIdleReady;
 	}
 
 	private void OnDisable()
 	{
-		_animator.GetBehaviour<BoomonIdleState>().Start -= OnIdleReady;
+		_animator.GetBehaviour<BoomonIdleState>().Enter -= OnIdleReady;
 	}
 	/// <summary>
 	/// 

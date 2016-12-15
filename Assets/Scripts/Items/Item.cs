@@ -2,6 +2,7 @@
 using UnityEngine;
 using Extension;
 
+
 [RequireComponent(typeof(Animator), typeof(AudioSource))]
 public class Item : BoomonProximityDetector
 {
@@ -33,13 +34,19 @@ public class Item : BoomonProximityDetector
 
 	public virtual void Play()
 	{
+		if (!_canPlay)
+			return;
+
 		Debug.Log("Item::Play>> " + name, this);
 
 		AudioSource.Play(true);
 		if(!string.IsNullOrEmpty(_playTriggerName))
 			Animator.SetTrigger(_playTriggerName);
+
+		_canPlay = _isReplayable;
 	}
 
+	
 	#endregion
 
 	//======================================================
@@ -72,14 +79,23 @@ public class Item : BoomonProximityDetector
 
 	protected override void OnEnable()
 	{
+		var idleState = Animator.GetBehaviour<ItemIdleState>();
+		if(idleState != null)
+			idleState.Enter += OnAnimationIdleEnter;
+
 		base.OnEnable();
         if (_playOnEnable)
             Play();
     }
-	  
+
+
 	protected virtual void OnDisable()
 	{
 		ProximityTarget = null;
+
+		var idleState = Animator.GetBehaviour<ItemIdleState>();
+		if(idleState != null)
+			idleState.Enter -= OnAnimationIdleEnter;
 	}
 
 	protected virtual void OnCollisionEnter(Collision collision)
@@ -93,7 +109,7 @@ public class Item : BoomonProximityDetector
         if (_isPhysicallyPlayable && other.gameObject.tag == _game.Boomon.tag)
             Play();
     }
-  
+
 	#endregion
 
 
@@ -101,6 +117,11 @@ public class Item : BoomonProximityDetector
 	//======================================================================
 
 	#region Events
+
+	private void OnAnimationIdleEnter()
+	{
+		_canPlay = true;
+	}
 
 	public void OnTapStart(Toucher toucher, Vector2 touchPos)
 	{	  
@@ -135,10 +156,21 @@ public class Item : BoomonProximityDetector
 
 	#endregion
 
+
+	//====================================================
+
+	#region Private Methods
+
+
+
+	#endregion
 	//====================================================
 
 	#region Private Fields
 
+	
+
+	[SerializeField] private bool _isReplayable = false;
     [SerializeField] private bool _playOnEnable = false;
 	[SerializeField] private bool _playOnInteractable = false;
 	[SerializeField] private bool _isPhysicallyPlayable = false;
@@ -147,6 +179,7 @@ public class Item : BoomonProximityDetector
 
 
 	private bool _isInteractable;
+	private bool _canPlay = true;
 
 	private static GameManager _game;
 	protected AudioSource AudioSource { get; private set; }

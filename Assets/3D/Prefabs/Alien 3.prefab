@@ -128,7 +128,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3442d3dac6bf57342b4338ffc0eae35a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2a87ff43f310ac443a63a1042c637011, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -315,6 +315,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _proximityRadius: 4
+  _proximityTarget: {fileID: 0}
+  _isReplayable: 1
   _playOnEnable: 0
   _playOnInteractable: 0
   _isPhysicallyPlayable: 0
