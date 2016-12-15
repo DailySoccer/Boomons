@@ -689,7 +689,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4000013149175256}
   - component: {fileID: 137000012000630730}
-  - component: {fileID: 114000012915933320}
   m_Layer: 12
   m_Name: BooArtistBody
   m_TagString: Untagged
@@ -1507,20 +1506,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114000012915933320
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014033311464}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc223253d3069d44496023364a8b1805, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderer: {fileID: 137000012000630730}
-  _facialBoneName: DummyFacial
-  _facialMaterialIndex: 1
 --- !u!114 &114000013735108688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1590,6 +1575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _proximityRadius: 4
+  _proximityTarget: {fileID: 0}
   _modifiers:
     _distance: {x: 0, y: 0, z: 3.5}
     _stopDistanceRatio: 0.3

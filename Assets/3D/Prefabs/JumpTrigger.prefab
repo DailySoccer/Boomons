@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012623420432}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.1536255, y: 2.1726708, z: 15.65}
+  m_LocalPosition: {x: -8.85, y: 0.13, z: -59.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000013743519774}
@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011727381792}
   m_LocalRotation: {x: -0.50000006, y: 0.5, z: -0.5, w: -0.50000006}
-  m_LocalPosition: {x: 0.17837429, y: -0.027, z: -0.057001114}
+  m_LocalPosition: {x: 0.17837429, y: -0.068, z: -0.057001114}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4000010265975904}
@@ -222,10 +222,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 1
   _proximityTarget: {fileID: 0}
-  _isReplayable: 0
+  _canPlayWhilePlaying: 0
+  _isPhysicallyPlayable: 0
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 0
   _playTriggerName: Play
 --- !u!114 &114000013877784168
 MonoBehaviour:

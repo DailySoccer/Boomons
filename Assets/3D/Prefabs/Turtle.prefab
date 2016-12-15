@@ -34,10 +34,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000013384205928}
+  - component: {fileID: 114000013459552920}
   - component: {fileID: 95000010451362818}
   - component: {fileID: 135000011755475530}
   - component: {fileID: 82000011635738480}
-  - component: {fileID: 114000013459552920}
   - component: {fileID: 114589094961204326}
   - component: {fileID: 114259053829020392}
   m_Layer: 12
@@ -95,8 +95,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013340122044}
-  m_LocalRotation: {x: -0.74863356, y: -0.07561432, z: -0.14195402, w: 0.6431792}
-  m_LocalPosition: {x: -9.23, y: 0.075, z: 2.341}
+  m_LocalRotation: {x: -0.7429822, y: 0.11451801, z: 0.09356804, w: 0.65276957}
+  m_LocalPosition: {x: -11.037, y: 0.063, z: 2.342}
   m_LocalScale: {x: 0.52017844, y: 0.5201786, z: 0.5201786}
   m_Children:
   - {fileID: 4000010058010416}
@@ -214,9 +214,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 4
   _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 1
+  _isPhysicallyPlayable: 0
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 0
   _playTriggerName: Play
 --- !u!114 &114259053829020392
 MonoBehaviour:
