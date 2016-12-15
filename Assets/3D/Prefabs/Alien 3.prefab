@@ -34,9 +34,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000010332843214}
+  - component: {fileID: 114000013035236910}
   - component: {fileID: 95000012906138388}
   - component: {fileID: 82000013532597474}
-  - component: {fileID: 114000013035236910}
   - component: {fileID: 136000010269999792}
   - component: {fileID: 65000013193506680}
   - component: {fileID: 135000013203130734}
@@ -316,10 +316,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 4
   _proximityTarget: {fileID: 0}
-  _isReplayable: 1
+  _canPlayWhilePlaying: 1
+  _isPhysicallyPlayable: 0
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 0
   _playTriggerName: Play
 --- !u!135 &135000013203130734
 SphereCollider:

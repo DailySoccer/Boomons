@@ -34,10 +34,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000010781286086}
+  - component: {fileID: 114000012020132888}
   - component: {fileID: 95000012603722866}
   - component: {fileID: 54000012913366688}
   - component: {fileID: 82000013701267590}
-  - component: {fileID: 114000012020132888}
   - component: {fileID: 136000011760155144}
   - component: {fileID: 65000010967785504}
   - component: {fileID: 135000012355497624}
@@ -244,10 +244,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 4
   _proximityTarget: {fileID: 0}
-  _isReplayable: 1
+  _canPlayWhilePlaying: 1
+  _isPhysicallyPlayable: 0
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 0
   _playTriggerName: Play
 --- !u!114 &114000013911697970
 MonoBehaviour:
