@@ -408,6 +408,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	/// Animation Event
 	/// Indicates that Idle animation is playing.
 	/// </summary>
+	// TODO FRS Pasar todo a behaviours o un mejor enfoque
 	private void OnIdleReady()
 	{
 		IsTouchEnabled = true;
@@ -554,13 +555,14 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 
 	#region Events.Tickle
 
-	private void OnTickleStart(State obj)
+	private void OnTickleStart(State lastState)
 	{
+		IsTouchEnabled = false;
 		Log("OnTickleStart");
 		CurrentState = State.Idle;
 	}
 
-	private void OnTickleEnd(State obj)
+	private void OnTickleEnd(State nextState)
 	{
 		Log("OnTickleEnd");
 	}
