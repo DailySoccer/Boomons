@@ -34,12 +34,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000013795316440}
+  - component: {fileID: 114000013574736958}
   - component: {fileID: 95000010258117488}
   - component: {fileID: 54000010280803466}
   - component: {fileID: 82000011557002500}
   - component: {fileID: 135000011165935154}
   - component: {fileID: 65000010417259910}
-  - component: {fileID: 114000013574736958}
   - component: {fileID: 114000010595127026}
   m_Layer: 12
   m_Name: Pig
@@ -151,10 +151,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000014048309602}
+  - component: {fileID: 114000012741476134}
   - component: {fileID: 95000012285034060}
   - component: {fileID: 82000010413547614}
   - component: {fileID: 135000010317731092}
-  - component: {fileID: 114000012741476134}
   - component: {fileID: 114000012973394284}
   m_Layer: 12
   m_Name: Rossted 2
@@ -201,10 +201,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000012706200418}
+  - component: {fileID: 114000012157166424}
   - component: {fileID: 95000013945667112}
   - component: {fileID: 82000010665680824}
   - component: {fileID: 135000011544830152}
-  - component: {fileID: 114000012157166424}
   - component: {fileID: 114000012947439288}
   m_Layer: 12
   m_Name: 'Rossted '
@@ -221,10 +221,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000010782477128}
+  - component: {fileID: 114000012941772662}
   - component: {fileID: 95000012773672500}
   - component: {fileID: 82000011989769292}
   - component: {fileID: 135000012093780230}
-  - component: {fileID: 114000012941772662}
   - component: {fileID: 114000013692082460}
   m_Layer: 12
   m_Name: Rabbit
@@ -256,10 +256,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000010701944742}
+  - component: {fileID: 114000013422032866}
   - component: {fileID: 95000012470349050}
   - component: {fileID: 82000012308677550}
   - component: {fileID: 135000012390132562}
-  - component: {fileID: 114000013422032866}
   - component: {fileID: 114000012556268950}
   m_Layer: 12
   m_Name: Rossted 1
@@ -307,10 +307,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000010160489080}
+  - component: {fileID: 114000012407155362}
   - component: {fileID: 95000012634389740}
   - component: {fileID: 82000012647686390}
   - component: {fileID: 135000012214947788}
-  - component: {fileID: 114000012407155362}
   - component: {fileID: 114000012490017216}
   m_Layer: 12
   m_Name: Cow 1
@@ -358,10 +358,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000010658667120}
+  - component: {fileID: 114000010007538830}
   - component: {fileID: 95000012201356542}
   - component: {fileID: 82000011987055190}
   - component: {fileID: 135000012612011496}
-  - component: {fileID: 114000010007538830}
   - component: {fileID: 114000010651190852}
   m_Layer: 12
   m_Name: Cow 2
@@ -1410,9 +1410,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _proximityRadius: 2
+  _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 1
+  _isPhysicallyPlayable: 0
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 0
   _playTriggerName: Play
 --- !u!114 &114000010595127026
 MonoBehaviour:
@@ -1524,9 +1526,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _proximityRadius: 2.5
+  _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 1
+  _isPhysicallyPlayable: 0
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 0
   _playTriggerName: Play
 --- !u!114 &114000012407155362
 MonoBehaviour:
@@ -1540,9 +1544,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _proximityRadius: 2.5
+  _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 1
+  _isPhysicallyPlayable: 0
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 0
   _playTriggerName: Play
 --- !u!114 &114000012490017216
 MonoBehaviour:
@@ -1654,9 +1660,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _proximityRadius: 2
+  _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 1
+  _isPhysicallyPlayable: 0
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 0
   _playTriggerName: Play
 --- !u!114 &114000012941772662
 MonoBehaviour:
@@ -1670,9 +1678,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _proximityRadius: 2.5
+  _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 1
+  _isPhysicallyPlayable: 0
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 0
   _playTriggerName: Play
 --- !u!114 &114000012947439288
 MonoBehaviour:
@@ -1784,9 +1794,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _proximityRadius: 2
+  _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 1
+  _isPhysicallyPlayable: 0
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 0
   _playTriggerName: Play
 --- !u!114 &114000013574736958
 MonoBehaviour:
@@ -1800,9 +1812,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _proximityRadius: 2.5
+  _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 1
+  _isPhysicallyPlayable: 0
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 0
   _playTriggerName: Play
 --- !u!114 &114000013692082460
 MonoBehaviour:

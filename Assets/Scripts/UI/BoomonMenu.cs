@@ -13,7 +13,7 @@ public class BoomonMenu : MonoBehaviour
 
 		_boomonAnimator = boomon.GetComponent<Animator>();
 		_boomonAnimator.SetTrigger("StandUp");
-		_boomonAnimator.GetBehaviour<BoomonIdleState>().Start += OnBoomonIdleReady;	  
+		_boomonAnimator.GetBehaviour<BoomonIdleState>().Enter += OnBoomonIdleReady;	  
 	}
 
 	#endregion
@@ -44,7 +44,7 @@ public class BoomonMenu : MonoBehaviour
 
 	public void OnBoomonIdleReady()
 	{
-		_boomonAnimator.GetBehaviour<BoomonIdleState>().Start -= OnBoomonIdleReady;
+		_boomonAnimator.GetBehaviour<BoomonIdleState>().Enter -= OnBoomonIdleReady;
 
 		var game = MetaManager.Instance.Get<GameManager>();
 		if(game.IsReadyToPlay)

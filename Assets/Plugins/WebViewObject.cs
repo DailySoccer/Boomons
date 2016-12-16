@@ -349,9 +349,8 @@ public class WebViewObject : MonoBehaviour
     }
 
     public bool CanGoBack()
-    {
-#if UNITY_WEBPLAYER
-#elif UNITY_EDITOR || UNITY_STANDALONE_OSX || UNITY_IPHONE
+    {  
+#if UNITY_EDITOR || UNITY_STANDALONE_OSX || UNITY_IPHONE
         if (webView == IntPtr.Zero)
             return false;
         return _CWebViewPlugin_CanGoBack(webView);
@@ -359,13 +358,14 @@ public class WebViewObject : MonoBehaviour
         if (webView == null)
             return false;
         return webView.Get<bool>("canGoBack");
+#else
+		return false;
 #endif
     }
 
     public bool CanGoForward()
-    {
-#if UNITY_WEBPLAYER
-#elif UNITY_EDITOR || UNITY_STANDALONE_OSX || UNITY_IPHONE
+    { 
+#if UNITY_EDITOR || UNITY_STANDALONE_OSX || UNITY_IPHONE
         if (webView == IntPtr.Zero)
             return false;
         return _CWebViewPlugin_CanGoForward(webView);
@@ -373,10 +373,12 @@ public class WebViewObject : MonoBehaviour
         if (webView == null)
             return false;
         return webView.Get<bool>("canGoForward");
+#else
+		return false;
 #endif
-    }
+	}
 
-    public void GoBack()
+	public void GoBack()
     {
 #if UNITY_WEBPLAYER
 #elif UNITY_EDITOR || UNITY_STANDALONE_OSX || UNITY_IPHONE
