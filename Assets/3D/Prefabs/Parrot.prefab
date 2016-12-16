@@ -16,10 +16,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 4
   m_Component:
-  - component: {fileID: 4000012492942316}
-  - component: {fileID: 137000011414825460}
+  - 4: {fileID: 4000012492942316}
+  - 137: {fileID: 137000011414825460}
   m_Layer: 12
   m_Name: rubberDuck
   m_TagString: Untagged
@@ -32,9 +32,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 4
   m_Component:
-  - component: {fileID: 4000012451860794}
+  - 4: {fileID: 4000012451860794}
   m_Layer: 12
   m_Name: rig_rubberDuck
   m_TagString: Untagged
@@ -47,14 +47,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 4
   m_Component:
-  - component: {fileID: 4000012642564302}
-  - component: {fileID: 114000011625727842}
-  - component: {fileID: 95000012096050402}
-  - component: {fileID: 82000013345252754}
-  - component: {fileID: 135000013856549852}
-  - component: {fileID: 114600002277576240}
+  - 4: {fileID: 4000012642564302}
+  - 95: {fileID: 95000012096050402}
+  - 82: {fileID: 82000013345252754}
+  - 135: {fileID: 135000013856549852}
+  - 114: {fileID: 114000011625727842}
   m_Layer: 12
   m_Name: Parrot
   m_TagString: Untagged
@@ -71,10 +70,10 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000012642564302}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4000012492942316
 Transform:
   m_ObjectHideFlags: 1
@@ -84,10 +83,10 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0.000011444092}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000012642564302}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4000012642564302
 Transform:
   m_ObjectHideFlags: 1
@@ -97,12 +96,12 @@ Transform:
   m_LocalRotation: {x: -0, y: -0.27475643, z: -0, w: 0.9615139}
   m_LocalPosition: {x: -11.6, y: 1.38, z: -12.34}
   m_LocalScale: {x: 2.5035148, y: 2.503515, z: 2.503515}
+  m_LocalEulerAnglesHint: {x: 0, y: -31.990002, z: 0}
   m_Children:
   - {fileID: 4000012451860794}
   - {fileID: 4000012492942316}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -31.990002, z: 0}
 --- !u!82 &82000013345252754
 AudioSource:
   m_ObjectHideFlags: 1
@@ -119,7 +118,6 @@ AudioSource:
   Loop: 0
   Mute: 0
   Spatialize: 0
-  SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -132,14 +130,12 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
-      time: 0
+    - time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - serializedVersion: 2
-      time: 1
+    - time: 1
       value: 0
       inSlope: 0
       outSlope: 0
@@ -150,8 +146,7 @@ AudioSource:
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
-      time: 0
+    - time: 0
       value: 0
       inSlope: 0
       outSlope: 0
@@ -162,8 +157,7 @@ AudioSource:
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
-      time: 0
+    - time: 0
       value: 0
       inSlope: 0
       outSlope: 0
@@ -174,8 +168,7 @@ AudioSource:
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
-      time: 0
+    - time: 0
       value: 1
       inSlope: 0
       outSlope: 0
@@ -211,62 +204,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _proximityRadius: 4
-  _proximityTarget: {fileID: 0}
-  _canPlayWhilePlaying: 1
-  _isPhysicallyPlayable: 0
   _playOnEnable: 0
-  _playOnInteractable: 0
+  _isPhysicallyPlayable: 0
+  _interactableRadio: 4
   _playTriggerName: Play
---- !u!114 &114600002277576240
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012531956130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _touchLayerName: Touchable
-  _mustReceiveOnlyItsTouches: 1
-  _tapStart:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114000011625727842}
-        m_MethodName: OnTapStart
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _tapStop:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _tapStay:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _doubleTap:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _swipe:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!135 &135000013856549852
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -293,9 +234,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 49646352f5489b24bb4223f67ca0c387, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -303,7 +242,7 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
+  m_SelectedWireframeHidden: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
