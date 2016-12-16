@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4463107, g: 0.4960847, b: 0.57468784, a: 1}
+  m_IndirectSpecularColor: {r: 0.44597572, g: 0.49572748, b: 0.57443196, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -629,7 +629,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 187804820}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 799a023b2d3eb324fb3bf7b50ed8f4c3, type: 3}
@@ -1197,12 +1197,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 397961314}
-  - component: {fileID: 397961320}
   - component: {fileID: 397961319}
+  - component: {fileID: 397961320}
+  - component: {fileID: 397961315}
   - component: {fileID: 397961318}
   - component: {fileID: 397961316}
   - component: {fileID: 397961317}
-  - component: {fileID: 397961315}
   - component: {fileID: 397961321}
   m_Layer: 12
   m_Name: WhiteKey1
@@ -1238,9 +1238,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 4
   _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 1
+  _isPhysicallyPlayable: 1
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 1
   _playTriggerName: Play
 --- !u!82 &397961316
 AudioSource:
@@ -1551,48 +1552,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 657431bba92462241934d9caf5d7237a, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &457662308
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 62957805}
-    m_Modifications:
-    - target: {fileID: 413458, guid: ab7c2d91c2d367b41be17d0543d4de24, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -0.28
-      objectReference: {fileID: 0}
-    - target: {fileID: 413458, guid: ab7c2d91c2d367b41be17d0543d4de24, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 413458, guid: ab7c2d91c2d367b41be17d0543d4de24, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 26.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 413458, guid: ab7c2d91c2d367b41be17d0543d4de24, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0.000000005131467
-      objectReference: {fileID: 0}
-    - target: {fileID: 413458, guid: ab7c2d91c2d367b41be17d0543d4de24, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0.32082945
-      objectReference: {fileID: 0}
-    - target: {fileID: 413458, guid: ab7c2d91c2d367b41be17d0543d4de24, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0.0000000042328625
-      objectReference: {fileID: 0}
-    - target: {fileID: 413458, guid: ab7c2d91c2d367b41be17d0543d4de24, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.947137
-      objectReference: {fileID: 0}
-    - target: {fileID: 413458, guid: ab7c2d91c2d367b41be17d0543d4de24, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: ab7c2d91c2d367b41be17d0543d4de24, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &471509601
 Prefab:
   m_ObjectHideFlags: 0
@@ -1716,11 +1675,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 522030501}
-  - component: {fileID: 522030507}
   - component: {fileID: 522030506}
+  - component: {fileID: 522030507}
+  - component: {fileID: 522030502}
   - component: {fileID: 522030505}
   - component: {fileID: 522030503}
-  - component: {fileID: 522030502}
   - component: {fileID: 522030508}
   - component: {fileID: 522030504}
   m_Layer: 12
@@ -1757,9 +1716,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 4
   _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 1
+  _isPhysicallyPlayable: 1
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 1
   _playTriggerName: Play
 --- !u!82 &522030503
 AudioSource:
@@ -1959,6 +1919,48 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!1001 &542968325
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 62957805}
+    m_Modifications:
+    - target: {fileID: 413458, guid: ab7c2d91c2d367b41be17d0543d4de24, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 413458, guid: ab7c2d91c2d367b41be17d0543d4de24, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 413458, guid: ab7c2d91c2d367b41be17d0543d4de24, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 26.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 413458, guid: ab7c2d91c2d367b41be17d0543d4de24, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.000000005131467
+      objectReference: {fileID: 0}
+    - target: {fileID: 413458, guid: ab7c2d91c2d367b41be17d0543d4de24, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.32082945
+      objectReference: {fileID: 0}
+    - target: {fileID: 413458, guid: ab7c2d91c2d367b41be17d0543d4de24, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.0000000042328625
+      objectReference: {fileID: 0}
+    - target: {fileID: 413458, guid: ab7c2d91c2d367b41be17d0543d4de24, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.947137
+      objectReference: {fileID: 0}
+    - target: {fileID: 413458, guid: ab7c2d91c2d367b41be17d0543d4de24, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ab7c2d91c2d367b41be17d0543d4de24, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &580239364 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000010847195012, guid: bac76631513a8204f9ac616ae834e320,
@@ -2083,9 +2085,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 4
   _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 0
+  _isPhysicallyPlayable: 0
   _playOnEnable: 1
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 0
   _playTriggerName: Play
 --- !u!82 &581314374
 AudioSource:
@@ -2266,11 +2269,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 622397004}
-  - component: {fileID: 622397010}
   - component: {fileID: 622397009}
+  - component: {fileID: 622397010}
+  - component: {fileID: 622397005}
   - component: {fileID: 622397008}
   - component: {fileID: 622397006}
-  - component: {fileID: 622397005}
   - component: {fileID: 622397011}
   - component: {fileID: 622397007}
   m_Layer: 12
@@ -2307,9 +2310,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 4
   _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 1
+  _isPhysicallyPlayable: 1
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 1
   _playTriggerName: Play
 --- !u!82 &622397006
 AudioSource:
@@ -3106,9 +3110,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 4
   _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 1
+  _isPhysicallyPlayable: 0
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 0
   _playTriggerName: Play
 --- !u!95 &947128740
 Animator:
@@ -3363,9 +3368,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 4
   _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 0
+  _isPhysicallyPlayable: 0
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 0
   _playTriggerName: Play
 --- !u!114 &977029791
 MonoBehaviour:
@@ -4102,9 +4108,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 4
   _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 0
+  _isPhysicallyPlayable: 0
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 0
   _playTriggerName: Play
 --- !u!114 &1079254747
 MonoBehaviour:
@@ -4842,9 +4849,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 4
   _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 0
+  _isPhysicallyPlayable: 0
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 0
   _playTriggerName: Play
 --- !u!114 &1465807633
 MonoBehaviour:
@@ -5203,9 +5211,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 3
   _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 0
+  _isPhysicallyPlayable: 0
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 0
   _playTriggerName: Play
   _tracker: {fileID: 329804692}
 --- !u!1 &1640153607
@@ -5217,11 +5226,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1640153608}
-  - component: {fileID: 1640153614}
   - component: {fileID: 1640153613}
+  - component: {fileID: 1640153614}
+  - component: {fileID: 1640153609}
   - component: {fileID: 1640153612}
   - component: {fileID: 1640153610}
-  - component: {fileID: 1640153609}
   - component: {fileID: 1640153615}
   - component: {fileID: 1640153611}
   m_Layer: 12
@@ -5258,9 +5267,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 4
   _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 1
+  _isPhysicallyPlayable: 1
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 1
   _playTriggerName: Play
 --- !u!82 &1640153610
 AudioSource:
@@ -5469,11 +5479,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1655044392}
-  - component: {fileID: 1655044398}
   - component: {fileID: 1655044397}
+  - component: {fileID: 1655044398}
+  - component: {fileID: 1655044393}
   - component: {fileID: 1655044396}
   - component: {fileID: 1655044394}
-  - component: {fileID: 1655044393}
   - component: {fileID: 1655044399}
   - component: {fileID: 1655044395}
   m_Layer: 12
@@ -5510,9 +5520,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 4
   _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 1
+  _isPhysicallyPlayable: 1
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 1
   _playTriggerName: Play
 --- !u!82 &1655044394
 AudioSource:
@@ -5796,7 +5807,7 @@ MeshFilter:
 --- !u!4 &1679919127 stripped
 Transform:
   m_PrefabParentObject: {fileID: 413458, guid: ab7c2d91c2d367b41be17d0543d4de24, type: 2}
-  m_PrefabInternal: {fileID: 457662308}
+  m_PrefabInternal: {fileID: 542968325}
 --- !u!114 &1680013670 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114000012941772662, guid: 2f9b4263ef6f9d84fb54e17b803e6525,
@@ -5893,9 +5904,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 4
   _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 0
+  _isPhysicallyPlayable: 0
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 0
   _playTriggerName: Play
 --- !u!114 &1681310664
 MonoBehaviour:
@@ -6069,11 +6081,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1690020352}
-  - component: {fileID: 1690020358}
   - component: {fileID: 1690020357}
+  - component: {fileID: 1690020358}
+  - component: {fileID: 1690020353}
   - component: {fileID: 1690020356}
   - component: {fileID: 1690020354}
-  - component: {fileID: 1690020353}
   - component: {fileID: 1690020359}
   - component: {fileID: 1690020355}
   m_Layer: 12
@@ -6110,9 +6122,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 4
   _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 1
+  _isPhysicallyPlayable: 1
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 1
   _playTriggerName: Play
 --- !u!82 &1690020354
 AudioSource:
@@ -6453,11 +6466,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1756935867}
-  - component: {fileID: 1756935873}
   - component: {fileID: 1756935872}
+  - component: {fileID: 1756935873}
+  - component: {fileID: 1756935868}
   - component: {fileID: 1756935871}
   - component: {fileID: 1756935869}
-  - component: {fileID: 1756935868}
   - component: {fileID: 1756935874}
   - component: {fileID: 1756935870}
   m_Layer: 12
@@ -6494,9 +6507,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 4
   _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 1
+  _isPhysicallyPlayable: 1
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 1
   _playTriggerName: Play
 --- !u!82 &1756935869
 AudioSource:
@@ -6705,11 +6719,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1759850720}
-  - component: {fileID: 1759850726}
   - component: {fileID: 1759850725}
+  - component: {fileID: 1759850726}
+  - component: {fileID: 1759850721}
   - component: {fileID: 1759850724}
   - component: {fileID: 1759850722}
-  - component: {fileID: 1759850721}
   - component: {fileID: 1759850727}
   - component: {fileID: 1759850723}
   m_Layer: 12
@@ -6746,9 +6760,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 4
   _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 1
+  _isPhysicallyPlayable: 1
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 1
   _playTriggerName: Play
 --- !u!82 &1759850722
 AudioSource:
@@ -7467,9 +7482,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 4
   _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 0
+  _isPhysicallyPlayable: 0
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 0
   _playTriggerName: Play
 --- !u!114 &1855183950
 MonoBehaviour:

@@ -16,9 +16,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000011412819170}
+  - component: {fileID: 4000011412819170}
   m_Layer: 12
   m_Name: rig_rubberDuck
   m_TagString: Untagged
@@ -31,15 +31,14 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000011453339826}
-  - 95: {fileID: 95000011397709836}
-  - 54: {fileID: 54000013769674354}
-  - 82: {fileID: 82000011245266210}
-  - 135: {fileID: 135000011310538148}
-  - 114: {fileID: 114000011072000920}
-  - 114: {fileID: 114000011617661278}
+  - component: {fileID: 4000011453339826}
+  - component: {fileID: 114000011072000920}
+  - component: {fileID: 95000011397709836}
+  - component: {fileID: 82000011245266210}
+  - component: {fileID: 135000011310538148}
+  - component: {fileID: 114000011617661278}
   m_Layer: 12
   m_Name: Fish
   m_TagString: Untagged
@@ -52,10 +51,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013866926762}
-  - 137: {fileID: 137000010809722988}
+  - component: {fileID: 4000013866926762}
+  - component: {fileID: 137000010809722988}
   m_Layer: 12
   m_Name: rubberDuck
   m_TagString: Untagged
@@ -72,10 +71,10 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000011453339826}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4000011453339826
 Transform:
   m_ObjectHideFlags: 1
@@ -83,14 +82,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010691534656}
   m_LocalRotation: {x: -0.083269216, y: 0.64881206, z: 0.7492838, w: -0.103358895}
-  m_LocalPosition: {x: -11.325, y: 1.466, z: 24.866}
+  m_LocalPosition: {x: -12.311, y: 4.924, z: 19.972}
   m_LocalScale: {x: 1.0000007, y: 1, z: 1.0000007}
-  m_LocalEulerAnglesHint: {x: -107.26299, y: 119.099, z: 62.61199}
   m_Children:
   - {fileID: 4000011412819170}
   - {fileID: 4000013866926762}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -107.26299, y: 119.099, z: 62.61199}
 --- !u!4 &4000013866926762
 Transform:
   m_ObjectHideFlags: 1
@@ -100,25 +99,10 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 40.853, y: 0, z: -1.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000011453339826}
   m_RootOrder: 1
---- !u!54 &54000013769674354
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010691534656}
-  serializedVersion: 2
-  m_Mass: 3
-  m_Drag: 1
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &82000011245266210
 AudioSource:
   m_ObjectHideFlags: 1
@@ -135,6 +119,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Spatialize: 0
+  SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -147,12 +132,14 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 0
       inSlope: 0
       outSlope: 0
@@ -163,7 +150,8 @@ AudioSource:
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
@@ -174,7 +162,8 @@ AudioSource:
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
@@ -185,7 +174,8 @@ AudioSource:
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
@@ -221,9 +211,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playOnEnable: 0
+  _proximityRadius: 4
+  _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 1
   _isPhysicallyPlayable: 0
-  _interactableRadio: 6
+  _playOnEnable: 0
+  _playOnInteractable: 0
   _playTriggerName: Play
 --- !u!114 &114000011617661278
 MonoBehaviour:
@@ -300,7 +293,9 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 3f1049bb94b7f3c48a1f8a66225889b9, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -308,7 +303,7 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
