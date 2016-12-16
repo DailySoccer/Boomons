@@ -111,9 +111,6 @@ public class GameManager : Manager
 
 	private void OnSceneLoaded(Scene scene, LoadSceneMode loadMode)
 	{
-		Camera = UnityEngine.Camera.main.GetComponent<BoomonCamera>();
-		Debug.Assert(Camera != null, "GameManager::Start>> Camera not found!!", this);
-
 		Transform spawner = FindSpawner();
 		
 		if(spawner != null) 
@@ -124,6 +121,9 @@ public class GameManager : Manager
 
 	private void OnRoomEnter(string roomName, Transform spawner)
 	{
+		Camera = UnityEngine.Camera.main.GetComponent<BoomonCamera>();
+		Debug.Assert(Camera != null, "GameManager::Start>> Camera not found!!", this);
+
 		ActiveRoom = roomName;
 		Transition.Instance.StartAnim(1f, true); // TODO FRS 161027 Configurar un tiempo por defecto de transición
 		SpawnBoomon(BoomonRole, spawner);
