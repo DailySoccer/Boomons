@@ -102,10 +102,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000014293477736}
+  - component: {fileID: 114000010968298154}
   - component: {fileID: 95000012585496022}
   - component: {fileID: 136000013986829550}
   - component: {fileID: 82000010742761492}
-  - component: {fileID: 114000010968298154}
   - component: {fileID: 114000012306525304}
   m_Layer: 12
   m_Name: Monkey
@@ -970,9 +970,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _proximityRadius: 4
   _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 0
+  _isPhysicallyPlayable: 0
   _playOnEnable: 0
   _playOnInteractable: 0
-  _isPhysicallyPlayable: 0
   _playTriggerName: Play
 --- !u!114 &114000012306525304
 MonoBehaviour:

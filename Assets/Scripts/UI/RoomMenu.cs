@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Canvas))]
 public class RoomMenu : MonoBehaviour
 {
+	
+
 	#region Public Fields
 
 
@@ -9,10 +12,17 @@ public class RoomMenu : MonoBehaviour
 
 	//=========================================================================
 
-	#region Mono
+	#region Mono	
 
+	private void Awake()
+	{
+		_canvas = GetComponent<Canvas>();
+	}
 
-
+	private void OnDestroy()
+	{
+		_canvas = null;
+	}
 
 	#endregion
 
@@ -22,6 +32,8 @@ public class RoomMenu : MonoBehaviour
 
 	public void OnRoomClick(RoomButton button)
 	{
+		_canvas.enabled = false;
+
 		var game = MetaManager.Instance.Get<GameManager>();
 		game.Room = button.TargetRoomId;
 
@@ -42,8 +54,7 @@ public class RoomMenu : MonoBehaviour
 
 	#region Private Fields
 
-
-
+	private Canvas _canvas;
 	#endregion
 }
 
