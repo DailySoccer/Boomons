@@ -124,7 +124,8 @@ public class ItemSignposter : MonoBehaviour
 
 	private void DelayedDeactivate(float secs)
 	{
-		StartCoroutine(DelayedDeactivateCoroutine(secs));
+		if(enabled)
+			StartCoroutine(DelayedDeactivateCoroutine(secs));
 	}
 
 	#endregion
