@@ -153,11 +153,11 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	{
 		Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
 		//*
-		float moveValue = Vector3.Dot(Vector3.right, touchPos - screenPos);
+		float moveValue = Vector3.Dot(Vector3.right, touchPos - screenPos) * 2f / Screen.dpi;
 		/*/
 				float moveValue = 2f * (touchPos - screenPos).x / Screen.width;
 		/**/
-		if(MoveSense == Sense.None || Mathf.Abs(moveValue) > _senseReversalDistMin)
+		if(MoveSense == Sense.None || Mathf.Abs(moveValue) > _senseReversalInchesMin)
 			MoveSense = (Sense)Mathf.Sign(moveValue);
 
 		CurrentState = State.Move;
@@ -690,9 +690,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		}
 	}
 
-
-
-
+				   
 	//[SerializeField] private Transform _bipedRoot;
 
 	[SerializeField]
@@ -710,7 +708,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	[SerializeField, Range(0f, 90f)]
 	private float _throwDegreesMin = 10f;
 	[SerializeField, Range(0f, 10f)]
-	private float _senseReversalDistMin = 1f;
+	private float _senseReversalInchesMin = 1f;
 	[SerializeField, Range(0f, 100f)]
 	private float _fallHeightMin = 100f;
 
