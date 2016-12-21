@@ -16,9 +16,9 @@ GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013720221376}
+  - component: {fileID: 4000013720221376}
   m_Layer: 12
   m_Name: rig_telescope
   m_TagString: Untagged
@@ -31,15 +31,14 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000010913083322}
-  - 95: {fileID: 95000012837036628}
-  - 82: {fileID: 82000014119211462}
-  - 135: {fileID: 135000013471268522}
-  - 114: {fileID: 114000011014085368}
-  - 114: {fileID: 114000012097862358}
-  - 65: {fileID: 65000011789410338}
+  - component: {fileID: 4000010913083322}
+  - component: {fileID: 95000012837036628}
+  - component: {fileID: 82000014119211462}
+  - component: {fileID: 135000013471268522}
+  - component: {fileID: 65000011789410338}
+  - component: {fileID: 114251358277844926}
   m_Layer: 12
   m_Name: Binoculars
   m_TagString: Untagged
@@ -52,9 +51,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000011238450764}
+  - component: {fileID: 4000011238450764}
   m_Layer: 12
   m_Name: rig_telescopeAxis
   m_TagString: Untagged
@@ -67,11 +66,11 @@ GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000011817777916}
-  - 33: {fileID: 33000010668153228}
-  - 23: {fileID: 23000012771111890}
+  - component: {fileID: 4000011817777916}
+  - component: {fileID: 33000010668153228}
+  - component: {fileID: 23000012771111890}
   m_Layer: 12
   m_Name: TelescopeAxis
   m_TagString: Untagged
@@ -84,11 +83,11 @@ GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013718531778}
-  - 33: {fileID: 33000010063836942}
-  - 23: {fileID: 23000010227605188}
+  - component: {fileID: 4000013718531778}
+  - component: {fileID: 33000010063836942}
+  - component: {fileID: 23000010227605188}
   m_Layer: 12
   m_Name: Telescope
   m_TagString: Untagged
@@ -103,13 +102,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011063245468}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -5.23, y: 3.9019597, z: 22.83}
+  m_LocalPosition: {x: -4.17, y: 3.727, z: 17.96}
   m_LocalScale: {x: 2.366104, y: 2.3661017, z: 2.3661036}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children:
   - {fileID: 4000011238450764}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4000011238450764
 Transform:
   m_ObjectHideFlags: 1
@@ -119,12 +118,12 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0.00000333786, y: 0.06764233, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: -90, y: -60.895428, z: 0}
   m_Children:
   - {fileID: 4000013720221376}
   - {fileID: 4000011817777916}
   m_Father: {fileID: 4000010913083322}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: -60.895428, z: 0}
 --- !u!4 &4000011817777916
 Transform:
   m_ObjectHideFlags: 1
@@ -134,10 +133,10 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000011238450764}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4000013718531778
 Transform:
   m_ObjectHideFlags: 1
@@ -147,10 +146,10 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000013720221376}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4000013720221376
 Transform:
   m_ObjectHideFlags: 1
@@ -160,11 +159,11 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.000000007450581, y: 0, z: 0.5734009}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: -2.9951398, z: 0}
   m_Children:
   - {fileID: 4000013718531778}
   m_Father: {fileID: 4000011238450764}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -2.9951398, z: 0}
 --- !u!23 &23000010227605188
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -181,7 +180,9 @@ MeshRenderer:
   - {fileID: 2100000, guid: 5e9a0d4c9b567384c8d1a9c7e39fdce3, type: 2}
   - {fileID: 2100000, guid: ff2811fcf922aad4bb0a12942d1a0c80, type: 2}
   - {fileID: 2100000, guid: 56d572824e0a66e4da20704af5e637dc, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -189,7 +190,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -210,7 +211,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 5e9a0d4c9b567384c8d1a9c7e39fdce3, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -218,7 +221,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -247,17 +250,17 @@ BoxCollider:
   m_GameObject: {fileID: 1000011063245468}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1.1321567, y: 0.42232463, z: 1}
-  m_Center: {x: 0.066075526, y: 0.6762866, z: -0.0000034196858}
+  m_Size: {x: 1.1321567, y: 0.42232472, z: 0.90482336}
+  m_Center: {x: 0.06610133, y: 0.6762866, z: -0.047586903}
 --- !u!82 &82000014119211462
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011063245468}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -267,6 +270,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Spatialize: 0
+  SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -279,12 +283,14 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 0
       inSlope: 0
       outSlope: 0
@@ -295,7 +301,8 @@ AudioSource:
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
@@ -306,7 +313,8 @@ AudioSource:
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
@@ -317,7 +325,8 @@ AudioSource:
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
@@ -332,7 +341,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011063245468}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 0dd46006acd681948922c9eceb91b87b, type: 3}
   m_Controller: {fileID: 9100000, guid: faaa48e749fb2e247b6f9adb525a97b9, type: 2}
   m_CullingMode: 0
@@ -342,7 +351,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114000011014085368
+--- !u!114 &114251358277844926
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -350,52 +359,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000011063245468}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c80b0ba94dfc31458133b09ad465e4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _touchLayerName: Touchable
-  _mustReceiveOnlyItsTouches: 1
-  _tapStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _tapStop:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _tapStay:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _doubleTap:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _swipe:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Touchable+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+  _proximityRadius: 3
+  _proximityTarget: {fileID: 0}
+  _canPlayWhilePlaying: 0
+  _isPhysicallyPlayable: 0
+  _playOnEnable: 0
+  _playOnInteractable: 0
   _playTriggerName: Play
-  _playerTag: Player
-  _activateOnEnable: 0
-  _isPhysicallyActivable: 0
---- !u!114 &114000012097862358
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011063245468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e50fc0cc8e4cc32439ef25af785ac89b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TrackerRef: {fileID: 0}
+  _tracker: {fileID: 0}
 --- !u!135 &135000013471268522
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -404,7 +378,7 @@ SphereCollider:
   m_GameObject: {fileID: 1000011063245468}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.4
   m_Center: {x: 0, y: 0.31, z: 0}
