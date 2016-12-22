@@ -5,14 +5,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 401188}
-  - 33: {fileID: 3385324}
-  - 23: {fileID: 2321528}
-  - 54: {fileID: 5462442}
-  - 64: {fileID: 6443284}
-  m_Layer: 0
+  - component: {fileID: 401188}
+  - component: {fileID: 3385324}
+  - component: {fileID: 2321528}
+  m_Layer: 12
   m_Name: Teddy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,13 +23,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103492}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5000001, w: 0.49999994}
-  m_LocalPosition: {x: -0.243, y: 0.156, z: 41.15}
+  m_LocalRotation: {x: -0.5000001, y: 0.4999999, z: 0.4999999, w: 0.5000001}
+  m_LocalPosition: {x: -8, y: 0, z: 13.33}
   m_LocalScale: {x: 0.019999998, y: 0.019999998, z: 0.019999998}
-  m_LocalEulerAnglesHint: {x: -90, y: 90, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 89.99999}
 --- !u!23 &2321528
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -52,7 +50,9 @@ MeshRenderer:
   - {fileID: 2100000, guid: c8044f632aa156e448924e7fb332cf6e, type: 2}
   - {fileID: 2100000, guid: 985987514b1e0dd45b6d895a2fa1f1ab, type: 2}
   - {fileID: 2100000, guid: e7d45d1c07bd907418cd6b2a7508d9e9, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -60,7 +60,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -73,34 +73,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103492}
-  m_Mesh: {fileID: 4300028, guid: be845df05bee44741a283ce091ae50ef, type: 3}
---- !u!54 &5462442
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103492}
-  serializedVersion: 2
-  m_Mass: 490
-  m_Drag: 0.2
-  m_AngularDrag: 0.01
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 2
-  m_CollisionDetection: 0
---- !u!64 &6443284
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103492}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 1
-  m_Mesh: {fileID: 4300028, guid: be845df05bee44741a283ce091ae50ef, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 6b37e905433c01647b04d1d8c5ef2ee1, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
