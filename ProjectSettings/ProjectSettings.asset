@@ -125,12 +125,20 @@ PlayerSettings:
   metroInputSource: 0
   m_HolographicPauseOnTrackingLoss: 1
   xboxOneDisableKinectGpuReservation: 0
+  xboxOneEnable7thCore: 0
+  vrSettings:
+    cardboard:
+      depthFormat: 0
+      enableTransitionView: 0
+    daydream:
+      depthFormat: 0
+      useSustainedPerformanceMode: 0
   protectGraphicsMemory: 0
+  useHDRDisplay: 0
   AndroidBundleVersionCode: 4
   AndroidMinSdkVersion: 9
   AndroidPreferredInstallLocation: 1
   aotOptions: 
-  apiCompatibilityLevel: 2
   stripEngineCode: 1
   iPhoneStrippingLevel: 0
   iPhoneScriptCallOptimization: 0
@@ -139,7 +147,7 @@ PlayerSettings:
   ForceSDCardPermission: 0
   CreateWallpaper: 0
   APKExpansionFiles: 0
-  preloadShaders: 0
+  keepLoadedShadersAlive: 0
   StripUnusedMeshComponents: 0
   VertexChannelCompressionMask:
     serializedVersion: 2
@@ -191,7 +199,12 @@ PlayerSettings:
   iOSURLSchemes: []
   iOSBackgroundModes: 0
   iOSMetalForceHardShadows: 0
+  metalEditorSupport: 1
+  metalAPIValidation: 1
   appleDeveloperTeamID: 
+  iOSManualSigningProvisioningProfileID: 
+  tvOSManualSigningProvisioningProfileID: 
+  appleEnableAutomaticSigning: 0
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 2
   androidSplashScreen: {fileID: 2800000, guid: 78eadb1b94f2b244d9e89d33e9d4cbfa, type: 3}
@@ -305,6 +318,12 @@ PlayerSettings:
   cameraUsageDescription: 
   locationUsageDescription: 
   microphoneUsageDescription: 
+  switchNetLibKey: 
+  switchSocketMemoryPoolSize: 6144
+  switchSocketAllocatorPoolSize: 128
+  switchSocketConcurrencyLimit: 14
+  switchApplicationID: 0x0005000C10000001
+  switchNSODependencies: 
   XboxTitleId: 
   XboxImageXexPath: 
   XboxSpaPath: 
@@ -327,6 +346,7 @@ PlayerSettings:
   ps4ParamSfxPath: 
   ps4VideoOutPixelFormat: 0
   ps4VideoOutInitialWidth: 1920
+  ps4VideoOutBaseModeInitialWidth: 1920
   ps4VideoOutReprojectionRate: 120
   ps4PronunciationXMLPath: 
   ps4PronunciationSIGPath: 
@@ -349,6 +369,7 @@ PlayerSettings:
   ps4ApplicationParam4: 0
   ps4DownloadDataSize: 0
   ps4GarlicHeapSize: 2048
+  ps4ProGarlicHeapSize: 2560
   ps4Passcode: frAQBc8Wsa1xVPfvJcrgRYwTiizs2trQ
   ps4UseDebugIl2cppLibs: 0
   ps4pnSessions: 1
@@ -374,6 +395,9 @@ PlayerSettings:
   ps4attribShareSupport: 0
   ps4attribExclusiveVR: 0
   ps4disableAutoHideSplash: 0
+  ps4videoRecordingFeaturesUsed: 0
+  ps4contentSearchFeaturesUsed: 0
+  ps4attribEyeToEyeDistanceSettingVR: 0
   ps4IncludedModules: []
   monoEnv: 
   psp2Splashimage: {fileID: 0}
@@ -429,6 +453,7 @@ PlayerSettings:
   spritePackerPolicy: 
   webGLMemorySize: 256
   webGLExceptionSupport: 1
+  webGLNameFilesAsHashes: 0
   webGLDataCaching: 0
   webGLDebugSymbols: 0
   webGLEmscriptenArgs: 
@@ -451,6 +476,7 @@ PlayerSettings:
     iOS: 1
   incrementalIl2cppBuild: {}
   additionalIl2CppArgs: 
+  apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: Boomons
@@ -526,7 +552,11 @@ PlayerSettings:
   XboxOneSplashScreen: {fileID: 0}
   XboxOneAllowedProductIds: []
   XboxOnePersistentLocalStorageSize: 0
-  vrEditorSettings: {}
+  xboxOneScriptCompiler: 0
+  vrEditorSettings:
+    daydream:
+      daydreamIconForeground: {fileID: 0}
+      daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
     Analytics: 0
     Build: 0
@@ -537,7 +567,10 @@ PlayerSettings:
     Purchasing: 0
     UNet: 0
     Unity_Ads: 0
+  facebookSdkVersion: 7.9.1
+  apiCompatibilityLevel: 2
   cloudProjectId: 
   projectName: 
   organizationId: 
   cloudEnabled: 0
+  enableNewInputSystem: 0
