@@ -78,10 +78,10 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 		if(Ragdoll.ReferenceSystem != null)
 			Rigid.MovePosition( Ragdoll.ReferenceSystem.ProjectOnPlane(Rigid.position) );
 
-		if (Rigid.velocity.sqrMagnitude < Ragdoll.GroundParams.StopVelocityMaxSqr)
-			IsGrounded = (_groundTimer -= Time.fixedDeltaTime) < 0f;
-		else
-			_groundTimer = Ragdoll.GroundParams.Timeout;
+		//if (Rigid.velocity.sqrMagnitude < Ragdoll.GroundParams.StopVelocityMaxSqr)
+		//	IsGrounded = (_groundTimer -= Time.fixedDeltaTime) < 0f;
+		//else
+		//	_groundTimer = Ragdoll.GroundParams.Timeout;
 	}
 
 	private void OnCollisionEnter(Collision collision)
