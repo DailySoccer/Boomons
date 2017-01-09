@@ -1,5 +1,4 @@
-﻿using UnityEditor.VersionControl;
-using UnityEngine;
+﻿using UnityEngine;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(Animator))]
@@ -37,7 +36,7 @@ public class FacialAnimator : MonoBehaviour
 		Debug.Assert(_facialMaterialIndex < _renderer.sharedMaterials.Length,
 			"FacialAnimator::Awake>> Index out of range!!", this);
 
-		_facialMaterial = _renderer.materials[_facialMaterialIndex];
+		_facialMaterial = _renderer.sharedMaterials[_facialMaterialIndex];
 
 		if (_facialBone == null)
 			_facialBone = transform.FindChild(_facialBoneName);
@@ -49,7 +48,7 @@ public class FacialAnimator : MonoBehaviour
 	{	
 		Reset();
 
-		Destroy(_facialMaterial);
+		//Destroy(_facialMaterial);
 		_facialMaterial = null;
 		Resources.UnloadUnusedAssets();
 
