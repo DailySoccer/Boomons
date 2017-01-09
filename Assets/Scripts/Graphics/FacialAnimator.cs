@@ -48,6 +48,10 @@ public class FacialAnimator : MonoBehaviour
 	{	
 		Reset();
 
+		//Destroy(_facialMaterial);
+		_facialMaterial = null;
+		Resources.UnloadUnusedAssets();
+
 		_renderer = null;
 		_animator = null;
 		_facialMaterial = null;

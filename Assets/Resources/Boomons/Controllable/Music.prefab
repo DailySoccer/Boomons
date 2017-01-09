@@ -1534,7 +1534,7 @@ MonoBehaviour:
   _moveSpeed: 2.5
   _moveAnimMultiplierBase: 0.4
   _throwDegreesMin: 35
-  _senseReversalDistMin: 5
+  _senseReversalInchesMin: 1
   _fallHeightMin: 100
 --- !u!114 &114000013499649118
 MonoBehaviour:
@@ -1645,6 +1645,8 @@ MonoBehaviour:
   _stateClips:
   - State: 6
     File: {fileID: 8300000, guid: fdef55753da5a78419b667c04c69c46f, type: 3}
+  - State: 4
+    File: {fileID: 8300000, guid: 49400cba7ffd46b41abe0d7575c6e0c6, type: 3}
   _emotionClips:
   - Emotion: 1
     File: {fileID: 8300000, guid: e2037042c4688ae498afe531b532c142, type: 3}
@@ -1670,7 +1672,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: dcd84cd1134ab5540a248eee4191146c, type: 2}
-  - {fileID: 2100000, guid: c4ce454adbad55d4dba4e8ee13ac8cfc, type: 2}
+  - {fileID: 2100000, guid: ef5d23df0fc93ef479e2cbf8a6e9ca3b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

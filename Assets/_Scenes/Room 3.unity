@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44597572, g: 0.49572748, b: 0.57443196, a: 1}
+  m_IndirectSpecularColor: {r: 0.44597518, g: 0.4957264, b: 0.57443035, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -66,12 +66,12 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 0
     m_TextureCompression: 1
-    m_DirectLightInLightProbes: 0
+    m_DirectLightInLightProbes: 1
     m_FinalGather: 0
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 112000001, guid: c08a6f753c73bc34faedeae7851cb338,
+  m_LightingDataAsset: {fileID: 112000001, guid: 62ae6c00c61f72a45b434c8bcbb4d52c,
     type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
@@ -969,16 +969,16 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 16777215
+          rgba: 4294967295
         key1:
           serializedVersion: 2
-          rgba: 3875536895
+          rgba: 4294967295
         key2:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 0
         key3:
           serializedVersion: 2
-          rgba: 503316480
+          rgba: 0
         key4:
           serializedVersion: 2
           rgba: 0
@@ -6016,7 +6016,7 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 16777215
+          rgba: 4294967295
         key1:
           serializedVersion: 2
           rgba: 4294967295

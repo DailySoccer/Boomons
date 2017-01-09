@@ -27,18 +27,21 @@ public class ShootTarget : Item
 
 	protected override void OnInteractableChange(bool value)
 	{
-		if (value)
-		{
-			base.OnInteractableChange(true);
-			ProximityTarget = null;
-		}
+		if (!value || _canBeShot)
+			return;
+
+		base.OnInteractableChange(true);
+		_canBeShot = true;
 	}
 
 	private void Shoot(Toucher toucher, Vector2 pos)
 	{
+		if (!_canBeShot)
+			return;
+
 		Animator.SetTrigger(_shootTriggerName);
 		AudioSource.PlayOneShot(_shootClip);
-		enabled = false;
+		_canBeShot = false;
 	}
 
 	#endregion
@@ -50,6 +53,7 @@ public class ShootTarget : Item
 
 	[SerializeField] private string _shootTriggerName = "Shoot";
 	[SerializeField] private AudioClip _shootClip;
+	private bool _canBeShot;
 
 	#endregion
 }
