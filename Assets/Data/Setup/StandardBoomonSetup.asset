@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55879fdd222e28e49826abfc32d449f1, type: 3}
+  m_Name: StandardBoomonSetup
+  m_EditorClassIdentifier: 
+  _moveSpeed: 2.5
+  _senseReversalInchesMin: 1
+  _moveMultiplierParamName: MoveMultiplier
+  _moveAnimMultiplierBase: 0.4
+  _right: {x: 0, y: 0, z: 1}
+  _bounciness: 0.5
+  _pushMass: 5
+  _throwDegreesMin: 35
+  _fallHeightMin: 100
+  _ragdollSetup: {fileID: 11400000, guid: 8cc074f3b6107b444951a6dfe069dfea, type: 2}

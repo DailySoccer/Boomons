@@ -9,7 +9,7 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 	public event Action<Vector3> GroundEnter;
 
 	public Transform Transform { get { return _pelvis.transform; } }
-	public GroundDetectionParams GroundParams { get { return _groundParams; } }
+
 
 	public bool IsTeleporting { get; private set; }
 
@@ -27,7 +27,9 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 		}
 	}
 
-	public ReferenceSystem ReferenceSystem { get { return _refSystem;  } }
+	public RagdollSetup Setup { get; private set; }
+	public ReferenceSystem ReferenceSystem { get; private set; }
+
 
 	#endregion
 
@@ -35,17 +37,20 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 
 	#region Public Methods
 
-	public virtual void Setup(Transform setupRef, ReferenceSystem  refSystem = null)
+	public virtual void Init(Transform refTransform, RagdollSetup setup, ReferenceSystem  refSystem = null)
 	{
 		IsTeleporting = false;
 
-		_refSystem = refSystem;
+		Setup = setup;
+		ReferenceSystem = refSystem;
 
-		var refNodes = setupRef.GetComponentsInChildren<Transform>(true);
+		_pelvis.Init(this);
+
+		var refNodes = refTransform.GetComponentsInChildren<Transform>(true);
 		for(int i = 0; i < refNodes.Length; ++i)
 		{
 			Debug.Assert(i == 0 || _nodes[i].name == refNodes[i].name, 
-				"Ragdoll::Setup>> Hierarchy does not match: " 
+				"Ragdoll::Init>> Hierarchy does not match: " 
 				+ _nodes[i].name + " VS " + refNodes[i].name, gameObject);
 
 			if (!_nodes[i].name.Contains(_eyebrowKeyWord)) { // TODO FRS 161027 Mejorar con hashSet configurable (blacklist)
@@ -102,9 +107,7 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 		_nodes = GetComponentsInChildren<Transform>(true);
 		if (_pelvis == null)
 			_pelvis = GetComponentInChildren<RagdollPelvis>();
-
-		_pelvis.Ragdoll = this;
-	
+		
 		gameObject.SetActive(false);
 	}
 
@@ -145,43 +148,10 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 	#region Private Fields
 
 
-	[SerializeField] private GroundDetectionParams _groundParams;
-	
-	[Serializable]
-	public class GroundDetectionParams
-	{
-		public float StopVelocityMaxSqr { get { return _stopVelocityMaxSqr; } }
-		public float Timeout			{ get { return _timeoutSecs;		} }
-
-		public float GroundCosine {
-			get {
-				return _groundCosine ?? 
-					(_groundCosine = Mathf.Cos(_groundDegreesMax*Mathf.Deg2Rad)).Value;
-			}
-		}
-		
-		public int Layer {
-			get {
-				return _layer > 0 ?  _layer :
-					(_layer = LayerMask.NameToLayer(_layerName));
-			}
-		}
-			
-		[SerializeField, Range(0.01f, 5f)] private float  _stopVelocityMaxSqr = .1f;
-		[SerializeField, Range(0.1f, 5f)]  private float  _timeoutSecs = 1f;
-		[SerializeField]				   private string _layerName = "Ground";
-		[SerializeField, Range(0f, 90f)]   private float  _groundDegreesMax = 45f;
-
-		private int _layer;
-		private float? _groundCosine;
-	}
-
-
 	private RagdollPelvis _pelvis;
 	private Transform[] _nodes;
 
 	private string _eyebrowKeyWord = "Eyebrow";
-	private ReferenceSystem _refSystem;
 
 	#endregion
 
