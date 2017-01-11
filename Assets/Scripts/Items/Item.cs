@@ -79,7 +79,7 @@ public class Item : BoomonProximityDetector
 		base.OnDestroy();
 	}
 
-	protected override void OnEnable()
+	protected virtual void OnEnable()
 	{
 		var idleState = Animator.GetBehaviour<ItemIdleState>();
 		if (idleState != null)
@@ -87,7 +87,6 @@ public class Item : BoomonProximityDetector
 		else
 			_canPlayWhilePlaying = true;
 
-		base.OnEnable();
         if (_playOnEnable)
             Play();
     }

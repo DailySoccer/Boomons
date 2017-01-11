@@ -39,10 +39,9 @@ public class Ragdoll : MonoBehaviour, IObjectTouchListener, ITeleportable
 
 	public virtual void Init(Transform refTransform, RagdollSetup setup, ReferenceSystem  refSystem = null)
 	{
-		IsTeleporting = false;
-
 		Setup = setup;
 		ReferenceSystem = refSystem;
+		IsTeleporting = false;
 
 		_pelvis.Init(this);
 

@@ -4,16 +4,17 @@ public class CameraModifier : BoomonProximityDetector
 {  
 	  // TODO Habilitar con la distancia
 	#region Mono
-							   
+
 	protected void OnDisable()
 	{
-		ProximityTarget = null;
-	}
+		if(IsTargetNearby)	
+			OnTargetExit();
+	}	
 
 	protected override void OnDestroy()
 	{
-		_camera = null;
 		base.OnDestroy();
+		_camera = null;
 	}
 
 #if UNITY_EDITOR
@@ -32,17 +33,19 @@ public class CameraModifier : BoomonProximityDetector
 
 	protected override void OnTargetEnter()
 	{
+		if (!enabled)
+			return;
+
 		base.OnTargetEnter();
 		Debug.Log("CameraModifier::OnTargetEnter>> " + name, this);
 		Camera.SetModifiers(_modifiers);
 	}
 
 	protected override void OnTargetExit()
-	{
+	{	
 		base.OnTargetExit();
 		Debug.Log("CameraModifier::OnTargetExit>> " + name, this);
-		if(_camera != null)
-			_camera.ClearModifiers();
+		Camera.ClearModifiers();
 	}
 
 	#endregion
@@ -51,8 +54,7 @@ public class CameraModifier : BoomonProximityDetector
 
 	#region Private Fields
 
-	private BoomonCamera Camera
-	{
+	private BoomonCamera Camera {
 		get {
 			return _camera ??
 				(_camera = MetaManager.Instance.Get<GameManager>().Camera);

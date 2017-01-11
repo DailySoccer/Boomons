@@ -173,7 +173,6 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		Log("Throw", "@" + velocity, this);
 
 		CurrentState = State.Throw;
-		Ragdoll.Setup(this);
 		Ragdoll.Throw(velocity, applyPosition);
 	}
 
@@ -185,7 +184,6 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		Log("Throw", "caused by Swipe", this);
 
 		CurrentState = State.Throw;
-		Ragdoll.Setup(this);
 		Ragdoll.OnSwipe(null, swipePos, swipeVector, speedRatio);
 	}
 
@@ -523,7 +521,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	{
 		Log("OnThrowStart");
 		gameObject.SetActive(false);
-		Ragdoll.gameObject.SetActive(true);
+		Ragdoll.Init(this);
 	}
 
 	private void OnThrowEnd(State nextState)

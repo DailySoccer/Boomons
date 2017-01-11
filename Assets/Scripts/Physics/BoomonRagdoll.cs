@@ -3,7 +3,7 @@
 
 	#region Public Methods
 
-	public void Setup(BoomonController boomon)
+	public void Init(BoomonController boomon)
 	{
 		base.Init(boomon.transform, boomon.Setup.RagdollSetup, boomon.ReferenceSystem);
 		_boomon = boomon;
