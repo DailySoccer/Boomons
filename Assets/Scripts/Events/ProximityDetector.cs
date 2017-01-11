@@ -10,9 +10,11 @@ public class ProximityDetector : MonoBehaviour
 	public virtual event Action TargetEnter;
 	public virtual event Action TargetExit;
 
-	public virtual bool IsTargetNearby {
+	public virtual bool IsTargetNearby 
+	{
 		get { return _isTargetNearby; }
-		private set {
+		private set 
+		{
 			if(value == _isTargetNearby)
 				return;
 
@@ -108,6 +110,9 @@ public class ProximityDetector : MonoBehaviour
 		if(target == null)
 			return false;
 
+		if (_proximityRadius > ProximityRadiusMax)
+			return true;
+
 		Vector3 dist = target.position - transform.position;
 		dist = Game.ReferenceSystem.ProjectOnPlane(dist, false);
 		float distSqr = Vector3.SqrMagnitude(dist);
@@ -121,7 +126,8 @@ public class ProximityDetector : MonoBehaviour
 
 	#region Private Fields
 
-	[SerializeField, Range(0f, 10f)] private float _proximityRadius = 4f;
+	private const float ProximityRadiusMax = 99f;
+	[SerializeField, Range(0f, ProximityRadiusMax + 1f)] private float _proximityRadius = 4f;
 
 	protected GameManager Game { get; private set; }
 

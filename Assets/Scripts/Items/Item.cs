@@ -16,11 +16,13 @@ public class Item : BoomonProximityDetector
 		get { return _isInteractable; }
 		private set
 		{
-			if (value == _isInteractable)
-				return;
+			if(Toucher != null)
+				Toucher.enabled = value;
 
-			_isInteractable = value;
-			OnInteractableChange(value);
+			if(value != _isInteractable) { 
+				_isInteractable = value;
+				OnInteractableChange(value);
+			}
 		}
 	}
 
@@ -77,7 +79,7 @@ public class Item : BoomonProximityDetector
 		base.OnDestroy();
 	}
 
-	protected override void OnEnable()
+	protected virtual void OnEnable()
 	{
 		var idleState = Animator.GetBehaviour<ItemIdleState>();
 		if (idleState != null)
@@ -85,7 +87,6 @@ public class Item : BoomonProximityDetector
 		else
 			_canPlayWhilePlaying = true;
 
-		base.OnEnable();
         if (_playOnEnable)
             Play();
     }
@@ -99,6 +100,13 @@ public class Item : BoomonProximityDetector
 		if(idleState != null)
 			idleState.Enter -= OnAnimationIdleEnter;
 	}
+	  
+	protected override void Start()
+	{
+		base.Start();
+		IsInteractable = false;
+	}
+
 
 	protected virtual void OnCollisionEnter(Collision collision)
 	{
@@ -147,9 +155,6 @@ public class Item : BoomonProximityDetector
 	{
 		if(value && _playOnInteractable)
 			Play();
-			 
-		if(Toucher != null)
-			Toucher.enabled = value;
 
 		var e = InteractableChange;
 		if (e != null)

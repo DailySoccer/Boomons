@@ -54,6 +54,8 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	}
 
 
+	public BoomonSetup Setup { get { return _setup; } }
+
 	public Transform Transform {
 		get {
 			return _ragdoll == null ?
@@ -110,7 +112,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 
 			} else {
 				transform.forward = (int)value * _refSystem.Right;
-				_velocity = _moveSpeed * transform.forward;
+				_velocity = _setup.MoveSpeed * transform.forward;
 			}
 
 			_animator.SetInteger("Direction", (int)value);
@@ -157,7 +159,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		/*/
 				float moveValue = 2f * (touchPos - screenPos).x / Screen.width;
 		/**/
-		if(MoveSense == Sense.None || Mathf.Abs(moveValue) > _senseReversalInchesMin)
+		if(MoveSense == Sense.None || Mathf.Abs(moveValue) > _setup.SenseReversalInchesMin)
 			MoveSense = (Sense)Mathf.Sign(moveValue);
 
 		CurrentState = State.Move;
@@ -171,7 +173,6 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		Log("Throw", "@" + velocity, this);
 
 		CurrentState = State.Throw;
-		Ragdoll.Setup(transform, _refSystem);
 		Ragdoll.Throw(velocity, applyPosition);
 	}
 
@@ -183,7 +184,6 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		Log("Throw", "caused by Swipe", this);
 
 		CurrentState = State.Throw;
-		Ragdoll.Setup(transform, _refSystem);
 		Ragdoll.OnSwipe(null, swipePos, swipeVector, speedRatio);
 	}
 
@@ -227,7 +227,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	{
 		_isControllable = true;
 
-		Debug.Assert(_right != Vector3.zero, "BoomonController::Awake>> Right move direction not defined!!");
+		Debug.Assert(_setup.Right != Vector3.zero, "BoomonController::Awake>> Right move direction not defined!!");
 
 		_role = (BoomonRole)Enum.Parse(typeof(BoomonRole), name.Split('(')[0]);
 
@@ -244,7 +244,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		};
 
 
-		_refSystem = new ReferenceSystem(transform.position, _right);
+		_refSystem = new ReferenceSystem(transform.position, _setup.Right);
 		transform.up = _refSystem.Up;
 
 		_animator = GetComponent<Animator>();
@@ -253,7 +253,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		_face = GetComponent<FacialAnimator>();
 
 		_groundSlopeCosine = Mathf.Cos(_controller.slopeLimit * Mathf.Deg2Rad);
-		_animator.SetFloat(_moveMultiplierParam, _moveSpeed * _moveAnimMultiplierBase);
+		_animator.SetFloat(_setup.MoveMultiplierParamName, _setup.MoveAnimSpeed);
 	}
 
 
@@ -271,6 +271,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		//_bipedRoot = null;
 		_animator = null;
 		_controller = null;
+		_setup = null;
 	}
 
 	private void Start()
@@ -282,7 +283,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	// TODO FRS 161027 Enfocar toda esta clase a un patrón estado inyectándonos en ellos
 	private void OnEnable()
 	{
-		_animator.SetFloat(_moveMultiplierParam, _moveSpeed * _moveAnimMultiplierBase);
+		_animator.SetFloat(_setup.MoveMultiplierParamName, _setup.MoveAnimSpeed);
 		_animator.GetBehaviour<BoomonIdleState>().Enter += OnIdleReady;
 	}
 
@@ -392,7 +393,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 			return;
 
 		float throwDegress = Mathf.Atan(direction.y / Mathf.Abs(direction.x)) * Mathf.Rad2Deg;
-		if(throwDegress > _throwDegreesMin)
+		if(throwDegress > _setup.ThrowDegreesMin)
 			Throw(position, direction, speedRatio);
 		else
 			CurrentState = State.Move;
@@ -470,7 +471,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	private void MoveUpdate()
 	{
 #if UNITY_EDITOR
-		_animator.SetFloat(_moveMultiplierParam, _moveSpeed * _moveAnimMultiplierBase);
+		_animator.SetFloat(_setup.MoveMultiplierParamName, _setup.MoveAnimSpeed);
 #endif
 
 		// TODO FRS 161115 Ahora mismo deja al boomon encajonado al primer contacto, pero seguir investigando
@@ -481,12 +482,12 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		//}
 
 		if(_controller.isGrounded ||
-			Physics.Raycast(transform.position, -_refSystem.Up, _fallHeightMin)) {
+			Physics.Raycast(transform.position, -_refSystem.Up, _setup.FallHeightMin)) {
 			_controller.SimpleMove(_velocity);
-			Debug.DrawRay(transform.position, -_fallHeightMin * _refSystem.Up, Color.green);
+			Debug.DrawRay(transform.position, -_setup.FallHeightMin * _refSystem.Up, Color.green);
 		} else {
 			Throw(_velocity);
-			Debug.DrawRay(transform.position, -_fallHeightMin * _refSystem.Up, Color.red);
+			Debug.DrawRay(transform.position, -_setup.FallHeightMin * _refSystem.Up, Color.red);
 		}
 	}
 
@@ -520,7 +521,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 	{
 		Log("OnThrowStart");
 		gameObject.SetActive(false);
-		Ragdoll.gameObject.SetActive(true);
+		Ragdoll.Init(this);
 	}
 
 	private void OnThrowEnd(State nextState)
@@ -637,8 +638,8 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		if(rigid == null || rigid.isKinematic)
 			return;
 
-		rigid.AddForce((1f - _bounciness) * _pushMass * _velocity, ForceMode.Impulse);
-		_velocity *= _bounciness;
+		rigid.AddForce((1f - _setup.Bounciness) * _setup.PushMass * _velocity, ForceMode.Impulse);
+		_velocity *= _setup.Bounciness;
 
 		var item = rigid.GetComponent<Item>();
 		if(item != null)
@@ -669,7 +670,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 
 	#region Private Fields
 
-	private Ragdoll Ragdoll {
+	private BoomonRagdoll Ragdoll {
 		get {
 			if(_ragdoll == null) {
 				string ragdollPath = PathSolver.Instance.GetBoomonPath(_role, PathSolver.InstanceType.Ragdoll);
@@ -690,28 +691,9 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		}
 	}
 
-				   
-	//[SerializeField] private Transform _bipedRoot;
 
-	[SerializeField]
-	private string _moveMultiplierParam = "MoveMultiplier";
-	[SerializeField]
-	private Vector3 _right;
-	[SerializeField, Range(0f, 1f)]
-	private float _bounciness = 0.8f;
-	[SerializeField, Range(0f, 20f)]
-	private float _pushMass = 5f;
-	[SerializeField, Range(0.5f, 50f)]
-	private float _moveSpeed = 2.5f;
-	[SerializeField, Range(0f, 1f)]
-	private float _moveAnimMultiplierBase = .3f;
-	[SerializeField, Range(0f, 90f)]
-	private float _throwDegreesMin = 10f;
-	[SerializeField, Range(0f, 10f)]
-	private float _senseReversalInchesMin = 1f;
-	[SerializeField, Range(0f, 100f)]
-	private float _fallHeightMin = 100f;
 
+	[SerializeField] private BoomonSetup _setup;
 
 	private Animator _animator;
 	private CharacterController _controller;

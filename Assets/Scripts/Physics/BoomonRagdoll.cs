@@ -1,16 +1,12 @@
-﻿
-
-using UnityEngine;
-
-public class BoomonRagdoll : Ragdoll
+﻿public class BoomonRagdoll : Ragdoll
 {
 
 	#region Public Methods
 
-	public override void Setup(Transform setupRef, ReferenceSystem refSystem)
+	public void Init(BoomonController boomon)
 	{
-		base.Setup(setupRef, refSystem);
-		_boomon = setupRef.GetComponent<BoomonController>();
+		base.Init(boomon.transform, boomon.Setup.RagdollSetup, boomon.ReferenceSystem);
+		_boomon = boomon;
 	}
 
 	public override void TeleportTo(Teleport target)

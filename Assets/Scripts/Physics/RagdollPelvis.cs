@@ -5,8 +5,6 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 {
 	#region Public Fields
 
-	public Ragdoll Ragdoll { get; set; }
-
 	public bool IsGrounded
 	{
 		get { return _isGrounded; }
@@ -21,12 +19,8 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 		}
 	}
 
-
-	public bool IsTeleporting
-	{
-		get { return Ragdoll.IsTeleporting; }
-	}
-
+	public bool IsTeleporting { get { return _ragdoll.IsTeleporting;  } }
+	
 
 	#endregion
 
@@ -34,18 +28,21 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 
 	#region Public Methods
 
-	public override void Throw(Vector3 velocity, Vector3? applyPosition = null)
-	{
-		base.Throw(velocity, applyPosition);
-		_groundTimer = Ragdoll.GroundParams.Timeout;
+	public void Init(Ragdoll ragdoll)
+	{					
+		_ragdoll = ragdoll;
 	}
+
+//	public override void Throw(Vector3 velocity, Vector3? applyPosition = null)
+//	{
+//		base.Throw(velocity, applyPosition);
+////		_groundTimer = _ragdoll.Setup.TimeoutSecs;
+//	}
 
 	public void TeleportTo(Teleport target)
 	{
-		Ragdoll.TeleportTo(target);
+		_ragdoll.TeleportTo(target);
 	}
-
-
 
 	#endregion
 
@@ -62,7 +59,7 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 
 	protected override void OnDestroy()
 	{
-		Ragdoll = null;
+		_ragdoll = null;
 		base.OnDestroy();
 	}
 
@@ -75,8 +72,8 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 
 	private void FixedUpdate()
 	{
-		if(Ragdoll.ReferenceSystem != null)
-			Rigid.MovePosition( Ragdoll.ReferenceSystem.ProjectOnPlane(Rigid.position) );
+		if(_ragdoll.ReferenceSystem != null)
+			Rigid.MovePosition( _ragdoll.ReferenceSystem.ProjectOnPlane(Rigid.position) );
 
 		//if (Rigid.velocity.sqrMagnitude < Ragdoll.GroundParams.StopVelocityMaxSqr)
 		//	IsGrounded = (_groundTimer -= Time.fixedDeltaTime) < 0f;
@@ -87,7 +84,7 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 	private void OnCollisionEnter(Collision collision)
 	{
 		if (collision.rigidbody == null
-		    && Vector3.Dot(-_gravityDir, collision.contacts[0].normal) > Ragdoll.GroundParams.GroundCosine)
+		    && Vector3.Dot(-_gravityDir, collision.contacts[0].normal) > _ragdoll.Setup.GroundCosine)
 		{
 			OnGroundEnter();
 		}
@@ -110,7 +107,7 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 	private void OnGroundEnter()
 	{
 		Rigid.velocity = Vector3.zero;
-		Ragdoll.OnGroundEnter(transform.position);
+		_ragdoll.OnGroundEnter(transform.position);
 	}
 
 	#endregion
@@ -120,13 +117,14 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 	#region Private Fields
 
 
-	private float _groundTimer;
+	//private float _groundTimer;
 	private bool _isGrounded;
 	private Vector3 _gravityDir;
+	private Ragdoll _ragdoll;
 
 	#endregion
 
-
+	
 }
 
 

@@ -1517,11 +1517,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10d0095330edeb54183817390fbfdd37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _groundParams:
-    _stopVelocityMaxSqr: 0.1
-    _timeoutSecs: 1
-    _layerName: Ground
-    _groundDegreesMax: 40
 --- !u!114 &114000013944469386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1574,7 +1569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab8014f2a6388f439078a15270681ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _proximityRadius: 4
+  _proximityRadius: 100
   _proximityTarget: {fileID: 0}
   _modifiers:
     _distance: {x: 0, y: 0, z: 3.5}

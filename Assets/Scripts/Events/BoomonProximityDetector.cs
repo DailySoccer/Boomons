@@ -1,15 +1,44 @@
 ﻿public class BoomonProximityDetector : ProximityDetector
 {
-	protected virtual void OnEnable()
-	{
-		if(Game.Boomon != null)
-			ProximityTarget = Game.Boomon.transform;
-	}
 
+	#region Mono
+
+	protected override void OnDestroy()
+	{
+		if (_boomon != null) {
+			_boomon.StateChange -= OnBoomonStateChange;
+			_boomon = null;
+		}
+		base.OnDestroy();
+	}
+	
 	protected override void Start()
 	{
-		if(Game.Boomon != null)
-			ProximityTarget = Game.Boomon.transform;
+		_boomon = Game.Boomon;
+		_boomon.StateChange += OnBoomonStateChange;
+		ProximityTarget = _boomon.Transform;
 	}
+
+
+	#endregion
+
+	//======================================================================
+
+	#region Events
+
+	private void OnBoomonStateChange(BoomonController.State last, BoomonController.State next)
+	{
+		if(last == BoomonController.State.Throw || next == BoomonController.State.Throw)
+			ProximityTarget = _boomon.Transform;
+	}
+
+	#endregion
+
+
+	//===========================================================
+
+	#region Private Fields
+	private BoomonController _boomon;
+	#endregion
 
 }
