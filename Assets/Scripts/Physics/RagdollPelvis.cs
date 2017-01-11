@@ -33,11 +33,11 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 		_ragdoll = ragdoll;
 	}
 
-	public override void Throw(Vector3 velocity, Vector3? applyPosition = null)
-	{
-		base.Throw(velocity, applyPosition);
-		_groundTimer = _ragdoll.Setup.TimeoutSecs;
-	}
+//	public override void Throw(Vector3 velocity, Vector3? applyPosition = null)
+//	{
+//		base.Throw(velocity, applyPosition);
+////		_groundTimer = _ragdoll.Setup.TimeoutSecs;
+//	}
 
 	public void TeleportTo(Teleport target)
 	{
@@ -117,7 +117,7 @@ public class RagdollPelvis : RigidThrower, ITeleportable
 	#region Private Fields
 
 
-	private float _groundTimer;
+	//private float _groundTimer;
 	private bool _isGrounded;
 	private Vector3 _gravityDir;
 	private Ragdoll _ragdoll;

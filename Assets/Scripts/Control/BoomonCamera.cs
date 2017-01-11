@@ -89,7 +89,8 @@ public class BoomonCamera : BoomonFollower
 	private void ApplyModifiers(Modifiers modifiers)
 	{
 		CurrentSetup = modifiers;
-		_camera.fieldOfView = modifiers.FieldOfView;
+		if(_camera != null)
+			_camera.fieldOfView = modifiers.FieldOfView;
 	}
 
 	#endregion
