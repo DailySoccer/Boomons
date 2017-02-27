@@ -165,14 +165,14 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		CurrentState = State.Move;
 	}
 
-	public void Throw(Transform targetPosition, float maxHeight)
+	public void Throw(Transform targetPosition, float angle)
 	{
 
 		Vector3 dir = (targetPosition.position - transform.position);  // get target direction
 		float h = dir.y;  // get height difference
 		dir.y = 0;  // retain only the horizontal direction
 		float dist = dir.magnitude ;  // get horizontal distance
-		float a = maxHeight * Mathf.Deg2Rad;  // convert angle to radians
+		float a = angle * Mathf.Deg2Rad;  // convert angle to radians
 		dir.y = dist * Mathf.Tan(a);  // set dir to the elevation angle
 		dist += h / Mathf.Tan(a);  // correct for small height differences
 		// calculate the velocity magnitude

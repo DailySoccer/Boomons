@@ -5,9 +5,9 @@ using UnityEngine;
 public class ThrowOnClick : MonoBehaviour {
 
 	public Transform target;
-	public float maxHeight;
+	public float angle;
 
 	void OnMouseDown() {
-		MetaManager.Instance.Get<GameManager>().Boomon.Throw(target, maxHeight);
+		MetaManager.Instance.Get<GameManager>().Boomon.Throw(target, angle);
 	}
 }
