@@ -46,6 +46,7 @@ public class RigidThrower : Toucher
 		if(applyPosition.HasValue)
 			_rigid.AddForceAtPosition(velocity, applyPosition.Value, ForceMode.VelocityChange);
 		else
+			//_rigid.velocity = velocity;
 			_rigid.AddForce(velocity, ForceMode.VelocityChange);
 	}
 

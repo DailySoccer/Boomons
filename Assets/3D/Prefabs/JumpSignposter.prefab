@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 82000011166051352}
   - component: {fileID: 114000010251292022}
   - component: {fileID: 95000012345156298}
+  - component: {fileID: 114939328257230820}
+  - component: {fileID: 135312962933321172}
   m_Layer: 0
   m_Name: JumpSignposter
   m_TagString: Untagged
@@ -41,6 +43,21 @@ GameObject:
   - component: {fileID: 23000013921297476}
   m_Layer: 12
   m_Name: ArrowJump
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1244131896037120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4971612158888618}
+  m_Layer: 0
+  m_Name: Throw Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,9 +87,23 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4000012899200746}
+  - {fileID: 4971612158888618}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 10.829771}
+--- !u!4 &4971612158888618
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1244131896037120}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.43, y: 1.22, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4000013587240466}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23000013921297476
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -226,3 +257,27 @@ MonoBehaviour:
   _deactivation:
     Trigger: Out
     Clip: {fileID: 0}
+--- !u!114 &114939328257230820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012989043436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a0039eb9e42949a1a605e8dfa99eb04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 4971612158888618}
+--- !u!135 &135312962933321172
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012989043436}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: 0.6, y: 0.5, z: 0}
