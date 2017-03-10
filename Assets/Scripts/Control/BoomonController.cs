@@ -167,7 +167,6 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 
 	public void Throw(Transform targetPosition, float angle)
 	{
-
 		Vector3 dir = (targetPosition.position - transform.position);  // get target direction
 		float h = dir.y;  // get height difference
 		dir.y = 0;  // retain only the horizontal direction
@@ -183,9 +182,7 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 		CurrentState = State.Throw;
 		Ragdoll.Throw(vel * dir.normalized);
 	}
-
-
-		
+			
 	public void Throw(Vector3 velocity, Vector3? applyPosition = null)
 	{
 		if(CurrentState == State.Throw)
