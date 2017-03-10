@@ -612,7 +612,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 239346095}
-  m_LocalRotation: {x: 0.7080198, y: 0.00028290699, z: -0.7061926, w: 0.00028021834}
+  m_LocalRotation: {x: 0.70801973, y: 0.00028290696, z: -0.70619255, w: 0.00028021832}
   m_LocalPosition: {x: 3.4468384, y: -1.4465716, z: 17.281853}
   m_LocalScale: {x: 1.0000001, y: 1, z: 1}
   m_Children:
@@ -2128,7 +2128,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 688584592}
-  m_LocalRotation: {x: 0.7080198, y: 0.00028096445, z: 0.7061926, w: -0.00028219837}
+  m_LocalRotation: {x: 0.70801973, y: 0.00028096442, z: 0.70619255, w: -0.00028219834}
   m_LocalPosition: {x: 3.4468384, y: -1.4464757, z: -17.28186}
   m_LocalScale: {x: 1.0000001, y: 1, z: 1}
   m_Children:
@@ -4619,30 +4619,18 @@ Prefab:
       propertyPath: _itemToSignpost
       value: 
       objectReference: {fileID: 2069615215}
-    - target: {fileID: 1000012989043436, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
-      propertyPath: m_Name
-      value: JumpSignposter 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4971612158888618, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114939328257230820, guid: 53b97b1f566944249aeddafa53ddda04,
-        type: 2}
-      propertyPath: angle
-      value: 75
-      objectReference: {fileID: 0}
-    - target: {fileID: 114939328257230820, guid: 53b97b1f566944249aeddafa53ddda04,
-        type: 2}
-      propertyPath: maxHeight
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 114939328257230820, guid: 53b97b1f566944249aeddafa53ddda04,
         type: 2}
       propertyPath: target
       value: 
       objectReference: {fileID: 234273231}
-    m_RemovedComponents: []
+    - target: {fileID: 1000012989043436, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
+      propertyPath: m_Name
+      value: JumpSignposter 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 135032751499608536, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
+    - {fileID: 135312962933321172, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1450181414
@@ -6176,36 +6164,6 @@ Transform:
   m_Father: {fileID: 1228806904}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -0.00000001292664, y: -0.000000014164826, z: 47.616817}
---- !u!1 &1940101130 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000012989043436, guid: 53b97b1f566944249aeddafa53ddda04,
-    type: 2}
-  m_PrefabInternal: {fileID: 1444902476}
---- !u!114 &1940101131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1940101130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a0039eb9e42949a1a605e8dfa99eb04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 234273231}
-  angle: 0
---- !u!135 &1940101132
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1940101130}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.6
-  m_Center: {x: 0.6, y: 0.5, z: 0}
 --- !u!1001 &1944435725
 Prefab:
   m_ObjectHideFlags: 0
