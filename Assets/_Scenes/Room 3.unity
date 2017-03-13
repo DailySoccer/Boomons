@@ -114,7 +114,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 21776990}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.70710677}
-  m_LocalPosition: {x: -10.25, y: 5.25, z: 18.75}
+  m_LocalPosition: {x: -10.25, y: 3.59, z: 18.57}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 815312387}
@@ -10354,15 +10354,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000013587240466, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -11.29
+      value: -11.23
       objectReference: {fileID: 0}
     - target: {fileID: 4000013587240466, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.61
+      value: 0.61
       objectReference: {fileID: 0}
     - target: {fileID: 4000013587240466, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 16.57
+      value: 16.91
       objectReference: {fileID: 0}
     - target: {fileID: 4000013587240466, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
       propertyPath: m_LocalRotation.x
@@ -10384,31 +10384,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012989043436, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
+      propertyPath: m_Name
+      value: JumpSignposter 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114000010251292022, guid: 53b97b1f566944249aeddafa53ddda04,
         type: 2}
       propertyPath: _itemToSignpost
       value: 
       objectReference: {fileID: 1778810967}
-    - target: {fileID: 1000012989043436, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
-      propertyPath: m_Name
-      value: JumpSignposter 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013587240466, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013587240466, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 114939328257230820, guid: 53b97b1f566944249aeddafa53ddda04,
         type: 2}
       propertyPath: target
       value: 
       objectReference: {fileID: 21776991}
-    m_RemovedComponents:
-    - {fileID: 135312962933321172, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
-    - {fileID: 135032751499608536, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
+    - target: {fileID: 135312962933321172, guid: 53b97b1f566944249aeddafa53ddda04,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1975848966

@@ -1259,7 +1259,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013587240466, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.74
+      value: 0.61
       objectReference: {fileID: 0}
     - target: {fileID: 4000013587240466, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1285,28 +1285,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012989043436, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
+      propertyPath: m_Name
+      value: JumpSignposter 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114000010251292022, guid: 53b97b1f566944249aeddafa53ddda04,
         type: 2}
       propertyPath: _itemToSignpost
       value: 
       objectReference: {fileID: 1218467498}
-    - target: {fileID: 1000012989043436, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
-      propertyPath: m_Name
-      value: JumpSignposter 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114939328257230820, guid: 53b97b1f566944249aeddafa53ddda04,
         type: 2}
       propertyPath: target
       value: 
       objectReference: {fileID: 239052217}
-    - target: {fileID: 114939328257230820, guid: 53b97b1f566944249aeddafa53ddda04,
-        type: 2}
-      propertyPath: angle
-      value: 72
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 135032751499608536, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
-    - {fileID: 135312962933321172, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &480797310
@@ -1318,15 +1311,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000013587240466, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.99
+      value: -0.78
       objectReference: {fileID: 0}
     - target: {fileID: 4000013587240466, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.54
+      value: 3.441
       objectReference: {fileID: 0}
     - target: {fileID: 4000013587240466, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -26.06
+      value: -25.795
       objectReference: {fileID: 0}
     - target: {fileID: 4000013587240466, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1383,6 +1376,11 @@ Prefab:
         type: 2}
       propertyPath: angle
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 135312962933321172, guid: 53b97b1f566944249aeddafa53ddda04,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 135343562965602158, guid: 53b97b1f566944249aeddafa53ddda04, type: 2}
