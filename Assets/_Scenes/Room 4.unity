@@ -327,18 +327,14 @@ Transform:
   - {fileID: 1037535415}
   - {fileID: 2119039587}
   - {fileID: 947128738}
+  - {fileID: 580239364}
   - {fileID: 2015546578}
   - {fileID: 1711599293}
+  - {fileID: 1930688270}
   - {fileID: 187804821}
   - {fileID: 347552409}
-  - {fileID: 580239364}
-  - {fileID: 1930688270}
   - {fileID: 899735241}
   - {fileID: 1341733376}
-  - {fileID: 288001628}
-  - {fileID: 1432535902}
-  - {fileID: 1487510785}
-  - {fileID: 969103217}
   - {fileID: 742699315}
   - {fileID: 1948286944}
   - {fileID: 1977450743}
@@ -350,48 +346,130 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 62957805}
+    m_TransformParent: {fileID: 2015546578}
     m_Modifications:
     - target: {fileID: 4000010720582068, guid: 56e85af447a1c154e877b627397e679d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.957
+      value: 3.8989658
       objectReference: {fileID: 0}
     - target: {fileID: 4000010720582068, guid: 56e85af447a1c154e877b627397e679d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.197
+      value: -1.596
       objectReference: {fileID: 0}
     - target: {fileID: 4000010720582068, guid: 56e85af447a1c154e877b627397e679d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -19.918
+      value: 6.239464
       objectReference: {fileID: 0}
     - target: {fileID: 4000010720582068, guid: 56e85af447a1c154e877b627397e679d, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.0021963357
+      value: 0.0027961885
       objectReference: {fileID: 0}
     - target: {fileID: 4000010720582068, guid: 56e85af447a1c154e877b627397e679d, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.70710343
+      value: 0.9002241
       objectReference: {fileID: 0}
     - target: {fileID: 4000010720582068, guid: 56e85af447a1c154e877b627397e679d, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.0021963357
+      value: 0.0013524463
       objectReference: {fileID: 0}
     - target: {fileID: 4000010720582068, guid: 56e85af447a1c154e877b627397e679d, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.70710343
+      value: 0.43541583
       objectReference: {fileID: 0}
     - target: {fileID: 4000010720582068, guid: 56e85af447a1c154e877b627397e679d, type: 2}
       propertyPath: m_RootOrder
-      value: 19
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114000011806669214, guid: 56e85af447a1c154e877b627397e679d,
         type: 2}
       propertyPath: _itemToSignpost
       value: 
       objectReference: {fileID: 1768548882}
+    - target: {fileID: 4000010720582068, guid: 56e85af447a1c154e877b627397e679d, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2.1070704
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010720582068, guid: 56e85af447a1c154e877b627397e679d, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.4159857
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010720582068, guid: 56e85af447a1c154e877b627397e679d, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1.4159901
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010062517404, guid: 56e85af447a1c154e877b627397e679d, type: 2}
+      propertyPath: m_Name
+      value: Cow2Signposter
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 56e85af447a1c154e877b627397e679d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &115261123 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000010062517404, guid: 56e85af447a1c154e877b627397e679d,
+    type: 2}
+  m_PrefabInternal: {fileID: 115261122}
+--- !u!114 &115261124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 115261123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1768548882}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!65 &115261125
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 115261123}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 0.6, z: 0.1}
+  m_Center: {x: 0, y: -0.1, z: 0}
 --- !u!1001 &128061546
 Prefab:
   m_ObjectHideFlags: 0
@@ -638,7 +716,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 62957805}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &187804822
 AudioSource:
@@ -950,11 +1028,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4000012660595356, guid: 7828165db924d9d49a39acd2c4ebd79f,
     type: 2}
   m_PrefabInternal: {fileID: 906339638}
---- !u!4 &288001628 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4000013837558238, guid: 5a5d8a41d077fdf40810e3ed2e5424d7,
-    type: 2}
-  m_PrefabInternal: {fileID: 1045610339}
 --- !u!1 &323624977
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,6 +1104,10 @@ Prefab:
     - target: {fileID: 4000010344070444, guid: f17b76ff8eb404246ae1658e5ef22e59, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -145
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000014153953032, guid: f17b76ff8eb404246ae1658e5ef22e59, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f17b76ff8eb404246ae1658e5ef22e59, type: 2}
@@ -1190,7 +1267,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011820105696, guid: 657431bba92462241934d9caf5d7237a, type: 2}
       propertyPath: m_RootOrder
-      value: 20
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1000011741942422, guid: 657431bba92462241934d9caf5d7237a, type: 2}
       propertyPath: m_Name
@@ -2235,7 +2312,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010847195012, guid: bac76631513a8204f9ac616ae834e320, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114000011126445998, guid: bac76631513a8204f9ac616ae834e320,
         type: 2}
@@ -2245,6 +2322,72 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bac76631513a8204f9ac616ae834e320, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &918525909 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000011239980790, guid: bac76631513a8204f9ac616ae834e320,
+    type: 2}
+  m_PrefabInternal: {fileID: 918525908}
+--- !u!114 &918525910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 918525909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 947128739}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!65 &918525911
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 918525909}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1, y: 0.8, z: 0.1}
+  m_Center: {x: 0, y: -0.08, z: 0}
 --- !u!4 &947128738 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4155334527125416, guid: 1c86b7ae66ffda14ea870ec4bcc22754,
@@ -2256,11 +2399,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 813829781}
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
---- !u!4 &969103217 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4000010720582068, guid: 56e85af447a1c154e877b627397e679d,
-    type: 2}
-  m_PrefabInternal: {fileID: 115261122}
 --- !u!1 &1011049672
 GameObject:
   m_ObjectHideFlags: 0
@@ -2417,9 +2555,89 @@ Prefab:
       propertyPath: _tracker
       value: 
       objectReference: {fileID: 329804692}
-    m_RemovedComponents: []
+    - target: {fileID: 65000011789410338, guid: 0d9396ef052992b4a8a7820c619152ca,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65000011789410338, guid: 0d9396ef052992b4a8a7820c619152ca,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 135000013471268522, guid: 0d9396ef052992b4a8a7820c619152ca,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 65000011789410338, guid: 0d9396ef052992b4a8a7820c619152ca,
+        type: 2}
+      propertyPath: m_Center.y
+      value: 0.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 65000011789410338, guid: 0d9396ef052992b4a8a7820c619152ca,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 135000013471268522, guid: 0d9396ef052992b4a8a7820c619152ca, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0d9396ef052992b4a8a7820c619152ca, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1035616936 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000011063245468, guid: 0d9396ef052992b4a8a7820c619152ca,
+    type: 2}
+  m_PrefabInternal: {fileID: 1035616935}
+--- !u!114 &1035616937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1035616936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1637039630}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!4 &1037535415 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000010913083322, guid: 0d9396ef052992b4a8a7820c619152ca,
@@ -2430,95 +2648,267 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 62957805}
+    m_TransformParent: {fileID: 2015546578}
     m_Modifications:
     - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.843
+      value: 0.504
       objectReference: {fileID: 0}
     - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.902
+      value: -1.139
       objectReference: {fileID: 0}
     - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -25.36
+      value: 1.761
       objectReference: {fileID: 0}
     - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.0021963357
+      value: -0.026538474
       objectReference: {fileID: 0}
     - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.70710343
+      value: 0.90134573
       objectReference: {fileID: 0}
     - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.0021963357
+      value: -0.015285609
       objectReference: {fileID: 0}
     - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.70710343
+      value: 0.43201602
       objectReference: {fileID: 0}
     - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
       propertyPath: m_RootOrder
-      value: 17
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114000010771978694, guid: 35bc82a4a9cf73a4fa699c3cac75ad33,
         type: 2}
       propertyPath: _itemToSignpost
       value: 
       objectReference: {fileID: 2046881055}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.821686
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.8216861
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1.8216861
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011827622296, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_Name
+      value: Rossted Signposter
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.26500002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 128.77501
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -3.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1041111762 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000011827622296, guid: 35bc82a4a9cf73a4fa699c3cac75ad33,
+    type: 2}
+  m_PrefabInternal: {fileID: 1041111761}
+--- !u!114 &1041111765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1041111762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2046881055}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!65 &1041111766
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1041111762}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 0.6, z: 0.1}
+  m_Center: {x: 0, y: -0.1, z: 0}
 --- !u!1001 &1045610339
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 62957805}
+    m_TransformParent: {fileID: 2015546578}
     m_Modifications:
     - target: {fileID: 4000013837558238, guid: 5a5d8a41d077fdf40810e3ed2e5424d7, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.713
+      value: -1.7592877
       objectReference: {fileID: 0}
     - target: {fileID: 4000013837558238, guid: 5a5d8a41d077fdf40810e3ed2e5424d7, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.159
+      value: 1.3659999
       objectReference: {fileID: 0}
     - target: {fileID: 4000013837558238, guid: 5a5d8a41d077fdf40810e3ed2e5424d7, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -30.603
+      value: -2.9093595
       objectReference: {fileID: 0}
     - target: {fileID: 4000013837558238, guid: 5a5d8a41d077fdf40810e3ed2e5424d7, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.0021963357
+      value: 0.0027961885
       objectReference: {fileID: 0}
     - target: {fileID: 4000013837558238, guid: 5a5d8a41d077fdf40810e3ed2e5424d7, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.70710343
+      value: 0.9002241
       objectReference: {fileID: 0}
     - target: {fileID: 4000013837558238, guid: 5a5d8a41d077fdf40810e3ed2e5424d7, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.0021963357
+      value: 0.0013524463
       objectReference: {fileID: 0}
     - target: {fileID: 4000013837558238, guid: 5a5d8a41d077fdf40810e3ed2e5424d7, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.70710343
+      value: 0.43541583
       objectReference: {fileID: 0}
     - target: {fileID: 4000013837558238, guid: 5a5d8a41d077fdf40810e3ed2e5424d7, type: 2}
       propertyPath: m_RootOrder
-      value: 16
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114000010261875384, guid: 5a5d8a41d077fdf40810e3ed2e5424d7,
         type: 2}
       propertyPath: _itemToSignpost
       value: 
       objectReference: {fileID: 1680013670}
+    - target: {fileID: 4000013837558238, guid: 5a5d8a41d077fdf40810e3ed2e5424d7, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 3.2492836
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013837558238, guid: 5a5d8a41d077fdf40810e3ed2e5424d7, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2.1835785
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013837558238, guid: 5a5d8a41d077fdf40810e3ed2e5424d7, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 2.1835794
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a5d8a41d077fdf40810e3ed2e5424d7, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1045610340 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013418248766, guid: 5a5d8a41d077fdf40810e3ed2e5424d7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1045610339}
+--- !u!114 &1045610341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1045610340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1680013670}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!65 &1045610342
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1045610340}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 0.6, z: 0.1}
+  m_Center: {x: 0, y: -0.1, z: 0}
 --- !u!1001 &1048536829
 Prefab:
   m_ObjectHideFlags: 0
@@ -2784,6 +3174,135 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 23000012771111890, guid: 0d9396ef052992b4a8a7820c619152ca,
     type: 2}
   m_PrefabInternal: {fileID: 1035616935}
+--- !u!1001 &1178628296
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2015546578}
+    m_Modifications:
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.127
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.645
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 2.556
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.0027961892
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.90022415
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.0013524466
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.43541583
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010771978694, guid: 35bc82a4a9cf73a4fa699c3cac75ad33,
+        type: 2}
+      propertyPath: _itemToSignpost
+      value: 
+      objectReference: {fileID: 2046881055}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.5016522
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.3371928
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 2.183581
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011827622296, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_Name
+      value: Rossted 2 Signposter
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &1178628297 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000011827622296, guid: 35bc82a4a9cf73a4fa699c3cac75ad33,
+    type: 2}
+  m_PrefabInternal: {fileID: 1178628296}
+--- !u!114 &1178628300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1178628297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1382017337}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!65 &1178628301
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1178628297}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 0.6, z: 0.1}
+  m_Center: {x: 0, y: -0.1, z: 0}
 --- !u!114 &1218467498 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114000012410922604, guid: 20f3b3c52e8cbff4cbce34fbb2512729,
@@ -2912,6 +3431,143 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1304492158}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1309388008
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2015546578}
+    m_Modifications:
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.058
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.742
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1.058
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.17331359
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.88338673
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.08382785
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.42727417
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010771978694, guid: 35bc82a4a9cf73a4fa699c3cac75ad33,
+        type: 2}
+      propertyPath: _itemToSignpost
+      value: 
+      objectReference: {fileID: 2046881055}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2.545201
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.7104185
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1.7104198
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011827622296, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_Name
+      value: Ross1 Signposter
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 128.376
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -22.2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 35bc82a4a9cf73a4fa699c3cac75ad33, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &1309388009 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000011827622296, guid: 35bc82a4a9cf73a4fa699c3cac75ad33,
+    type: 2}
+  m_PrefabInternal: {fileID: 1309388008}
+--- !u!114 &1309388011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1309388009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1382017338}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!65 &1309388013
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1309388009}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 0.6, z: 0.1}
+  m_Center: {x: 0, y: -0.1, z: 0}
 --- !u!1001 &1340190100
 Prefab:
   m_ObjectHideFlags: 0
@@ -3001,7 +3657,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010344070444, guid: f17b76ff8eb404246ae1658e5ef22e59, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 114000010622021848, guid: f17b76ff8eb404246ae1658e5ef22e59,
         type: 2}
@@ -3015,6 +3671,72 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f17b76ff8eb404246ae1658e5ef22e59, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1381728905 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000014153953032, guid: f17b76ff8eb404246ae1658e5ef22e59,
+    type: 2}
+  m_PrefabInternal: {fileID: 1381728904}
+--- !u!114 &1381728906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1381728905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1521317034}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!65 &1381728907
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1381728905}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1, y: 0.8, z: 0.1}
+  m_Center: {x: 0, y: -0.08, z: 0}
 --- !u!1001 &1382017336
 Prefab:
   m_ObjectHideFlags: 0
@@ -3052,22 +3774,53 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011280164630, guid: 2f9b4263ef6f9d84fb54e17b803e6525, type: 2}
       propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010701944742, guid: 2f9b4263ef6f9d84fb54e17b803e6525, type: 2}
+      propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012706200418, guid: 2f9b4263ef6f9d84fb54e17b803e6525, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013795316440, guid: 2f9b4263ef6f9d84fb54e17b803e6525, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000014048309602, guid: 2f9b4263ef6f9d84fb54e17b803e6525, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010658667120, guid: 2f9b4263ef6f9d84fb54e17b803e6525, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010782477128, guid: 2f9b4263ef6f9d84fb54e17b803e6525, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f9b4263ef6f9d84fb54e17b803e6525, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1382017337 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000012741476134, guid: 2f9b4263ef6f9d84fb54e17b803e6525,
+    type: 2}
+  m_PrefabInternal: {fileID: 1382017336}
+  m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
+--- !u!114 &1382017338 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000013422032866, guid: 2f9b4263ef6f9d84fb54e17b803e6525,
+    type: 2}
+  m_PrefabInternal: {fileID: 1382017336}
+  m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
 --- !u!114 &1419975119 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114000012407155362, guid: 2f9b4263ef6f9d84fb54e17b803e6525,
     type: 2}
   m_PrefabInternal: {fileID: 1382017336}
   m_Script: {fileID: 11500000, guid: 5a1bdcf59b9047147b712538d8619bf4, type: 3}
---- !u!4 &1432535902 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4000011131747434, guid: 35bc82a4a9cf73a4fa699c3cac75ad33,
-    type: 2}
-  m_PrefabInternal: {fileID: 1041111761}
 --- !u!1001 &1446193458
 Prefab:
   m_ObjectHideFlags: 0
@@ -3105,7 +3858,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4729561512903694, guid: 80e71a7da996e994ab9ba6636047f29c, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 80e71a7da996e994ab9ba6636047f29c, type: 2}
@@ -3147,7 +3900,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011820105696, guid: 657431bba92462241934d9caf5d7237a, type: 2}
       propertyPath: m_RootOrder
-      value: 21
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 1000011741942422, guid: 657431bba92462241934d9caf5d7237a, type: 2}
       propertyPath: m_Name
@@ -3161,58 +3914,131 @@ Transform:
   m_PrefabParentObject: {fileID: 4000013587240466, guid: 53b97b1f566944249aeddafa53ddda04,
     type: 2}
   m_PrefabInternal: {fileID: 480797310}
---- !u!4 &1487510785 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4000013324513134, guid: 6718f60008e358c489743d0e742430ac,
-    type: 2}
-  m_PrefabInternal: {fileID: 1491417042}
 --- !u!1001 &1491417042
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 62957805}
+    m_TransformParent: {fileID: 2015546578}
     m_Modifications:
     - target: {fileID: 4000013324513134, guid: 6718f60008e358c489743d0e742430ac, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.37
+      value: 2.8997388
       objectReference: {fileID: 0}
     - target: {fileID: 4000013324513134, guid: 6718f60008e358c489743d0e742430ac, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.991
+      value: -0.8019999
       objectReference: {fileID: 0}
     - target: {fileID: 4000013324513134, guid: 6718f60008e358c489743d0e742430ac, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -21.006
+      value: 5.6429234
       objectReference: {fileID: 0}
     - target: {fileID: 4000013324513134, guid: 6718f60008e358c489743d0e742430ac, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.0021963357
+      value: 0.0027961885
       objectReference: {fileID: 0}
     - target: {fileID: 4000013324513134, guid: 6718f60008e358c489743d0e742430ac, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.70710343
+      value: 0.9002241
       objectReference: {fileID: 0}
     - target: {fileID: 4000013324513134, guid: 6718f60008e358c489743d0e742430ac, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.0021963357
+      value: 0.0013524463
       objectReference: {fileID: 0}
     - target: {fileID: 4000013324513134, guid: 6718f60008e358c489743d0e742430ac, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.70710343
+      value: 0.43541583
       objectReference: {fileID: 0}
     - target: {fileID: 4000013324513134, guid: 6718f60008e358c489743d0e742430ac, type: 2}
       propertyPath: m_RootOrder
-      value: 18
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000013543464396, guid: 6718f60008e358c489743d0e742430ac,
         type: 2}
       propertyPath: _itemToSignpost
       value: 
       objectReference: {fileID: 1419975119}
+    - target: {fileID: 4000013324513134, guid: 6718f60008e358c489743d0e742430ac, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 3.2492893
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013324513134, guid: 6718f60008e358c489743d0e742430ac, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2.183577
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013324513134, guid: 6718f60008e358c489743d0e742430ac, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 2.1835825
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6718f60008e358c489743d0e742430ac, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1491417043 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000011334616666, guid: 6718f60008e358c489743d0e742430ac,
+    type: 2}
+  m_PrefabInternal: {fileID: 1491417042}
+--- !u!114 &1491417044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1491417043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935ab4ac7141fce43b50284cd2b990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLayerName: Touchable
+  _mustReceiveOnlyItsTouches: 1
+  _tapStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1419975119}
+        m_MethodName: OnTapStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStop:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _tapStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _doubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+TapEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  _swipe:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Toucher+SwipeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!65 &1491417045
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1491417043}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 0.6, z: 0.1}
+  m_Center: {x: 0, y: -0.1, z: 0}
 --- !u!114 &1521317034 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114000010515821160, guid: 921bc75671b6ff144aff80c7ef202a4e,
@@ -3562,7 +4388,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011820105696, guid: 657431bba92462241934d9caf5d7237a, type: 2}
       propertyPath: m_RootOrder
-      value: 22
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1000011741942422, guid: 657431bba92462241934d9caf5d7237a, type: 2}
       propertyPath: m_Name
@@ -3927,7 +4753,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010289050520, guid: 921bc75671b6ff144aff80c7ef202a4e, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 921bc75671b6ff144aff80c7ef202a4e, type: 2}
