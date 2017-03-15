@@ -409,13 +409,12 @@ public class BoomonController : MonoBehaviour, IObjectTouchListener, ITeleportab
 
 		if(toucher != _toucher)
 			return;
-		/*
+		
 		float throwDegress = Mathf.Atan(direction.y / Mathf.Abs(direction.x)) * Mathf.Rad2Deg;
 		if(throwDegress > _setup.ThrowDegreesMin)
 			Throw(position, direction, speedRatio);
 		else
-		*/
-		CurrentState = State.Move;
+			CurrentState = State.Move;
 	}
 
 	#endregion
