@@ -64,7 +64,6 @@ public class WebViewer : MonoBehaviour
 				},
 		enableWKWebView: true);
 		webViewObject.SetMargins(leftMargin, topMargin, rightMargin, bottomMargin);
-		webViewObject.SetVisibility(true);
 
 #if !UNITY_WEBPLAYER
 		if (Url.StartsWith("http"))
@@ -117,6 +116,8 @@ public class WebViewer : MonoBehaviour
             "});");
 #endif
 		yield break;
+
+		webViewObject.SetVisibility(true);
 	}
 
 #if !UNITY_WEBPLAYER
