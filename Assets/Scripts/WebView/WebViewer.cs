@@ -47,7 +47,10 @@ public class WebViewer : MonoBehaviour
 			 },
 			 ld: (msg) =>
 			 {
-				webViewObject.SetVisibility(true);
+				#if UNITY_ANDROID
+					webViewObject.SetVisibility(true);
+				#endif
+
 				Debug.Log(string.Format("CallOnLoaded[{0}]", msg));
 #if !UNITY_ANDROID
                 webViewObject.EvaluateJS(@"
@@ -65,6 +68,9 @@ public class WebViewer : MonoBehaviour
 				},
 		enableWKWebView: true);
 		webViewObject.SetMargins(leftMargin, topMargin, rightMargin, bottomMargin);
+		#if !UNITY_ANDROID
+			webViewObject.SetVisibility(true);
+		#endif
 
 #if !UNITY_WEBPLAYER
 		if (Url.StartsWith("http"))
