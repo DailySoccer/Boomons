@@ -47,7 +47,8 @@ public class WebViewer : MonoBehaviour
 			 },
 			 ld: (msg) =>
 			 {
-				 Debug.Log(string.Format("CallOnLoaded[{0}]", msg));
+				webViewObject.SetVisibility(true);
+				Debug.Log(string.Format("CallOnLoaded[{0}]", msg));
 #if !UNITY_ANDROID
                 webViewObject.EvaluateJS(@"
                   window.Unity = {
@@ -116,8 +117,6 @@ public class WebViewer : MonoBehaviour
             "});");
 #endif
 		yield break;
-
-		webViewObject.SetVisibility(true);
 	}
 
 #if !UNITY_WEBPLAYER
